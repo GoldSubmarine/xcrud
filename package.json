@@ -1,0 +1,60 @@
+{
+  "name": "xcrud",
+  "version": "0.1.1",
+  "description": "A simplified crud component based on element-ui & Vue",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --config build/webpack.dev.js",
+    "build": "webpack --config build/webpack.pro.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinsoncho/xvue.git"
+  },
+  "keywords": [
+    "crud",
+    "vue",
+    "element-ui"
+  ],
+  "author": {
+    "name": "vinsoncho",
+    "email": "997462392@qq.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vinsoncho/xvue/issues"
+  },
+  "homepage": "https://github.com/vinsoncho/xvue#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "autoprefixer": "^9.5.1",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.1",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.6.0",
+    "node-sass": "^4.11.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "vue-loader": "^15.7.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1",
+    "webpack-dev-server": "^3.3.1"
+  },
+  "dependencies": {
+    "element-ui": "^2.7.2",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.6"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
+}
