@@ -1,4 +1,4 @@
-# xvue
+# xcrud
 
 A simplified crud component based element-ui & Vue
 
