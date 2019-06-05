@@ -9,11 +9,11 @@
         filterable
         :size="config.size">
         <el-option
-            v-for="(item, itemIndex) in config.dic" 
+            v-for="(item, itemIndex) in getDic" 
             :key="itemIndex" 
             :disabled="item.disabled" 
-            :label="item.label"
-            :value="item.value"></el-option>
+            :label="item[labelName]"
+            :value="item[valueName]"></el-option>
     </el-select>
 </template>
 
@@ -23,9 +23,23 @@ export default {
     mixins: [mixinComponent()],
     data() {
         return {
-            // value: this.value
+            labelName: "label",
+            valueName: "value",
         };
-    }
+    },
+    computed: {
+        getDic() {
+            let dic = this.config.dic;
+            if(dic instanceof Array) {
+                return dic;
+            } else if(dic instanceof Object) {
+                if(dic.label) this.labelName = dic.label;
+                if(dic.value) this.valueName = dic.value;
+                return dic.data;
+            }
+            return undefined;
+        }
+    },
 };
 </script>
 

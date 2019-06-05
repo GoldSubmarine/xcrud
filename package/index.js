@@ -1,7 +1,9 @@
 import xForm from './xForm/';
+import xTree from './xTree/';
 import xTable from './xTable/';
 const components = [
     xForm,
+    xTree,
     xTable
 ];
 
@@ -18,5 +20,6 @@ if (window.Vue) {
 export default {
     install,
     xForm,
+    xTree,
     xTable
 };

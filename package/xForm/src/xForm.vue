@@ -5,17 +5,18 @@
         :inline="config.inline" 
         :rules="rulesGenerate" 
         :validate-on-rule-change="false"
-        ref="ruleForm" 
+        ref="refForm" 
         :model="formData" 
         :label-width="config.inline ? '' : '120px'" 
         class="formComponent">
         <template v-for="(configItem, configItemIndex) in config.items">
+            <slot v-if="configItem.slot && computeBoolen(configItem.show, true)" :name="configItem.slot"></slot>
             <!-- 动态加载组件 -->
-            <el-form-item :label="configItem.label + '：'" :key="configItemIndex" :prop="configItem.name">
+            <el-form-item v-else-if="computeBoolen(configItem.show, true)" :label="configItem.label + '：'" :key="configItemIndex" :prop="configItem.name">
                 <component 
                     :is="getComponentType(configItem.type)" 
                     v-model="formData[configItem.name]"  
-                    style="width: 320px" 
+                    class="w300"
                     :config="configItem">
                 </component>
             </el-form-item>
@@ -23,7 +24,7 @@
 
         <el-form-item v-if="config.operate">
             <template v-for="(operateItem, operateItemIndex) in config.operate">
-                <el-button :key="operateItemIndex" type="primary" v-if="computeBoolen(operateItem.show, true)" @click="operateItem.click(formData, $refs['ruleForm'])">{{ operateItem.text }}</el-button>
+                <el-button :key="operateItemIndex" type="primary" :icon="operateItem.icon" v-if="computeBoolen(operateItem.show, true)" @click="operateItem.click(formData, $refs[config.ref ? config.ref : 'refForm'])">{{ operateItem.text }}</el-button>
             </template>
         </el-form-item>
     </el-form>
@@ -57,27 +58,43 @@ import xCheckbox from './xCheckbox'
 import xSelect from './xSelect'
 import xTime from './xTime'
 import xDate from './xDate'
+import { debuglog } from 'util';
 
 export default {
     name: "xForm",
     mixins: [ mixinComponent() ],
     components: { xInput, xRadio, xCheckbox, xSelect, xTime, xDate },
     props: {
-        // button: {
-        //     type: Array,
-        //     default: () => []
-        // }
     },
     data() {
         return {
+            OriginalFormData: {},
+            ruleEnable: true,
         };
     },
     created() {
-        // this.$nextTick().then(() => {
-        //     this.$refs["ruleForm"].clearValidate();
-        // })
+        this.initFormData();
     },
     methods: {
+        //初始化表单数据
+        initFormData() {
+            // let stringType = ["text", "textarea", "radio", "select"];
+            let arrayType = ["checkbox", "datetimerange", "daterange"];
+            this.OriginalFormData = JSON.parse(JSON.stringify(this.formData));
+
+            this.config.items.forEach(item => {
+                if(item.multiple || arrayType.includes(item.type)) {
+                    if(!this.OriginalFormData[item.name]) {
+                        this.OriginalFormData[item.name] = [];
+                    }
+                } else {
+                    if(this.OriginalFormData[item.name] === undefined) {
+                        this.OriginalFormData[item.name] = '';
+                    }
+                }
+            })
+            this.formData = JSON.parse(JSON.stringify(this.OriginalFormData));
+        },
         //获取动态组件类型
         getComponentType(type) {
             if(type == "text" || type == "textarea") {
@@ -93,12 +110,22 @@ export default {
             } else if(["year","month","date","dates","week","datetime","datetimerange","daterange"].includes(type)) {
                 return "xDate";
             }
+        },
+        //重置表单
+        resetFields() {
+            this.ruleEnable = false;
+            this.formData = JSON.parse(JSON.stringify(this.OriginalFormData));
+            this.$refs['refForm'].clearValidate();
+            this.$nextTick().then(() => {
+                this.ruleEnable = true;
+            })
         }
     },
     computed: {
         //检验规则
         rulesGenerate() {
             let rules = {};
+            if(!this.ruleEnable) return rules;
             for (let index = 0; index < this.config.items.length; index++) {
                 const item = this.config.items[index];
                 //不存在跳过当前item
@@ -110,17 +137,16 @@ export default {
                 }
             }
             return rules;
-        },
-    },
-    watch: {
-        
+        }
     }
 };
 </script>
 
 <style lang="scss" scoped>
 .w300 {
-    width: 300px;
+    max-width: 300px;
+    min-width: 220px;
+    width: 100%;
     border-radius: 6px;
     display: flex;
 }

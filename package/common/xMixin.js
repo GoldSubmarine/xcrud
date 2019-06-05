@@ -19,23 +19,7 @@ export default function () {
                 formData: this.propData
             }
         },
-        created() {
-            this.initFormData();
-        },
         methods: {
-            /**
-             * 初始化 formData
-             */
-            initFormData() {
-                if(this.formData) return;
-                let stringType = ["text", "textarea", "radio"];
-                let arrayType = ["checkbox"];
-                if(stringType.includes(this.config.type)) {
-                    this.formData = "";
-                } else if(arrayType.includes(this.config.type)) {
-                    this.formData = [];
-                }
-            },
             /**
              * 设置尺寸 size
              */

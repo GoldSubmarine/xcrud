@@ -1,7 +1,7 @@
 <template>
     <div>
-		<x-form :config="formConfig" v-model="formData" @reset="reset" @submit="getList"/>
-        <el-table :data="data" style="width: 100%; margin-top: 2em" stripe border>
+		<x-form ref="xForm" :config="formConfig" v-model="formData" @reset="reset" @submit="getList"/>
+        <el-table :data="data" style="width: 100%; margin-top: 2em" stripe>
             <el-table-column v-if="config.index != false" type="index" width="50" align="center" label="编号"></el-table-column>
             <template v-for="(configItem, configIndex) in config.columns">
                 <el-table-column :prop="configItem.name" :label="configItem.label" show-overflow-tooltip align="center" :key="configIndex">
@@ -21,9 +21,10 @@
         <div class="block foot" v-if="page.total">
             <el-pagination @size-change="handleSizeChange"
                            @current-change="handleCurrentChange"
-                           :current-page="pageNum"
+                           :current-page="page.pageNum"
                            :page-sizes="pageSizes"
-                           :page-size="pageSize"
+                           :page-size="page.pageSize"
+						   style="margin-top: 8px;"
                            layout="total, sizes, prev, pager, next, jumper" :total="page.total">
             </el-pagination>
         </div>
@@ -54,6 +55,7 @@
  * 		}
  * 5. load 为加载数据的api,第一个参数为搜索表单的数据 getTableList(formData)
  */
+	import { filterDic } from '../../common/filterDic';
 	import xForm from '../../xForm/src/xForm.vue';
 	import mixinComponent from '../../common/xMixin'
 	export default {
@@ -69,15 +71,14 @@
 		data() {
 			let _this = this;
 			return {
-				pageNum: 1,
-				pageSize: this.page.pageSize ? this.page.pageSize : 10,
-				pageSizes: [10, 20, 30, 50],
+				pageSizes: [2, 10, 20, 30, 50],
 			}
 		},
 		methods: {
 			//重置
 			reset() {
-				this.pageNum = 1;
+				this.pageNum = 0;
+				this.$refs['xForm'].$refs['refForm'].resetFields();
 				this.getList();
 			},
 			//filter表格数据
@@ -85,7 +86,7 @@
 				if(!row) return;
 				let str = row[configItem.name];
 				if(typeof configItem.filter == "function") return configItem.filter(str, row, scope);
-				if(configItem.dic)  return filter(str, configItem.dic);
+				if(configItem.dic)  return filterDic(configItem.dic, str);
 				return str;
 			},
 			//表格的操作按钮显隐
@@ -104,15 +105,16 @@
 			},
 			//发送绑定的api
 			getList() {
-				this.load(this.formData, this.pageNum, this.pageSize);
+				this.load(this.formData, this.page.pageNum, this.page.pageSize);
 			},
 			handleSizeChange(val) { // 每页显示几条
-				this.pageSize = val;
-				this.pageNum = 1;
+				this.page.pageSize = val;
+				this.$emit('update:page', this.page);
 				this.getList();
 			},
 			handleCurrentChange(val) { // 当前页显示几条
-				this.pageNum = val;
+				this.page.pageNum = val;
+				this.$emit('update:page', this.page);
 				this.getList();
 			},
 		},
@@ -125,9 +127,14 @@
 					items: [],
 					operate: []
 				};
-				if(this.config.search !== false) formConfigTemp.operate.push({ text: "搜索", click: _this.getList });
-				if(this.config.reset !== false) formConfigTemp.operate.push({ text: "重置", click: _this.reset });
-				if(this.config.add !== false) formConfigTemp.operate.push({ text: "新增", click: _this.getList });
+				if(this.config.search !== false) formConfigTemp.operate.push({ text: "搜索", icon: 'el-icon-search', click: _this.getList });
+				if(this.config.reset !== false) formConfigTemp.operate.push({ text: "重置", icon: 'el-icon-refresh-right', click: _this.reset });
+				// if(this.config.add !== false) formConfigTemp.operate.push({ text: "新增", icon: 'el-icon-circle-plus', click: _this.add });
+				if(this.config.btns) {
+					this.config.btns.forEach(btn => {
+						formConfigTemp.operate.push({ text: btn.text, icon: btn.icon, click: btn.click });
+					})
+				}
 				this.config.columns.forEach(item => {
 					if(item.search) {
 						formConfigTemp.items.push(item);

@@ -4,7 +4,7 @@
         @change="handleChange"
         :placeholder="config.placeholder"
         :disabled="config.disabled"
-        :clearable="computeBoolen(config.clearable, true)"
+        :clearable="computeBoolen(config.clearable, false)"
         :size="config.size"
         :type="config.type ? config.type : 'text'"
         :rows="config.rows"
