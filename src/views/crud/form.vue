@@ -1,242 +1,72 @@
 <template>
-    <div class="app-container" v-loading="loading">
-        <x-table v-model="searchData" :config="tableConfig" :data="tableData" :page.sync="page" :load="getTableList" />
-        <el-dialog :title="dialogTitle" :visible.sync="dialogVisible" width="540px" @closed="handleDialogClose" append-to-body :close-on-click-modal="false">
-            <x-form ref="xForm" :config="formConfig" v-model="formData">
-                <template v-slot:dept v-if="formData.type == 'department'">
-                    <el-form-item label="部门：" prop="deptIdList">
-                        <treeselect v-model="formData.deptIdList" :flat="true" :multiple="true" style="width: 300px;" :options="deptList" placeholder="选择部门" />
-                    </el-form-item>
-                </template>
-            </x-form>
-        </el-dialog>
-    </div>
+  <div class="app-container">
+    <x-form ref="xForm" v-model="formData" :config="formConfig" />
+  </div>
 </template>
 
 <script>
-    import Treeselect from '@riophae/vue-treeselect'
-    import '@riophae/vue-treeselect/dist/vue-treeselect.css'
-    export default {
-        components: { Treeselect },
-        data() {
-            let _this = this;
-            return {
-                loading: false,
-                dialogVisible: false,
-                tableData: [],
-                page: {
-                    pageNum: 1,
-                    pageSize: 10,
-                    total: 0
-                },
-                isAddFormal: true,
-                searchData: {},
-                formData: {
-                    userType: 'formal',     //新增的用户类型
-                },
-                formDisabled: false,
-                saveBtnShow: true,
-                closeBtnShow: true,
-                dialogTitle: '编辑',
-                deviceList: [],     //设备列表
-                userList: [],      //人员列表
-                deptList: [],      //部门列表
-                typeShow: false,      //类型是否显示
-                userShow: false,      //人员是否显示
-                deptShow: false,      //部门是否显示
-                startTimeShow: false,      //过期时间是否显示
-            }
-        },
-        mounted() {
-            // this.getTableList();
-            // this.getDeviceList();
-        },
-        computed: {
-            formConfig() {
-                let _this = this;
-                return {
-                    ref: 'refForm',
-                    disabled: _this.formDisabled,
-                    inline: false,
-                    items: [
-                        { type: "select", dic: _this.importDic("devicePermissionType"), label: "类型", name: "type", show: _this.typeShow, rules: _this.importRule("inputRequired") },
-                        { type: "select", label: "人员", multiple: true, dic: { data: _this.userList, label: 'username', value: 'id' }, show: _this.userShow, name: "userIdList", rules: _this.importRule("selectRequired") },
-                        { slot: "dept", name: "deptIdList", rules: _this.importRule("inputRequired"), multiple: true, show: _this.deptShow, },
-                        { type: "select", label: "设备", multiple: true, dic: { data: _this.deviceList, label: 'sn', value: 'id' }, name: "deviceIdList", rules: _this.importRule("selectRequired") },
-                        { type: "daterange", label: "过期时间", name: "startTime", show: _this.startTimeShow, rules: _this.importRule("selectRequired") },
-                        { type: "text", label: "备注", name: "remark" },
-                    ],
-                    operate: [
-                        { text: '保存', show: _this.saveBtnShow, click: _this.save },
-                        { text: '关闭', show: _this.closeBtnShow, click: () => _this.dialogVisible = false },
-                    ]
-                }
-            },
-            tableConfig() {
-                let _this = this;
-                return {
-                    // index: false,
-                    search: true,
-                    reset: true,
-                    btns: [
-                        { text: "访客授权", click: _this.addVisitorClick, icon: 'el-icon-circle-plus'},
-                        { text: "正式人员授权", click: _this.addFormalClick, icon: 'el-icon-circle-plus'},
-                    ],
-                    columns: [
-                        { label: "类型", search: true, type: "select", dic: _this.importDic("all", "devicePermissionType"), name: "type" },
-                        { label: "人员/部门", search: true, type: "text", name: "searchKey", filter: (value, row) => {
-                            if(row.type == "user") return row.userName;
-                            if(row.type == "department") return row.deptName;
-                        } },
-                        { label: "设备", search: true, type: "select", dic: { data: _this.deviceList, label: 'sn', value: 'id' }, name: "deviceId" },
-                        { label: "授权开始时间", type: "text", name: "startTime", filter: value =>  parseTime(value) },
-                        { label: "授权结束时间", type: "text", name: "startTime", filter: value =>  parseTime(value) },
-                        { label: "创建时间", type: "text", name: "createTime", filter: (value) =>  parseTime(value) },
-                        { label: "备注", search: true, type: "text", name: "remark" },
-                    ],
-                    operate: [
-                        // { text: '编辑', show: true, click: _this.editClick },
-                        { text: '删除', show: true, click: _this.delClick },
-                        // { text: '详情', show: true, click: _this.detailClick }
-                    ]
-                }
-            }
-        },
-        methods: {
-            getUserList() {
-                this.loading = true;
-                getUserList({ type: this.formData.userType }).then(res => {
-                    this.userList = res.content;
-                }).catch(e => console.log(e)).finally(() => this.loading = false);
-            },
-            getDepartmentList() {
-                this.loading = true;
-                getDepartmentList({ enabled: true }).then(res => {
-                    this.deptList = res.content;
-                }).catch(e => console.log(e)).finally(() => this.loading = false);
-            },
-            getDeviceList() {
-                this.loading = true;
-                getAllDeviceList({type: "cardDoor"}).then(res => {
-                    this.deviceList = res.content;
-                }).catch(e => console.log(e)).finally(() => this.loading = false);
-            },
-            getTableList() {
-                this.loading = true;
-                list(this.searchData, this.page.pageNum, this.page.pageSize).then(res => {
-                    this.tableData = res.content;
-                    this.page.total = res.totalElements;
-                }).catch(e => console.error(e)).finally(() => { this.loading = false });
-            },
-            save(formData, ref) {
-                let form = JSON.parse(JSON.stringify(formData));
-                form.endTime = form.startTime[1];
-                form.startTime = form.startTime[0];
-                ref.validate().then(() => {
-                    this.loading = true;
-                    save(form).then(res => {
-                        this.dialogVisible = false;
-                        this.getTableList();
-                    }).catch(e => console.error(e)).finally(() => this.loading = false);
-                }).catch(e => console.error(e))
-            },
-            getDetail(id) {
-                return detail(id).then(res => {
-                    return res;
-                }).catch(e => console.error(e))
-            },
-            addFormalClick() {
-                this.typeShow = true;
-                this.dialogTitle = "正式员工授权";
-                this.formData.userType = 'formal';
-                this.startTimeShow = false;
-                this.saveBtnShow = true;
-                this.closeBtnShow = true;
-                this.formDisabled = false;
-                this.dialogTitle = '新增';
-                this.dialogVisible = true;
-            },
-            addVisitorClick() {
-                this.formData.userType = 'visitor';
-                this.dialogTitle = "访客授权";
-                this.formData.type = "user";
-                this.typeShow = false;
-                this.startTimeShow = true;
-                this.saveBtnShow = true;
-                this.closeBtnShow = true;
-                this.formDisabled = false;
-                this.dialogTitle = '新增';
-                this.dialogVisible = true;
-            },
-            editClick(row) {
-                this.loading = true;
-                if(this.formData.startTime) {
-                    this.addVisitorClick();
-                } else {
-                    this.addFormalClick();
-                }
-                this.getDetail(row.id).then(detail => {
-                    this.formData = detail;
-                    this.saveBtnShow = true;
-                    this.closeBtnShow = true;
-                    this.formDisabled = false;
-                    this.dialogTitle = '编辑';
-                    this.dialogVisible = true;
-                }).catch(e => console.error(e)).finally(() => this.loading = false);
-            },
-            delClick(row) {
-                this.$confirm('此操作将永久删除该记录, 是否继续?', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'warning'
-                }).then(() => {
-                    this.loading = true;
-                    del(row.id).then(res => {
-                        this.$message.success("删除成功");
-                        this.getTableList();
-                    }).catch(e => console.error(e)).finally(() => this.loading = false);
-                }).catch(e => console.log(e));
-            },
-            detailClick(row) {
-                this.getDetail(row.id).then(detail => {
-                    this.formData = detail;
-                    this.saveBtnShow = false;
-                    this.closeBtnShow = false;
-                    this.formDisabled = true;
-                    this.dialogTitle = '详情';
-                    this.dialogVisible = true;
-                }).catch(e => console.error(e))
-            },
-            handleDialogClose() {
-                this.$refs['xForm'].resetFields();
-            }
-        },
-        watch: {
-            'formData.type': function(newVal, oldVal) {
-                this.$nextTick().then(() => {
-                    this.formData.userIdList = [];
-                    this.formData.deptIdList = [];
-                });
-                
-                if(newVal == "user") {
-                    this.getUserList();
-                    this.userShow = true;
-                    this.deptShow = false;
-                } else if(newVal == "department") {
-                    this.getDepartmentList();
-                    this.userShow = false;
-                    this.deptShow = true;
-                }
-            },
-            'formData.userType': function(newVal, oldVal) {
-                this.getUserList();
-            }
-        }
+// import { getUserDetail, saveUser } from '@/api/user';
+// import { getDeptTree } from '@/api/dept';
+// import { getRoleList } from '@/api/role';
+export default {
+  data() {
+    return {
+      loading: 0,
+      formData: {
+        status: 'enable'
+      },
+      formDisabled: false,
+      showBtn: true,
+      treeData: [{"id":"1166274289691312129","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 15:28:37","name":"系统设置","value":"","pid":null,"children":[{"id":"1166274342820560897","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 17:00:24","name":"权限管理","value":"permission","pid":"1166274289691312129","children":[{"id":"1166274502715817985","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 17:00:41","name":"新增","value":"permission.add","pid":"1166274342820560897","children":null},{"id":"1166274565542297601","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 17:00:45","name":"编辑","value":"permission.edit","pid":"1166274342820560897","children":null},{"id":"1166274619166474242","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 17:00:49","name":"删除","value":"permission.del","pid":"1166274342820560897","children":null},{"id":"1169507224628236289","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 15:28:36","name":"查询","value":"permission.find","pid":"1166274342820560897","children":null}]},{"id":"1166274761865084929","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 17:00:59","name":"菜单管理","value":"menu","pid":"1166274289691312129","children":[{"id":"1166274811303346178","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 15:28:37","name":"新增","value":"menu.add","pid":"1166274761865084929","children":null},{"id":"1166274920577548289","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 15:28:37","name":"编辑","value":"menu.edit","pid":"1166274761865084929","children":null},{"id":"1166274968761712641","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 15:28:37","name":"删除","value":"menu.del","pid":"1166274761865084929","children":null},{"id":"1169507316957450241","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 15:28:36","name":"查询","value":"menu.find","pid":"1166274761865084929","children":null}]},{"id":"1169542890862936065","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 17:01:06","name":"部门管理","value":"dept","pid":"1166274289691312129","children":[{"id":"1169542975571099650","remark":null,"createBy":"admin","createTime":"2019-09-06 07:28:37","updateBy":"admin","updateTime":"2019-09-06 15:13:10","name":"查询","value":"dept.find","pid":"1169542890862936065","children":null},{"id":"1169545442803347458","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 15:28:37","name":"新增","value":"dept.add","pid":"1169542890862936065","children":null},{"id":"1169546311867351042","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 15:28:37","name":"编辑","value":"dept.edit","pid":"1169542890862936065","children":null},{"id":"1169549849653735426","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 15:28:37","name":"删除","value":"dept.del","pid":"1169542890862936065","children":null}]},{"id":"1169875030167265282","remark":null,"createBy":"admin","createTime":"2019-09-06 15:28:37","updateBy":"admin","updateTime":"2019-09-06 17:01:14","name":"角色管理","value":"role","pid":"1166274289691312129","children":[{"id":"1169876415491350529","remark":null,"createBy":"admin","createTime":"2019-09-06 15:36:03","updateBy":"admin","updateTime":"2019-09-06 17:01:26","name":"查询","value":"role.find","pid":"1169875030167265282","children":null},{"id":"1169876903532208129","remark":null,"createBy":"admin","createTime":"2019-09-06 15:36:04","updateBy":"admin","updateTime":"2019-09-06 17:01:31","name":"新增","value":"role.add","pid":"1169875030167265282","children":null},{"id":"1169877188686159873","remark":null,"createBy":"admin","createTime":"2019-09-06 15:37:12","updateBy":"admin","updateTime":"2019-09-06 17:01:36","name":"编辑","value":"role.edit","pid":"1169875030167265282","children":null},{"id":"1169877688869494786","remark":null,"createBy":"admin","createTime":"2019-09-06 07:39:11","updateBy":"admin","updateTime":"2019-09-06 17:01:41","name":"删除","value":"role.del","pid":"1169875030167265282","children":null}]},{"id":"1169877853609172993","remark":null,"createBy":"admin","createTime":"2019-09-06 15:39:50","updateBy":"admin","updateTime":"2019-09-06 17:01:48","name":"用户管理","value":"user","pid":"1166274289691312129","children":[{"id":"1169877924039925762","remark":null,"createBy":"admin","createTime":"2019-09-06 15:40:07","updateBy":"admin","updateTime":"2019-09-06 15:40:07","name":"查询","value":"user.find","pid":"1169877853609172993","children":null},{"id":"1169877976909127681","remark":null,"createBy":"admin","createTime":"2019-09-06 15:40:20","updateBy":"admin","updateTime":"2019-09-06 15:40:20","name":"新增","value":"user.add","pid":"1169877853609172993","children":null},{"id":"1169878129711816705","remark":null,"createBy":"admin","createTime":"2019-09-06 07:40:56","updateBy":"admin","updateTime":"2019-09-06 15:41:36","name":"编辑","value":"user.edit","pid":"1169877853609172993","children":null},{"id":"1169878267599560706","remark":null,"createBy":"admin","createTime":"2019-09-06 15:41:29","updateBy":"admin","updateTime":"2019-09-06 15:41:29","name":"删除","value":"user.del","pid":"1169877853609172993","children":null}]},{"id":"1173859276569501697","remark":null,"createBy":"admin","createTime":"2019-09-17 15:20:35","updateBy":"admin","updateTime":"2019-09-17 15:20:35","name":"字典管理","value":"dictionary","pid":"1166274289691312129","children":[{"id":"1173859497940672513","remark":null,"createBy":"admin","createTime":"2019-09-17 15:21:28","updateBy":"admin","updateTime":"2019-09-17 15:21:28","name":"查询","value":"dictionary.find","pid":"1173859276569501697","children":null},{"id":"1173859574289588225","remark":null,"createBy":"admin","createTime":"2019-09-17 15:21:46","updateBy":"admin","updateTime":"2019-09-17 15:21:46","name":"新增","value":"dictionary.add","pid":"1173859276569501697","children":null},{"id":"1173859654665035777","remark":null,"createBy":"admin","createTime":"2019-09-17 15:22:06","updateBy":"admin","updateTime":"2019-09-17 15:22:06","name":"编辑","value":"dictionary.edit","pid":"1173859276569501697","children":null},{"id":"1173859737196355586","remark":null,"createBy":"admin","createTime":"2019-09-17 15:22:25","updateBy":"admin","updateTime":"2019-09-17 15:22:25","name":"删除","value":"dictionary.del","pid":"1173859276569501697","children":null}]},{"id":"1176312705367699457","remark":null,"createBy":"admin","createTime":"2019-09-24 09:49:38","updateBy":"admin","updateTime":"2019-09-24 09:49:38","name":"测试模块","value":"test","pid":"1166274289691312129","children":[{"id":"1176312705413836802","remark":null,"createBy":"admin","createTime":"2019-09-24 09:49:38","updateBy":"admin","updateTime":"2019-09-24 09:49:38","name":"查询","value":"test.find","pid":"1176312705367699457","children":null},{"id":"1176312705434808322","remark":null,"createBy":"admin","createTime":"2019-09-24 09:49:38","updateBy":"admin","updateTime":"2019-09-24 09:49:38","name":"新增","value":"test.add","pid":"1176312705367699457","children":null},{"id":"1176312705455779841","remark":null,"createBy":"admin","createTime":"2019-09-24 09:49:38","updateBy":"admin","updateTime":"2019-09-24 09:49:38","name":"编辑","value":"test.edit","pid":"1176312705367699457","children":null},{"id":"1176312705480945665","remark":null,"createBy":"admin","createTime":"2019-09-24 09:49:38","updateBy":"admin","updateTime":"2019-09-24 09:49:38","name":"删除","value":"test.del","pid":"1176312705367699457","children":null}]}]}],
     }
+  },
+  computed: {
+    formConfig() {
+      const _this = this
+      return {
+        disabled: _this.formDisabled,
+        inline: false,
+        items: [
+          { type: 'text', name: 'username', label: '登录名', rules: _this.importRules('inputRequired') },
+          { type: 'text', name: 'name', label: '姓名', rules: _this.importRules('inputRequired') },
+          { type: 'tree', name: 'deptId', label: '部门', tree: { data: _this.treeData, props: { label: 'name' }}, rules: _this.importRules('inputRequired') },
+          { type: 'text', name: 'phone', label: '手机号', rules: _this.importRules('inputRequired', 'phone') },
+          { type: 'text', name: 'email', label: '邮箱', rules: _this.importRules('email') },
+          { type: 'select', name: 'sex', label: '性别', dic: _this.importDic('sex'), rules: _this.importRules('selectRequired') },
+          // { type: "text", name: "avatar", label: '头像', rules: _this.importRules("inputRequired") },
+          { type: 'select', name: 'status', label: '状态', dic: _this.importDic('userStatus'), rules: _this.importRules('selectRequired') },
+          { type: 'text', name: 'address', label: '地址' },
+          // { type: "text", name: "password", label: '密码', },
+          { type: 'text', name: 'remark', label: '备注' }
+        ],
+        operate: [
+          { text: '保存', show: _this.showBtn, click: _this.saveUser },
+          { text: '取消', show: _this.showBtn, click: () => console.log('cancel') }
+        ]
+      }
+    }
+  },
+  mounted() {
+  },
+  methods: {
+    getUserDetail() {
+
+    },
+    getDeptTree() {
+
+    },
+    getRoleList() {
+
+    },
+    saveUser() {
+      this.$refs['xForm'].validate().then(() => {
+        console.log(this.formData)
+      }).catch(e => console.error(e))
+    }
+  }
+}
 </script>
 
 <style scoped>
-    .dialogStyle {
-        width: 540px;
-    }
+
 </style>

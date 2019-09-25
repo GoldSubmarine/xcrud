@@ -1,7 +1,7 @@
-import xForm from './src/xForm';
+import xForm from './src/xForm'
 
 xForm.install = function(Vue) {
-  Vue.component(xForm.name, xForm);
-};
+  Vue.component(xForm.name, xForm)
+}
 
-export default xForm;
+export default xForm
