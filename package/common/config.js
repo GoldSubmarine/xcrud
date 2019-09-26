@@ -21,6 +21,27 @@ const golbalConfig = {
       hideLoading: false,
       popperAppendToBody: true,
       highlightFirstItem: false
+    },
+    select: {
+      multiple: false,
+      valueKey: 'value',
+      size: 'medium',
+      clearable: false,
+      collapseTags: false,
+      multipleLimit: 0,
+      autocomplete: 'off',
+      placeholder: '请选择',
+      filterable: false,
+      allowcreate: false,
+      remote: false,
+      loading: false,
+      loadingText: '加载中',
+      noMatchText: '无匹配数据',
+      noDataText: '无数据',
+      reserveKeyword: false,
+      defaultFirstOption: false,
+      popperAppendToBody: true,
+      automaticDropdown: false
     }
   }
 }

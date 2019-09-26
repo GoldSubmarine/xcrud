@@ -1,13 +1,36 @@
 <template>
   <el-select
     v-model="formData"
-    :disabled="config.disabled"
-    :multiple="config.multiple"
-    :placeholder="config.placeholder"
-    :clearable="config.clearable"
-    :collapse-tags="config.collapseTags"
-    filterable
-    :size="config.size"
+    :multiple="computedConfig.multiple"
+    :disabled="computedConfig.disabled"
+    :value-key="computedConfig.valueKey"
+    :size="computedConfig.size"
+    :clearable="computedConfig.clearable"
+    :collapse-tags="computedConfig.collapseTags"
+    :multiple-limit="computedConfig.multipleLimit"
+    :name="computedConfig.name"
+    :autocomplete="computedConfig.autocomplete"
+    :placeholder="computedConfig.placeholder"
+    :filterable="computedConfig.filterable"
+    :allow-create="computedConfig.allowcreate"
+    :filter-method="computedConfig.filterMethod"
+    :remote="computedConfig.remote"
+    :remote-method="computedConfig.remoteMethod"
+    :loading="computedConfig.loading"
+    :loading-text="computedConfig.loadingText"
+    :no-match-text="computedConfig.noMatchText"
+    :no-data-text="computedConfig.noDataText"
+    :popper-class="computedConfig.popperClass"
+    :reserve-keyword="computedConfig.reserveKeyword"
+    :default-first-option="computedConfig.defaultFirstOption"
+    :popper-append-to-body="computedConfig.popperAppendToBody"
+    :automatic-dropdown="computedConfig.automaticDropdown"
+    @change="data => computeFunction(computedConfig.change, data)"
+    @visible-change="data => computeFunction(computedConfig.visibleChange, data)"
+    @remove-tag="data => computeFunction(computedConfig.removeTag, data)"
+    @clear="data => computeFunction(computedConfig.clear, data)"
+    @blur="data => computeFunction(computedConfig.blur, data)"
+    @focus="data => computeFunction(computedConfig.focus, data)"
   >
     <el-option
       v-for="(item, itemIndex) in getDic"
@@ -27,7 +50,7 @@ export default {
     const _this = this
     return {
       labelName: _this.config.dic.label ? _this.config.dic.label : 'label',
-      valueName: _this.config.dic.label ? _this.config.dic.label : 'value'
+      valueName: _this.config.dic.value ? _this.config.dic.value : 'value'
     }
   },
   computed: {
@@ -35,8 +58,15 @@ export default {
       const dic = this.config.dic
       if (dic instanceof Array) {
         return dic
+      } else if(dic.data instanceof Array) {
+        return dic.data
       }
       return undefined
+    },
+    computedConfig() {
+      const c = {}
+      Object.assign(c, this.golbalConfig.xform.input, this.config)
+      return c;
     }
   }
 }

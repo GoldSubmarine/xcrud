@@ -30,13 +30,13 @@
     :hide-loading="computedConfig.hideLoading"
     :popper-append-to-body="computedConfig.popperAppendToBody"
     :highlight-first-item="computedConfig.highlightFirstItem"
-    :disabled="config.disabled"
-    :show-password="config.showPassword"
+    :disabled="computedConfig.disabled"
+    :show-password="computedConfig.showPassword"
     v-model="formData"
-    @change="e => computeFunction(config.change, e)"
-    @blur="e => computeFunction(config.blur, e)"
-    @focus="e => computeFunction(config.focus, e)"
-    @clear="e => computeFunction(config.clear, e)"
+    @change="e => computeFunction(computedConfig.change, e)"
+    @blur="e => computeFunction(computedConfig.blur, e)"
+    @focus="e => computeFunction(computedConfig.focus, e)"
+    @clear="e => computeFunction(computedConfig.clear, e)"
   />
 </template>
 
