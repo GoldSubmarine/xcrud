@@ -42,6 +42,25 @@ const golbalConfig = {
       defaultFirstOption: false,
       popperAppendToBody: true,
       automaticDropdown: false
+    },
+    datePicker: {
+      readonly: false,
+      editable: true,
+      clearable: true,
+      size: '',
+      placeholder: '请选择日期',
+      startPlaceholder: '开始时间',
+      endPlaceholder: '结束时间',
+      type: 'date',
+      format: '',
+      align: 'left',
+      pickerOptions: {},
+      rangeSeparator: '——',
+      valueFormat: '',
+      unlinkPanels: false,
+      prefixIcon: 'el-icon-date',
+      clearIcon: 'el-icon-circle-close',
+      validateEvent: true
     }
   }
 }

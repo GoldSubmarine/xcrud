@@ -28,7 +28,7 @@ export default {
         inline: false,
         items: [
           { type: 'text', name: 'username', label: '登录名', rules: _this.importRules('inputRequired') },
-          { type: 'text', name: 'name', label: '姓名', rules: _this.importRules('inputRequired') },
+          { type: 'date', name: 'name', label: '姓名', rules: _this.importRules('inputRequired') },
           { type: 'tree', name: 'deptId', label: '部门', tree: { data: _this.treeData, props: { label: 'name' }}, rules: _this.importRules('inputRequired') },
           { type: 'text', name: 'phone', label: '手机号', rules: _this.importRules('inputRequired', 'phone') },
           { type: 'text', name: 'email', label: '邮箱', rules: _this.importRules('email') },

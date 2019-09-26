@@ -1,18 +1,31 @@
 <template>
   <el-date-picker
     v-model="formData"
-    :type="config.type"
-    range-separator="——"
-    :unlink-panels="config.unlinkPanels"
-    start-placeholder="开始时间"
-    end-placeholder="结束时间"
-    :format="config.format"
-    :value-format="config.valueFormat"
-    :default-time="config.defaultTime"
-    :picker-options="config.pickerOptions"
-    :disabled="config.disabled"
-    :placeholder="config.placeholder"
-    :size="config.size"
+    :readonly="computedConfig.readonly"
+    :disabled="computedConfig.disabled"
+    :editable="computedConfig.editable"
+    :clearable="computedConfig.clearable"
+    :size="computedConfig.size"
+    :placeholder="computedConfig.placeholder"
+    :start-placeholder="computedConfig.startPlaceholder"
+    :end-placeholder="computedConfig.endPlaceholder"
+    :type="computedConfig.type"
+    :format="computedConfig.format"
+    :align="computedConfig.align"
+    :popper-class="computedConfig.popperClass"
+    :picker-options="computedConfig.pickerOptions"
+    :range-separator="computedConfig.rangeSeparator"
+    :default-value="computedConfig.defaultValue"
+    :default-time="computedConfig.defaultTime"
+    :value-format="computedConfig.valueFormat"
+    :name="computedConfig.name"
+    :unlink-panels="computedConfig.unlinkPanels"
+    :prefix-icon="computedConfig.prefixIcon"
+    :clear-icon="computedConfig.clearIcon"
+    :validate-event="computedConfig.validateEvent"
+    @change="e => computeFunction(computedConfig.change, e)"
+    @blur="e => computeFunction(computedConfig.blur, e)"
+    @focus="e => computeFunction(computedConfig.focus, e)"
   />
 </template>
 
@@ -25,7 +38,14 @@ export default {
     return {
       // value: this.value
     }
-  }
+  },
+  computed: {
+    computedConfig() {
+      const c = {}
+      Object.assign(c, this.golbalConfig.xform.input, this.config)
+      return c;
+    }
+  },
 }
 </script>
 
