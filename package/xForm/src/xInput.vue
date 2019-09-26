@@ -1,15 +1,42 @@
 <template>
   <el-input
-    v-model="formData"
-    :placeholder="config.placeholder"
+    :type="computedConfig.type"
+    :value-key="computedConfig.valueKey"
+    :debounce="computedConfig.debounce"
+    :placement="computedConfig.placement"
+    :fetch-suggestions="computedConfig.fetchSuggestions"
+    :popper-class="computedConfig.popperClass"
+    :trigger-on-focus="computedConfig.triggerOnFocus"
+    :name="computedConfig.name"
+    :select-when-unmatched="computedConfig.selectWhenUnmatched"
+    :prefix-icon="computedConfig.prefixIcon"
+    :suffix-icon="computedConfig.suffixIcon"
+    :readonly="computedConfig.readonly"
+    :maxlength="computedConfig.maxlength"
+    :max="computedConfig.max"
+    :minlength="computedConfig.minlength"
+    :min="computedConfig.min"
+    :step="computedConfig.step"
+    :form="computedConfig.form"
+    :showWordLimit="computedConfig.showWordLimit"
+    :placeholder="computedConfig.placeholder"
+    :clearable="computedConfig.clearable"
+    :size="computedConfig.size"
+    :rows="computedConfig.rows"
+    :autosize="computedConfig.autosize"
+    :autocomplete="computedConfig.autocomplete"
+    :resize="computedConfig.resize"
+    :validate-event="computedConfig.validateEvent"
+    :hide-loading="computedConfig.hideLoading"
+    :popper-append-to-body="computedConfig.popperAppendToBody"
+    :highlight-first-item="computedConfig.highlightFirstItem"
     :disabled="config.disabled"
-    :clearable="computeBoolen(config.clearable, false)"
-    :size="config.size"
-    :type="config.type ? config.type : 'text'"
-    :rows="config.rows"
     :show-password="config.showPassword"
-    :autosize="isObject(config.autosize) ? config.autosize : true"
-    @change="handleChange"
+    v-model="formData"
+    @change="e => computeFunction(config.change, e)"
+    @blur="e => computeFunction(config.blur, e)"
+    @focus="e => computeFunction(config.focus, e)"
+    @clear="e => computeFunction(config.clear, e)"
   />
 </template>
 
@@ -26,7 +53,14 @@ export default {
     handleChange(value) {
 
     }
-  }
+  },
+  computed: {
+    computedConfig() {
+      const c = {}
+      Object.assign(c, this.golbalConfig.xform.input, this.config)
+      return c;
+    }
+  },
 }
 </script>
 

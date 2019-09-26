@@ -51,12 +51,12 @@
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-dev-server": "^3.3.1",
+    "vue-router": "^3.0.6"
   },
   "dependencies": {
     "element-ui": "^2.7.2",
-    "vue": "^2.6.10",
-    "vue-router": "^3.0.6"
+    "vue": "^2.6.10"
   },
   "files": [
     "dist",

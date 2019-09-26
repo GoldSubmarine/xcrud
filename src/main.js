@@ -12,7 +12,7 @@ import ImportRule from './utils/importRule'
 Vue.config.productionTip = false
 
 Vue.use(Element)
-Vue.use(Xcrud)
+Vue.use(Xcrud, { abc: 123 })
 Vue.use(ImportDic)
 Vue.use(ImportRule)
 

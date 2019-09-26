@@ -61,12 +61,6 @@ export default {
       treeData: []
     }
   },
-  created() {
-    console.log('qqqq', this.config)
-  },
-  mounted() {
-    console.log('wwww', this.config)
-  },
   computed: {
     getNodekey() {
       if (this.config.tree.nodeKey) {
@@ -88,19 +82,19 @@ export default {
     },
     // 树转list
     options() {
+      const arr = []
+      function getList(source) {
+        source.forEach(item => {
+          arr.push(item)
+          if (item.children) getList(item.children)
+        })
+      }
       if (this.formData) {
-        const arr = []
-        function getList(source) {
-          source.forEach(item => {
-            arr.push(item)
-            if (item.children) getList(item.children)
-          })
-        }
         getList(this.treeData)
         return arr.filter(item => this.formData.includes(item.id))
       }
       return []
-    },
+    }
   },
   watch: {
     // remove tag时同步tree

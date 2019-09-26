@@ -1,3 +1,4 @@
+import golbalConfig from './config'
 export default function() {
   return {
     model: {
@@ -16,7 +17,8 @@ export default function() {
     },
     data() {
       return {
-        formData: this.propData
+        formData: this.propData,
+        golbalConfig: golbalConfig.get()
       }
     },
     methods: {
@@ -51,7 +53,7 @@ export default function() {
        * 如果给属性配置默认值
        */
       computeData(value, defaultValue) {
-        if (value) {
+        if (value !== null || value !== undefined) {
           return value
         }
         return defaultValue
