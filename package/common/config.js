@@ -177,6 +177,12 @@ const golbalConfig = {
       disabledVoidColor: '#EFF2F7',
       voidIconClass: 'el-icon-star-off',
       disabledVoidIconClass: 'el-icon-star-on'
+    },
+    colorPicker: {
+      size: 'medium',
+      predefine: null,
+      showAlpha: false,
+      colorFormat: 'hex'
     }
   }
 }
