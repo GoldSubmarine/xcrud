@@ -1,14 +1,18 @@
 <template>
   <el-radio-group
     v-model="formData"
-    :disabled="config.disabled"
-    :size="config.size"
+    :disabled="computedConfig.disabled"
+    :size="computedConfig.size"
+    :text-color="computedConfig.textColor"
+    :fill="computedConfig.fill"
+    @change="data => computeFunction(computedConfig.change, data)"
   >
     <el-radio
       v-for="(item, itemIndex) in config.dic"
       :key="itemIndex"
       :disabled="item.disabled"
       :label="item.value"
+      :border="computedConfig.border"
     >{{ item.label }}</el-radio>
   </el-radio-group>
 </template>
@@ -21,7 +25,14 @@ export default {
     return {
       // value: this.value
     }
-  }
+  },
+  computed: {
+    computedConfig() {
+      const c = {}
+      Object.assign(c, this.golbalConfig.xform.radio, this.config)
+      return c;
+    }
+  },
 }
 </script>
 

@@ -62,16 +62,19 @@ const golbalConfig = {
       clearIcon: 'el-icon-circle-close',
       validateEvent: true
     },
-    checkboxGroup: {
+    checkbox: {
       size: 'medium',
       min: null,
       max: null,
       textColor: '#ffffff',
-      fill: '#409EFF'
+      fill: '#409EFF',
+      border: false
     },
-    checkbox: {
+    radio: {
       border: false,
-      size: 'medium'
+      size: 'medium',
+      textColor: '#ffffff',
+      fill: '#409EFF'
     }
   }
 }
