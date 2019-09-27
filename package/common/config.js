@@ -61,6 +61,17 @@ const golbalConfig = {
       prefixIcon: 'el-icon-date',
       clearIcon: 'el-icon-circle-close',
       validateEvent: true
+    },
+    checkboxGroup: {
+      size: 'medium',
+      min: null,
+      max: null,
+      textColor: '#ffffff',
+      fill: '#409EFF'
+    },
+    checkbox: {
+      border: false,
+      size: 'medium'
     }
   }
 }
