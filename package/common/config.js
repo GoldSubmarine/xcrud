@@ -75,6 +75,15 @@ const golbalConfig = {
       size: 'medium',
       textColor: '#ffffff',
       fill: '#409EFF'
+    },
+    cascader: {
+      size: 'medium',
+      placeholder: '请选择',
+      clearable: false,
+      showAllLevels: true,
+      collapseTags: false,
+      separator: ' / ',
+      debounce: 300
     }
   }
 }
