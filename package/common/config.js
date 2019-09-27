@@ -183,6 +183,15 @@ const golbalConfig = {
       predefine: null,
       showAlpha: false,
       colorFormat: 'hex'
+    },
+    transfer: {
+      filterable: false,
+      filterPlaceholder: '请输入搜索内容',
+      targetOrder: 'original',
+      titles: ['列表 1', '列表 2'],
+      buttonTexts: [],
+      format: { noChecked: '${checked}/${total}', hasChecked: '${checked}/${total}' },
+      props: null
     }
   }
 }
