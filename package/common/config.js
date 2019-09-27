@@ -119,6 +119,47 @@ const golbalConfig = {
       label: null,
       debounce: 300,
       marks: null
+    },
+    timePicker: {
+      editable: true,
+      clearable: true,
+      size: 'medium',
+      placeholder: '',
+      align: 'left',
+      startPlaceholder: '',
+      endPlaceholder: '',
+      isRange: false,
+      arrowControl: false,
+      pickerOptions: {},
+      rangeSeparator: '-',
+      valueFormat: '',
+      prefixIcon: 'el-icon-time',
+      clearIcon: 'el-icon-circle-close',
+
+      selectableRange: null,
+      format: 'HH:mm:ss'
+    },
+    timeSelect: {
+      editable: true,
+      clearable: true,
+      size: 'medium',
+      placeholder: '',
+      align: 'left',
+      startPlaceholder: '',
+      endPlaceholder: '',
+      isRange: false,
+      arrowControl: false,
+      pickerOptions: {},
+      rangeSeparator: '-',
+      valueFormat: '',
+      prefixIcon: 'el-icon-time',
+      clearIcon: 'el-icon-circle-close',
+
+      start: '09:00',
+      end: '18:00',
+      step: '00:30',
+      minTime: '00:00',
+      maxTime: null
     }
   }
 }
