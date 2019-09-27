@@ -84,6 +84,14 @@ const golbalConfig = {
       collapseTags: false,
       separator: ' / ',
       debounce: 300
+    },
+    switch: {
+      width: 40,
+      activeValue: true,
+      inactiveValue: false,
+      activeColor: '#409EFF',
+      inactiveColor: '#C0CCDA',
+      validateEvent: true
     }
   }
 }
