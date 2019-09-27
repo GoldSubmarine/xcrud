@@ -92,6 +92,17 @@ const golbalConfig = {
       activeColor: '#409EFF',
       inactiveColor: '#C0CCDA',
       validateEvent: true
+    },
+    inputNumber: {
+      min: '-Infinity',
+      max: 'Infinity',
+      step: 1,
+      stepStrictly: false,
+      precision: null,
+      size: 'medium',
+      controls: true,
+      controlsPosition: null,
+      placeholder: null
     }
   }
 }
