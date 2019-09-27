@@ -15,9 +15,9 @@
     :right-default-checked="computedConfig.rightDefaultChecked"
 
 
-    @change="e => computeFunction(computedConfig.change, e)"
-    @blur="e => computeFunction(computedConfig.blur, e)"
-    @focus="e => computeFunction(computedConfig.focus, e)"
+    @change="(a,b,c) => computeFunction(computedConfig.change, a, b, c)"
+    @left-check-change="(a, b) => computeFunction(computedConfig.blur, a, b)"
+    @right-check-change="(a, b) => computeFunction(computedConfig.blur, a, b)"
   />
 </template>
 
