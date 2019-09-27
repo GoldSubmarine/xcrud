@@ -103,6 +103,22 @@ const golbalConfig = {
       controls: true,
       controlsPosition: null,
       placeholder: null
+    },
+    slider: {
+      min: 0,
+      max: 100,
+      step: 1,
+      showInput: false,
+      showInputControls: true,
+      inputSize: 'small',
+      showStops: false,
+      showTooltip: true,
+      range: false,
+      vertical: false,
+      height: null,
+      label: null,
+      debounce: 300,
+      marks: null
     }
   }
 }
