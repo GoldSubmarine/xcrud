@@ -160,6 +160,23 @@ const golbalConfig = {
       step: '00:30',
       minTime: '00:00',
       maxTime: null
+    },
+    rate: {
+      max: 5,
+      texts: ['极差', '失望', '一般', '满意', '惊喜'],
+      colors: ['#F7BA2A', '#F7BA2A', '#F7BA2A'],
+      allowHalf: false,
+      lowThreshold: 2,
+      highThreshold: 4,
+      voidColor: '#C6D1DE',
+      iconClasses: ['el-icon-star-on', 'el-icon-star-on', 'el-icon-star-on'],
+      showText: false,
+      showScore: false,
+      textColor: '#1F2D3D',
+      scoreTemplate: '{value}',
+      disabledVoidColor: '#EFF2F7',
+      voidIconClass: 'el-icon-star-off',
+      disabledVoidIconClass: 'el-icon-star-on'
     }
   }
 }
