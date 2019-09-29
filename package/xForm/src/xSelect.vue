@@ -65,7 +65,7 @@ export default {
     },
     computedConfig() {
       const c = {}
-      Object.assign(c, this.golbalConfig.xform.select, this.config)
+      Object.assign(c, this.golbalConfig.select, this.config)
       return c;
     }
   }

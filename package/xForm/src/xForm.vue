@@ -55,13 +55,13 @@ import xInput from './xInput'
 import xRadio from './xRadio'
 import xCheckbox from './xCheckbox'
 import xSelect from './xSelect'
-import xTime from './xTime'
+// import xTime from './xTime'
 import xDatePicker from './xDatePicker'
 import xTree from './xTree'
 
 export default {
   name: 'XForm',
-  components: { xInput, xRadio, xCheckbox, xSelect, xTime, xDatePicker, xTree },
+  components: { xInput, xRadio, xCheckbox, xSelect, xDatePicker, xTree },
   mixins: [mixinComponent()],
   data() {
     return {

@@ -45,7 +45,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      Object.assign(c, this.golbalConfig.xform.timeSelect, this.config)
+      Object.assign(c, this.golbalConfig.timeSelect, this.config)
       return c;
     }
   },

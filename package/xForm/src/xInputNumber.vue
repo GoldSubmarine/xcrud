@@ -33,7 +33,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      Object.assign(c, this.golbalConfig.xform.inputNumber, this.config)
+      Object.assign(c, this.golbalConfig.inputNumber, this.config)
       return c;
     }
   },

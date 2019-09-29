@@ -36,7 +36,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      Object.assign(c, this.golbalConfig.xform.slider, this.config)
+      Object.assign(c, this.golbalConfig.slider, this.config)
       return c;
     }
   },

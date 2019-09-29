@@ -34,7 +34,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      Object.assign(c, this.golbalConfig.xform.checkbox, this.config)
+      Object.assign(c, this.golbalConfig.checkbox, this.config)
       return c;
     }
   },

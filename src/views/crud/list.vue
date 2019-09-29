@@ -13,7 +13,9 @@ export default {
     return {
       loading: false,
       dialogTableVisible: false,
-      tableData: [],
+      tableData: [
+        { name: '21423asfs', sex: 'male' }
+      ],
       page: {
         pageSize: 10,
         total: 0
@@ -45,7 +47,7 @@ export default {
       },
       configTable: {
         // index: false,
-        columns: [
+        column: [
           { label: '名称', search: true, type: 'text', name: 'name' },
           { label: '邮件', name: 'email' },
           { label: '时间', name: 'time', filter: (value, row, scope) => value + '123' },

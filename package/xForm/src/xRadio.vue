@@ -29,7 +29,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      Object.assign(c, this.golbalConfig.xform.radio, this.config)
+      Object.assign(c, this.golbalConfig.radio, this.config)
       return c;
     }
   },

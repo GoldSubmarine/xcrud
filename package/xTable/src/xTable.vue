@@ -3,32 +3,140 @@
     <x-form v-if="formConfig" ref="xForm" v-model="formData" :config="formConfig" @reset="reset" @submit="getList" />
     <el-table
       :data="data"
-      style="width: 100%;"
-      :highlight-current-row="config.highlightCurrentRow"
-      :border="config.border"
-      :stripe="config.stripe"
-      :row-key="config.rowKey"
-      @current-change="(row, oldRow) => computeFunction(config.currentChange, row, oldRow)"
-      @row-click="data => computeFunction(config.rowClick, data)"
-      @select="data => computeFunction(config.select, data)"
+      :height="computedConfig.height"
+      :max-height="computedConfig.maxHeight"
+      :stripe="computedConfig.stripe"
+      :border="computedConfig.border"
+      :size="computedConfig.size"
+      :fit="computedConfig.fit"
+      :show-header="computedConfig.showHeader"
+      :highlight-current-row="computedConfig.highlightCurrentRow"
+      :current-row-key="computedConfig.currentRowKey"
+      :row-class-name="computedConfig.rowClassName"
+      :row-style="computedConfig.rowStyle"
+      :cell-class-name="computedConfig.cellClassName"
+      :cell-style="computedConfig.cellStyle"
+      :header-row-class-name="computedConfig.headerRowClassName"
+      :header-row-style="computedConfig.headerRowStyle"
+      :header-cell-class-name="computedConfig.headerCellClassName"
+      :header-cell-style="computedConfig.headerCellStyle"
+      :row-key="computedConfig.rowKey"
+      :empty-text="computedConfig.emptyText"
+      :default-expand-all="computedConfig.defaultExpandAll"
+      :expand-row-keys="computedConfig.expandRowKeys"
+      :default-sort="computedConfig.defaultSort"
+      :tooltip-effect="computedConfig.tooltipEffect"
+      :show-summary="computedConfig.showSummary"
+      :sum-text="computedConfig.sumText"
+      :summary-method="computedConfig.summaryMethod"
+      :span-method="computedConfig.spanMethod"
+      :select-on-indeterminate="computedConfig.selectOnIndeterminate"
+      :indent="computedConfig.indent"
+      :lazy="computedConfig.lazy"
+      :load="computedConfig.load"
+      :tree-props="computedConfig.treeProps"
+
+      @select="(a, b) => computeFunction(computedConfig.select, a, b) "
+      @select-all="(a) => computeFunction(computedConfig.selectAll, a, b) "
+      @selection-change="(a) => computeFunction(computedConfig.selectionChange, a, b) "
+      @cell-mouse-enter="(a, b, c, d) => computeFunction(computedConfig.cellMouseEnter, a, b, c, d) "
+      @cell-mouse-leave="(a, b, c, d) => computeFunction(computedConfig.cellMouseLeave, a, b, c, d) "
+      @cell-click="(a, b, c, d) => computeFunction(computedConfig.cellClick, a, b, c, d) "
+      @cell-dblclick="(a, b, c, d) => computeFunction(computedConfig.cellDblclick, a, b, c, d) "
+      @row-click="(a, b, c) => computeFunction(computedConfig.rowClick, a, b) "
+      @row-contextmenu="(a, b, c) => computeFunction(computedConfig.rowContextmenu, a, b) "
+      @row-dblclick="(a, b, c) => computeFunction(computedConfig.rowDblclick, a, b) "
+      @header-click="(a, b) => computeFunction(computedConfig.headerClick, a, b) "
+      @header-contextmenu="(a, b) => computeFunction(computedConfig.headerContextmenu, a, b) "
+      @sort-change="(a) => computeFunction(computedConfig.sortChange, a) "
+      @filter-change="(a) => computeFunction(computedConfig.filterChange, a) "
+      @current-change="(a, b) => computeFunction(computedConfig.currentChange, a, b) "
+      @header-dragend="(a, b, c, d) => computeFunction(computedConfig.headerDragend, a, b) "
+      @expand-change="(a, b) => computeFunction(computedConfig.expandChange, a, b) "
     >
-      <el-table-column v-if="config.select" type="selection" width="55" />
+      <template v-for="(configItem, configIndex) in computedConfig.column">
+        <el-table-column
+          :key="configIndex"
+          :type="configItem.type"
+          :index="configItem.index"
+          :column-key="configItem.columnKey"
+          :label="configItem.label"
+          :prop="configItem.prop"
+          :width="configItem.width"
+          :min-width="configItem.minWidth"
+          :fixed="configItem.fixed"
+          :render-header="configItem.renderHeader"
+          :sortable="configItem.sortable"
+          :sort-method="configItem.sortMethod"
+          :sort-by="configItem.sortBy"
+          :sort-orders="configItem.sortOrders"
+          :resizable="configItem.resizable"
+          :formatter="configItem.formatter"
+          :show-overflow-tooltip="configItem.showOverflowTooltip"
+          :align="configItem.align"
+          :header-align="configItem.headerAlign"
+          :class-name="configItem.className"
+          :label-class-name="configItem.labelClassName"
+          :selectable="configItem.selectable"
+          :reserve-selection="configItem.reserveSelection"
+          :filters="configItem.filters"
+          :filter-placement="configItem.filterPlacement"
+          :filter-multiple="configItem.filterMultiple"
+          :filter-method="configItem.filterMethod"
+          :filtered-value="configItem.filteredValue">
+
+          <template slot-scope="scope">
+            <span :style="columnStyleOrClass(configItem.style, scope.row)" :class="columnStyleOrClass(configItem.class, scope.row)">
+              {{ filterTableData(configItem, scope.row, scope) }}
+            </span>
+          </template>
+
+        </el-table-column>
+      </template>
+      <!-- <el-table-column v-if="config.select" type="selection" width="55" />
       <el-table-column v-if="config.index !== false" type="index" width="50" align="center" label="编号" />
       <template v-for="(configItem, configIndex) in config.columns">
         <el-table-column v-if="computeBoolen(configItem.show, true)" :key="configIndex" :prop="configItem.name" :label="configItem.label" show-overflow-tooltip :align="computeData(configItem.align, 'center')">
           <template slot-scope="scope">
-            <span :style="columnStyle(configItem.style, scope.row)">
+            <span :style="columnStyleOrClass(configItem.style, scope.row)">
               {{ filterTableData(configItem, scope.row, scope) }}
             </span>
           </template>
         </el-table-column>
-      </template>
-      <el-table-column v-if="config.operate" label="操作" align="center">
+      </template> -->
+      <el-table-column
+        v-if="config.operate"
+        :label="operateConfig.label"
+        :width="operateConfig.width"
+        :min-width="operateConfig.minWidth"
+        :fixed="operateConfig.fixed"
+        :render-header="operateConfig.renderHeader"
+        :resizable="operateConfig.resizable"
+        :align="operateConfig.align"
+        :header-align="operateConfig.headerAlign"
+        :class-name="operateConfig.className"
+        :label-class-name="operateConfig.labelClassName">
         <template slot-scope="scope">
-          <template v-for="(operateItem, operateIndex) in config.operate">
-            <el-button v-if="operateShow(operateItem, scope.row)" :key="operateIndex" type="text" size="medium" @click="operateItem.click(scope.row)">{{ operateItem.text }}</el-button>
-            <!-- <el-button type="text" v-if="scope.row.switchState == 'off'" @click="go('edit',scope.row.id)">编辑</el-button>
-            <el-button type="text" @click="changeState(scope.row)">{{ scope.row.switchState == 'off' ? '启用' : '停用' }}</el-button> -->
+          <template v-for="(operateItem, operateIndex) in operateConfig.btn">
+            <el-button
+              v-if="operateShow(operateItem, scope.row)"
+              :key="operateIndex"
+              :show="operateItem.show"
+              :size="operateItem.size"
+              :type="operateItem.type"
+              :plain="operateItem.plain"
+              :round="operateItem.round"
+              :circle="operateItem.circle"
+              :loading="operateItem.loading"
+              :disabled="operateItem.disabled"
+              :icon="operateItem.icon"
+              :autofocus="operateItem.autofocus"
+              :nativeType="operateItem.nativeType"
+              @click="operateItem.click(scope.row)">
+
+              {{ operateItem.text }}
+
+            </el-button>
           </template>
         </template>
       </el-table-column>
@@ -88,10 +196,6 @@ export default {
       type: Object,
       default: null
     },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
     load: {
       type: Function,
       required: true
@@ -119,13 +223,35 @@ export default {
           formConfigTemp.operate.push({ text: btn.text, icon: btn.icon, click: btn.click, show: btn.show })
         })
       }
-      this.config.columns.forEach(item => {
+      this.config.column.forEach(item => {
         if (item.search) {
           formConfigTemp.items.push(item)
         }
       })
       return formConfigTemp.items.length ? formConfigTemp : false
-    }
+    },
+    operateConfig() {
+      let c = {};
+      Object.assign(c, this.golbalConfig.column, this.golbalConfig.xtable.operate.column)
+      c.btn = this.config.operate;
+      for(let i = 0; i < this.config.operate; i++) {
+        c.btn[i] = Object.assign({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
+      }
+      return c;
+    },
+    computedConfig() {
+      const c = {}
+      Object.assign(c, this.golbalConfig.table, this.config)
+      for(let i = 0; i < this.config.column; i++) {
+        c.column[i] = Object.assign({}, this.golbalConfig.column, this.config.column[i])
+      }
+      return c;
+    },
+    // configItem() {
+    //   const c = {}
+    //   Object.assign(c, this.golbalConfig.column, this.config)
+    //   return c;
+    // }
   },
   methods: {
     // 重置
@@ -146,19 +272,15 @@ export default {
     },
     // 表格的操作按钮显隐
     operateShow(operateItem, row) {
-      if (typeof operateItem.show === 'undefined') {
-        return true
-      } else if (typeof operateItem.show === 'boolean') {
+      if (typeof operateItem.show === 'boolean') {
         return operateItem.show
-      } else if (typeof operateItem.show === 'string') {
-        return operateItem.show !== false && operateItem.show !== 'false'
       } else if (typeof operateItem.show === 'function') {
         return operateItem.show(row)
       } else {
-        return true
+        return this.golbalConfig.table.operate.btn.show;
       }
     },
-    columnStyle(style, row) {
+    columnStyleOrClass(style, row) {
       if (typeof style === 'string') {
         return style
       } else if (typeof style === 'function') {
