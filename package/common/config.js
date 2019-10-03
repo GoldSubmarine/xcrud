@@ -262,7 +262,7 @@ const golbalConfig = {
     },
     operate: {
       column: {
-        label: '操作111'
+        label: '操作'
         // width: null,
         // minWidth: null,
         // fixed: null,

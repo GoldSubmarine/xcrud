@@ -54,6 +54,7 @@
       @header-dragend="(a, b, c, d) => computeFunction(computedConfig.headerDragend, a, b) "
       @expand-change="(a, b) => computeFunction(computedConfig.expandChange, a, b) "
     >
+      <!-- 生成动态列 -->
       <template v-for="(configItem, configIndex) in computedConfig.column">
         <el-table-column
           :key="configIndex"
@@ -104,8 +105,10 @@
           </template>
         </el-table-column>
       </template> -->
+
+      <!-- 表格的操作按钮 -->
       <el-table-column
-        v-if="config.operate"
+        v-if="operateConfig"
         :label="operateConfig.label"
         :width="operateConfig.width"
         :min-width="operateConfig.minWidth"
@@ -141,6 +144,8 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <!-- 分页 -->
     <div v-if="page && page.total" class="block foot">
       <el-pagination
         :current-page="page.pageNum"
@@ -230,20 +235,21 @@ export default {
       })
       return formConfigTemp.items.length ? formConfigTemp : false
     },
+    computedConfig() {
+      const c = {}
+      Object.assign(c, this.golbalConfig.table, this.config)
+      for(let i = 0; i < this.config.column.length; i++) {
+        c.column[i] = Object.assign({}, this.golbalConfig.column, this.config.column[i])
+      }
+      return c;
+    },
     operateConfig() {
+      if(!this.config.operate) return null;
       let c = {};
       Object.assign(c, this.golbalConfig.column, this.golbalConfig.xtable.operate.column)
       c.btn = this.config.operate;
       for(let i = 0; i < this.config.operate; i++) {
         c.btn[i] = Object.assign({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
-      }
-      return c;
-    },
-    computedConfig() {
-      const c = {}
-      Object.assign(c, this.golbalConfig.table, this.config)
-      for(let i = 0; i < this.config.column; i++) {
-        c.column[i] = Object.assign({}, this.golbalConfig.column, this.config.column[i])
       }
       return c;
     },
