@@ -14,6 +14,8 @@ export default {
       loading: false,
       dialogTableVisible: false,
       tableData: [
+        { name: '21423asfs', sex: 'male' },
+        { name: '21423asfs', sex: 'male' },
         { name: '21423asfs', sex: 'male' }
       ],
       page: {
@@ -23,34 +25,13 @@ export default {
       resetTable: false,
       formData: {},
       searchData: {},
-      formConfig: {
-        title: '编辑',
-        disabled: false,
-        inline: false,
-        items: [
-          { xtype: 'text', label: '姓名', name: 'name', rules: [{ required: true, message: '请输入', trigger: 'change' }, { min: 3, max: 5, message: '3-5', trigger: 'change' }], placeholder: '你好' },
-          { xtype: 'select', label: '性别', name: 'sex', dic: [{ label: '男', value: 'man' }, { label: '女', value: 'female' }], rules: [{ required: true, message: '请输入', trigger: 'change' }] },
-          { xtype: 'select', label: '城市', name: 'city', dic: [{ label: '南京', value: 'nanjin' }, { label: '北京', value: 'beijing' }], rules: [{ required: true, message: '请输入', trigger: 'change' }] },
-          { xtype: 'select', label: '城市', name: 'city1', dic: [{ label: '南京', value: 'nanjin' }, { label: '北京', value: 'beijing' }], rules: [{ required: true, message: '请输入', trigger: 'change' }] },
-          { xtype: 'select', label: '城市', name: 'city2', dic: [{ label: '南京', value: 'nanjin' }, { label: '北京', value: 'beijing' }], rules: [{ required: true, message: '请输入', trigger: 'change' }] },
-          { xtype: 'select', label: '城市', name: 'city3', dic: [{ label: '南京', value: 'nanjin' }, { label: '北京', value: 'beijing' }], rules: [{ required: true, message: '请输入', trigger: 'change' }] },
-          { xtype: 'select', label: '城市', name: 'city4', dic: [{ label: '南京', value: 'nanjin' }, { label: '北京', value: 'beijing' }], rules: [{ required: true, message: '请输入', trigger: 'change' }] },
-          { xtype: 'select', label: '城市', name: 'city5', dic: [{ label: '南京', value: 'nanjin' }, { label: '北京', value: 'beijing' }], rules: [{ required: true, message: '请输入', trigger: 'change' }] },
-          { xtype: 'select', label: '城市', name: 'city6', dic: [{ label: '南京', value: 'nanjin' }, { label: '北京', value: 'beijing' }], rules: [{ required: true, message: '请输入', trigger: 'change' }] },
-          { xtype: 'time', label: '睡觉时间', name: 'sleepTime', rules: [{ required: true, message: '请输入', trigger: 'change' }] },
-          { xtype: 'datePicker', type: 'datetimerange', label: '上班时间', name: 'workTime', valueFormat: 'yyyy-MM-dd', rules: [{ required: true, message: '请输入', trigger: 'change' }] }
-        ],
-        operate: [
-          { text: '保存', show: true, click: _this.save },
-          { text: '关闭', show: true, click: () => console.log('关闭') }
-        ]
-      },
       configTable: {
         // index: false,
         column: [
-          { label: '名称', search: true, type: 'text', name: 'name' },
+          { type: 'index' },
+          { label: '名称', search: true, xType: 'text', name: 'name' },
           { label: '邮件', name: 'email' },
-          { label: '时间', name: 'time', filter: (value, row, scope) => value + '123' },
+          { label: '时间', name: 'time', filter: (value, row, scope) => '123' },
           { label: '手机', name: 'phone' },
           { label: '性别', name: 'sex', dic: [{ label: '男', value: 'man' }, { label: '女', value: 'female' }] /* select: [{label: "123", value: "456"}], */ }
         ],

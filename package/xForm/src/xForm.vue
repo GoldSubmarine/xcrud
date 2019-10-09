@@ -15,7 +15,7 @@
       <!-- 动态加载组件 -->
       <el-form-item v-else-if="computeBoolen(configItem.show, true)" :key="configItemIndex" :label="configItem.label + '：'" :prop="configItem.name">
         <component
-          :is="getComponentType(configItem.xtype)"
+          :is="getComponentType(configItem.xType)"
           v-model="formData[configItem.name]"
           class="w300"
           :config="configItem"
@@ -32,23 +32,6 @@
 </template>
 
 <script>
-/**
- * 	formConfig: {
-      disabled: false,
-      inline: false,
-      items: [
-        { xtype: "text", label: "姓名", name: "name", rules: [{ required: true, message: '请输入', trigger: 'change' },{ min:3, max:5, message: '3-5', trigger: 'change' }], placeholder: "你好" },
-        { xtype: "select", label: "性别", name: "sex", dic: _this.importDic("sex"), rules: [{ required: true, message: '请输入', trigger: 'change' }] },
-        { xtype: "select", label: "城市", name: "city", dic:[{label: "南京", value: "nanjin"},{label: "北京", value: "beijing"}], rules: [{ required: true, message: '请输入', trigger: 'change' }] },
-        { xtype: "time", label: "睡觉时间", name: "sleepTime", rules: [{ required: true, message: '请输入', trigger: 'change' }] },
-        { xtype: "datetimerange", label: "上班时间", name: "workTime", valueFormat: "yyyy-MM-dd", rules: [{ required: true, message: '请输入', trigger: 'change' }] },
-      ],
-      operate: [
-        { text: '保存', show: true, click: _this.save },
-        { text: '关闭', show: true, click: () => _this.dialogTableVisible = false },
-      ]
-    },
- */
 import mixinComponent from '../../common/xMixin'
 
 import xInput from './xInput'
@@ -87,7 +70,7 @@ export default {
       this.OriginalFormData = JSON.parse(JSON.stringify(this.formData))
       // todo:
       this.config.items.forEach(item => {
-        if (item.multiple || xTypeArr.includes(item.xtype) || typeArr.includes(item.type)) {
+        if (item.multiple || xTypeArr.includes(item.xType) || typeArr.includes(item.type)) {
           if (!this.OriginalFormData[item.name]) {
             this.OriginalFormData[item.name] = []
           }
@@ -113,20 +96,20 @@ export default {
       }
     },
     // 获取动态组件类型
-    getComponentType(xtype) {
-      if (xtype === 'text' || xtype === 'textarea') {
+    getComponentType(xType) {
+      if (xType === 'text' || xType === 'textarea') {
         return 'xInput'
-      } else if (xtype === 'radio') {
+      } else if (xType === 'radio') {
         return 'xRadio'
-      } else if (xtype === 'checkbox') {
+      } else if (xType === 'checkbox') {
         return 'xCheckbox'
-      } else if (xtype === 'tree') {
+      } else if (xType === 'tree') {
         return 'xTree'
-      } else if (xtype === 'select') {
+      } else if (xType === 'select') {
         return 'xSelect'
-      } else if (xtype === 'time') {
+      } else if (xType === 'time') {
         return 'xTime'
-      } else if (xtype === 'datePicker') {
+      } else if (xType === 'datePicker') {
         return 'xDatePicker'
       }
     },

@@ -94,17 +94,6 @@
 
         </el-table-column>
       </template>
-      <!-- <el-table-column v-if="config.select" type="selection" width="55" />
-      <el-table-column v-if="config.index !== false" type="index" width="50" align="center" label="编号" />
-      <template v-for="(configItem, configIndex) in config.columns">
-        <el-table-column v-if="computeBoolen(configItem.show, true)" :key="configIndex" :prop="configItem.name" :label="configItem.label" show-overflow-tooltip :align="computeData(configItem.align, 'center')">
-          <template slot-scope="scope">
-            <span :style="columnStyleOrClass(configItem.style, scope.row)">
-              {{ filterTableData(configItem, scope.row, scope) }}
-            </span>
-          </template>
-        </el-table-column>
-      </template> -->
 
       <!-- 表格的操作按钮 -->
       <el-table-column
@@ -222,9 +211,8 @@ export default {
       }
       if (this.config.search !== false) formConfigTemp.operate.push({ text: '搜索', icon: 'el-icon-search', click: _this.search })
       if (this.config.reset !== false) formConfigTemp.operate.push({ text: '重置', icon: 'el-icon-refresh-right', click: _this.reset })
-      // if(this.config.add !== false) formConfigTemp.operate.push({ text: "新增", icon: 'el-icon-circle-plus', click: _this.add });
-      if (this.config.btns) {
-        this.config.btns.forEach(btn => {
+      if (this.config.btn) {
+        this.config.btn.forEach(btn => {
           formConfigTemp.operate.push({ text: btn.text, icon: btn.icon, click: btn.click, show: btn.show })
         })
       }
@@ -248,7 +236,7 @@ export default {
       let c = {};
       Object.assign(c, this.golbalConfig.column, this.golbalConfig.xtable.operate.column)
       c.btn = this.config.operate;
-      for(let i = 0; i < this.config.operate; i++) {
+      for(let i = 0; i < this.config.operate.length; i++) {
         c.btn[i] = Object.assign({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
       }
       return c;
@@ -263,7 +251,7 @@ export default {
     // 重置
     reset() {
       if (this.page) {
-        this.page.pageNum = 0
+        this.page.pageNum = 1
       }
       this.$refs['xForm'].$refs['refForm'].resetFields()
       this.getList()
@@ -271,6 +259,13 @@ export default {
     // filter表格数据
     filterTableData(configItem, row, scope) {
       if (!row) return
+      if(configItem.type === 'index') {
+        if(configItem.index) {
+          return configItem.index(scope.$index);
+        } else {
+          return scope.$index;
+        }
+      }
       const str = row[configItem.name]
       if (typeof configItem.filter === 'function') return configItem.filter(str, row, scope)
       if (configItem.dic) return filterDic(configItem.dic, str)
@@ -298,7 +293,7 @@ export default {
     // 点击搜索
     search() {
       if (this.page) {
-        this.page.pageNum = 0
+        this.page.pageNum = 1
       }
       this.getList()
     },

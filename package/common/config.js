@@ -9,7 +9,7 @@ const golbalConfig = {
     maxlength: 12,
     minlength: 12,
     showWordLimit: false,
-    placeholder: 'aaa',
+    placeholder: null,
     clearable: false,
     size: 'medium',
     rows: 3,
@@ -227,7 +227,7 @@ const golbalConfig = {
     sortOrders: ['ascending', 'descending', null],
     resizable: true,
     showOverflowTooltip: false,
-    align: 'left',
+    align: 'center',
     headerAlign: 'center',
     className: null,
     labelClassName: null,
@@ -249,11 +249,19 @@ const golbalConfig = {
         autofocus: false,
         nativeType: 'button',
         searchBtn: {
+          // circle: false,
+          // round: false,
+          // plain: false,
+          // type: 'primary',
           show: true,
           text: '搜索',
           icon: 'el-icon-search'
         },
         resetBtn: {
+          // circle: false,
+          // round: false,
+          // plain: false,
+          // type: 'primary',
           show: true,
           text: '重置',
           icon: 'el-icon-refresh-right'
@@ -276,7 +284,7 @@ const golbalConfig = {
       btn: {
         show: true,
         size: 'medium',
-        type: 'primary',
+        type: 'text',
         plain: false,
         round: false,
         circle: false,
