@@ -15,5 +15,5 @@ export const email = [
 
 // 电话校验
 export const phone = [
-  { required: true, pattern: /^1[3-9][0-9]{9}$/, message: '请输入正确的手机号', trigger: 'blur' }
+  { required: true, pattern: /^1[3-9][0-9]{9}$/, message: '请输入正确的手机号', trigger: ['blur', 'change'] }
 ]

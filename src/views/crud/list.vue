@@ -29,7 +29,7 @@ export default {
         // index: false,
         column: [
           { type: 'index' },
-          { label: '名称', search: true, xType: 'text', name: 'name' },
+          { label: '名称', search: true, xType: 'input', name: 'name' },
           { label: '邮件', name: 'email' },
           { label: '时间', name: 'time', filter: (value, row, scope) => '123' },
           { label: '手机', name: 'phone' },
@@ -37,7 +37,7 @@ export default {
         ],
         operate: [
           { text: '编辑', show: true, click: () => console.log('编辑') },
-          { text: '详情', show: true, click: 'componentDetail' }
+          { text: '详情', show: true, click: () => console.log('详情') }
         ]
       }
     }

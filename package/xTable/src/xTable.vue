@@ -1,6 +1,6 @@
 <template>
   <div>
-    <x-form v-if="formConfig" ref="xForm" v-model="formData" :config="formConfig" @reset="reset" @submit="getList" />
+    <x-form v-if="formConfig" ref="xForm" v-model="formData" :config="formConfig" />
     <el-table
       :data="data"
       :height="computedConfig.height"
@@ -43,15 +43,15 @@
       @cell-mouse-leave="(a, b, c, d) => computeFunction(computedConfig.cellMouseLeave, a, b, c, d) "
       @cell-click="(a, b, c, d) => computeFunction(computedConfig.cellClick, a, b, c, d) "
       @cell-dblclick="(a, b, c, d) => computeFunction(computedConfig.cellDblclick, a, b, c, d) "
-      @row-click="(a, b, c) => computeFunction(computedConfig.rowClick, a, b) "
-      @row-contextmenu="(a, b, c) => computeFunction(computedConfig.rowContextmenu, a, b) "
-      @row-dblclick="(a, b, c) => computeFunction(computedConfig.rowDblclick, a, b) "
+      @row-click="(a, b, c) => computeFunction(computedConfig.rowClick, a, b, c) "
+      @row-contextmenu="(a, b, c) => computeFunction(computedConfig.rowContextmenu, a, b, c) "
+      @row-dblclick="(a, b, c) => computeFunction(computedConfig.rowDblclick, a, b, c) "
       @header-click="(a, b) => computeFunction(computedConfig.headerClick, a, b) "
       @header-contextmenu="(a, b) => computeFunction(computedConfig.headerContextmenu, a, b) "
       @sort-change="(a) => computeFunction(computedConfig.sortChange, a) "
       @filter-change="(a) => computeFunction(computedConfig.filterChange, a) "
       @current-change="(a, b) => computeFunction(computedConfig.currentChange, a, b) "
-      @header-dragend="(a, b, c, d) => computeFunction(computedConfig.headerDragend, a, b) "
+      @header-dragend="(a, b, c, d) => computeFunction(computedConfig.headerDragend, a, b, c, d) "
       @expand-change="(a, b) => computeFunction(computedConfig.expandChange, a, b) "
     >
       <!-- 生成动态列 -->
@@ -205,47 +205,53 @@ export default {
     formConfig() {
       const _this = this
       const formConfigTemp = {
-        inline: true,
-        items: [],
+        item: [],
         operate: []
       }
-      if (this.config.search !== false) formConfigTemp.operate.push({ text: '搜索', icon: 'el-icon-search', click: _this.search })
-      if (this.config.reset !== false) formConfigTemp.operate.push({ text: '重置', icon: 'el-icon-refresh-right', click: _this.reset })
+      if(this.config.search) {
+        Object.assign(formConfigTemp, this.golbalConfig.xtable.search.form, this.config.search.form)
+      } else {
+        Object.assign(formConfigTemp, this.golbalConfig.xtable.search.form)
+      }
+      if (this.config.searchBtn !== false) {
+        let searchBtn = Object.assign({}, this.golbalConfig.xtable.search.btn, this.golbalConfig.xtable.search.btn.searchBtn, { click: _this.search })
+        formConfigTemp.operate.push(searchBtn)
+      }
+      if (this.config.resetBtn !== false) {
+        let resetBtn = Object.assign({}, this.golbalConfig.xtable.search.btn, this.golbalConfig.xtable.search.btn.resetBtn, { click: _this.reset })
+        formConfigTemp.operate.push(resetBtn)
+      }
       if (this.config.btn) {
         this.config.btn.forEach(btn => {
-          formConfigTemp.operate.push({ text: btn.text, icon: btn.icon, click: btn.click, show: btn.show })
+          let customBtn = Object.assign({}, this.golbalConfig.xtable.search.btn, btn)
+          formConfigTemp.operate.push(customBtn)
         })
       }
       this.config.column.forEach(item => {
         if (item.search) {
-          formConfigTemp.items.push(item)
+          formConfigTemp.item.push(item)
         }
       })
-      return formConfigTemp.items.length ? formConfigTemp : false
+      return formConfigTemp.item.length ? formConfigTemp : false
     },
     computedConfig() {
       const c = {}
-      Object.assign(c, this.golbalConfig.table, this.config)
+      Object.assign(c, this.golbalConfig.xtable.table, this.config)
       for(let i = 0; i < this.config.column.length; i++) {
-        c.column[i] = Object.assign({}, this.golbalConfig.column, this.config.column[i])
+        c.column[i] = Object.assign({}, this.golbalConfig.xtable.column, this.config.column[i])
       }
       return c;
     },
     operateConfig() {
       if(!this.config.operate) return null;
       let c = {};
-      Object.assign(c, this.golbalConfig.column, this.golbalConfig.xtable.operate.column)
+      Object.assign(c, this.golbalConfig.xtable.column, this.golbalConfig.xtable.operate.column)
       c.btn = this.config.operate;
       for(let i = 0; i < this.config.operate.length; i++) {
         c.btn[i] = Object.assign({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
       }
       return c;
     },
-    // configItem() {
-    //   const c = {}
-    //   Object.assign(c, this.golbalConfig.column, this.config)
-    //   return c;
-    // }
   },
   methods: {
     // 重置
@@ -253,7 +259,7 @@ export default {
       if (this.page) {
         this.page.pageNum = 1
       }
-      this.$refs['xForm'].$refs['refForm'].resetFields()
+      this.$refs['xForm'].resetFields()
       this.getList()
     },
     // filter表格数据
@@ -278,7 +284,7 @@ export default {
       } else if (typeof operateItem.show === 'function') {
         return operateItem.show(row)
       } else {
-        return this.golbalConfig.table.operate.btn.show;
+        return this.golbalConfig.xtable.table.operate.btn.show;
       }
     },
     columnStyleOrClass(style, row) {

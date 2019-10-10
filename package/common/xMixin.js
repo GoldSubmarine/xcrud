@@ -23,19 +23,6 @@ export default function() {
     },
     methods: {
       /**
-       * 设置尺寸 size
-       */
-      // getSize(value, defaultValue) {
-      //     if(this.isEmpty(value)) {
-      //         if(defaultValue) {
-      //             return defaultValue;
-      //         } else {
-      //             return "medium";
-      //         }
-      //     }
-      //     return value;
-      // },
-      /**
        * 计算出布尔值，并且可以配置默认值
        */
       computeBoolen(value, defaultValue) {
@@ -69,13 +56,13 @@ export default function() {
         }
       },
       /**
-       * 判断是否是 disabled
+       * 判断是否是 空指针，如果是，默认返回 {}
        */
-      // isDisabled(value) {
-      //     if(this.isBoolen(value)) return value;
-      //     if(this.isEmpty(value)) return false;
-      //     if(value == "disabled") return true;
-      //     return false;
+      // isDisabled(hasNullPoint, )) {
+      //   if(this.isBoolen(value)) return value;
+      //   if(this.isEmpty(value)) return false;
+      //   if(value == "disabled") return true;
+      //   return false;
       // },
       /**
        * 判断是否是 空

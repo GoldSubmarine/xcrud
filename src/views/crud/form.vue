@@ -26,19 +26,19 @@ export default {
       return {
         disabled: _this.formDisabled,
         inline: false,
-        items: [
-          { xType: 'text', name: 'username', label: '登录名', rules: _this.importRules('inputRequired') },
+        item: [
+          { xType: 'input', name: 'username', label: '登录名', rules: _this.importRules('inputRequired') },
           { xType: 'datePicker', type: 'date', name: 'name', label: '姓名', rules: _this.importRules('inputRequired') },
           { xType: 'tree', name: 'deptId', label: '部门', tree: { data: _this.treeData, props: { label: 'name' }}, rules: _this.importRules('inputRequired') },
-          { xType: 'text', name: 'phone', label: '手机号', rules: _this.importRules('inputRequired', 'phone') },
-          { xType: 'text', name: 'email', label: '邮箱', rules: _this.importRules('email') },
+          { xType: 'input', name: 'phone', label: '手机号', rules: _this.importRules('inputRequired', 'phone') },
+          { xType: 'input', name: 'email', label: '邮箱', rules: _this.importRules('email') },
           { xType: 'select', name: 'sex', label: '性别', dic: _this.importDic('sex'), rules: _this.importRules('selectRequired') },
           { xType: 'select', name: 'sex2', label: '性别2', dic: {data: [{id: 1, name: "男男"}], label: 'name', value: 'id'}, rules: _this.importRules('selectRequired') },
           // { type: "text", name: "avatar", label: '头像', rules: _this.importRules("inputRequired") },
           { xType: 'select', name: 'status', label: '状态', dic: _this.importDic('userStatus'), rules: _this.importRules('selectRequired') },
-          { xType: 'text', name: 'address', label: '地址' },
-          // { type: "text", name: "password", label: '密码', },
-          { xType: 'textarea', name: 'remark', label: '备注' }
+          { xType: 'input', name: 'address', label: '地址' },
+          // { type: "input", name: "password", label: '密码', },
+          { xType: 'input', type: 'textarea', name: 'remark', label: '备注' }
         ],
         operate: [
           { text: '保存', show: _this.showBtn, click: _this.saveUser },
@@ -60,6 +60,7 @@ export default {
 
     },
     saveUser() {
+      console.log(this.formData)
       this.$refs['xForm'].validate().then(() => {
         console.log(this.formData)
       }).catch(e => console.error(e))
