@@ -1,0 +1,24 @@
+.el-picker-panel table {
+    display: table;
+    border-collapse: initial;
+    margin: 0;
+}
+
+.el-picker-panel th,.el-picker-panel td {
+    border: initial;
+}
+
+.el-picker-panel tr {
+    border-top: initial;
+}
+
+.el-picker-panel tr:nth-child(2n) {
+    background-color: initial;
+}
+
+html body {
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+}

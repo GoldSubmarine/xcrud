@@ -247,8 +247,10 @@ export default {
       let c = {};
       Object.assign(c, this.golbalConfig.xtable.column, this.golbalConfig.xtable.operate.column)
       c.btn = this.config.operate;
-      for(let i = 0; i < this.config.operate.length; i++) {
-        c.btn[i] = Object.assign({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
+      if(this.config.operate) {
+        for(let i = 0; i < this.config.operate.length; i++) {
+          c.btn[i] = Object.assign({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
+        }
       }
       return c;
     },

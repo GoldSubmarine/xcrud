@@ -106,9 +106,11 @@ export default {
         let item = this.config.item[i];
         c.item[i] = Object.assign({}, this.golbalConfig[item.xType], item)
       }
-      for(let i = 0; i < this.config.operate.length; i++) {
-        let operate = this.config.operate[i];
-        c.operate[i] = Object.assign({}, this.golbalConfig.xform.operate.btn, operate)
+      if(this.config.operate) {
+        for(let i = 0; i < this.config.operate.length; i++) {
+          let operate = this.config.operate[i];
+          c.operate[i] = Object.assign({}, this.golbalConfig.xform.operate.btn, operate)
+        }
       }
       return c;
     }
