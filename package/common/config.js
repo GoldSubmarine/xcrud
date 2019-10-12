@@ -248,7 +248,8 @@ const golbalConfig = {
         statusIcon: false,
         validateOnRuleChange: true,
         size: 'medium',
-        disabled: false
+        disabled: false,
+        itemStyle: 'max-width: 300px; width: 100%;'
       },
       btn: {
         size: 'medium',
@@ -320,7 +321,8 @@ const golbalConfig = {
       statusIcon: false,
       validateOnRuleChange: true,
       size: 'medium',
-      disabled: false
+      disabled: false,
+      itemStyle: 'max-width: 300px; width: 100%;'
     },
     operate: {
       btn: {

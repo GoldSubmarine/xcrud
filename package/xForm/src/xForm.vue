@@ -31,7 +31,7 @@
         :rules="configItem.rules"
         >
         <component
-          class="w300"
+          :style="configItem.style ? configItem.style : computedConfig.itemStyle"
           :is="getComponentType(configItem.xType)"
           v-model="formData[configItem.name]"
           :config="configItem"
@@ -185,8 +185,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.w300 {
-    max-width: 300px;
-    width: 100%;
-}
+
 </style>
