@@ -39,7 +39,7 @@ export default {
         item: [
           { xType: 'input', name: 'username', label: '登录名', rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }] },
           { xType: 'datePicker', type: 'date', name: 'birthday', label: '生日', rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }] },
-          { xType: 'tree', name: 'deptId', label: '部门', tree: { data: _this.treeData, props: { label: 'name' }}, rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] } ] },
+          { xType: 'select', type: 'tree', name: 'deptId', label: '部门', tree: { data: _this.treeData, props: { label: 'name' }}, rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] } ] },
           { xType: 'input', name: 'phone', label: '手机号', rules: [ { required: true, pattern: /^1[3-9][0-9]{9}$/, message: '请输入正确的手机号', trigger: ['blur', 'change'] }] },
           { xType: 'input', name: 'email', label: '邮箱', rules: [{ type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }] },
           { xType: 'select', name: 'sex', label: '性别', dic: [{ label: '男', value: 'male' }, { label: '女', value: 'female' }] },
@@ -49,14 +49,14 @@ export default {
           { xType: 'input', type: 'textarea', name: 'remark', label: '备注' }
         ],
         operate: [
-          { text: '保存', show: true, click: _this.saveUser },
+          { text: '保存', show: true, click: _this.save },
           { text: '取消', show: true, click: () => console.log('cancel') }
         ]
       }
     }
   },
   methods: {
-    saveUser() {
+    save() {
       this.loading++;
       this.$refs['xForm'].validate().then(() => {
         console.log(this.formData)

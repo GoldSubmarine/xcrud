@@ -5,7 +5,7 @@
 </template>
 
 <script>
-// import { getUserDetail, saveUser } from '@/api/user';
+// import { getUserDetail, save } from '@/api/user';
 // import { getDeptTree } from '@/api/dept';
 // import { getRoleList } from '@/api/role';
 export default {
@@ -41,7 +41,7 @@ export default {
           { xType: 'input', type: 'textarea', name: 'remark', label: '备注' }
         ],
         operate: [
-          { text: '保存', show: _this.showBtn, click: _this.saveUser },
+          { text: '保存', show: _this.showBtn, click: _this.save },
           { text: '取消', show: _this.showBtn, click: () => console.log('cancel') }
         ]
       }
@@ -59,7 +59,7 @@ export default {
     getRoleList() {
 
     },
-    saveUser() {
+    save() {
       console.log(this.formData)
       this.$refs['xForm'].validate().then(() => {
         console.log(this.formData)

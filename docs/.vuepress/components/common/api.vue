@@ -5,18 +5,18 @@
       {{title}}
     </h2>
     <el-table v-if="type === 'attr'" :data="apiData" style="width: 100%">
-      <el-table-column prop="params" label="参数" width="140"></el-table-column>
-      <el-table-column prop="describe" label="说明" width="120">
+      <el-table-column prop="params" label="参数" width="100"></el-table-column>
+      <el-table-column prop="describe" label="说明">
         <template slot-scope="scope">
           <span>
             {{ describeFilter(scope.row.describe) }}
-            <el-link v-if="LinkRegx.test(scope.row.describe)" :href="getLink(scope.row.describe)" target="_blank" type="primary">{{ getLinkWord(scope.row.describe) }}</el-link>
+            <el-link v-if="LinkRegx.test(scope.row.describe)" :href="getLink(scope.row.describe)" :target="getLink(scope.row.describe).indexOf('http') ? '_blank' : ''" type="primary">{{ getLinkWord(scope.row.describe) }}</el-link>
           </span>
         </template>
       </el-table-column>
-      <el-table-column prop="type" label="类型"></el-table-column>
-      <el-table-column prop="optionValue" label="可选值"></el-table-column>
-      <el-table-column prop="defaultValue" label="默认值"></el-table-column>
+      <el-table-column prop="type" label="类型" width="120"></el-table-column>
+      <el-table-column prop="optionValue" label="可选值" width="120"></el-table-column>
+      <el-table-column prop="defaultValue" label="默认值" width="100"></el-table-column>
     </el-table>
     <el-table v-else :data="apiData" style="width: 100%">
       <el-table-column prop="params" label="事件名称" width="140"></el-table-column>

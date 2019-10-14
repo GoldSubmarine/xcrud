@@ -28,6 +28,8 @@ module.exports = {
           children: [
             '',
             'x-form',
+            'button',
+            'select',
             'globalConfig',
           ]
         },
