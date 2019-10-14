@@ -32,7 +32,7 @@
         >
         <component
           :style="configItem.style ? configItem.style : computedConfig.itemStyle"
-          :is="getComponentType(configItem.xType)"
+          :is="getComponentType(configItem)"
           v-model="formData[configItem.name]"
           :config="configItem"
         />
@@ -134,7 +134,10 @@ export default {
       this.formData = JSON.parse(JSON.stringify(this.formData))
     },
     // 获取动态组件类型
-    getComponentType(xType) {
+    getComponentType(configItem) {
+      let xType = configItem.xType;
+      let type = configItem.type;
+
       if (xType === 'cascader') {
         return 'xCascader'
       } else if (xType === 'checkbox') {
@@ -152,6 +155,9 @@ export default {
       } else if (xType === 'rate') {
         return 'xRate'
       } else if (xType === 'select') {
+        if (type === 'tree') {
+          return 'xTree'
+        }
         return 'xSelect'
       } else if (xType === 'slider') {
         return 'xSlider'
@@ -163,8 +169,6 @@ export default {
         return 'xTimeSelect'
       } else if (xType === 'transfer') {
         return 'xTransfer'
-      } else if (xType === 'tree') {
-        return 'xTree'
       }
     },
     // 重置表单
