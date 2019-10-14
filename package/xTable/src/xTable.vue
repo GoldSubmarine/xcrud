@@ -2,6 +2,7 @@
   <div>
     <x-form v-if="formConfig" ref="xForm" v-model="formData" :config="formConfig" />
     <el-table
+      ref="table"
       :data="data"
       :height="computedConfig.height"
       :max-height="computedConfig.maxHeight"
@@ -287,6 +288,34 @@ export default {
         }
       }
       return c;
+    },
+    // 重写 table methods
+    clearSelection() {
+      this.$refs.table.clearSelection();
+    },
+    toggleRowSelection(row, selected) {
+      this.$refs.table.toggleRowSelection(row, selected);
+    },
+    toggleAllSelection() {
+      this.$refs.table.toggleAllSelection();
+    },
+    toggleRowExpansion(row, expanded) {
+      this.$refs.table.toggleRowExpansion(row, expanded);
+    },
+    setCurrentRow(row) {
+      this.$refs.table.setCurrentRow(row);
+    },
+    clearSort() {
+      this.$refs.table.clearSort();
+    },
+    clearFilter(columnKey) {
+      this.$refs.table.clearFilter(columnKey);
+    },
+    doLayout() {
+      this.$refs.table.doLayout();
+    },
+    sort(prop, order) {
+      this.$refs.table.sort(prop, order);
     },
   },
   methods: {
