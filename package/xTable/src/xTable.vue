@@ -37,8 +37,8 @@
       :tree-props="computedConfig.treeProps"
 
       @select="(a, b) => computeFunction(computedConfig.select, a, b) "
-      @select-all="(a) => computeFunction(computedConfig.selectAll, a, b) "
-      @selection-change="(a) => computeFunction(computedConfig.selectionChange, a, b) "
+      @select-all="(a) => computeFunction(computedConfig.selectAll, a) "
+      @selection-change="(a) => computeFunction(computedConfig.selectionChange, a)"
       @cell-mouse-enter="(a, b, c, d) => computeFunction(computedConfig.cellMouseEnter, a, b, c, d) "
       @cell-mouse-leave="(a, b, c, d) => computeFunction(computedConfig.cellMouseLeave, a, b, c, d) "
       @cell-click="(a, b, c, d) => computeFunction(computedConfig.cellClick, a, b, c, d) "
@@ -56,7 +56,41 @@
     >
       <!-- 生成动态列 -->
       <template v-for="(configItem, configIndex) in computedConfig.column">
+
+        <!-- 如果使用solt，当type=selection时，checkbox显示不出来 -->
         <el-table-column
+          v-if="['selection', 'index', 'expand'].includes(configItem.type)"
+          :key="configIndex"
+          :type="configItem.type"
+          :index="configItem.index"
+          :column-key="configItem.columnKey"
+          :label="configItem.label"
+          :prop="configItem.prop"
+          :width="configItem.width"
+          :min-width="configItem.minWidth"
+          :fixed="configItem.fixed"
+          :render-header="configItem.renderHeader"
+          :sortable="configItem.sortable"
+          :sort-method="configItem.sortMethod"
+          :sort-by="configItem.sortBy"
+          :sort-orders="configItem.sortOrders"
+          :resizable="configItem.resizable"
+          :formatter="configItem.formatter"
+          :show-overflow-tooltip="configItem.showOverflowTooltip"
+          :align="configItem.align"
+          :header-align="configItem.headerAlign"
+          :class-name="configItem.className"
+          :label-class-name="configItem.labelClassName"
+          :selectable="configItem.selectable"
+          :reserve-selection="configItem.reserveSelection"
+          :filters="configItem.filters"
+          :filter-placement="configItem.filterPlacement"
+          :filter-multiple="configItem.filterMultiple"
+          :filter-method="configItem.filterMethod"
+          :filtered-value="configItem.filteredValue"></el-table-column>
+
+        <el-table-column
+          v-else
           :key="configIndex"
           :type="configItem.type"
           :index="configItem.index"
@@ -267,13 +301,6 @@ export default {
     // filter表格数据
     filterTableData(configItem, row, scope) {
       if (!row) return
-      if(configItem.type === 'index') {
-        if(configItem.index) {
-          return configItem.index(scope.$index);
-        } else {
-          return scope.$index;
-        }
-      }
       const str = row[configItem.name]
       if (typeof configItem.filter === 'function') return configItem.filter(str, row, scope)
       if (configItem.dic) return filterDic(configItem.dic, str)

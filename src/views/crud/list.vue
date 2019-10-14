@@ -27,8 +27,9 @@ export default {
       searchData: {},
       configTable: {
         // index: false,
+        selectionChange: (a) => console.log(a),
         column: [
-          { type: 'index' },
+          { type: 'selection' },
           { label: '名称', search: true, xType: 'input', name: 'name' },
           { label: '邮件', name: 'email' },
           { label: '时间', name: 'time', filter: (value, row, scope) => '123' },
