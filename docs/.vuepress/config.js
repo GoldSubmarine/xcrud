@@ -2,7 +2,7 @@ module.exports = {
   title: 'xcrud', // 设置网站标题
   base: '/xcrud/',
   description: 'A simplified crud component based element-ui & Vue', //描述
-  dest: './dist',   // 设置输出目录
+  //dest: './dist',   // 设置输出目录
   port: 2333, //端口
   themeConfig: { //主题配置
     // 添加导航栏
