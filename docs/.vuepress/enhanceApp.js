@@ -11,6 +11,17 @@ import '../.vuepress/public/css/index.css'
 
 import xcrud from '../../package/index'
 
+let config = {
+  xtable: {
+    search: {
+      form: {
+        labelWidth: 'auto',
+        itemStyle: 'width: 140px'
+      }
+    }
+  }
+}
+
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数
   options, // 附加到根实例的一些选项
@@ -20,6 +31,6 @@ export default ({
   // ...做一些其他的应用级别的优化
   Vue.use(VueHighlightJS)
   Vue.use(Element)
-  Vue.use(xcrud)
+  Vue.use(xcrud, config)
   Vue.component('chart', VueECharts)
 }

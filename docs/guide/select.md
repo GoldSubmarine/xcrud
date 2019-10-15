@@ -2,6 +2,8 @@
 
 ---
 
+## 基本用法
+
 <common-code title="基本用法" description="选择器的选项通过 dic 关键字设置">
   <demo-select-common></demo-select-common>
   <highlight-code slot="codeText" lang="vue">
@@ -65,6 +67,8 @@
     </script>
   </highlight-code>
 </common-code>
+
+## 树形选择器
 
 <common-code title="树形选择器" description="此功能为本插件自行封装的功能，通过设置 type=tree ，选项变成了树形">
   <demo-select-tree></demo-select-tree>
@@ -139,6 +143,8 @@
     </script>
   </highlight-code>
 </common-code>
+
+## Attributes
 
 <common-api title="Attributes" :apiData="[
   { params: '...', describe: '所有element-ui按钮组件的属性及方法，参见 [文档](https://element.eleme.cn/#/zh-CN/component/button#attributes)', type: '...', optionValue: '...', defaultValue: '...' },

@@ -1,16 +1,16 @@
 <template>
   <div class="api-wrap">
-    <h2>
+    <!-- <h2>
       <a :href="'#'+title" aria-hidden="true" class="header-anchor">#</a>
       {{title}}
-    </h2>
+    </h2> -->
     <el-table v-if="type === 'attr'" :data="apiData" style="width: 100%">
       <el-table-column prop="params" label="参数" width="100"></el-table-column>
       <el-table-column prop="describe" label="说明">
         <template slot-scope="scope">
           <span>
             {{ describeFilter(scope.row.describe) }}
-            <el-link v-if="LinkRegx.test(scope.row.describe)" :href="getLink(scope.row.describe)" :target="getLink(scope.row.describe).indexOf('http') ? '_blank' : ''" type="primary">{{ getLinkWord(scope.row.describe) }}</el-link>
+            <el-link v-if="LinkRegx.test(scope.row.describe)" :href="getLink(scope.row.describe)" :target="getLink(scope.row.describe).indexOf('http') !== -1 ? '_blank' : ''" type="primary">{{ getLinkWord(scope.row.describe) }}</el-link>
           </span>
         </template>
       </el-table-column>
@@ -34,10 +34,10 @@ export default {
       type: String,
       default: 'attr'
     },
-    title: {
-      type: String,
-      default: '属性'
-    },
+    // title: {
+    //   type: String,
+    //   default: '属性'
+    // },
     apiData: Array
   },
   data() {
@@ -89,6 +89,8 @@ export default {
 //   }
 // }
 .api-wrap{
+  margin-top: 20px;
+  margin-bottom: 30px;
   h2 {
     padding: 0;
     margin: 55px 0 20px;

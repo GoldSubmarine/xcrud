@@ -1,5 +1,9 @@
 # 全局配置
 
+---
+
+xcrud 内置了一个全局配置，用户还可在注册 xcrud 组件时自定义全局配置，用户自定义配置会覆盖全局配置，使用如下：
+
 ```js
 Vue.use(Xcrud, {
     // your global theme config
@@ -254,7 +258,7 @@ const golbalConfig = {
             form: {
                 inline: true,
                 labelPosition: "right",
-                labelWidth: "100px",
+                labelWidth: "auto",
                 labelSuffix: undefined,
                 hideRequiredAsterisk: false,
                 showMessage: true,

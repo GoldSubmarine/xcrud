@@ -9,75 +9,37 @@ module.exports = {
     nav: [
       { text: '主页', link: '/' }, // 导航条
       { text: '组件文档', link: '/guide/' },
-      { text: '知识库', link: '/knowledge/' },
       {
-        text: 'github',
-        // 这里是下拉列表展现形式。
+        text: '知识库',
         items: [
-          { text: 'focus-outside', link: 'https://github.com/TaoXuSheng/focus-outside' },
-          { text: 'stylus-converter', link: 'https://github.com/TaoXuSheng/stylus-converter' },
+          { text: 'Vue', link: 'https://cn.vuejs.org/index.html' },
+          { text: 'element-ui', link: 'https://element.eleme.cn' },
         ]
-      }
+      },
+      { text: 'Github', link: 'https://github.com/GoldSubmarine/xcrud' }
     ],
     // 为以下路由添加侧边栏
     sidebar:{
       '/guide/': [
         {
-          // title: '布局类组件',
+          // title: '组件文档',
           collapsable: false,
           children: [
             '',
-            'x-form',
+            'form',
+            'table',
             'button',
             'select',
             'globalConfig',
           ]
         },
-        // {
-        //   title: '可视化组件',
-        //   collapsable: true,
-        //   children: [
-        //   ]
-        // },
-        // {
-        //   title: '工具类组件',
-        //   collapsable: true,
-        //   children: [
-        //   ]
-        // },
-        // {
-        //   title: '方法类函数',
-        //   collapsable: true,
-        //   children: [
-        //   ]
-        // }
-      ],
-      '/knowledge/': [
-        {
-          title: 'Vue',
-          collapsable: false,
-          children: [
-          ]
-        },
-        {
-          title: 'JS知识库',
-          collapsable: false,
-          children: [
-          ]
-        },
-        {
-          title: 'node知识库',
-          collapsable: false,
-          children: [
-          ]
-        },
-        {
-          title: 'vue知识库',
-          collapsable: false,
-          children: [
-          ]
-        }
       ]
     }
+  },
+  markdown: {
+    // markdown-it-anchor 的选项
+    anchor: { permalink: true },
+    // markdown-it-toc 的选项
+    toc: { includeLevel: [1, 2, 3, 4] }
   }
 }

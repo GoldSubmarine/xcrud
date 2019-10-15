@@ -1,10 +1,10 @@
 <template>
   <div class="code">
     <div class="code--title">
-      <h2 :id="title">
+      <!-- <h2 :id="title">
         <a :href="'#'+title" aria-hidden="true" class="header-anchor">#</a>
         {{title}}
-      </h2>
+      </h2> -->
       <small>{{description}}</small>
     </div>
     <div class="code--demo">
@@ -32,7 +32,7 @@
 <script>
 export default {
   name: 'DemoPage',
-  props: ['title', 'description'],
+  props: [/* 'title', */ 'description'],
   data() {
     return {
       isShow: false,
@@ -87,9 +87,9 @@ export default {
     border-radius: 3px;
     box-shadow: 0 0 2px 0 rgba(232, 237, 250, 0.6), 0 1px 2px 0 rgba(232, 237, 250, 0.5);
     .code-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
       box-sizing: border-box;
       padding: 4%;
       border-bottom: 1px solid #ddd;
@@ -108,11 +108,12 @@ export default {
     cursor: pointer;
   }
 
-  margin-top: 40px;
+  margin-top: 10px;
+  margin-bottom: 40px;
 
-  &:not(:first-child) {
-    margin-top: 40px;
-  }
+  // &:not(:first-child) {
+  //   margin-top: 40px;
+  // }
 }
 </style>
 
