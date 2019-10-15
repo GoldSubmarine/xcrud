@@ -42,7 +42,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      Object.assign(c, this.golbalConfig.datePicker, this.config)
+      _.merge(c, this.golbalConfig.datePicker, this.config)
       return c;
     }
   },

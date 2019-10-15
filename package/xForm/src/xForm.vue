@@ -101,15 +101,15 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      Object.assign(c, this.golbalConfig.xform.form, this.config)
+      _.merge(c, this.golbalConfig.xform.form, this.config)
       for(let i = 0; i < this.config.item.length; i++) {
         let item = this.config.item[i];
-        c.item[i] = Object.assign({}, this.golbalConfig[item.xType], item)
+        c.item[i] = _.merge({}, this.golbalConfig[item.xType], item)
       }
       if(this.config.operate) {
         for(let i = 0; i < this.config.operate.length; i++) {
           let operate = this.config.operate[i];
-          c.operate[i] = Object.assign({}, this.golbalConfig.xform.operate.btn, operate)
+          c.operate[i] = _.merge({}, this.golbalConfig.xform.operate.btn, operate)
         }
       }
       return c;

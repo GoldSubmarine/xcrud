@@ -178,19 +178,19 @@ export default {
         item: [],
         operate: []
       }
-      let searchConfig = Object.assign({}, this.golbalConfig.xtable.search, this.config.search)
-      Object.assign(formConfigTemp, searchConfig.form)
+      let searchConfig = _.merge({}, this.golbalConfig.xtable.search, this.config.search)
+      _.merge(formConfigTemp, searchConfig.form)
       if (this.config.searchBtn !== false) {
-        let searchBtn = Object.assign({}, searchConfig.btn, searchConfig.btn.searchBtn, { click: _this.search })
+        let searchBtn = _.merge({}, searchConfig.btn, searchConfig.btn.searchBtn, { click: _this.search })
         formConfigTemp.operate.push(searchBtn)
       }
       if (this.config.resetBtn !== false) {
-        let resetBtn = Object.assign({}, searchConfig.btn, searchConfig.btn.resetBtn, { click: _this.reset })
+        let resetBtn = _.merge({}, searchConfig.btn, searchConfig.btn.resetBtn, { click: _this.reset })
         formConfigTemp.operate.push(resetBtn)
       }
       if (this.config.btn) {
         this.config.btn.forEach(btn => {
-          let customBtn = Object.assign({}, searchConfig.btn, btn)
+          let customBtn = _.merge({}, searchConfig.btn, btn)
           formConfigTemp.operate.push(customBtn)
         })
       }
@@ -203,20 +203,20 @@ export default {
     },
     computedConfig() {
       const c = {}
-      Object.assign(c, this.golbalConfig.xtable.table, this.config)
+      _.merge(c, this.golbalConfig.xtable.table, this.config)
       for(let i = 0; i < this.config.column.length; i++) {
-        c.column[i] = Object.assign({}, this.golbalConfig.xtable.column, this.config.column[i])
+        c.column[i] = _.merge({}, this.golbalConfig.xtable.column, this.config.column[i])
       }
       return c;
     },
     operateConfig() {
       if(!this.config.operate || !this.config.operate.length) return null;
       let c = {};
-      Object.assign(c, this.golbalConfig.xtable.column, this.golbalConfig.xtable.operate.column)
+      _.merge(c, this.golbalConfig.xtable.column, this.golbalConfig.xtable.operate.column)
       c.btn = this.config.operate;
       if(this.config.operate) {
         for(let i = 0; i < this.config.operate.length; i++) {
-          c.btn[i] = Object.assign({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
+          c.btn[i] = _.merge({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
         }
       }
       return c;
