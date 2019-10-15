@@ -1,9 +1,12 @@
 module.exports = {
   title: 'xcrud', // 设置网站标题
   base: '/xcrud/',
-  description: 'A simplified crud component based element-ui & Vue', //描述
+  description: '基于 element-ui & Vue 实现的用于快速增删改查的组件，是开发后台应用的利器', //描述
   //dest: './dist',   // 设置输出目录
   port: 2333, //端口
+  head: [
+    ['link', { rel: 'icon', href: '/logo.png' }]
+  ],
   themeConfig: { //主题配置
     // 添加导航栏
     nav: [
