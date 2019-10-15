@@ -1,3 +1,4 @@
+const _ = require('lodash')
 const golbalConfig = {
   input: {
     type: 'text',
@@ -313,7 +314,7 @@ const golbalConfig = {
     form: {
       inline: false,
       labelPosition: 'right',
-      labelWidth: '100px',
+      labelWidth: 'auto',
       labelSuffix: undefined,
       hideRequiredAsterisk: false,
       showMessage: true,
@@ -344,6 +345,6 @@ const golbalConfig = {
 export default {
   get: () => golbalConfig,
   set: item => {
-    Object.assign(golbalConfig, item)
+    _.merge(golbalConfig, item)
   }
 }

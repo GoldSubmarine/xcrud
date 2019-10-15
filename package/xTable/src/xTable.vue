@@ -57,16 +57,13 @@
     >
       <!-- 生成动态列 -->
       <template v-for="(configItem, configIndex) in computedConfig.column">
-
-        <!-- 如果使用solt，当type=selection时，checkbox显示不出来 -->
         <el-table-column
-          v-if="['selection', 'index', 'expand'].includes(configItem.type)"
           :key="configIndex"
           :type="configItem.type"
           :index="configItem.index"
           :column-key="configItem.columnKey"
           :label="configItem.label"
-          :prop="configItem.prop"
+          :prop="configItem.name"
           :width="configItem.width"
           :min-width="configItem.minWidth"
           :fixed="configItem.fixed"
@@ -76,38 +73,7 @@
           :sort-by="configItem.sortBy"
           :sort-orders="configItem.sortOrders"
           :resizable="configItem.resizable"
-          :formatter="configItem.formatter"
-          :show-overflow-tooltip="configItem.showOverflowTooltip"
-          :align="configItem.align"
-          :header-align="configItem.headerAlign"
-          :class-name="configItem.className"
-          :label-class-name="configItem.labelClassName"
-          :selectable="configItem.selectable"
-          :reserve-selection="configItem.reserveSelection"
-          :filters="configItem.filters"
-          :filter-placement="configItem.filterPlacement"
-          :filter-multiple="configItem.filterMultiple"
-          :filter-method="configItem.filterMethod"
-          :filtered-value="configItem.filteredValue"></el-table-column>
-
-        <el-table-column
-          v-else
-          :key="configIndex"
-          :type="configItem.type"
-          :index="configItem.index"
-          :column-key="configItem.columnKey"
-          :label="configItem.label"
-          :prop="configItem.prop"
-          :width="configItem.width"
-          :min-width="configItem.minWidth"
-          :fixed="configItem.fixed"
-          :render-header="configItem.renderHeader"
-          :sortable="configItem.sortable"
-          :sort-method="configItem.sortMethod"
-          :sort-by="configItem.sortBy"
-          :sort-orders="configItem.sortOrders"
-          :resizable="configItem.resizable"
-          :formatter="configItem.formatter"
+          :formatter="(row, column, cellValue, index) => configItem.formatter ? configItem.formatter(row, column, cellValue, index) : filterTableData(row, column, cellValue, index, configItem)"
           :show-overflow-tooltip="configItem.showOverflowTooltip"
           :align="configItem.align"
           :header-align="configItem.headerAlign"
@@ -120,13 +86,6 @@
           :filter-multiple="configItem.filterMultiple"
           :filter-method="configItem.filterMethod"
           :filtered-value="configItem.filteredValue">
-
-          <template slot-scope="scope">
-            <span :style="columnStyleOrClass(configItem.style, scope.row)" :class="columnStyleOrClass(configItem.class, scope.row)">
-              {{ filterTableData(configItem, scope.row, scope) }}
-            </span>
-          </template>
-
         </el-table-column>
       </template>
 
@@ -173,7 +132,7 @@
     <div v-if="page && page.total" class="block foot">
       <el-pagination
         :current-page="page.pageNum"
-        :page-sizes="pageSizes"
+        :page-sizes="page.pageSizes"
         :page-size="page.pageSize"
         style="margin-top: 8px;"
         layout="total, sizes, prev, pager, next, jumper"
@@ -186,29 +145,6 @@
 </template>
 
 <script>
-/**
- * <x-table v-model="searchData" :config="configTable" :data="tableData" :page="page" :load="getTableList"/>
- * 1. v-model 可选，一般不需要，搜索表单的数据会作为 onload 的参数获取到
- * 2. configTable: {
-		index: false,
-		columns: [
-			{ label: "名称", search: true, type: "text", name: "name" },		// 需要搜索的字段通过search：true控制
-			{ label: "邮件", name: "email" },
-			{ label: "时间", name: "time", filter: (value, row, scope) => value + "123"},
-			{ label: "手机", name: "phone" },
-			{ label: "性别", name: "sex", dic: _this.importDic("sex") },		// 自动根据字典获取中文
-		],
-		operate: [		// 操作列的按钮
-			{ text: '编辑', show: true, click: () => _this.dialogTableVisible = true },
-		]
-	}
- * 3. data 为表格数组
- * 4. page： {
- * 			total: 20,
- * 			pageSize: 10
- * 		}
- * 5. load 为加载数据的api,第一个参数为搜索表单的数据 getTableList(formData)
- */
 import { filterDic } from '../../common/filterDic'
 import xForm from '../../xForm/src/xForm.vue'
 import mixinComponent from '../../common/xMixin'
@@ -232,7 +168,6 @@ export default {
   },
   data() {
     return {
-      pageSizes: [2, 10, 20, 30, 50]
     }
   },
   computed: {
@@ -243,22 +178,19 @@ export default {
         item: [],
         operate: []
       }
-      if(this.config.search) {
-        Object.assign(formConfigTemp, this.golbalConfig.xtable.search.form, this.config.search.form)
-      } else {
-        Object.assign(formConfigTemp, this.golbalConfig.xtable.search.form)
-      }
+      let searchConfig = Object.assign({}, this.golbalConfig.xtable.search, this.config.search)
+      Object.assign(formConfigTemp, searchConfig.form)
       if (this.config.searchBtn !== false) {
-        let searchBtn = Object.assign({}, this.golbalConfig.xtable.search.btn, this.golbalConfig.xtable.search.btn.searchBtn, { click: _this.search })
+        let searchBtn = Object.assign({}, searchConfig.btn, searchConfig.btn.searchBtn, { click: _this.search })
         formConfigTemp.operate.push(searchBtn)
       }
       if (this.config.resetBtn !== false) {
-        let resetBtn = Object.assign({}, this.golbalConfig.xtable.search.btn, this.golbalConfig.xtable.search.btn.resetBtn, { click: _this.reset })
+        let resetBtn = Object.assign({}, searchConfig.btn, searchConfig.btn.resetBtn, { click: _this.reset })
         formConfigTemp.operate.push(resetBtn)
       }
       if (this.config.btn) {
         this.config.btn.forEach(btn => {
-          let customBtn = Object.assign({}, this.golbalConfig.xtable.search.btn, btn)
+          let customBtn = Object.assign({}, searchConfig.btn, btn)
           formConfigTemp.operate.push(customBtn)
         })
       }
@@ -278,7 +210,7 @@ export default {
       return c;
     },
     operateConfig() {
-      if(!this.config.operate) return null;
+      if(!this.config.operate || !this.config.operate.length) return null;
       let c = {};
       Object.assign(c, this.golbalConfig.xtable.column, this.golbalConfig.xtable.operate.column)
       c.btn = this.config.operate;
@@ -288,6 +220,53 @@ export default {
         }
       }
       return c;
+    }
+  },
+  methods: {
+    // 重置
+    reset() {
+      if (this.page) {
+        this.page.pageNum = 1
+      }
+      this.$refs['xForm'].resetFields()
+      this.getList()
+    },
+    // filter表格数据
+    filterTableData(row, column, cellValue, index, configItem) {
+      if (!row) return
+      if (configItem.dic) return filterDic(configItem.dic, cellValue)
+      return cellValue
+    },
+    // 表格的操作按钮显隐
+    operateShow(operateItem, row) {
+      if (typeof operateItem.show === 'boolean') {
+        return operateItem.show
+      } else if (typeof operateItem.show === 'function') {
+        return operateItem.show(row)
+      } else {
+        return this.golbalConfig.xtable.table.operate.btn.show;
+      }
+    },
+    // 点击搜索
+    search() {
+      if (this.page) {
+        this.page.pageNum = 1
+      }
+      this.getList()
+    },
+    // 发送绑定的api
+    getList() {
+      this.load()
+    },
+    handleSizeChange(val) { // 每页显示几条
+      this.page.pageSize = val
+      this.$emit('update:page', this.page)
+      this.getList()
+    },
+    handleCurrentChange(val) { // 当前页显示几条
+      this.page.pageNum = val
+      this.$emit('update:page', this.page)
+      this.getList()
     },
     // 重写 table methods
     clearSelection() {
@@ -317,68 +296,6 @@ export default {
     sort(prop, order) {
       this.$refs.table.sort(prop, order);
     },
-  },
-  methods: {
-    // 重置
-    reset() {
-      if (this.page) {
-        this.page.pageNum = 1
-      }
-      this.$refs['xForm'].resetFields()
-      this.getList()
-    },
-    // filter表格数据
-    filterTableData(configItem, row, scope) {
-      if (!row) return
-      const str = row[configItem.name]
-      if (typeof configItem.filter === 'function') return configItem.filter(str, row, scope)
-      if (configItem.dic) return filterDic(configItem.dic, str)
-      return str
-    },
-    // 表格的操作按钮显隐
-    operateShow(operateItem, row) {
-      if (typeof operateItem.show === 'boolean') {
-        return operateItem.show
-      } else if (typeof operateItem.show === 'function') {
-        return operateItem.show(row)
-      } else {
-        return this.golbalConfig.xtable.table.operate.btn.show;
-      }
-    },
-    columnStyleOrClass(style, row) {
-      if (typeof style === 'string') {
-        return style
-      } else if (typeof style === 'function') {
-        return style(row)
-      } else {
-        return ''
-      }
-    },
-    // 点击搜索
-    search() {
-      if (this.page) {
-        this.page.pageNum = 1
-      }
-      this.getList()
-    },
-    // 发送绑定的api
-    getList() {
-      if (this.page) {
-        this.load(this.formData, this.page.pageNum, this.page.pageSize)
-      } else {
-        this.load(this.formData)
-      }
-    },
-    handleSizeChange(val) { // 每页显示几条
-      this.page.pageSize = val
-      this.$emit('update:page', this.page)
-      this.getList()
-    },
-    handleCurrentChange(val) { // 当前页显示几条
-      this.page.pageNum = val
-      this.$emit('update:page', this.page)
-      this.getList()
-    }
   }
 }
 </script>
