@@ -102,7 +102,9 @@ export default {
       handler: function(val) {
         const data = this.config.multiple ? val : [val]
         if (val !== null && val !== undefined && val !== '' && data.length) {
-          this.$refs.tree.setCheckedKeys(data)
+          this.$nextTick().then(() => {
+            this.$refs.tree.setCheckedKeys(data)
+          })
         }
       },
       immediate: true
