@@ -1,8 +1,8 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 cd ./docs/.vuepress/components;
 rm -rf ./txt;
 cp -r demo txt;
 cd txt;
-autoload -U zmv;
-zmv '(*).vue' '$1.txt'
+sudo apt install rename;
+rename "s/.vue/.txt/" *;
