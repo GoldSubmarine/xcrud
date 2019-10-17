@@ -8,38 +8,26 @@ xTable 表格是对 element-ui table 的封装，并且内部引用了 xForm，�
 
 ## 基本用法
 
-<common-code title="基本用法" description="配置 json，生成 table 表格，本示例展示了 xTable 的各种用法：数据字典、过滤器、生成搜索框 等">
+<common-code title="基本用法" description="配置 json，生成 table 表格，本示例展示了 xTable 的各种用法：数据字典、过滤器、生成搜索框 等" codePath="table-common">
   <demo-table-common></demo-table-common>
-  <highlight-code slot="codeText" lang="vue">
-    123
-  </highlight-code>
 </common-code>
 
 ## 多选
 
-<common-code title="多选" description="选择多行数据时使用 Checkbox。">
+<common-code title="多选" description="选择多行数据时使用 Checkbox。" codePath="table-selection">
   <demo-table-selection></demo-table-selection>
-  <highlight-code slot="codeText" lang="vue">
-    123
-  </highlight-code>
 </common-code>
 
 ## 排序
 
-<common-code title="排序" description="通过设置 column 的属性 sortable=true 可以实现前端排序，也可设置 sortable=custom 实现前端排序">
+<common-code title="排序" description="通过设置 column 的属性 sortable=true 可以实现前端排序，也可设置 sortable=custom 实现前端排序" codePath="table-sort">
   <demo-table-sort></demo-table-sort>
-  <highlight-code slot="codeText" lang="vue">
-    123
-  </highlight-code>
 </common-code>
 
 ## 树形数据
 
-<common-code title="树形数据" description="支持树类型的数据的显示。当 row 中包含 children 字段时，被视为树形数据。渲染树形数据时，必须要指定 row-key">
+<common-code title="树形数据" description="支持树类型的数据的显示。当 row 中包含 children 字段时，被视为树形数据。渲染树形数据时，必须要指定 row-key" codePath="table-tree">
   <demo-table-tree></demo-table-tree>
-  <highlight-code slot="codeText" lang="vue">
-    123
-  </highlight-code>
 </common-code>
 
 ## Attributes

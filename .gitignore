@@ -5,10 +5,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 package-lock.json
-yarn.lock
 tests/**/coverage/
 
 # Editor directories and files
+yarn.lock
 .idea
 .vscode
 *.suo

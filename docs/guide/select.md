@@ -4,144 +4,14 @@
 
 ## 基本用法
 
-<common-code title="基本用法" description="选择器的选项通过 dic 关键字设置">
+<common-code title="基本用法" description="选择器的选项通过 dic 关键字设置" codePath="select-common">
   <demo-select-common></demo-select-common>
-  <highlight-code slot="codeText" lang="vue">
-    <template>
-      <div class="app-container" :v-loading="loading">
-        <x-form ref="xForm" v-model="formData" :config="formConfig" />
-      </div>
-    </template>
-
-    <script>
-    export default {
-      data() {
-        return {
-          loading: 0,
-          formData: {
-            status: 'enable'  // 默认数据
-          }
-        }
-      },
-      computed: {
-        formConfig() {
-          const _this = this
-          return {
-            inline: false,
-            item: [
-              {
-                xType: 'select',
-                name: 'sex',
-                label: '性别',
-                dic: [{ label: '男', value: 'male' }, { label: '女', value: 'female' }]
-              },
-              {
-                xType: 'select',
-                name: 'status',
-                label: '状态',
-                dic: {
-                  data: [ { key: '激活', value: 'enable' }, { key: '锁定', value: 'disable' }],
-                  label: 'key',
-                  value: 'value'
-                }
-              },
-            ],
-            operate: [
-              { text: '保存', show: true, click: _this.save },
-              { text: '取消', show: true, click: () => {
-                _this.$message.info("cancel")
-              } }
-            ]
-          }
-        }
-      },
-      methods: {
-        save() {
-          this.loading++;
-          this.$refs['xForm'].validate().then(() => {
-            this.$message.success("save data: " +JSON.stringify(this.formData, null, 2) )
-          }).catch(e => console.error(e)).finally(() => this.loading--)
-        }
-      }
-    }
-    </script>
-  </highlight-code>
 </common-code>
 
 ## 树形选择器
 
-<common-code title="树形选择器" description="此功能为本插件自行封装的功能，通过设置 type=tree ，选项变成了树形">
+<common-code title="树形选择器" description="此功能为本插件自行封装的功能，通过设置 type=tree ，选项变成了树形" codePath="select-tree">
   <demo-select-tree></demo-select-tree>
-  <highlight-code slot="codeText" lang="vue">
-    <template>
-      <div class="app-container" :v-loading="loading">
-        <x-form ref="xForm" v-model="formData" :config="formConfig" />
-      </div>
-    </template>
-
-    <script>
-    export default {
-      data() {
-        return {
-          loading: 0,
-          formData: {
-            deptId: '4'  // 默认数据
-          },
-          treeData: [{
-            id: "1",
-            name: "xx公司",
-            children: [
-              {
-                id: "2",
-                name: "技术部",
-                children: [
-                  { id: "4", name: "Java 组" },
-                  { id: "5", name: "Web 组" },
-                  { id: "6", name: "PHP 组" },
-                  { id: "7", name: "Python 组" }
-                ]
-              },
-              { id: "3", name: "售后部" }
-            ]
-          }]
-        }
-      },
-      computed: {
-        formConfig() {
-          const _this = this
-          return {
-            inline: false,
-            item: [
-              {
-                xType: 'select',
-                type: 'tree',
-                name: 'deptId',
-                label: '部门',
-                tree: {
-                  data: _this.treeData,
-                  props: { label: 'name' }
-                },
-                rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] } ] 
-              }
-            ],
-            operate: [
-              { text: '保存', show: true, click: _this.save },
-              { text: '取消', show: true, click: () => console.log('cancel') }
-            ]
-          }
-        }
-      },
-      methods: {
-        save() {
-          this.loading++;
-          this.$refs['xForm'].validate().then(() => {
-            console.log(this.formData)
-          }).catch(e => console.error(e)).finally(() => this.loading--)
-        }
-      }
-    }
-    </script>
-  </highlight-code>
 </common-code>
 
 ## Attributes

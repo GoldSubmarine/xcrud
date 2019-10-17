@@ -14,10 +14,13 @@
     </div>
     <el-collapse-transition>
       <div v-show="isShow" class="code--segment">
-        <slot name="codeText"></slot>
+        <highlight-code lang="vue">
+          {{ codeTxt }}
+        </highlight-code>
+        <!-- <slot name="codeText"></slot> -->
       </div>
     </el-collapse-transition>
-    <div v-if="$slots.codeText" class="code--button" @click="isShow = !isShow">
+    <div class="code--button" @click="isShow = !isShow">
       <span class="show-btn">
         <i :class="isShow ? 'el-icon-caret-top' : 'el-icon-caret-bottom'"></i>
         <span class="show-btn-word">
@@ -32,11 +35,17 @@
 <script>
 export default {
   name: 'DemoPage',
-  props: [/* 'title', */ 'description'],
+  props: [/* 'title', */ 'description', 'codePath'],
   data() {
     return {
       isShow: false,
-      codeTextBtn: '显示代码'
+      codeTextBtn: '显示代码',
+      codeTxt: ''
+    }
+  },
+  created() {
+    if(env === 'pro') {
+      this.codeTxt = require(`../txt/${this.codePath}.txt`).default
     }
   }
 }
