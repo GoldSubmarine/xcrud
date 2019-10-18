@@ -1,6 +1,7 @@
 <template>
   <div>
     <x-form v-if="formConfig" ref="xForm" v-model="formData" :config="formConfig" />
+    <slot name="middle"></slot>
     <el-table
       ref="table"
       :data="data"

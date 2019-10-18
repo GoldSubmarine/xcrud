@@ -69,3 +69,9 @@ xTable 表格是对 element-ui table 的封装，并且内部引用了 xForm，�
   { params: 'search', describe: '是否需要搜索框', type: 'boolean', optionValue: 'true/false', defaultValue: 'false' },
   { params: '...', describe: '当 search=true 时，配置搜索框的参数，实际内置的 xForm 表单，具体配置参见[xForm Item 文档](/xcrud/guide/form.html#Item)', type: '...', optionValue: '...', defaultValue: '...' },
 ]" />
+
+## Table Slot
+
+<common-api title="Table Slot" :apiData="[
+  { params: 'middle', describe: '在搜索框和表格之间插入内容', type: '—', optionValue: '—', defaultValue: '—' },
+]" />

@@ -7,12 +7,33 @@ jobs:
   deploy_job:
     name: deploy job
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version: [10.x]
     steps:
     - name: Checkout
       uses: actions/checkout@master
 
-    - name: start deploy
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    # - name: Configuration environment
+    #   env:
+    #     ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
+    #   run: |
+    #     mkdir -p ~/.ssh/
+    #     echo "$ACCESS_TOKEN" > ~/.ssh/id_rsa
+    #     chmod 600 ~/.ssh/id_rsa
+    #     ssh-keyscan github.com >> ~/.ssh/known_hosts
+    #     git config --global user.email "997462392@qq.com"
+    #     git config --global user.name "charles"
+
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@master
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      run: |
-        sh ./deploy.sh
+        BRANCH: gh-pages
+        FOLDER: docs/.vuepress/dist
+        BUILD_SCRIPT: yarn && yarn docs:build
