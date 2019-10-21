@@ -11,7 +11,7 @@ xcrud 是一个基于 element-ui & Vue 实现快速增删改查的组件，通�
 ```bash
 npm install xcrud -S
 # or
-yarn add xcrud -S
+yarn add xcrud
 ```
 
 ## Getting started
