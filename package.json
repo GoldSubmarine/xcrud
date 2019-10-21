@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server --config build/webpack.dev.js",
     "build": "webpack --config build/webpack.pro.js",
     "lint": "eslint --ext .js,.vue src package --fix",
-    "docs:dev": "export NODE_ENV=dev&&vuepress dev docs",
+    "docs:dev": "set NODE_ENV=dev&&vuepress dev docs",
     "docs:build": "sh pre-docs.sh&&export NODE_ENV=pro&&vuepress build docs"
   },
   "repository": {
