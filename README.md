@@ -1,7 +1,5 @@
 # xcrud
 
----
-
 xcrud 是一个基于 element-ui & Vue 实现快速增删改查的组件，通过 json 配置表单，摆脱繁琐的变量和 html，是开发后台应用的利器。
 
 ## Documentation
@@ -10,8 +8,6 @@ xcrud 是一个基于 element-ui & Vue 实现快速增删改查的组件，通�
 
 ## Install
 
----
-
 ```bash
 npm install xcrud -S
 # or
@@ -19,8 +15,6 @@ yarn add xcrud
 ```
 
 ## Getting started
-
----
 
 ```js
 import Vue from "vue";
@@ -43,8 +37,6 @@ new Vue({
 ```
 
 ## License
-
----
 
 [MIT](http://opensource.org/licenses/MIT)
 
