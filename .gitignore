@@ -14,3 +14,5 @@ tests/**/coverage/
 *.ntvs*
 *.njsproj
 *.sln
+
+/docs/.vuepress/components/txt

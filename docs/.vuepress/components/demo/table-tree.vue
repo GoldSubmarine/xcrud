@@ -43,7 +43,6 @@ export default {
         resetBtn: false,
         rowKey: "id",
         defaultExpandAll: true,
-        treeProps: {children: 'children', hasChildren: 'hasChildren'},
         column: [
           {
             label: '部门名称',

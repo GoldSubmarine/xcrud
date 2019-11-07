@@ -44,9 +44,9 @@ export default {
     }
   },
   created() {
-    if(env === 'pro') {
+    // if(env !== 'dev') {
       this.codeTxt = require(`../txt/${this.codePath}.txt`).default
-    }
+    // }
   }
 }
 </script>

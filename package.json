@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server --config build/webpack.dev.js",
     "build": "webpack --config build/webpack.pro.js",
     "lint": "eslint --ext .js,.vue src package --fix",
-    "docs:dev": "cross-env NODE_ENV=dev vuepress dev docs",
+    "docs:dev": "node pre-docs.js&&cross-env NODE_ENV=dev vuepress dev docs",
     "docs:build": "node pre-docs.js&&cross-env NODE_ENV=pro vuepress build docs&&touch ./docs/.vuepress/dist/.nojekyll"
   },
   "repository": {

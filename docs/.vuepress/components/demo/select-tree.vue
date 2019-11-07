@@ -42,9 +42,10 @@ export default {
             type: 'tree',
             name: 'deptId',
             label: '部门',
-            tree: {
+            dic: {
               data: _this.treeData,
-              props: { label: 'name' }
+              label: "name",
+              value: "id"
             },
             rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] } ] 
           }

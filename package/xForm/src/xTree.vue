@@ -1,5 +1,6 @@
 <template>
   <el-select
+    ref="select"
     v-model="formData"
     :disabled="config.disabled"
     :multiple="config.multiple"
@@ -26,8 +27,10 @@
       :default-expand-all="computeBoolen(config.defaultExpandAll, false)"
       :expand-on-click-node="false"
       :props="getTreeProps"
+      :highlight-current="true"
       @check="handleCheckChange"
       @node-click="handleNodeClick"
+      class="select-tree"
     >
       <template slot-scope="{ node, data }" class="tree-node">
         <span style="margin-left: 10px;font-size: 14px;">{{ data[getTreeProps.label] }}</span>
@@ -42,14 +45,12 @@
 // {
 //   disabled: false,
 //   multiple: true,
-//   tree: {
+//   dic: {
 //     data: [],
-//     nodeKey: "id",
+//     value: "value",
+//     label: "label",
+//     children: "children",
 //     defaultExpandAll: true,
-//     props: {
-//       label: "name",
-//       children: "children",
-//     }
 //   }
 // }
 import mixinComponent from '../../common/xMixin'
@@ -63,21 +64,18 @@ export default {
   },
   computed: {
     getNodekey() {
-      if (this.config.tree.nodeKey) {
-        return this.config.tree.nodeKey
+      if (this.config.dic.value) {
+        return this.config.dic.value
       }
-      return 'id'
+      return 'value'
     },
     getTreeProps() {
-      const props = this.config.tree.props
       const defaultProps = {
         children: 'children',
         label: 'label'
       }
-      if (props instanceof Object) {
-        if (props.label) defaultProps.label = props.label
-        if (props.children) defaultProps.children = props.children
-      }
+      if (this.config.dic.label) defaultProps.label = this.config.dic.label
+      if (this.config.dic.children) defaultProps.children = this.config.dic.children
       return defaultProps
     },
     // 树转list
@@ -112,11 +110,11 @@ export default {
     // 初始化时父级的tree可能没有数据，所以要watch
     config: {
       handler: function(val) {
-        const tree = this.config.tree
-        if (tree instanceof Array) {
-          this.treeData = tree
-        } else if (tree instanceof Object) {
-          this.treeData = tree.data
+        const dic = this.config.dic
+        if (dic instanceof Array) {
+          this.treeData = dic
+        } else if (dic instanceof Object) {
+          this.treeData = dic.data
         }
       },
       immediate: true,
@@ -128,6 +126,7 @@ export default {
     handleNodeClick(data) {
       if (!this.config.multiple) {
         this.formData = data[this.getNodekey]
+        this.$refs.select.blur();
       }
     },
     // 多选时
@@ -161,4 +160,10 @@ export default {
   }
 }
 </script>
-
+<style lang="scss">
+.select-tree .el-tree-node.is-current>.el-tree-node__content {
+  background-color: #f5f7fa;
+  font-weight: 700;
+  color: #409EFF;
+}
+</style>

@@ -1,6 +1,10 @@
 <template>
   <div class="app-container" :v-loading="loading">
-    <x-form ref="xForm" v-model="formData" :config="formConfig" />
+    <x-form ref="xForm" v-model="formData" :config="formConfig">
+      <template v-slot:titleSlot>
+        <p style="color: red;padding-left: 120px;">这是插入的一段文字</p>
+      </template>
+    </x-form>
   </div>
 </template>
 
@@ -10,7 +14,7 @@ export default {
     return {
       loading: 0,
       formData: {
-        deptId: '4'  // 默认数据
+        status: 'enable'  // 默认数据
       },
       treeData: [{
         id: "1",
@@ -37,17 +41,9 @@ export default {
       return {
         inline: false,
         item: [
-          {
-            xType: 'select',
-            type: 'tree',
-            name: 'deptId',
-            label: '部门',
-            tree: {
-              data: _this.treeData,
-              props: { label: 'name' }
-            },
-            rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] } ] 
-          }
+          { xType: 'input', name: 'username', label: '登录名', rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }] },
+          { slot: "titleSlot" },
+          { xType: "input", type: 'password', name: "password", label: '密码', },
         ],
         operate: [
           { text: '保存', show: true, click: _this.save },
