@@ -255,7 +255,7 @@ const golbalConfig = {
       form: {
         inline: true,
         labelPosition: 'right',
-        labelWidth: '100px',
+        labelWidth: 'auto',
         labelSuffix: undefined,
         hideRequiredAsterisk: false,
         showMessage: true,
@@ -264,7 +264,7 @@ const golbalConfig = {
         validateOnRuleChange: true,
         size: 'medium',
         disabled: false,
-        itemStyle: 'max-width: 300px; width: 100%;'
+        itemStyle: 'width: 200px;'
       },
       btn: {
         size: 'medium',
@@ -328,7 +328,7 @@ const golbalConfig = {
     form: {
       inline: false,
       labelPosition: 'right',
-      labelWidth: 'auto',
+      labelWidth: '120px',
       labelSuffix: undefined,
       hideRequiredAsterisk: false,
       showMessage: true,
