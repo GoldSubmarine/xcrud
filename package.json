@@ -1,6 +1,6 @@
 {
   "name": "xcrud",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A simplified crud component based on element-ui & Vue",
   "main": "package/index.js",
   "scripts": {
@@ -39,6 +39,7 @@
     "clean-webpack-plugin": "^2.0.1",
     "cross-env": "^6.0.3",
     "css-loader": "^2.1.1",
+    "element-ui": "^2.7.2",
     "eslint": "5.15.3",
     "eslint-plugin-vue": "5.2.2",
     "file-loader": "^3.0.1",
@@ -52,6 +53,7 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
+    "vue": "^2.6.10",
     "vue-echarts": "^3.0.7",
     "vue-highlight.js": "^2.2.0",
     "vue-loader": "^15.7.0",
@@ -61,9 +63,7 @@
     "vuepress": "^1.2.0",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
-    "webpack-dev-server": "^3.3.1",
-    "element-ui": "^2.7.2",
-    "vue": "^2.6.10"
+    "webpack-dev-server": "^3.3.1"
   },
   "peerDependencies": {
     "element-ui": "^2.7.2",
