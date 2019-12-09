@@ -1,41 +1,37 @@
 <template>
   <el-input
+    v-model="formData"
     :type="computedConfig.type"
-    :value-key="computedConfig.valueKey"
-    :debounce="computedConfig.debounce"
-    :placement="computedConfig.placement"
-    :fetch-suggestions="computedConfig.fetchSuggestions"
-    :popper-class="computedConfig.popperClass"
-    :trigger-on-focus="computedConfig.triggerOnFocus"
-    :name="computedConfig.name"
-    :select-when-unmatched="computedConfig.selectWhenUnmatched"
-    :prefix-icon="computedConfig.prefixIcon"
-    :suffix-icon="computedConfig.suffixIcon"
-    :readonly="computedConfig.readonly"
+    :value="computedConfig.value"
     :maxlength="computedConfig.maxlength"
-    :max="computedConfig.max"
     :minlength="computedConfig.minlength"
-    :min="computedConfig.min"
-    :step="computedConfig.step"
-    :form="computedConfig.form"
-    :showWordLimit="computedConfig.showWordLimit"
+    :show-word-limit="computedConfig.showWordLimit"
     :placeholder="computedConfig.placeholder"
     :clearable="computedConfig.clearable"
+    :show-password="computedConfig.showPassword"
+    :disabled="computedConfig.disabled"
     :size="computedConfig.size"
+    :prefix-icon="computedConfig.prefixIcon"
+    :suffix-icon="computedConfig.suffixIcon"
     :rows="computedConfig.rows"
     :autosize="computedConfig.autosize"
     :autocomplete="computedConfig.autocomplete"
+    :auto-complete="computedConfig.autoComplete"
+    :name="computedConfig.name"
+    :readonly="computedConfig.readonly"
+    :max="computedConfig.max"
+    :min="computedConfig.min"
+    :step="computedConfig.step"
     :resize="computedConfig.resize"
-    :validate-event="computedConfig.validateEvent"
-    :hide-loading="computedConfig.hideLoading"
-    :popper-append-to-body="computedConfig.popperAppendToBody"
-    :highlight-first-item="computedConfig.highlightFirstItem"
-    :disabled="computedConfig.disabled"
-    :show-password="computedConfig.showPassword"
-    v-model="formData"
-    @change="e => computeFunction(computedConfig.change, e)"
+    :autofocus="computedConfig.autofocus"
+    :form="computedConfig.form"
+    :label="computedConfig.label"
+    :tabindex="computedConfig.tabindex"
+
     @blur="e => computeFunction(computedConfig.blur, e)"
     @focus="e => computeFunction(computedConfig.focus, e)"
+    @change="e => computeFunction(computedConfig.change, e)"
+    @input="e => computeFunction(computedConfig.input, e)"
     @clear="e => computeFunction(computedConfig.clear, e)"
   />
 </template>
@@ -49,18 +45,18 @@ export default {
       // value: this.value
     }
   },
-  methods: {
-    handleChange(value) {
-
-    }
-  },
   computed: {
     computedConfig() {
       const c = {}
       _.merge(c, this.golbalConfig.input, this.config)
-      return c;
+      return c
     }
   },
+  methods: {
+    handleChange(value) {
+
+    }
+  }
 }
 </script>
 
