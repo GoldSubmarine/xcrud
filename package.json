@@ -1,6 +1,6 @@
 {
   "name": "xcrud",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A simplified crud component based on element-ui & Vue",
   "main": "package/index.js",
   "scripts": {
@@ -9,6 +9,9 @@
     "lint": "eslint --ext .js,.vue src package --fix",
     "docs:dev": "node pre-docs.js&&cross-env NODE_ENV=dev vuepress dev docs",
     "docs:build": "node pre-docs.js&&cross-env NODE_ENV=pro vuepress build docs&&touch ./docs/.vuepress/dist/.nojekyll"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
