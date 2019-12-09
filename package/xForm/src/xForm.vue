@@ -73,6 +73,7 @@ import xCheckbox from './xCheckbox'
 import xColorPicker from './xColorPicker'
 import xDatePicker from './xDatePicker'
 import xInput from './xInput'
+import xAutocomplete from './xAutocomplete'
 import xInputNumber from './xInputNumber'
 import xRadio from './xRadio'
 import xRate from './xRate'
@@ -86,7 +87,7 @@ import xTree from './xTree'
 
 export default {
   name: 'XForm',
-  components: { xInput, xRadio, xCheckbox, xSelect, xDatePicker, xTree },
+  components: { xInput, xAutocomplete, xRadio, xCheckbox, xSelect, xDatePicker, xTree },
   mixins: [mixinComponent()],
   data() {
     return {
@@ -148,6 +149,8 @@ export default {
         return 'xDatePicker'
       } else if (xType === 'input') {
         return 'xInput'
+      } else if (xType === 'autocomplete') {
+        return 'xAutocomplete'
       } else if (xType === 'inputNumber') {
         return 'xInputNumber'
       } else if (xType === 'radio') {

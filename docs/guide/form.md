@@ -14,6 +14,12 @@
   <demo-xform-slot></demo-xform-slot>
 </common-code>
 
+## 远程搜索
+
+<common-code title="远程搜索" description="在 form 表单之间插入任意信息，满足自定义需求" codePath="xform-remote">
+  <demo-xform-remote></demo-xform-remote>
+</common-code>
+
 ## Attributes
 
 <common-api title="Attributes" :apiData="[
