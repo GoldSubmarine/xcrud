@@ -24,6 +24,12 @@ xTable 表格是对 element-ui table 的封装，并且内部引用了 xForm，�
   <demo-table-sort></demo-table-sort>
 </common-code>
 
+## slot 插槽
+
+<common-code title="slot 插槽" description="通过设置 column 的属性 slot=true 可以实现自定义插槽" codePath="table-slot">
+  <demo-table-slot></demo-table-slot>
+</common-code>
+
 ## 树形数据
 
 <common-code title="树形数据" description="支持树类型的数据的显示。当 row 中包含 children 字段时，被视为树形数据。渲染树形数据时，必须要指定 row-key" codePath="table-tree">

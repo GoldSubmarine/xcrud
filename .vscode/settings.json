@@ -1,0 +1,16 @@
+{
+    "files.autoSave": "off",
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "vue-html",
+        {
+            "language": "vue",
+            "autoFix": true
+        }
+    ],
+    "editor.tabSize": 2,
+    "eslint.run": "onSave",
+    "eslint.autoFixOnSave": true
+}
+  

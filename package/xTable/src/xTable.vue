@@ -87,6 +87,9 @@
           :filter-multiple="configItem.filterMultiple"
           :filter-method="configItem.filterMethod"
           :filtered-value="configItem.filteredValue">
+          <template v-slot="scope" v-if="configItem.slot">
+            <slot :name="configItem.name" v-bind="scope"></slot>
+          </template>
         </el-table-column>
       </template>
 
