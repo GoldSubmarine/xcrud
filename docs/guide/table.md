@@ -73,6 +73,7 @@ xTable 表格是对 element-ui table 的封装，并且内部引用了 xForm，�
   { params: 'label', describe: '列头部的文字', type: 'string', optionValue: '—', defaultValue: '—' },
   { params: 'name', describe: '与表格数据对应的 key', type: 'string', optionValue: '—', defaultValue: '—' },
   { params: 'search', describe: '是否需要搜索框', type: 'boolean', optionValue: 'true/false', defaultValue: 'false' },
+  { params: 'slot', describe: '通过插槽插入，可见上述示例', type: 'boolean', optionValue: 'true/false', defaultValue: 'false' },
   { params: '...', describe: '当 search=true 时，配置搜索框的参数，实际内置的 xForm 表单，具体配置参见[xForm Item 文档](/xcrud/guide/form.html#Item)', type: '...', optionValue: '...', defaultValue: '...' },
 ]" />
 
