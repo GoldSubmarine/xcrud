@@ -11,6 +11,9 @@
     ],
     "editor.tabSize": 2,
     "eslint.run": "onSave",
-    "eslint.autoFixOnSave": true
+    "eslint.autoFixOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
 }
   

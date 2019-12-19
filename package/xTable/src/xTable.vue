@@ -1,7 +1,7 @@
 <template>
   <div>
     <x-form v-if="formConfig" ref="xForm" v-model="formData" :config="formConfig" />
-    <slot name="middle"></slot>
+    <slot name="middle" />
     <el-table
       ref="table"
       :data="data"
@@ -86,9 +86,10 @@
           :filter-placement="configItem.filterPlacement"
           :filter-multiple="configItem.filterMultiple"
           :filter-method="configItem.filterMethod"
-          :filtered-value="configItem.filteredValue">
-          <template v-slot="scope" v-if="configItem.slot">
-            <slot :name="configItem.name" v-bind="scope"></slot>
+          :filtered-value="configItem.filteredValue"
+        >
+          <template v-if="configItem.slot" v-slot="scope">
+            <slot :name="configItem.name" v-bind="scope" />
           </template>
         </el-table-column>
       </template>
@@ -105,7 +106,8 @@
         :align="operateConfig.align"
         :header-align="operateConfig.headerAlign"
         :class-name="operateConfig.className"
-        :label-class-name="operateConfig.labelClassName">
+        :label-class-name="operateConfig.labelClassName"
+      >
         <template slot-scope="scope">
           <template v-for="(operateItem, operateIndex) in operateConfig.btn">
             <el-button
@@ -121,8 +123,9 @@
               :disabled="operateItem.disabled"
               :icon="operateItem.icon"
               :autofocus="operateItem.autofocus"
-              :nativeType="operateItem.nativeType"
-              @click="operateItem.click(scope.row)">
+              :native-type="operateItem.nativeType"
+              @click="operateItem.click(scope.row)"
+            >
 
               {{ operateItem.text }}
 
@@ -182,23 +185,24 @@ export default {
         item: [],
         operate: []
       }
-      let searchConfig = _.merge({}, this.golbalConfig.xtable.search, this.config.search)
+      const searchConfig = _.merge({}, this.golbalConfig.xtable.search, this.config.search)
       _.merge(formConfigTemp, searchConfig.form)
       if (this.config.searchBtn !== false) {
-        let searchBtn = _.merge({}, searchConfig.btn, searchConfig.btn.searchBtn, { click: _this.search })
+        const searchBtn = _.merge({}, searchConfig.btn, searchConfig.btn.searchBtn, { click: _this.search })
         formConfigTemp.operate.push(searchBtn)
       }
       if (this.config.resetBtn !== false) {
-        let resetBtn = _.merge({}, searchConfig.btn, searchConfig.btn.resetBtn, { click: _this.reset })
+        const resetBtn = _.merge({}, searchConfig.btn, searchConfig.btn.resetBtn, { click: _this.reset })
         formConfigTemp.operate.push(resetBtn)
       }
       if (this.config.btn) {
         this.config.btn.forEach(btn => {
-          let customBtn = _.merge({}, searchConfig.btn, btn)
+          const customBtn = _.merge({}, searchConfig.btn, btn)
           formConfigTemp.operate.push(customBtn)
         })
       }
       this.config.column.forEach(item => {
+        if (item.slot) delete item.slot
         if (item.search) {
           formConfigTemp.item.push(item)
         }
@@ -208,22 +212,22 @@ export default {
     computedConfig() {
       const c = {}
       _.merge(c, this.golbalConfig.xtable.table, this.config)
-      for(let i = 0; i < this.config.column.length; i++) {
+      for (let i = 0; i < this.config.column.length; i++) {
         c.column[i] = _.merge({}, this.golbalConfig.xtable.column, this.config.column[i])
       }
-      return c;
+      return c
     },
     operateConfig() {
-      if(!this.config.operate || !this.config.operate.length) return null;
-      let c = {};
+      if (!this.config.operate || !this.config.operate.length) return null
+      const c = {}
       _.merge(c, this.golbalConfig.xtable.column, this.golbalConfig.xtable.operate.column)
-      c.btn = this.config.operate;
-      if(this.config.operate) {
-        for(let i = 0; i < this.config.operate.length; i++) {
+      c.btn = this.config.operate
+      if (this.config.operate) {
+        for (let i = 0; i < this.config.operate.length; i++) {
           c.btn[i] = _.merge({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
         }
       }
-      return c;
+      return c
     }
   },
   methods: {
@@ -248,7 +252,7 @@ export default {
       } else if (typeof operateItem.show === 'function') {
         return operateItem.show(row)
       } else {
-        return this.golbalConfig.xtable.table.operate.btn.show;
+        return this.golbalConfig.xtable.table.operate.btn.show
       }
     },
     // 点击搜索
@@ -274,32 +278,32 @@ export default {
     },
     // 重写 table methods
     clearSelection() {
-      this.$refs.table.clearSelection();
+      this.$refs.table.clearSelection()
     },
     toggleRowSelection(row, selected) {
-      this.$refs.table.toggleRowSelection(row, selected);
+      this.$refs.table.toggleRowSelection(row, selected)
     },
     toggleAllSelection() {
-      this.$refs.table.toggleAllSelection();
+      this.$refs.table.toggleAllSelection()
     },
     toggleRowExpansion(row, expanded) {
-      this.$refs.table.toggleRowExpansion(row, expanded);
+      this.$refs.table.toggleRowExpansion(row, expanded)
     },
     setCurrentRow(row) {
-      this.$refs.table.setCurrentRow(row);
+      this.$refs.table.setCurrentRow(row)
     },
     clearSort() {
-      this.$refs.table.clearSort();
+      this.$refs.table.clearSort()
     },
     clearFilter(columnKey) {
-      this.$refs.table.clearFilter(columnKey);
+      this.$refs.table.clearFilter(columnKey)
     },
     doLayout() {
-      this.$refs.table.doLayout();
+      this.$refs.table.doLayout()
     },
     sort(prop, order) {
-      this.$refs.table.sort(prop, order);
-    },
+      this.$refs.table.sort(prop, order)
+    }
   }
 }
 </script>
