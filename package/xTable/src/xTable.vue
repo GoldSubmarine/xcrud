@@ -202,9 +202,10 @@ export default {
         })
       }
       this.config.column.forEach(item => {
-        if (item.slot) delete item.slot
-        if (item.search) {
-          formConfigTemp.item.push(item)
+        const tmp = JSON.parse(JSON.stringify(item))
+        if (tmp.slot) delete tmp.slot
+        if (tmp.search) {
+          formConfigTemp.item.push(tmp)
         }
       })
       return formConfigTemp.item.length ? formConfigTemp : false
