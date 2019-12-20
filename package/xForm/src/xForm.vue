@@ -89,7 +89,7 @@ import xTree from './xTree'
 
 export default {
   name: 'XForm',
-  components: { xInput, xAutocomplete, xRadio, xCheckbox, xSelect, xDatePicker, xTree },
+  components: { xInput, xAutocomplete, xRadio, xCheckbox, xSelect, xDatePicker, xTree, xCascader },
   mixins: [mixinComponent()],
   data() {
     return {
