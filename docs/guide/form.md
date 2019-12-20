@@ -39,7 +39,7 @@
 
 <common-api title="Item" :apiData="[
   { params: '...', describe: '所有 element-ui 表单组件的属性及方法，例如需要一个输入框，就可以配置 el-input 的所有参数，参见不同表单组件的 element-ui 文档（有些表单进行了增强，参考本文档左侧目录中的详细配置）', type: '...', optionValue: '...', defaultValue: '...' },
-  { params: 'xType', describe: '表示当前这项表单是什么组件，驼峰写法，与element-ui标签完全对应，例如时间选择器的标签为 el-time-select ，则 xType 配置为 timeSelect', type: 'string', optionValue: '—', defaultValue: '—' },
+  { params: 'xType', describe: '表示当前这项表单是什么组件，驼峰写法，与element-ui标签完全对应，例如时间选择器的标签为 el-time-select ，则 xType 配置为 timeSelect，除了element-ui的标签，还可以是slot，用法见上面示例', type: 'string', optionValue: '—', defaultValue: '—' },
   { params: 'show', describe: '是否展示', type: 'boolean', optionValue: 'true/false', defaultValue: 'true' },
   { params: 'style', describe: '输入框的css样式', type: 'string', optionValue: '—', defaultValue: '—' },
   { params: 'slot', describe: '插槽，自定义插入一段 html，值为插槽的名称，用法见上面示例', type: 'string', optionValue: '—', defaultValue: '—' },
