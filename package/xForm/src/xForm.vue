@@ -21,7 +21,7 @@
 
     <!-- 输入项 -->
     <template v-for="(configItem, configItemIndex) in computedConfig.item">
-      <slot v-if="configItem.slot && computeBoolen(configItem.show, true)" :name="configItem.slot" />
+      <slot v-if="typeof configItem.slot === 'string' && computeBoolen(configItem.show, true)" :name="configItem.slot" />
       <!-- 动态加载组件 -->
       <el-form-item 
         v-else-if="computeBoolen(configItem.show, true)"
@@ -30,7 +30,9 @@
         :label="configItem.label + '：'"
         :rules="configItem.rules"
         >
+        <slot v-if="getComponentType(configItem) === 'slot'" :name="configItem.name" />
         <component
+          v-else
           :style="configItem.style ? configItem.style : computedConfig.itemStyle"
           :is="getComponentType(configItem)"
           v-model="formData[configItem.name]"
@@ -139,7 +141,9 @@ export default {
       let xType = configItem.xType;
       let type = configItem.type;
 
-      if (xType === 'cascader') {
+      if (xType === 'slot') {
+        return 'slot'
+      } else if (xType === 'cascader') {
         return 'xCascader'
       } else if (xType === 'checkbox') {
         return 'xCheckbox'

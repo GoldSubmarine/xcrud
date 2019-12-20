@@ -10,7 +10,7 @@
 
 ## slot 插入
 
-<common-code title="综合示例" description="在 form 表单之间插入任意信息，满足自定义需求" codePath="xform-slot">
+<common-code title="综合示例" description="在 form 表单之间插入任意信息，满足自定义需求，支持两种不同的插入方式，设置 xType=slot 时，表示保留 form 原有的 itemLabel，插入 label 后的内容；当设置 slot='slotName' 时表示插入一段和 form 完全无关的代码" codePath="xform-slot">
   <demo-xform-slot></demo-xform-slot>
 </common-code>
 
