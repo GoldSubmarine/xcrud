@@ -28,9 +28,9 @@
       :expand-on-click-node="false"
       :props="getTreeProps"
       :highlight-current="true"
+      class="select-tree"
       @check="handleCheckChange"
       @node-click="handleNodeClick"
-      class="select-tree"
     >
       <template slot-scope="{ node, data }" class="tree-node">
         <span style="margin-left: 10px;font-size: 14px;">{{ data[getTreeProps.label] }}</span>
@@ -89,7 +89,7 @@ export default {
       }
       if (this.formData) {
         getList(this.treeData)
-        return arr.filter(item => this.formData.includes(item.id))
+        return arr.filter(item => this.formData.includes(item[this.getNodekey]))
       }
       return []
     }
@@ -126,7 +126,7 @@ export default {
     handleNodeClick(data) {
       if (!this.config.multiple) {
         this.formData = data[this.getNodekey]
-        this.$refs.select.blur();
+        this.$refs.select.blur()
       }
     },
     // 多选时
