@@ -59,6 +59,7 @@
       <!-- 生成动态列 -->
       <template v-for="(configItem, configIndex) in computedConfig.column">
         <el-table-column
+          v-if="computeBoolen(configItem.show, true)"
           :key="configIndex"
           :type="configItem.type"
           :index="configItem.index"
@@ -203,7 +204,9 @@ export default {
       }
       this.config.column.forEach(item => {
         if (item.search) {
-          formConfigTemp.item.push(item)
+          const tmp = JSON.parse(JSON.stringify(item))
+          delete tmp.show
+          formConfigTemp.item.push(tmp)
         }
       })
       return formConfigTemp.item.length ? formConfigTemp : false

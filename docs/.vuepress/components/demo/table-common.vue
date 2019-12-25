@@ -42,6 +42,13 @@ export default {
             xType: 'input'
           },
           {
+            label: '名称2',
+            name: 'name2',
+            show: false,
+            search: true,
+            xType: 'input'
+          },
+          {
             label: '性别',
             name: 'sex',
             search: true,

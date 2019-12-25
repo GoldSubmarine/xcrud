@@ -5,7 +5,11 @@
         <p style="color: red;padding-left: 120px;">这是插入的一段文字</p>
       </template>
       <template #address>
-        <p style="color: red;padding-left: 120px;">这是插入的一段文字</p>
+        <div v-for="(item, index) in formData.address" :key="index" style="margin-bottom: 10px">
+          <el-input v-model="item.value" style="width: 300px"></el-input>
+          <el-button type="primary" icon="el-icon-plus" circle @click="addAddress"></el-button>
+          <el-button type="primary" icon="el-icon-minus" circle @click="removeAddress(index)"></el-button>
+        </div>
       </template>
     </x-form>
   </div>
@@ -17,7 +21,10 @@ export default {
     return {
       loading: 0,
       formData: {
-        status: 'enable'  // 默认数据
+        status: 'enable',  // 默认数据
+        address: [
+          { value: '' }
+        ]
       },
       treeData: [{
         id: "1",
@@ -57,6 +64,12 @@ export default {
     }
   },
   methods: {
+    addAddress() {
+      this.formData.address.push({ value: '' })
+    },
+    removeAddress(index) {
+      this.formData.address.splice(index, 1)
+    },
     save() {
       this.loading++;
       this.$refs['xForm'].validate().then(() => {
