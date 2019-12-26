@@ -9,6 +9,7 @@ tests/**/coverage/
 
 # Editor directories and files
 .idea
+.history
 *.suo
 *.ntvs*
 *.njsproj
