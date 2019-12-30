@@ -12,7 +12,7 @@
     :autocomplete="computedConfig.autocomplete"
     :placeholder="computedConfig.placeholder"
     :filterable="computedConfig.filterable"
-    :allow-create="computedConfig.allowcreate"
+    :allow-create="computedConfig.allowCreate"
     :filter-method="computedConfig.filterMethod"
     :remote="computedConfig.remote"
     :remote-method="computedConfig.remoteMethod"
@@ -58,7 +58,7 @@ export default {
       const dic = this.config.dic
       if (dic instanceof Array) {
         return dic
-      } else if(dic.data instanceof Array) {
+      } else if (dic.data instanceof Array) {
         return dic.data
       }
       return undefined
@@ -66,7 +66,7 @@ export default {
     computedConfig() {
       const c = {}
       _.merge(c, this.golbalConfig.select, this.config)
-      return c;
+      return c
     }
   }
 }

@@ -58,7 +58,7 @@ const golbalConfig = {
     autocomplete: 'off',
     placeholder: '请选择',
     filterable: false,
-    allowcreate: false,
+    allowCreate: false,
     remote: false,
     loading: false,
     loadingText: '加载中',

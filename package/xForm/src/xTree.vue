@@ -5,7 +5,7 @@
     :disabled="config.disabled"
     :multiple="config.multiple"
     :placeholder="config.placeholder"
-    :clearable="config.clearable"
+    :clearable="true"
     :collapse-tags="config.collapseTags"
     filterable
     :size="config.size"
@@ -50,7 +50,7 @@
 //     value: "value",
 //     label: "label",
 //     children: "children",
-//     defaultExpandAll: true,
+//     defaultExpandAll: false,
 //   }
 // }
 import mixinComponent from '../../common/xMixin'
@@ -130,9 +130,9 @@ export default {
       }
     },
     // 多选时
-    handleCheckChange() {
+    handleCheckChange(clickNode, status) {
       if (this.config.multiple) {
-        this.formData = this.$refs.tree.getCheckedKeys()
+        this.formData = status.checkedKeys
       } else {
         this.formData = this.$refs.tree.getCheckedKeys()[0]
       }
