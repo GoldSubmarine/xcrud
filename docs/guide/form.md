@@ -31,6 +31,7 @@
 
 <common-api title="Config" :apiData="[
   { params: '...', describe: '所有el-form的属性及方法，参见 [文档](https://element.eleme.cn/#/zh-CN/component/form#form-attributes)', type: '...', optionValue: '...', defaultValue: '...' },
+  { params: 'itemStyle', describe: '输入框的样式', type: 'string', optionValue: '—', defaultValue: '—' },
   { params: 'item', describe: '表单的Item，具体看下表 item', type: 'array(object)', optionValue: '—', defaultValue: '—' },
   { params: 'operate', describe: '表单底部的操作按钮，参见 [按钮文档](/xcrud/guide/button.html)', type: 'array(object)', optionValue: '—', defaultValue: '—' },
 ]" />
