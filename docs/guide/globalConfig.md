@@ -264,7 +264,7 @@ const golbalConfig = {
     column: {
       width: null,
       minWidth: null,
-      fixed: true,
+      fixed: false,
       sortable: false,
       sortOrders: ['ascending', 'descending', null],
       resizable: true,
@@ -328,7 +328,7 @@ const golbalConfig = {
         label: '操作'
         // width: null,
         // minWidth: null,
-        // fixed: null,
+        // fixed: false,
         // renderHeader: null,
         // resizable: null,
         // align: null,
