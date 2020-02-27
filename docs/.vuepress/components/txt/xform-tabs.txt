@@ -100,10 +100,10 @@ export default {
             ]
           }
         ],
-        // operate: [
-        //   { text: '保存', show: true, click: _this.save },
-        //   { text: '取消', show: true, click: () => console.log('cancel') }
-        // ]
+        operate: [
+          { text: '保存', show: true, click: _this.save },
+          { text: '取消', show: true, click: () => console.log('cancel') }
+        ]
       }
     }
   },

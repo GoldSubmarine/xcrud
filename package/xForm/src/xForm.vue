@@ -24,8 +24,9 @@
       <slot v-if="typeof configItem.slot === 'string' && computeBoolen(configItem.show, true)" :name="configItem.slot" />
       <!-- tabs表格 -->
       <el-tabs
+        class="tab-table"
         v-if="configItem.xType === 'tabs'"
-        :value="configItem.tabs[0].name"
+        v-model="activeTab"
         :key="configItemIndex"
         :type="computedConfig.tabs.type"
         :closable="computedConfig.tabs.closable"
@@ -48,7 +49,6 @@
           :label="tabConfig.label">
           <el-button type="primary" size="mini" style="margin-bottom:14px;" @click="addDynamic(formData[tabConfig.name])">新增</el-button>
           <el-table
-            class="tab-table"
             :data="formData[tabConfig.name]"
             :height="computedConfig.tabs.table.height"
             :max-height="computedConfig.tabs.table.maxHeight"
@@ -209,7 +209,8 @@ export default {
   data() {
     return {
       rules: {},
-      isInitFormData: false
+      isInitFormData: false,
+      activeTab: ''
     }
   },
   created() {
@@ -244,8 +245,9 @@ export default {
             this.formData[item.name] = []
           }
         } else if(item.xType === 'tabs') {
-          item.tabs.forEach(tab => {
-            if (!this.formData[item.name]) {
+          item.tabs.forEach((tab, tabIndex) => {
+            if(tabIndex === 0) this.activeTab = tab.name
+            if (!this.formData[tab.name]) {
               this.formData[tab.name] = []
             }
           })
@@ -309,14 +311,30 @@ export default {
     },
     // 校验
     validate(fun) {
-      if (fun) {
-        return this.$refs['refForm'].validate(fun)
+      let validPromise = new Promise((resolve, reject) => {
+        this.$refs['refForm'].validate((valid, obj) => {
+          if(valid) {
+            resolve()
+          } else {
+            for(let key in obj) {
+              if(/\.\d\./.test(key)) {
+                this.activeTab = key.split('.')[0]
+              }
+            }
+            reject()
+          }
+          if(fun) {
+            fun(valid, obj)
+          }
+        })
+      })
+      if(fun === undefined) {
+        return validPromise
       }
-      return this.$refs['refForm'].validate()
     },
     // 动态 table 表单
-    addDynamic(arr, index = 0) {
-      arr.splice(index, 0, { username: undefined, birthday: undefined })
+    addDynamic(arr) {
+      arr.splice(arr.length, 0, { username: undefined, birthday: undefined })
     },
     removeDynamic(arr, index) {
       arr.splice(index, 1)
@@ -331,5 +349,8 @@ export default {
 }
 .tab-table tbody td {
   padding-bottom: 0px;
+}
+.tab-table {
+  margin-bottom: 22px;
 }
 </style>
