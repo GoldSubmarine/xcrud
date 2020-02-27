@@ -349,7 +349,42 @@ const golbalConfig = {
       validateOnRuleChange: true,
       size: 'medium',
       disabled: false,
-      itemStyle: 'max-width: 300px; width: 100%;'
+      itemStyle: 'max-width: 300px; width: 100%;',
+      tabs: {
+        type: 'border-card',
+        closable: false,
+        addable: false,
+        editable: false,
+        tabPosition: 'top',
+        stretch: false,
+        table: {
+          height: null,
+          maxHeight: null,
+          stripe: false,
+          border: false,
+          size: 'medium',
+          fit: true,
+          showHeader: true,
+          highlightCurrentRow: false,
+          rowClassName: null,
+          rowStyle: null,
+          cellClassName: null,
+          cellStyle: null,
+          headerRowClassName: null,
+          headerRowStyle: null,
+          headerCellClassName: null,
+          headerCellStyle: null,
+          emptyText: '暂无数据',
+          defaultExpandAll: false,
+          defaultSort: { order: 'ascending' },
+          tooltipEffect: 'dark',
+          showSummary: false,
+          sumText: '合计',
+          selectOnIndeterminate: true,
+          indent: 16,
+          treeProps: { hasChildren: 'hasChildren', children: 'children' }
+        }
+      }
     },
     operate: {
       btn: {
