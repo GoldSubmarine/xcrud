@@ -64,11 +64,13 @@ export default {
               {
                 label: '人员列表2',
                 name: 'userList2',
-                rowAdd:(done)=>{
-                  this.$message.success('新增回调');
-                  done({
-                    input:'默认值'
-                  });
+                add:(arr)=>{   // 自定义插入方法
+                  arr.splice(arr.length, 0, {})
+                  console.log("add")
+                },
+                remove: (arr, index) => {
+                  arr.splice(index, 1)
+                  console.log("remove")
                 },
                 column: [
                   {

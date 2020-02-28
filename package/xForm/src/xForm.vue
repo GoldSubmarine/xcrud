@@ -47,7 +47,7 @@
           :closable="computeBoolen(tabConfig.closable, false)"
           :lazy="computeBoolen(tabConfig.lazy, false)"
           :label="tabConfig.label">
-          <el-button type="primary" size="mini" style="margin-bottom:14px;" @click="addDynamic(formData[tabConfig.name])">新增</el-button>
+          <el-button type="primary" size="mini" style="margin-bottom:14px;" @click="addDynamic(tabConfig.add, formData[tabConfig.name])">新增</el-button>
           <el-table
             :data="formData[tabConfig.name]"
             :height="computedConfig.tabs.table.height"
@@ -130,7 +130,7 @@
             <el-table-column label="操作" width="60px" header-align="center" align="center">
               <template v-slot="scope">
                 <el-form-item label-width="0px">
-                  <el-button type="danger" icon="el-icon-close" circle size="mini" @click="removeDynamic(formData[tabConfig.name], scope.$index)"></el-button>
+                  <el-button type="danger" icon="el-icon-close" circle size="mini" @click="removeDynamic(tabConfig.remove, formData[tabConfig.name], scope.$index)"></el-button>
                 </el-form-item>
               </template>
             </el-table-column>
@@ -333,10 +333,18 @@ export default {
       }
     },
     // 动态 table 表单
-    addDynamic(arr) {
-      arr.splice(arr.length, 0, { username: undefined, birthday: undefined })
+    addDynamic(fun, arr) {
+      if(fun) {
+        fun(arr)
+        return
+      }
+      arr.splice(arr.length, 0, {})
     },
-    removeDynamic(arr, index) {
+    removeDynamic(fun, arr, index) {
+      if(fun) {
+        fun(arr, index)
+        return
+      }
       arr.splice(index, 1)
     }
   }
