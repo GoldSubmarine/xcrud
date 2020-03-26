@@ -90,8 +90,8 @@ const golbalConfig = {
   },
   checkbox: {
     size: 'medium',
-    min: null,
-    max: null,
+    min: undefined,
+    max: undefined,
     textColor: '#ffffff',
     fill: '#409EFF',
     border: false

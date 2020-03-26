@@ -86,14 +86,20 @@ export default {
           {
             xType: 'select',
             name: 'sex2',
-            label: '性别示例2',
+            label: '自定义下拉',
             dic: {data: [{id: 1, name: "男男"}], label: 'name', value: 'id'}
           },
           {
-            xType: 'select',
+            xType: 'radio',
             name: 'status',
             label: '状态',
             dic: [ { label: '激活', value: 'enable' }, { label: '锁定', value: 'disable' }]
+          },
+          {
+            xType: 'checkbox',
+            name: 'hobby',
+            label: '爱好',
+            dic: [ { label: '篮球', value: 'basketball' }, { label: '足球', value: 'football' }]
           },
           {
             xType: "input",

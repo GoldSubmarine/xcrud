@@ -25,7 +25,7 @@
       <!-- tabs表格 -->
       <el-tabs
         class="tab-table"
-        v-if="configItem.xType === 'tabs'"
+        v-else-if="configItem.xType === 'tabs'"
         v-model="activeTab"
         :key="configItemIndex"
         :type="computedConfig.tabs.type"
@@ -119,7 +119,7 @@
                   <slot v-if="getComponentType(columnConfig) === 'slot'" :name="columnConfig.name" />
                   <component
                     v-else
-                    :style="columnConfig.style ? columnConfig.style : computedConfig.itemStyle"
+                    :style="columnConfig.style"
                     :is="getComponentType(columnConfig)"
                     v-model="scope.row[columnConfig.name]"
                     :config="columnConfig"

@@ -2,7 +2,10 @@
   <div class="app-container" :v-loading="loading">
     <x-form ref="xForm" v-model="formData" :config="formConfig">
       <template #titleSlot>
-        <p style="color: red;padding-left: 120px;">这是插入的一段文字</p>
+        <p style="color: red;">这是插入的一段文字</p>
+      </template>
+      <template #age>
+        <input type="text">
       </template>
       <template #address>
         <div v-for="(item, index) in formData.address" :key="index" style="margin-bottom: 10px">
@@ -52,8 +55,9 @@ export default {
         inline: false,
         item: [
           { xType: 'input', name: 'username', label: '登录名', rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }] },
-          { slot: "titleSlot" },
           { xType: "input", type: 'password', name: "password", label: '密码', },
+          { slot: "titleSlot" },
+          { xType: "slot", name: "age", label: "年龄" },
           { xType: "slot", name: "address", label: '地址' },
         ],
         operate: [

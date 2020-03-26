@@ -49,7 +49,7 @@ export default {
                     xType: 'input',
                     name: 'username',
                     label: '登录名',
-                    width: '300px',
+                    style: 'width: 100%',   // 自定义style
                     rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }]
                   },
                   {
