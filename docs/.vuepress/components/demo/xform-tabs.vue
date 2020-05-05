@@ -29,6 +29,7 @@ export default {
             xType: 'input',
             name: 'username',
             label: '登录名',
+            tooltip: "登录名的提示",
             rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }]
           },
           {
@@ -49,6 +50,7 @@ export default {
                     xType: 'input',
                     name: 'username',
                     label: '登录名',
+                    tooltip: "表格的提示",
                     style: 'width: 100%',   // 自定义style
                     rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }]
                   },

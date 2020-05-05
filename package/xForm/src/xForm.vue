@@ -110,6 +110,13 @@
               :align="columnConfig.align"
               :class-name="columnConfig.className"
               :key="columnIndex">
+              <template slot="header">
+                {{ columnConfig.label }}
+                <el-tooltip v-if="columnConfig.tooltip" :effect="computedConfig.tooltip.effect" :placement="computedConfig.tooltip.placement">
+                  <div slot="content"><span v-html="columnConfig.tooltip"></span></div>
+                  <i :class="computedConfig.tooltip.iconName" :style="computedConfig.tooltip.iconStyle"></i>
+                </el-tooltip>
+              </template>
               <template v-slot="scope">
                 <el-form-item
                   label-width="0px"
@@ -145,6 +152,14 @@
         :label="configItem.label + '：'"
         :rules="configItem.rules"
         >
+        <span slot="label">
+          {{ configItem.label }}
+          <el-tooltip v-if="configItem.tooltip" :effect="computedConfig.tooltip.effect" :placement="computedConfig.tooltip.placement">
+            <div slot="content"><span v-html="configItem.tooltip"></span></div>
+            <i :class="computedConfig.tooltip.iconName" :style="computedConfig.tooltip.iconStyle"></i>
+          </el-tooltip>
+          ：
+        </span>
         <slot v-if="getComponentType(configItem) === 'slot'" :name="configItem.name" />
         <component
           v-else

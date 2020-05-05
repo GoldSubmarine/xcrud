@@ -41,6 +41,7 @@ export default {
             xType: 'input',
             name: 'username',
             label: '登录名',
+            tooltip: '登录名的<br />提示信息',
             rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }]
           },
           {

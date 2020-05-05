@@ -350,6 +350,12 @@ const golbalConfig = {
       size: 'medium',
       disabled: false,
       itemStyle: 'max-width: 300px; width: 100%;',
+      tooltip: {
+        effect: 'dark',
+        placement: 'top-start',
+        iconName: 'el-icon-info',
+        iconStyle: 'color: #409EFF'
+      },
       tabs: {
         type: 'border-card',
         closable: false,
