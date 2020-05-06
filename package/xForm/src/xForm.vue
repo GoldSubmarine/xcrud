@@ -40,7 +40,7 @@
         @edit="(a, b) => computeFunction(computedConfig.tabs.edit, a, b)"
       >
         <el-tab-pane
-          v-for="tabConfig in configItem.tabs"
+          v-for="tabConfig in configItem.tabs.filter(item => item.show !== false)"
           :key="tabConfig.label"
           :name="tabConfig.name"
           :disabled="computeBoolen(tabConfig.disabled, false)"
