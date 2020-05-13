@@ -204,7 +204,7 @@ export default {
       }
       this.config.column.forEach(item => {
         if (item.search) {
-          const tmp = JSON.parse(JSON.stringify(item))
+          const tmp = _.cloneDeep(tmp, item)
           delete tmp.show
           formConfigTemp.item.push(tmp)
         }

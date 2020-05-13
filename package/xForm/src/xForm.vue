@@ -39,110 +39,134 @@
         @tab-add="() => computeFunction(computedConfig.tabs.tabAdd)"
         @edit="(a, b) => computeFunction(computedConfig.tabs.edit, a, b)"
       >
-        <el-tab-pane
-          v-for="tabConfig in configItem.tabs.filter(item => item.show !== false)"
-          :key="tabConfig.label"
-          :name="tabConfig.name"
-          :disabled="computeBoolen(tabConfig.disabled, false)"
-          :closable="computeBoolen(tabConfig.closable, false)"
-          :lazy="computeBoolen(tabConfig.lazy, false)"
-          :label="tabConfig.label">
-          <el-button type="primary" size="mini" style="margin-bottom:14px;" @click="addDynamic(tabConfig.add, formData[tabConfig.name])">新增</el-button>
-          <el-table
-            :data="formData[tabConfig.name]"
-            :height="computedConfig.tabs.table.height"
-            :max-height="computedConfig.tabs.table.maxHeight"
-            :stripe="computedConfig.tabs.table.stripe"
-            :border="computedConfig.tabs.table.border"
-            :size="computedConfig.tabs.table.size"
-            :fit="computedConfig.tabs.table.fit"
-            :show-header="computedConfig.tabs.table.showHeader"
-            :highlight-current-row="computedConfig.tabs.table.highlightCurrentRow"
-            :current-row-key="computedConfig.tabs.table.currentRowKey"
-            :row-class-name="computedConfig.tabs.table.rowClassName"
-            :row-style="computedConfig.tabs.table.rowStyle"
-            :cell-class-name="computedConfig.tabs.table.cellClassName"
-            :cell-style="computedConfig.tabs.table.cellStyle"
-            :header-row-class-name="computedConfig.tabs.table.headerRowClassName"
-            :header-row-style="computedConfig.tabs.table.headerRowStyle"
-            :header-cell-class-name="computedConfig.tabs.table.headerCellClassName"
-            :header-cell-style="computedConfig.tabs.table.headerCellStyle"
-            :row-key="computedConfig.tabs.table.rowKey"
-            :empty-text="computedConfig.tabs.table.emptyText"
-            :default-expand-all="computedConfig.tabs.table.defaultExpandAll"
-            :expand-row-keys="computedConfig.tabs.table.expandRowKeys"
-            :default-sort="computedConfig.tabs.table.defaultSort"
-            :tooltip-effect="computedConfig.tabs.table.tooltipEffect"
-            :show-summary="computedConfig.tabs.table.showSummary"
-            :sum-text="computedConfig.tabs.table.sumText"
-            :summary-method="computedConfig.tabs.table.summaryMethod"
-            :span-method="computedConfig.tabs.table.spanMethod"
-            :select-on-indeterminate="computedConfig.tabs.table.selectOnIndeterminate"
-            :indent="computedConfig.tabs.table.indent"
-            :lazy="computedConfig.tabs.table.lazy"
-            :load="computedConfig.tabs.table.load"
-            :tree-props="computedConfig.tabs.table.treeProps"
+        <template v-for="(tabConfig, tabConfigIndex) in configItem.tabs">
+          <el-tab-pane
+            :key="tabConfigIndex"
+            :name="tabConfig.name"
+            :disabled="computeBoolen(tabConfig.disabled, false)"
+            :closable="computeBoolen(tabConfig.closable, false)"
+            :lazy="computeBoolen(tabConfig.lazy, false)"
+            :label="tabConfig.label">
+            <el-button type="primary" size="mini" style="margin-bottom:14px;" @click="addDynamic(tabConfig.add, formData[tabConfig.name])">新增</el-button>
+            <el-table
+              :data="formData[tabConfig.name]"
+              :height="computedConfig.tabs.table.height"
+              :max-height="computedConfig.tabs.table.maxHeight"
+              :stripe="computedConfig.tabs.table.stripe"
+              :border="computedConfig.tabs.table.border"
+              :size="computedConfig.tabs.table.size"
+              :fit="computedConfig.tabs.table.fit"
+              :show-header="computedConfig.tabs.table.showHeader"
+              :highlight-current-row="computedConfig.tabs.table.highlightCurrentRow"
+              :current-row-key="computedConfig.tabs.table.currentRowKey"
+              :row-class-name="computedConfig.tabs.table.rowClassName"
+              :row-style="computedConfig.tabs.table.rowStyle"
+              :cell-class-name="computedConfig.tabs.table.cellClassName"
+              :cell-style="computedConfig.tabs.table.cellStyle"
+              :header-row-class-name="computedConfig.tabs.table.headerRowClassName"
+              :header-row-style="computedConfig.tabs.table.headerRowStyle"
+              :header-cell-class-name="computedConfig.tabs.table.headerCellClassName"
+              :header-cell-style="computedConfig.tabs.table.headerCellStyle"
+              :row-key="computedConfig.tabs.table.rowKey"
+              :empty-text="computedConfig.tabs.table.emptyText"
+              :default-expand-all="computedConfig.tabs.table.defaultExpandAll"
+              :expand-row-keys="computedConfig.tabs.table.expandRowKeys"
+              :default-sort="computedConfig.tabs.table.defaultSort"
+              :tooltip-effect="computedConfig.tabs.table.tooltipEffect"
+              :show-summary="computedConfig.tabs.table.showSummary"
+              :sum-text="computedConfig.tabs.table.sumText"
+              :summary-method="computedConfig.tabs.table.summaryMethod"
+              :span-method="computedConfig.tabs.table.spanMethod"
+              :select-on-indeterminate="computedConfig.tabs.table.selectOnIndeterminate"
+              :indent="computedConfig.tabs.table.indent"
+              :lazy="computedConfig.tabs.table.lazy"
+              :load="computedConfig.tabs.table.load"
+              :tree-props="computedConfig.tabs.table.treeProps"
 
-            @select="(a, b) => computeFunction(computedConfig.tabs.select, a, b) "
-            @select-all="(a) => computeFunction(computedConfig.tabs.selectAll, a) "
-            @selection-change="(a) => computeFunction(computedConfig.tabs.selectionChange, a)"
-            @cell-mouse-enter="(a, b, c, d) => computeFunction(computedConfig.tabs.cellMouseEnter, a, b, c, d) "
-            @cell-mouse-leave="(a, b, c, d) => computeFunction(computedConfig.tabs.cellMouseLeave, a, b, c, d) "
-            @cell-click="(a, b, c, d) => computeFunction(computedConfig.tabs.cellClick, a, b, c, d) "
-            @cell-dblclick="(a, b, c, d) => computeFunction(computedConfig.tabs.cellDblclick, a, b, c, d) "
-            @row-click="(a, b, c) => computeFunction(computedConfig.tabs.rowClick, a, b, c) "
-            @row-contextmenu="(a, b, c) => computeFunction(computedConfig.tabs.rowContextmenu, a, b, c) "
-            @row-dblclick="(a, b, c) => computeFunction(computedConfig.tabs.rowDblclick, a, b, c) "
-            @header-click="(a, b) => computeFunction(computedConfig.tabs.headerClick, a, b) "
-            @header-contextmenu="(a, b) => computeFunction(computedConfig.tabs.headerContextmenu, a, b) "
-            @sort-change="(a) => computeFunction(computedConfig.tabs.sortChange, a) "
-            @filter-change="(a) => computeFunction(computedConfig.tabs.filterChange, a) "
-            @current-change="(a, b) => computeFunction(computedConfig.tabs.currentChange, a, b) "
-            @header-dragend="(a, b, c, d) => computeFunction(computedConfig.tabs.headerDragend, a, b, c, d) "
-            @expand-change="(a, b) => computeFunction(computedConfig.tabs.expandChange, a, b) "
-          >
-            <el-table-column
-              v-for="(columnConfig, columnIndex) in tabConfig.column"
-              header-align="center"
-              :prop="columnConfig.name"
-              :label="columnConfig.label"
-              :width="columnConfig.width"
-              :align="columnConfig.align"
-              :class-name="columnConfig.className"
-              :key="columnIndex">
-              <template slot="header">
-                {{ columnConfig.label }}
-                <el-tooltip v-if="columnConfig.tooltip" :effect="computedConfig.tooltip.effect" :placement="computedConfig.tooltip.placement">
-                  <div slot="content"><span v-html="columnConfig.tooltip"></span></div>
-                  <i :class="computedConfig.tooltip.iconName" :style="computedConfig.tooltip.iconStyle"></i>
-                </el-tooltip>
+              @select="(a, b) => computeFunction(computedConfig.tabs.select, a, b) "
+              @select-all="(a) => computeFunction(computedConfig.tabs.selectAll, a) "
+              @selection-change="(a) => computeFunction(computedConfig.tabs.selectionChange, a)"
+              @cell-mouse-enter="(a, b, c, d) => computeFunction(computedConfig.tabs.cellMouseEnter, a, b, c, d) "
+              @cell-mouse-leave="(a, b, c, d) => computeFunction(computedConfig.tabs.cellMouseLeave, a, b, c, d) "
+              @cell-click="(a, b, c, d) => computeFunction(computedConfig.tabs.cellClick, a, b, c, d) "
+              @cell-dblclick="(a, b, c, d) => computeFunction(computedConfig.tabs.cellDblclick, a, b, c, d) "
+              @row-click="(a, b, c) => computeFunction(computedConfig.tabs.rowClick, a, b, c) "
+              @row-contextmenu="(a, b, c) => computeFunction(computedConfig.tabs.rowContextmenu, a, b, c) "
+              @row-dblclick="(a, b, c) => computeFunction(computedConfig.tabs.rowDblclick, a, b, c) "
+              @header-click="(a, b) => computeFunction(computedConfig.tabs.headerClick, a, b) "
+              @header-contextmenu="(a, b) => computeFunction(computedConfig.tabs.headerContextmenu, a, b) "
+              @sort-change="(a) => computeFunction(computedConfig.tabs.sortChange, a) "
+              @filter-change="(a) => computeFunction(computedConfig.tabs.filterChange, a) "
+              @current-change="(a, b) => computeFunction(computedConfig.tabs.currentChange, a, b) "
+              @header-dragend="(a, b, c, d) => computeFunction(computedConfig.tabs.headerDragend, a, b, c, d) "
+              @expand-change="(a, b) => computeFunction(computedConfig.tabs.expandChange, a, b) "
+            >
+              <template v-for="(columnConfig, columnIndex) in tabConfig.column">
+                <el-table-column
+                  v-if="computeBoolen(columnConfig.show, true)"
+                  :header-align="columnConfig.headerAlign"
+                  :prop="columnConfig.name"
+                  :label="columnConfig.label"
+                  :width="columnConfig.width"
+                  :min-width="columnConfig.minWidth"
+                  :show-overflow-tooltip="columnConfig.showOverflowTooltip"
+                  :align="columnConfig.align"
+                  :class-name="columnConfig.className"
+                  :key="columnIndex">
+                  <template slot="header">
+                    {{ columnConfig.label }}
+                    <el-tooltip v-if="columnConfig.tooltip" :effect="computedConfig.tooltip.effect" :placement="computedConfig.tooltip.placement">
+                      <div slot="content"><span v-html="columnConfig.tooltip"></span></div>
+                      <i :class="computedConfig.tooltip.iconName" :style="computedConfig.tooltip.iconStyle"></i>
+                    </el-tooltip>
+                  </template>
+                  <template v-slot="scope">
+                    <el-form-item
+                      label-width="0px"
+                      :prop="tabConfig.name + '.' + scope.$index + '.' + columnConfig.name"
+                      :rules="columnConfig.rules"
+                    >
+                      <slot v-if="getComponentType(columnConfig) === 'slot'" :name="columnConfig.name" />
+                      <component
+                        v-else
+                        :style="columnConfig.style"
+                        :is="getComponentType(columnConfig)"
+                        v-model="scope.row[columnConfig.name]"
+                        :config="columnConfig"
+                      />
+                    </el-form-item>
+                  </template>
+                </el-table-column>
               </template>
-              <template v-slot="scope">
-                <el-form-item
-                  label-width="0px"
-                  :prop="tabConfig.name + '.' + scope.$index + '.' + columnConfig.name"
-                  :rules="columnConfig.rules"
-                >
-                  <slot v-if="getComponentType(columnConfig) === 'slot'" :name="columnConfig.name" />
-                  <component
-                    v-else
-                    :style="columnConfig.style"
-                    :is="getComponentType(columnConfig)"
-                    v-model="scope.row[columnConfig.name]"
-                    :config="columnConfig"
-                  />
-                </el-form-item>
-              </template>
-            </el-table-column>
-            <el-table-column label="操作" width="60px" header-align="center" align="center">
-              <template v-slot="scope">
-                <el-form-item label-width="0px">
-                  <el-button type="danger" icon="el-icon-close" circle size="mini" @click="removeDynamic(tabConfig.remove, formData[tabConfig.name], scope.$index)"></el-button>
-                </el-form-item>
-              </template>
-            </el-table-column>
-          </el-table>
-        </el-tab-pane>
+              <el-table-column
+                v-if="computedConfig.tabs.table.operate.show"
+                :label="computedConfig.tabs.table.operate.label"
+                :width="computedConfig.tabs.table.operate.width"
+                :header-align="computedConfig.tabs.table.operate.headerAlign"
+                :align="computedConfig.tabs.table.operate.align">
+                <template v-slot="scope">
+                  <el-form-item label-width="0px">
+                    <el-button
+                      v-for="(btn, btnIndex) in computedConfig.tabs.table.operate.btn"
+                      :key="btnIndex"
+                      :style="btn.style"
+                      :class="btn.className"
+                      :type="btn.type"
+                      :icon="btn.icon"
+                      :size="btn.size"
+                      :plain="computeBoolen(btn.plain, false)"
+                      :round="computeBoolen(btn.round, false)"
+                      :circle="computeBoolen(btn.circle, false)"
+                      @click="btn.click(formData[tabConfig.name], scope.$index, tabConfig.remove)"
+                    >
+                      <span v-if="btn.text">{{ btn.text }}</span>
+                    </el-button>
+                  </el-form-item>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-tab-pane>
+        </template>
       </el-tabs>
       <!-- 动态加载组件 -->
       <el-form-item 
@@ -239,6 +263,15 @@ export default {
       for(let i = 0; i < this.config.item.length; i++) {
         let item = this.config.item[i];
         c.item[i] = _.merge({}, this.golbalConfig[item.xType], item)
+        if(item.xType === 'tabs') {
+          c.item[i].tabs.forEach(tab => {
+            tab.column.forEach((column, columnIndex) => {
+              let result = {}
+              _.merge(result, this.golbalConfig.xform.form.tabs.table.column, column)
+              this.$set(tab.column, columnIndex, result)
+            })
+          })
+        }
       }
       if(this.config.operate) {
         for(let i = 0; i < this.config.operate.length; i++) {
@@ -354,13 +387,6 @@ export default {
         return
       }
       arr.splice(arr.length, 0, {})
-    },
-    removeDynamic(fun, arr, index) {
-      if(fun) {
-        fun(arr, index)
-        return
-      }
-      arr.splice(index, 1)
     }
   }
 }

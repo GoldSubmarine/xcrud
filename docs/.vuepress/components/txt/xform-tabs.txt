@@ -65,6 +65,7 @@ export default {
               },
               {
                 label: '人员列表2',
+                show: true,
                 name: 'userList2',
                 add:(arr)=>{   // 自定义插入方法
                   arr.splice(arr.length, 0, {})

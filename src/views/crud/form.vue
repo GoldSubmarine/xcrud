@@ -33,12 +33,38 @@ export default {
           { xType: 'input', name: 'phone', label: '手机号', rules: _this.importRules('inputRequired', 'phone') },
           { xType: 'input', name: 'email', label: '邮箱', rules: _this.importRules('email') },
           { xType: 'select', name: 'sex', label: '性别', dic: _this.importDic('sex'), rules: _this.importRules('selectRequired') },
-          { xType: 'select', name: 'sex2', label: '性别2', dic: {data: [{id: 1, name: "男男"}], label: 'name', value: 'id'}, rules: _this.importRules('selectRequired') },
+          { xType: 'select', name: 'sex2', label: '性别2', dic: { data: [{ id: 1, name: '男男' }], label: 'name', value: 'id' }, rules: _this.importRules('selectRequired') },
           // { type: "text", name: "avatar", label: '头像', rules: _this.importRules("inputRequired") },
           { xType: 'select', name: 'status', label: '状态', dic: _this.importDic('userStatus'), rules: _this.importRules('selectRequired') },
           { xType: 'input', name: 'address', label: '地址' },
           // { type: "input", name: "password", label: '密码', },
-          { xType: 'input', type: 'textarea', name: 'remark', label: '备注' }
+          { xType: 'input', type: 'textarea', name: 'remark', label: '备注' },
+          {
+            xType: 'tabs',
+            tabs: [
+              {
+                label: '人员列表',
+                name: 'userList',
+                column: [
+                  {
+                    xType: 'input',
+                    name: 'username',
+                    label: '登录名',
+                    tooltip: '表格的提示',
+                    style: 'width: 100%', // 自定义style
+                    rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }]
+                  },
+                  {
+                    xType: 'datePicker',
+                    type: 'date',
+                    name: 'birthday',
+                    label: '生日',
+                    rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }]
+                  }
+                ]
+              }
+            ]
+          }
         ],
         operate: [
           { text: '保存', show: _this.showBtn, click: _this.save },

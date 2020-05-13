@@ -27,6 +27,7 @@ export default {
       searchData: {},
       configTable: {
         // index: false,
+        border: true,
         selectionChange: (a) => console.log(a),
         column: [
           { type: 'selection' },

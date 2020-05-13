@@ -367,7 +367,7 @@ const golbalConfig = {
           height: null,
           maxHeight: null,
           stripe: false,
-          border: false,
+          border: true,
           size: 'medium',
           fit: true,
           showHeader: true,
@@ -388,7 +388,39 @@ const golbalConfig = {
           sumText: '合计',
           selectOnIndeterminate: true,
           indent: 16,
-          treeProps: { hasChildren: 'hasChildren', children: 'children' }
+          treeProps: { hasChildren: 'hasChildren', children: 'children' },
+          column: {
+            width: null,
+            minWidth: null,
+            showOverflowTooltip: false,
+            align: 'center',
+            headerAlign: 'center',
+            className: null
+          },
+          operate: {
+            show: true,
+            label: '操作',
+            width: '60px',
+            headerAlign: 'center',
+            align: 'center',
+            btn: [
+              {
+                type: 'danger',
+                icon: 'el-icon-close',
+                size: 'mini',
+                circle: true,
+                style: '',
+                className: '',
+                click: (arr, index, fun) => {
+                  if (fun) {
+                    fun(arr, index)
+                    return
+                  }
+                  arr.splice(index, 1)
+                }
+              }
+            ]
+          }
         }
       }
     },
