@@ -41,6 +41,7 @@
       >
         <template v-for="(tabConfig, tabConfigIndex) in configItem.tabs">
           <el-tab-pane
+            v-if="computeBoolen(tabConfig.show, true)"
             :key="tabConfigIndex"
             :name="tabConfig.name"
             :disabled="computeBoolen(tabConfig.disabled, false)"
