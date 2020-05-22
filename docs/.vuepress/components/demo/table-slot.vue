@@ -6,8 +6,8 @@
       :config="configTable"
       :data="tableData"
       :load="getTableList">
-        <template #name="scope">
-          {{ '用户名：' + scope.row.name }}
+        <template #middle>
+          <span style="color: #F56C6C">搜索框和表格之间插入自定义内容</span>
         </template>
         <template #phone="scope">
           <el-tag>
@@ -38,14 +38,17 @@ export default {
         sortChange: a => _this.$message.success(a.prop + " " + a.order),
         column: [
           {
+            xType: 'input',
             label: '名称',
             name: 'name',
             sortable: true,
-            slot: true
+            search: true
           },
           {
             label: '性别',
             name: 'sex',
+            search: true,
+            xType: 'select',
             dic: [
               { label: '全部', value: '' },
               { label: '男', value: 'male' },

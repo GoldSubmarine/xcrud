@@ -26,7 +26,7 @@ xTable 表格是对 element-ui table 的封装，并且内部引用了 xForm，�
 
 ## slot 插槽
 
-<common-code title="slot 插槽" description="通过设置 column 的属性 slot=true 可以实现自定义插槽" codePath="table-slot">
+<common-code title="slot 插槽" description="通过设置 column 的属性 slot=true 可以实现自定义插槽，也可在搜索框和表格之间插入自定义内容" codePath="table-slot">
   <demo-table-slot></demo-table-slot>
 </common-code>
 
@@ -81,5 +81,5 @@ xTable 表格是对 element-ui table 的封装，并且内部引用了 xForm，�
 ## Table Slot
 
 <common-api title="Table Slot" :apiData="[
-  { params: 'middle', describe: '在搜索框和表格之间插入内容', type: '—', optionValue: '—', defaultValue: '—' },
+  { params: 'middle', describe: '在搜索框和表格之间插入内容，可见上述示例', type: '—', optionValue: '—', defaultValue: '—' },
 ]" />

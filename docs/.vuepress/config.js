@@ -36,15 +36,21 @@ module.exports = {
     sidebar:{
       '/guide/': [
         {
-          // title: '组件文档',
+          title: '指南',
           collapsable: false,
           children: [
             '',
+            'globalConfig',
+          ]
+        },
+        {
+          title: '组件',
+          collapsable: false,
+          children: [
             'form',
             'table',
             'button',
             'select',
-            'globalConfig',
           ]
         },
       ]
