@@ -44,6 +44,7 @@
 
 <script>
 import mixinComponent from '../../common/xMixin'
+import { merge } from 'lodash-es'
 export default {
   mixins: [mixinComponent()],
   data() {
@@ -65,7 +66,7 @@ export default {
     },
     computedConfig() {
       const c = {}
-      _.merge(c, this.golbalConfig.select, this.config)
+      merge(c, this.golbalConfig.select, this.config)
       return c
     }
   }

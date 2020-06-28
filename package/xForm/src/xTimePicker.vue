@@ -20,8 +20,8 @@
     :default-value="computedConfig.defaultValue"
     :prefix-icon="computedConfig.prefixIcon"
     :clear-icon="computedConfig.clearIcon"
-    
-    :selectableRange="computedConfig.selectableRange"
+
+    :selectable-range="computedConfig.selectableRange"
     :format="computedConfig.format"
     @change="e => computeFunction(computedConfig.change, e)"
     @blur="e => computeFunction(computedConfig.blur, e)"
@@ -32,6 +32,7 @@
 <script>
 // type: year/month/date/dates/week/datetime/datetimerange/daterange
 import mixinComponent from '../../common/xMixin'
+import { merge } from 'lodash-es'
 export default {
   mixins: [mixinComponent()],
   data() {
@@ -42,10 +43,10 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      _.merge(c, this.golbalConfig.timePicker, this.config)
-      return c;
+      merge(c, this.golbalConfig.timePicker, this.config)
+      return c
     }
-  },
+  }
 }
 </script>
 

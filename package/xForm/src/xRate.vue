@@ -24,6 +24,7 @@
 <script>
 // type: year/month/date/dates/week/datetime/datetimerange/daterange
 import mixinComponent from '../../common/xMixin'
+import { merge } from 'lodash-es'
 export default {
   mixins: [mixinComponent()],
   data() {
@@ -34,10 +35,10 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      _.merge(c, this.golbalConfig.rate, this.config)
-      return c;
+      merge(c, this.golbalConfig.rate, this.config)
+      return c
     }
-  },
+  }
 }
 </script>
 

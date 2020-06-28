@@ -155,6 +155,7 @@
 <script>
 import { filterDic } from '../../common/filterDic'
 import xForm from '../../xForm/src/xForm.vue'
+import { merge, cloneDeep } from 'lodash-es'
 import mixinComponent from '../../common/xMixin'
 export default {
   name: 'XTable',
@@ -186,25 +187,25 @@ export default {
         item: [],
         operate: []
       }
-      const searchConfig = _.merge({}, this.golbalConfig.xtable.search, this.config.search)
-      _.merge(formConfigTemp, searchConfig.form)
+      const searchConfig = merge({}, this.golbalConfig.xtable.search, this.config.search)
+      merge(formConfigTemp, searchConfig.form)
       if (this.config.searchBtn !== false) {
-        const searchBtn = _.merge({}, searchConfig.btn, searchConfig.btn.searchBtn, { click: _this.search })
+        const searchBtn = merge({}, searchConfig.btn, searchConfig.btn.searchBtn, { click: _this.search })
         formConfigTemp.operate.push(searchBtn)
       }
       if (this.config.resetBtn !== false) {
-        const resetBtn = _.merge({}, searchConfig.btn, searchConfig.btn.resetBtn, { click: _this.reset })
+        const resetBtn = merge({}, searchConfig.btn, searchConfig.btn.resetBtn, { click: _this.reset })
         formConfigTemp.operate.push(resetBtn)
       }
       if (this.config.btn) {
         this.config.btn.forEach(btn => {
-          const customBtn = _.merge({}, searchConfig.btn, btn)
+          const customBtn = merge({}, searchConfig.btn, btn)
           formConfigTemp.operate.push(customBtn)
         })
       }
       this.config.column.forEach(item => {
         if (item.search) {
-          const tmp = _.cloneDeep(item)
+          const tmp = cloneDeep(item)
           delete tmp.show
           formConfigTemp.item.push(tmp)
         }
@@ -213,20 +214,20 @@ export default {
     },
     computedConfig() {
       const c = {}
-      _.merge(c, this.golbalConfig.xtable.table, this.config)
+      merge(c, this.golbalConfig.xtable.table, this.config)
       for (let i = 0; i < this.config.column.length; i++) {
-        c.column[i] = _.merge({}, this.golbalConfig.xtable.column, this.config.column[i])
+        c.column[i] = merge({}, this.golbalConfig.xtable.column, this.config.column[i])
       }
       return c
     },
     operateConfig() {
       if (!this.config.operate || !this.config.operate.length) return null
       const c = {}
-      _.merge(c, this.golbalConfig.xtable.column, this.golbalConfig.xtable.operate.column)
+      merge(c, this.golbalConfig.xtable.column, this.golbalConfig.xtable.operate.column)
       c.btn = this.config.operate
       if (this.config.operate) {
         for (let i = 0; i < this.config.operate.length; i++) {
-          c.btn[i] = _.merge({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
+          c.btn[i] = merge({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
         }
       }
       return c

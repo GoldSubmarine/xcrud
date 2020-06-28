@@ -24,8 +24,8 @@
     :start="computedConfig.start"
     :end="computedConfig.end"
     :step="computedConfig.step"
-    :minTime="computedConfig.minTime"
-    :maxTime="computedConfig.maxTime"
+    :min-time="computedConfig.minTime"
+    :max-time="computedConfig.maxTime"
     @change="e => computeFunction(computedConfig.change, e)"
     @blur="e => computeFunction(computedConfig.blur, e)"
     @focus="e => computeFunction(computedConfig.focus, e)"
@@ -35,6 +35,7 @@
 <script>
 // type: year/month/date/dates/week/datetime/datetimerange/daterange
 import mixinComponent from '../../common/xMixin'
+import { merge } from 'lodash-es'
 export default {
   mixins: [mixinComponent()],
   data() {
@@ -45,10 +46,10 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      _.merge(c, this.golbalConfig.timeSelect, this.config)
-      return c;
+      merge(c, this.golbalConfig.timeSelect, this.config)
+      return c
     }
-  },
+  }
 }
 </script>
 

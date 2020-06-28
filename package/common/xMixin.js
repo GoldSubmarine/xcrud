@@ -1,5 +1,5 @@
 import golbalConfig from './config'
-const _ = require('lodash')
+
 export default function() {
   return {
     model: {

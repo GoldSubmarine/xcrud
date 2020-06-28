@@ -224,6 +224,7 @@
 
 <script>
 import mixinComponent from '../../common/xMixin'
+import { merge } from 'lodash-es'
 
 import xCascader from './xCascader'
 import xCheckbox from './xCheckbox'
@@ -260,15 +261,15 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      _.merge(c, this.golbalConfig.xform.form, this.config)
+      merge(c, this.golbalConfig.xform.form, this.config)
       for(let i = 0; i < this.config.item.length; i++) {
         let item = this.config.item[i];
-        c.item[i] = _.merge({}, this.golbalConfig[item.xType], item)
+        c.item[i] = merge({}, this.golbalConfig[item.xType], item)
         if(item.xType === 'tabs') {
           c.item[i].tabs.forEach(tab => {
             tab.column.forEach((column, columnIndex) => {
               let result = {}
-              _.merge(result, this.golbalConfig.xform.form.tabs.table.column, column)
+              merge(result, this.golbalConfig.xform.form.tabs.table.column, column)
               this.$set(tab.column, columnIndex, result)
             })
           })
@@ -277,7 +278,7 @@ export default {
       if(this.config.operate) {
         for(let i = 0; i < this.config.operate.length; i++) {
           let operate = this.config.operate[i];
-          c.operate[i] = _.merge({}, this.golbalConfig.xform.operate.btn, operate)
+          c.operate[i] = merge({}, this.golbalConfig.xform.operate.btn, operate)
         }
       }
       return c;
