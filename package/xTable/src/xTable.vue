@@ -80,7 +80,6 @@
             <el-button
               v-if="operateShow(operateItem, scope.row)"
               :key="operateIndex"
-              :show="operateItem.show"
               :size="operateItem.size"
               :type="operateItem.type"
               :plain="operateItem.plain"
@@ -97,6 +96,37 @@
               {{ operateItem.text }}
 
             </el-button>
+          </template>
+          <template v-if="operateConfig.dropdown.btn.length">
+            <el-dropdown
+              :class="operateConfig.dropdown.config.className"
+              :placement="operateConfig.dropdown.config.placement"
+              :trigger="operateConfig.dropdown.config.trigger"
+              :hide-on-click="operateConfig.dropdown.config.hideOnClick"
+              :show-timeout="operateConfig.dropdown.config.showTimeout"
+              :hide-timeout="operateConfig.dropdown.config.hideTimeout"
+              :tabindex="operateConfig.dropdown.config.tabindex"
+              @command="index => handleDropdownCommand(index, scope.row)">
+              <span class="el-dropdown-link">
+                {{ operateConfig.dropdown.config.text }}<i class="el-icon-arrow-down el-icon--right"></i>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <template v-for="(dropdownBtnItem, dropdownBtnItemIndex) in operateConfig.dropdown.btn">
+                  <el-dropdown-item
+                    v-if="operateShow(dropdownBtnItem, scope.row)"
+                    :key="dropdownBtnItemIndex"
+                    :divided="operateConfig.dropdown.config.divided"
+                    :disabled="dropdownBtnItem.disabled"
+                    :icon="dropdownBtnItem.icon"
+                    :command="dropdownBtnItemIndex"
+                    >
+
+                    {{ dropdownBtnItem.text }}
+
+                  </el-dropdown-item>
+                </template>
+              </el-dropdown-menu>
+            </el-dropdown>
           </template>
         </template>
       </el-table-column>
@@ -187,10 +217,19 @@ export default {
       if (!this.config.operate || !this.config.operate.length) return null
       const c = {}
       merge(c, this.golbalConfig.xtable.column, this.golbalConfig.xtable.operate.column)
-      c.btn = this.config.operate
+      c.btn = []
+      c.dropdown = {
+        config: this.golbalConfig.xtable.operate.dropdown,
+        btn: []
+      }
       if (this.config.operate) {
         for (let i = 0; i < this.config.operate.length; i++) {
-          c.btn[i] = merge({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
+          let b = merge({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
+          if(b.dropdown === true) {
+            c.dropdown.btn.push(b)
+          } else {
+            c.btn.push(b)
+          }
         }
       }
       return c
@@ -214,6 +253,10 @@ export default {
       } else {
         return this.golbalConfig.xtable.table.operate.btn.show
       }
+    },
+    // 下拉菜单的点击事件
+    handleDropdownCommand(index, row) {
+      this.operateConfig.dropdown.btn[index].click(row)
     },
     // 点击搜索
     search() {
@@ -268,4 +311,13 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+  .el-dropdown-link {
+    cursor: pointer;
+    color: #409EFF;
+    margin-left: 6px;
+  }
+  .el-icon-arrow-down {
+    font-size: 12px;
+  }
+</style>

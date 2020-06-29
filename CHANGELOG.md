@@ -16,4 +16,8 @@
 
 ## [v0.3.9] 2020.06.29
 
-- table支持多级表头
+- table 支持多级表头
+
+## [v0.3.11] 2020.06.29
+
+- table 操作列支持下拉菜单，示例见[表格基础用法](https://goldsubmarine.github.io/xcrud/guide/table.html#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95)
