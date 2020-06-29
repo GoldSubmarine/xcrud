@@ -8,7 +8,7 @@
     "build": "webpack --config build/webpack.pro.js",
     "lint": "eslint --ext .js,.vue src package --fix",
     "docs:dev": "node pre-docs.js&&cross-env NODE_ENV=dev vuepress dev docs",
-    "docs:build": "node pre-docs.js&&cross-env NODE_ENV=pro vuepress build docs&&echo 1 > ./docs/.vuepress/dist/.nojekyll"
+    "docs:build": "node pre-docs.js&&cross-env NODE_ENV=production vuepress build docs&&echo 1 > ./docs/.vuepress/dist/.nojekyll"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

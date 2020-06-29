@@ -38,7 +38,7 @@ xTable 表格是对 element-ui table 的封装，并且内部引用了 xForm，�
 
 ## 多级表头
 
-<common-code title="多级表头" description="支持多级表头。" codePath="demo-table-multi-column">
+<common-code title="多级表头" description="支持多级表头。" codePath="table-multi-column">
   <demo-table-multi-column></demo-table-multi-column>
 </common-code>
 
