@@ -1,6 +1,6 @@
 {
   "name": "xcrud",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "description": "A simplified crud component based on element-ui & Vue",
   "main": "package/index.js",
   "scripts": {
@@ -47,8 +47,8 @@
     "vuepress": "^1.2.0"
   },
   "dependencies": {
-    "lodash-es": "^4.17.15",
-    "@riophae/vue-treeselect": "^0.0.38"
+    "@riophae/vue-treeselect": "^0.0.38",
+    "lodash-es": "^4.17.15"
   },
   "peerDependencies": {
     "element-ui": "^2.7.2",
