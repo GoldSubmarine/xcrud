@@ -1,6 +1,7 @@
-const _ = require('lodash')
+import { merge } from 'lodash-es'
 const golbalConfig = {
   input: {
+    disabled: false,
     type: 'text',
     valueKey: 'value',
     debounce: 300,
@@ -23,6 +24,7 @@ const golbalConfig = {
     highlightFirstItem: false
   },
   autocomplete: {
+    disabled: false,
     placeholder: null,
     valueKey: 'value',
     debounce: 300,
@@ -49,6 +51,7 @@ const golbalConfig = {
     validateEvent: true
   },
   select: {
+    disabled: false,
     multiple: false,
     valueKey: 'value',
     size: 'medium',
@@ -70,6 +73,7 @@ const golbalConfig = {
     automaticDropdown: false
   },
   datePicker: {
+    disabled: false,
     readonly: false,
     editable: true,
     clearable: true,
@@ -81,7 +85,7 @@ const golbalConfig = {
     format: '',
     align: 'left',
     pickerOptions: {},
-    rangeSeparator: '——',
+    rangeSeparator: ':',
     valueFormat: '',
     unlinkPanels: false,
     prefixIcon: 'el-icon-date',
@@ -89,6 +93,7 @@ const golbalConfig = {
     validateEvent: true
   },
   checkbox: {
+    disabled: false,
     size: 'medium',
     min: undefined,
     max: undefined,
@@ -97,12 +102,14 @@ const golbalConfig = {
     border: false
   },
   radio: {
+    disabled: false,
     border: false,
     size: 'medium',
     textColor: '#ffffff',
     fill: '#409EFF'
   },
   cascader: {
+    disabled: false,
     size: 'medium',
     placeholder: '请选择',
     clearable: false,
@@ -112,6 +119,7 @@ const golbalConfig = {
     debounce: 300
   },
   switch: {
+    disabled: false,
     width: 40,
     activeValue: true,
     inactiveValue: false,
@@ -120,6 +128,7 @@ const golbalConfig = {
     validateEvent: true
   },
   inputNumber: {
+    disabled: false,
     min: '-Infinity',
     max: 'Infinity',
     step: 1,
@@ -131,6 +140,7 @@ const golbalConfig = {
     placeholder: null
   },
   slider: {
+    disabled: false,
     min: 0,
     max: 100,
     step: 1,
@@ -147,6 +157,7 @@ const golbalConfig = {
     marks: null
   },
   timePicker: {
+    disabled: false,
     editable: true,
     clearable: true,
     size: 'medium',
@@ -157,7 +168,7 @@ const golbalConfig = {
     isRange: false,
     arrowControl: false,
     pickerOptions: {},
-    rangeSeparator: '-',
+    rangeSeparator: ':',
     valueFormat: '',
     prefixIcon: 'el-icon-time',
     clearIcon: 'el-icon-circle-close',
@@ -166,6 +177,7 @@ const golbalConfig = {
     format: 'HH:mm:ss'
   },
   timeSelect: {
+    disabled: false,
     editable: true,
     clearable: true,
     size: 'medium',
@@ -176,7 +188,7 @@ const golbalConfig = {
     isRange: false,
     arrowControl: false,
     pickerOptions: {},
-    rangeSeparator: '-',
+    rangeSeparator: ':',
     valueFormat: '',
     prefixIcon: 'el-icon-time',
     clearIcon: 'el-icon-circle-close',
@@ -188,6 +200,7 @@ const golbalConfig = {
     maxTime: null
   },
   rate: {
+    disabled: false,
     max: 5,
     texts: ['极差', '失望', '一般', '满意', '惊喜'],
     colors: ['#F7BA2A', '#F7BA2A', '#F7BA2A'],
@@ -205,12 +218,14 @@ const golbalConfig = {
     disabledVoidIconClass: 'el-icon-star-on'
   },
   colorPicker: {
+    disabled: false,
     size: 'medium',
     predefine: null,
     showAlpha: false,
     colorFormat: 'hex'
   },
   transfer: {
+    disabled: false,
     filterable: false,
     filterPlaceholder: '请输入搜索内容',
     targetOrder: 'original',
@@ -444,6 +459,6 @@ const golbalConfig = {
 export default {
   get: () => golbalConfig,
   set: item => {
-    _.merge(golbalConfig, item)
+    merge(golbalConfig, item)
   }
 }

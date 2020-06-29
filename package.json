@@ -48,7 +48,9 @@
   },
   "peerDependencies": {
     "element-ui": "^2.7.2",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "lodash-es": "^4.17.15",
+    "@riophae/vue-treeselect": "^0.0.38"
   },
   "files": [
     "package",

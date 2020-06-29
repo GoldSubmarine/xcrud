@@ -1,9 +1,17 @@
 {
     "files.autoSave": "off",
-    "editor.tabSize": 2,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "vue-html",
+        {
+        "language": "vue",
+        "autoFix": true
+        }
+    ],
     "eslint.run": "onSave",
+    "eslint.autoFixOnSave": true,
     "editor.codeActionsOnSave": {
-        "source.fixAll": true
+        "source.fixAll.eslint": true
     }
 }
-  

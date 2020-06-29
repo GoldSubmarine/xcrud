@@ -1,5 +1,5 @@
 <template>
-    <!-- :rules="rules" -->
+  <!-- :rules="rules" -->
   <el-form
     v-if="isInitFormData && computedConfig.item"
     ref="refForm"
@@ -24,10 +24,10 @@
       <slot v-if="typeof configItem.slot === 'string' && computeBoolen(configItem.show, true)" :name="configItem.slot" />
       <!-- tabs表格 -->
       <el-tabs
-        class="tab-table"
         v-else-if="configItem.xType === 'tabs'"
-        v-model="activeTab"
         :key="configItemIndex"
+        v-model="activeTab"
+        class="tab-table"
         :type="computedConfig.tabs.type"
         :closable="computedConfig.tabs.closable"
         :addable="computedConfig.tabs.addable"
@@ -47,7 +47,8 @@
             :disabled="computeBoolen(tabConfig.disabled, false)"
             :closable="computeBoolen(tabConfig.closable, false)"
             :lazy="computeBoolen(tabConfig.lazy, false)"
-            :label="tabConfig.label">
+            :label="tabConfig.label"
+          >
             <el-button type="primary" size="mini" style="margin-bottom:14px;" @click="addDynamic(tabConfig.add, formData[tabConfig.name])">新增</el-button>
             <el-table
               :data="formData[tabConfig.name]"
@@ -105,6 +106,7 @@
               <template v-for="(columnConfig, columnIndex) in tabConfig.column">
                 <el-table-column
                   v-if="computeBoolen(columnConfig.show, true)"
+                  :key="columnIndex"
                   :header-align="columnConfig.headerAlign"
                   :prop="columnConfig.name"
                   :label="columnConfig.label"
@@ -113,12 +115,12 @@
                   :show-overflow-tooltip="columnConfig.showOverflowTooltip"
                   :align="columnConfig.align"
                   :class-name="columnConfig.className"
-                  :key="columnIndex">
+                >
                   <template slot="header">
                     {{ columnConfig.label }}
                     <el-tooltip v-if="columnConfig.tooltip" :effect="computedConfig.tooltip.effect" :placement="computedConfig.tooltip.placement">
-                      <div slot="content"><span v-html="columnConfig.tooltip"></span></div>
-                      <i :class="computedConfig.tooltip.iconName" :style="computedConfig.tooltip.iconStyle"></i>
+                      <div slot="content"><span v-html="columnConfig.tooltip" /></div>
+                      <i :class="computedConfig.tooltip.iconName" :style="computedConfig.tooltip.iconStyle" />
                     </el-tooltip>
                   </template>
                   <template v-slot="scope">
@@ -129,10 +131,10 @@
                     >
                       <slot v-if="getComponentType(columnConfig) === 'slot'" :name="columnConfig.name" />
                       <component
-                        v-else
-                        :style="columnConfig.style"
                         :is="getComponentType(columnConfig)"
+                        v-else
                         v-model="scope.row[columnConfig.name]"
+                        :style="columnConfig.style"
                         :config="columnConfig"
                       />
                     </el-form-item>
@@ -144,7 +146,8 @@
                 :label="computedConfig.tabs.table.operate.label"
                 :width="computedConfig.tabs.table.operate.width"
                 :header-align="computedConfig.tabs.table.operate.headerAlign"
-                :align="computedConfig.tabs.table.operate.align">
+                :align="computedConfig.tabs.table.operate.align"
+              >
                 <template v-slot="scope">
                   <el-form-item label-width="0px">
                     <el-button
@@ -170,27 +173,27 @@
         </template>
       </el-tabs>
       <!-- 动态加载组件 -->
-      <el-form-item 
+      <el-form-item
         v-else-if="computeBoolen(configItem.show, true)"
         :key="configItemIndex"
         :prop="configItem.name"
         :label="configItem.label + '：'"
         :rules="configItem.rules"
-        >
+      >
         <span slot="label">
           {{ configItem.label }}
           <el-tooltip v-if="configItem.tooltip" :effect="computedConfig.tooltip.effect" :placement="computedConfig.tooltip.placement">
-            <div slot="content"><span v-html="configItem.tooltip"></span></div>
-            <i :class="computedConfig.tooltip.iconName" :style="computedConfig.tooltip.iconStyle"></i>
+            <div slot="content"><span v-html="configItem.tooltip" /></div>
+            <i :class="computedConfig.tooltip.iconName" :style="computedConfig.tooltip.iconStyle" />
           </el-tooltip>
           ：
         </span>
         <slot v-if="getComponentType(configItem) === 'slot'" :name="configItem.name" />
         <component
-          v-else
-          :style="configItem.style ? configItem.style : computedConfig.itemStyle"
           :is="getComponentType(configItem)"
+          v-else
           v-model="formData[configItem.name]"
+          :style="configItem.style ? configItem.style : computedConfig.itemStyle"
           :config="configItem"
         />
       </el-form-item>
@@ -199,22 +202,22 @@
     <!-- 按钮 -->
     <el-form-item v-if="computedConfig.operate">
       <template v-for="(operateItem, operateItemIndex) in computedConfig.operate">
-        <el-button 
-          v-if="computeBoolen(operateItem.show, true)" 
-          :key="operateItemIndex" 
-          :size='operateItem.size'
-          :type='operateItem.type'
-          :plain='operateItem.plain'
-          :round='operateItem.round'
-          :circle='operateItem.circle'
-          :loading='operateItem.loading'
-          :disabled='operateItem.disabled'
-          :icon='operateItem.icon'
-          :autofocus='operateItem.autofocus'
-          :native-type='operateItem.nativeType'
+        <el-button
+          v-if="computeBoolen(operateItem.show, true)"
+          :key="operateItemIndex"
+          :size="operateItem.size"
+          :type="operateItem.type"
+          :plain="operateItem.plain"
+          :round="operateItem.round"
+          :circle="operateItem.circle"
+          :loading="operateItem.loading"
+          :disabled="operateItem.disabled"
+          :icon="operateItem.icon"
+          :autofocus="operateItem.autofocus"
+          :native-type="operateItem.nativeType"
 
           @click="operateItem.click()"
-          >
+        >
           {{ operateItem.text }}
         </el-button>
       </template>
@@ -245,7 +248,24 @@ import xTree from './xTree'
 
 export default {
   name: 'XForm',
-  components: { xInput, xAutocomplete, xRadio, xCheckbox, xSelect, xDatePicker, xTree, xCascader },
+  components: { 
+    xCascader,
+    xCheckbox,
+    xColorPicker,
+    xDatePicker,
+    xInput,
+    xAutocomplete,
+    xInputNumber,
+    xRadio,
+    xRate,
+    xSelect,
+    xSlider,
+    xSwitch,
+    xTimePicker,
+    xTimeSelect,
+    xTransfer,
+    xTree 
+  },
   mixins: [mixinComponent()],
   data() {
     return {
@@ -254,35 +274,35 @@ export default {
       activeTab: ''
     }
   },
-  created() {
-    this.initFormData()
-    this.isInitFormData = true
-  },
   computed: {
     computedConfig() {
       const c = {}
       merge(c, this.golbalConfig.xform.form, this.config)
-      for(let i = 0; i < this.config.item.length; i++) {
-        let item = this.config.item[i];
+      for (let i = 0; i < this.config.item.length; i++) {
+        const item = this.config.item[i]
         c.item[i] = merge({}, this.golbalConfig[item.xType], item)
-        if(item.xType === 'tabs') {
+        if (item.xType === 'tabs') {
           c.item[i].tabs.forEach(tab => {
             tab.column.forEach((column, columnIndex) => {
-              let result = {}
+              const result = {}
               merge(result, this.golbalConfig.xform.form.tabs.table.column, column)
               this.$set(tab.column, columnIndex, result)
             })
           })
         }
       }
-      if(this.config.operate) {
-        for(let i = 0; i < this.config.operate.length; i++) {
-          let operate = this.config.operate[i];
+      if (this.config.operate) {
+        for (let i = 0; i < this.config.operate.length; i++) {
+          const operate = this.config.operate[i]
           c.operate[i] = merge({}, this.golbalConfig.xform.operate.btn, operate)
         }
       }
-      return c;
+      return c
     }
+  },
+  created() {
+    this.initFormData()
+    this.isInitFormData = true
   },
   methods: {
     // 初始化表单数据
@@ -294,9 +314,9 @@ export default {
           if (!this.formData[item.name]) {
             this.formData[item.name] = []
           }
-        } else if(item.xType === 'tabs') {
+        } else if (item.xType === 'tabs') {
           item.tabs.forEach((tab, tabIndex) => {
-            if(tabIndex === 0) this.activeTab = tab.name
+            if (tabIndex === 0) this.activeTab = tab.name
             if (!this.formData[tab.name]) {
               this.formData[tab.name] = []
             }
@@ -311,8 +331,8 @@ export default {
     },
     // 获取动态组件类型
     getComponentType(configItem) {
-      let xType = configItem.xType;
-      let type = configItem.type;
+      const xType = configItem.xType
+      const type = configItem.type
 
       if (xType === 'slot') {
         return 'slot'
@@ -361,30 +381,30 @@ export default {
     },
     // 校验
     validate(fun) {
-      let validPromise = new Promise((resolve, reject) => {
+      const validPromise = new Promise((resolve, reject) => {
         this.$refs['refForm'].validate((valid, obj) => {
-          if(valid) {
+          if (valid) {
             resolve()
           } else {
-            for(let key in obj) {
-              if(/\.\d\./.test(key)) {
+            for (const key in obj) {
+              if (/\.\d\./.test(key)) {
                 this.activeTab = key.split('.')[0]
               }
             }
             reject()
           }
-          if(fun) {
+          if (fun) {
             fun(valid, obj)
           }
         })
       })
-      if(fun === undefined) {
+      if (fun === undefined) {
         return validPromise
       }
     },
     // 动态 table 表单
     addDynamic(fun, arr) {
-      if(fun) {
+      if (fun) {
         fun(arr)
         return
       }

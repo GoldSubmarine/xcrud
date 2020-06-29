@@ -36,6 +36,12 @@ xTable 表格是对 element-ui table 的封装，并且内部引用了 xForm，�
   <demo-table-tree></demo-table-tree>
 </common-code>
 
+## 多级表头
+
+<common-code title="多级表头" description="支持多级表头。" codePath="demo-table-multi-column">
+  <demo-table-multi-column></demo-table-multi-column>
+</common-code>
+
 ## Attributes
 
 <common-api title="Attributes" :apiData="[
@@ -72,6 +78,7 @@ xTable 表格是对 element-ui table 的封装，并且内部引用了 xForm，�
 <common-api title="Column" :apiData="[
   { params: 'label', describe: '列头部的文字', type: 'string', optionValue: '—', defaultValue: '—' },
   { params: 'name', describe: '与表格数据对应的 key', type: 'string', optionValue: '—', defaultValue: '—' },
+  { params: 'children', describe: '用于多级表头，可见上述示例', type: 'array', optionValue: '—', defaultValue: '—' },
   { params: 'search', describe: '是否需要搜索框', type: 'boolean', optionValue: 'true/false', defaultValue: 'false' },
   { params: 'show', describe: '是否需要显示column', type: 'boolean', optionValue: 'true/false', defaultValue: 'true' },
   { params: 'slot', describe: '通过插槽插入，可见上述示例', type: 'boolean', optionValue: 'true/false', defaultValue: 'false' },

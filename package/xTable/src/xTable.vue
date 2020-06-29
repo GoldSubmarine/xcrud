@@ -58,41 +58,7 @@
     >
       <!-- 生成动态列 -->
       <template v-for="(configItem, configIndex) in computedConfig.column">
-        <el-table-column
-          v-if="computeBoolen(configItem.show, true)"
-          :key="configIndex"
-          :type="configItem.type"
-          :index="configItem.index"
-          :column-key="configItem.columnKey"
-          :label="configItem.label"
-          :prop="configItem.name"
-          :width="configItem.width"
-          :min-width="configItem.minWidth"
-          :fixed="configItem.fixed"
-          :render-header="configItem.renderHeader"
-          :sortable="configItem.sortable"
-          :sort-method="configItem.sortMethod"
-          :sort-by="configItem.sortBy"
-          :sort-orders="configItem.sortOrders"
-          :resizable="configItem.resizable"
-          :formatter="(row, column, cellValue, index) => configItem.formatter ? configItem.formatter(row, column, cellValue, index) : filterTableData(row, column, cellValue, index, configItem)"
-          :show-overflow-tooltip="configItem.showOverflowTooltip"
-          :align="configItem.align"
-          :header-align="configItem.headerAlign"
-          :class-name="configItem.className"
-          :label-class-name="configItem.labelClassName"
-          :selectable="configItem.selectable"
-          :reserve-selection="configItem.reserveSelection"
-          :filters="configItem.filters"
-          :filter-placement="configItem.filterPlacement"
-          :filter-multiple="configItem.filterMultiple"
-          :filter-method="configItem.filterMethod"
-          :filtered-value="configItem.filteredValue"
-        >
-          <template v-if="configItem.slot" v-slot="scope">
-            <slot :name="configItem.name" v-bind="scope" />
-          </template>
-        </el-table-column>
+        <xColumn :config="configItem" :key="configIndex"></xColumn>
       </template>
 
       <!-- 表格的操作按钮 -->
@@ -153,13 +119,13 @@
 </template>
 
 <script>
-import { filterDic } from '../../common/filterDic'
 import xForm from '../../xForm/src/xForm.vue'
+import xColumn from './xColumn'
 import { merge, cloneDeep } from 'lodash-es'
 import mixinComponent from '../../common/xMixin'
 export default {
   name: 'XTable',
-  components: { xForm },
+  components: { xForm, xColumn },
   mixins: [mixinComponent()],
   props: {
     data: {
@@ -215,9 +181,6 @@ export default {
     computedConfig() {
       const c = {}
       merge(c, this.golbalConfig.xtable.table, this.config)
-      for (let i = 0; i < this.config.column.length; i++) {
-        c.column[i] = merge({}, this.golbalConfig.xtable.column, this.config.column[i])
-      }
       return c
     },
     operateConfig() {
@@ -241,12 +204,6 @@ export default {
       }
       this.$refs['xForm'].resetFields()
       this.getList()
-    },
-    // filter表格数据
-    filterTableData(row, column, cellValue, index, configItem) {
-      if (!row) return
-      if (configItem.dic) return filterDic(configItem.dic, cellValue)
-      return cellValue
     },
     // 表格的操作按钮显隐
     operateShow(operateItem, row) {
