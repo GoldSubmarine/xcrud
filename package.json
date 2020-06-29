@@ -46,10 +46,12 @@
     "vue-highlight.js": "^2.2.0",
     "vuepress": "^1.2.0"
   },
-  "peerDependencies": {
-    "@riophae/vue-treeselect": "^0.0.38",
-    "element-ui": "^2.7.2",
+  "dependencies": {
     "lodash-es": "^4.17.15",
+    "@riophae/vue-treeselect": "^0.0.38"
+  },
+  "peerDependencies": {
+    "element-ui": "^2.7.2",
     "vue": "^2.6.10"
   },
   "files": [
