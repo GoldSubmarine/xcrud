@@ -57,8 +57,7 @@ export default {
           {
             label: '手机',
             name: 'phone',
-            slot: true,
-            formatter: (row, column, cellValue, index) => '+86 ' + cellValue
+            slot: true
           },
         ]
       }

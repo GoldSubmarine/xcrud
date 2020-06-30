@@ -58,7 +58,12 @@
     >
       <!-- 生成动态列 -->
       <template v-for="(configItem, configIndex) in computedConfig.column">
-        <xColumn :config="configItem" :key="configIndex"></xColumn>
+        <xColumn :config="configItem" :key="configIndex">
+          <!-- slot 传递 -->
+          <template v-if="configItem.slot" #[configItem.name]="scope">
+            <slot :name="configItem.name" v-bind="scope" />
+          </template>
+        </xColumn>
       </template>
 
       <!-- 表格的操作按钮 -->

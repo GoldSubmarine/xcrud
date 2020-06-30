@@ -66,7 +66,10 @@ export default {
         ],
         operate: [
           { text: '编辑', type: 'text', show: true, click: () => console.log('编辑') },
-          { text: '详情', type: 'text', show: true, click: () => console.log('详情') }
+          { text: '详情', type: 'text', show: true, click: () => console.log('详情') },
+          { text: '更多1', dropdown: true, type: 'text', show: true, click: () => console.log('更多1') },
+          { text: '更多2', dropdown: true, type: 'text', show: true, click: row => console.log(row) },
+          { text: '更多3', dropdown: true, type: 'text', show: true, click: () => console.log('更多3') },
         ]
       }
     }
