@@ -22,6 +22,6 @@
 
 - table 操作列支持下拉菜单，示例见[表格基础用法](https://goldsubmarine.github.io/xcrud/guide/table.html#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95)
 
-## [v0.3.12] 2020.06.29
+## [v0.3.12] 2020.06.30
 
 - 表格 slot 传递 bug
