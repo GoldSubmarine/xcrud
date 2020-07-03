@@ -5,7 +5,7 @@ module.exports = {
   //dest: './dist',   // 设置输出目录
   port: 2333, //端口
   head: [
-    ['link', { rel: 'icon', href: '/logo.png' }]
+    ['link', { rel: 'icon', href: '/home.svg' }]
   ],
   define: {
     env: process.env.NODE_ENV,

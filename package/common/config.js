@@ -421,7 +421,9 @@ const golbalConfig = {
             showOverflowTooltip: false,
             align: 'center',
             headerAlign: 'center',
-            className: null
+            className: null,
+            // input的宽度100%
+            style: 'width: 100%'
           },
           operate: {
             show: true,

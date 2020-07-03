@@ -173,7 +173,7 @@ export default {
     },
     load: {
       type: Function,
-      required: true
+      default: () => {}
     }
   },
   data() {

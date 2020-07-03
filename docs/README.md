@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /home.png
+heroImage: /home.svg
 actionText: 前往 →
 actionLink: /guide/
 features:

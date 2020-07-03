@@ -47,13 +47,25 @@ export default {
                 name: 'userList',
                 column: [
                   {
-                    xType: 'input',
-                    name: 'username',
-                    label: '登录名',
-                    headerAlign: 'left',
-                    tooltip: "表格的提示",
-                    style: 'width: 100%',   // 自定义style
-                    rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }]
+                    label: '信息',
+                    name: 'info',
+                    children: [
+                      {
+                        label: '登录名',
+                        name: 'username',
+                        xType: 'input',
+                        headerAlign: 'left',
+                        tooltip: "表格的提示",
+                        style: 'width: 100px',
+                        rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }]
+                      },
+                      {
+                        label: '年龄',
+                        name: 'age',
+                        disabled: true,
+                        xType: 'input',
+                      }
+                    ]
                   },
                   {
                     xType: 'datePicker',

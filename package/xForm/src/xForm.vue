@@ -104,42 +104,12 @@
               @expand-change="(a, b) => computeFunction(computedConfig.tabs.expandChange, a, b) "
             >
               <template v-for="(columnConfig, columnIndex) in tabConfig.column">
-                <el-table-column
-                  v-if="computeBoolen(columnConfig.show, true)"
-                  :key="columnIndex"
-                  :header-align="columnConfig.headerAlign"
-                  :prop="columnConfig.name"
-                  :label="columnConfig.label"
-                  :width="columnConfig.width"
-                  :min-width="columnConfig.minWidth"
-                  :show-overflow-tooltip="columnConfig.showOverflowTooltip"
-                  :align="columnConfig.align"
-                  :class-name="columnConfig.className"
-                >
-                  <template slot="header">
-                    {{ columnConfig.label }}
-                    <el-tooltip v-if="columnConfig.tooltip" :effect="computedConfig.tooltip.effect" :placement="computedConfig.tooltip.placement">
-                      <div slot="content"><span v-html="columnConfig.tooltip" /></div>
-                      <i :class="computedConfig.tooltip.iconName" :style="computedConfig.tooltip.iconStyle" />
-                    </el-tooltip>
+                <xColumn :config="columnConfig" :tabConfig="tabConfig" :key="columnIndex">
+                  <!-- slot 传递 -->
+                  <template v-if="columnConfig.slot" #[columnConfig.name]="scope">
+                    <slot :name="columnConfig.name" v-bind="scope" />
                   </template>
-                  <template v-slot="scope">
-                    <el-form-item
-                      label-width="0px"
-                      :prop="tabConfig.name + '.' + scope.$index + '.' + columnConfig.name"
-                      :rules="columnConfig.rules"
-                    >
-                      <slot v-if="getComponentType(columnConfig) === 'slot'" :name="columnConfig.name" />
-                      <component
-                        :is="getComponentType(columnConfig)"
-                        v-else
-                        v-model="scope.row[columnConfig.name]"
-                        :style="columnConfig.style"
-                        :config="columnConfig"
-                      />
-                    </el-form-item>
-                  </template>
-                </el-table-column>
+                </xColumn>
               </template>
               <el-table-column
                 v-if="computedConfig.tabs.table.operate.show"
@@ -227,6 +197,7 @@
 
 <script>
 import mixinComponent from '../../common/xMixin'
+import { getComponentType } from '../../common/util'
 import { merge } from 'lodash-es'
 
 import xCascader from './xCascader'
@@ -245,6 +216,7 @@ import xTimePicker from './xTimePicker'
 import xTimeSelect from './xTimeSelect'
 import xTransfer from './xTransfer'
 import xTree from './xTree'
+import xColumn from '../components/xColumn'
 
 export default {
   name: 'XForm',
@@ -264,7 +236,8 @@ export default {
     xTimePicker,
     xTimeSelect,
     xTransfer,
-    xTree 
+    xTree,
+    xColumn
   },
   mixins: [mixinComponent()],
   data() {
@@ -282,13 +255,13 @@ export default {
         const item = this.config.item[i]
         c.item[i] = merge({}, this.golbalConfig[item.xType], item)
         if (item.xType === 'tabs') {
-          c.item[i].tabs.forEach(tab => {
-            tab.column.forEach((column, columnIndex) => {
-              const result = {}
-              merge(result, this.golbalConfig.xform.form.tabs.table.column, column)
-              this.$set(tab.column, columnIndex, result)
-            })
-          })
+          // c.item[i].tabs.forEach(tab => {
+          //   tab.column.forEach((column, columnIndex) => {
+          //     const result = {}
+          //     merge(result, this.golbalConfig.xform.form.tabs.table.column, column)
+          //     this.$set(tab.column, columnIndex, result)
+          //   })
+          // })
         }
       }
       if (this.config.operate) {
@@ -330,47 +303,7 @@ export default {
       this.formData = JSON.parse(JSON.stringify(this.formData))
     },
     // 获取动态组件类型
-    getComponentType(configItem) {
-      const xType = configItem.xType
-      const type = configItem.type
-
-      if (xType === 'slot') {
-        return 'slot'
-      } else if (xType === 'cascader') {
-        return 'xCascader'
-      } else if (xType === 'checkbox') {
-        return 'xCheckbox'
-      } else if (xType === 'colorPicker') {
-        return 'xColorPicker'
-      } else if (xType === 'datePicker') {
-        return 'xDatePicker'
-      } else if (xType === 'input') {
-        return 'xInput'
-      } else if (xType === 'autocomplete') {
-        return 'xAutocomplete'
-      } else if (xType === 'inputNumber') {
-        return 'xInputNumber'
-      } else if (xType === 'radio') {
-        return 'xRadio'
-      } else if (xType === 'rate') {
-        return 'xRate'
-      } else if (xType === 'select') {
-        if (type === 'tree') {
-          return 'xTree'
-        }
-        return 'xSelect'
-      } else if (xType === 'slider') {
-        return 'xSlider'
-      } else if (xType === 'switch') {
-        return 'xSwitch'
-      } else if (xType === 'timePicker') {
-        return 'xTimePicker'
-      } else if (xType === 'timeSelect') {
-        return 'xTimeSelect'
-      } else if (xType === 'transfer') {
-        return 'xTransfer'
-      }
-    },
+    getComponentType: getComponentType,
     // 重置表单
     resetFields() {
       this.$refs['refForm'].resetFields()

@@ -30,14 +30,17 @@
     :filtered-value="computedConfig.filteredValue"
   >
     <template v-if="computedConfig.children">
-      <xColumn v-for="(configItem, configItemIndex) in computedConfig.children" :key="configItemIndex" :config="configItem"></xColumn>
+      <xColumn v-for="(configItem, configItemIndex) in computedConfig.children" :key="configItemIndex" :config="configItem">
+        <!-- slot 传递 -->
+        <template v-if="configItem.slot" #[configItem.name]="scope">
+          <slot :name="configItem.name" v-bind="scope" />
+        </template>
+      </xColumn>
     </template>
     <template v-if="computedConfig.slot" v-slot="scope">
       <slot :name="computedConfig.name" v-bind="scope" />
     </template>
   </el-table-column>
-  </template>
-</div>
 </template>
 
 <script>
