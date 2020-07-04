@@ -13,7 +13,9 @@ export default {
         userList: [
           {
             username: '张三',
-            birthday: new Date()
+            birthday: new Date(),
+            age: "18",
+            weight: '50kg',
           }
         ]
       }
@@ -64,6 +66,10 @@ export default {
                         name: 'age',
                         disabled: true,
                         xType: 'input',
+                      },
+                      {
+                        label: '体重',
+                        name: 'weight',
                       }
                     ]
                   },

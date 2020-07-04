@@ -34,11 +34,12 @@
         <slot v-if="getComponentType(columnConfig) === 'slot'" :name="columnConfig.name" />
         <component
           :is="getComponentType(columnConfig)"
-          v-else
+          v-else-if="columnConfig.xType"
           v-model="scope.row[columnConfig.name]"
           :style="columnConfig.style"
           :config="columnConfig"
         />
+        <span v-else>{{ scope.row[columnConfig.name] }}</span>
       </el-form-item>
     </template>
   </el-table-column>
