@@ -16,7 +16,25 @@ export default {
             birthday: new Date(),
             age: "18",
             weight: '50kg',
-          }
+          },
+          {
+            username: '张三',
+            birthday: new Date(),
+            age: "18",
+            weight: '50kg',
+          },
+          {
+            username: '张三',
+            birthday: new Date(),
+            age: "18",
+            weight: '50kg',
+          },
+          {
+            username: '张三',
+            birthday: new Date(),
+            age: "18",
+            weight: '50kg',
+          },
         ]
       }
     }
@@ -47,19 +65,37 @@ export default {
               {
                 label: '人员列表',
                 name: 'userList',
+                add:(arr)=>{   // 自定义插入方法
+                  arr.splice(arr.length, 0, {
+                    username: '张三',
+                    birthday: new Date(),
+                    age: "18",
+                    weight: '50kg',
+                  })
+                  console.log("add")
+                },
+                spanMethod: ({ row, column, rowIndex, columnIndex }) => {
+                  if (columnIndex === 0) {
+                    if (rowIndex % 2 === 0) {
+                      return {
+                        rowspan: 2,
+                        colspan: 1
+                      }
+                    } else {
+                      return {
+                        rowspan: 0,
+                        colspan: 0
+                      }
+                    }
+                  }
+                },
                 column: [
                   {
                     label: '信息',
-                    name: 'info',
                     children: [
                       {
-                        label: '登录名',
-                        name: 'username',
-                        xType: 'input',
-                        headerAlign: 'left',
-                        tooltip: "表格的提示",
-                        style: 'width: 100px',
-                        rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }]
+                        label: '合并体重',
+                        name: 'weight',
                       },
                       {
                         label: '年龄',
@@ -68,8 +104,13 @@ export default {
                         xType: 'input',
                       },
                       {
-                        label: '体重',
-                        name: 'weight',
+                        label: '登录名',
+                        name: 'username',
+                        xType: 'input',
+                        headerAlign: 'left',
+                        tooltip: "表格的提示",
+                        style: 'width: 100px',
+                        rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }]
                       }
                     ]
                   },

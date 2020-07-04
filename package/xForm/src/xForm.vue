@@ -52,56 +52,56 @@
             <el-button type="primary" size="mini" style="margin-bottom:14px;" @click="addDynamic(tabConfig.add, formData[tabConfig.name])">新增</el-button>
             <el-table
               :data="formData[tabConfig.name]"
-              :height="computedConfig.tabs.table.height"
-              :max-height="computedConfig.tabs.table.maxHeight"
-              :stripe="computedConfig.tabs.table.stripe"
-              :border="computedConfig.tabs.table.border"
-              :size="computedConfig.tabs.table.size"
-              :fit="computedConfig.tabs.table.fit"
-              :show-header="computedConfig.tabs.table.showHeader"
-              :highlight-current-row="computedConfig.tabs.table.highlightCurrentRow"
-              :current-row-key="computedConfig.tabs.table.currentRowKey"
-              :row-class-name="computedConfig.tabs.table.rowClassName"
-              :row-style="computedConfig.tabs.table.rowStyle"
-              :cell-class-name="computedConfig.tabs.table.cellClassName"
-              :cell-style="computedConfig.tabs.table.cellStyle"
-              :header-row-class-name="computedConfig.tabs.table.headerRowClassName"
-              :header-row-style="computedConfig.tabs.table.headerRowStyle"
-              :header-cell-class-name="computedConfig.tabs.table.headerCellClassName"
-              :header-cell-style="computedConfig.tabs.table.headerCellStyle"
-              :row-key="computedConfig.tabs.table.rowKey"
-              :empty-text="computedConfig.tabs.table.emptyText"
-              :default-expand-all="computedConfig.tabs.table.defaultExpandAll"
-              :expand-row-keys="computedConfig.tabs.table.expandRowKeys"
-              :default-sort="computedConfig.tabs.table.defaultSort"
-              :tooltip-effect="computedConfig.tabs.table.tooltipEffect"
-              :show-summary="computedConfig.tabs.table.showSummary"
-              :sum-text="computedConfig.tabs.table.sumText"
-              :summary-method="computedConfig.tabs.table.summaryMethod"
-              :span-method="computedConfig.tabs.table.spanMethod"
-              :select-on-indeterminate="computedConfig.tabs.table.selectOnIndeterminate"
-              :indent="computedConfig.tabs.table.indent"
-              :lazy="computedConfig.tabs.table.lazy"
-              :load="computedConfig.tabs.table.load"
-              :tree-props="computedConfig.tabs.table.treeProps"
+              :height="tabConfig.height"
+              :max-height="tabConfig.maxHeight"
+              :stripe="tabConfig.stripe"
+              :border="tabConfig.border"
+              :size="tabConfig.size"
+              :fit="tabConfig.fit"
+              :show-header="tabConfig.showHeader"
+              :highlight-current-row="tabConfig.highlightCurrentRow"
+              :current-row-key="tabConfig.currentRowKey"
+              :row-class-name="tabConfig.rowClassName"
+              :row-style="tabConfig.rowStyle"
+              :cell-class-name="tabConfig.cellClassName"
+              :cell-style="tabConfig.cellStyle"
+              :header-row-class-name="tabConfig.headerRowClassName"
+              :header-row-style="tabConfig.headerRowStyle"
+              :header-cell-class-name="tabConfig.headerCellClassName"
+              :header-cell-style="tabConfig.headerCellStyle"
+              :row-key="tabConfig.rowKey"
+              :empty-text="tabConfig.emptyText"
+              :default-expand-all="tabConfig.defaultExpandAll"
+              :expand-row-keys="tabConfig.expandRowKeys"
+              :default-sort="tabConfig.defaultSort"
+              :tooltip-effect="tabConfig.tooltipEffect"
+              :show-summary="tabConfig.showSummary"
+              :sum-text="tabConfig.sumText"
+              :summary-method="tabConfig.summaryMethod"
+              :span-method="tabConfig.spanMethod"
+              :select-on-indeterminate="tabConfig.selectOnIndeterminate"
+              :indent="tabConfig.indent"
+              :lazy="tabConfig.lazy"
+              :load="tabConfig.load"
+              :tree-props="tabConfig.treeProps"
 
-              @select="(a, b) => computeFunction(computedConfig.tabs.select, a, b) "
-              @select-all="(a) => computeFunction(computedConfig.tabs.selectAll, a) "
-              @selection-change="(a) => computeFunction(computedConfig.tabs.selectionChange, a)"
-              @cell-mouse-enter="(a, b, c, d) => computeFunction(computedConfig.tabs.cellMouseEnter, a, b, c, d) "
-              @cell-mouse-leave="(a, b, c, d) => computeFunction(computedConfig.tabs.cellMouseLeave, a, b, c, d) "
-              @cell-click="(a, b, c, d) => computeFunction(computedConfig.tabs.cellClick, a, b, c, d) "
-              @cell-dblclick="(a, b, c, d) => computeFunction(computedConfig.tabs.cellDblclick, a, b, c, d) "
-              @row-click="(a, b, c) => computeFunction(computedConfig.tabs.rowClick, a, b, c) "
-              @row-contextmenu="(a, b, c) => computeFunction(computedConfig.tabs.rowContextmenu, a, b, c) "
-              @row-dblclick="(a, b, c) => computeFunction(computedConfig.tabs.rowDblclick, a, b, c) "
-              @header-click="(a, b) => computeFunction(computedConfig.tabs.headerClick, a, b) "
-              @header-contextmenu="(a, b) => computeFunction(computedConfig.tabs.headerContextmenu, a, b) "
-              @sort-change="(a) => computeFunction(computedConfig.tabs.sortChange, a) "
-              @filter-change="(a) => computeFunction(computedConfig.tabs.filterChange, a) "
-              @current-change="(a, b) => computeFunction(computedConfig.tabs.currentChange, a, b) "
-              @header-dragend="(a, b, c, d) => computeFunction(computedConfig.tabs.headerDragend, a, b, c, d) "
-              @expand-change="(a, b) => computeFunction(computedConfig.tabs.expandChange, a, b) "
+              @select="(a, b) => computeFunction(tabConfig.select, a, b) "
+              @select-all="(a) => computeFunction(tabConfig.selectAll, a) "
+              @selection-change="(a) => computeFunction(tabConfig.selectionChange, a)"
+              @cell-mouse-enter="(a, b, c, d) => computeFunction(tabConfig.cellMouseEnter, a, b, c, d) "
+              @cell-mouse-leave="(a, b, c, d) => computeFunction(tabConfig.cellMouseLeave, a, b, c, d) "
+              @cell-click="(a, b, c, d) => computeFunction(tabConfig.cellClick, a, b, c, d) "
+              @cell-dblclick="(a, b, c, d) => computeFunction(tabConfig.cellDblclick, a, b, c, d) "
+              @row-click="(a, b, c) => computeFunction(tabConfig.rowClick, a, b, c) "
+              @row-contextmenu="(a, b, c) => computeFunction(tabConfig.rowContextmenu, a, b, c) "
+              @row-dblclick="(a, b, c) => computeFunction(tabConfig.rowDblclick, a, b, c) "
+              @header-click="(a, b) => computeFunction(tabConfig.headerClick, a, b) "
+              @header-contextmenu="(a, b) => computeFunction(tabConfig.headerContextmenu, a, b) "
+              @sort-change="(a) => computeFunction(tabConfig.sortChange, a) "
+              @filter-change="(a) => computeFunction(tabConfig.filterChange, a) "
+              @current-change="(a, b) => computeFunction(tabConfig.currentChange, a, b) "
+              @header-dragend="(a, b, c, d) => computeFunction(tabConfig.headerDragend, a, b, c, d) "
+              @expand-change="(a, b) => computeFunction(tabConfig.expandChange, a, b) "
             >
               <template v-for="(columnConfig, columnIndex) in tabConfig.column">
                 <xColumn :config="columnConfig" :tabConfig="tabConfig" :key="columnIndex">
@@ -255,13 +255,11 @@ export default {
         const item = this.config.item[i]
         c.item[i] = merge({}, this.golbalConfig[item.xType], item)
         if (item.xType === 'tabs') {
-          // c.item[i].tabs.forEach(tab => {
-          //   tab.column.forEach((column, columnIndex) => {
-          //     const result = {}
-          //     merge(result, this.golbalConfig.xform.form.tabs.table.column, column)
-          //     this.$set(tab.column, columnIndex, result)
-          //   })
-          // })
+          c.item[i].tabs.forEach((tab,tableIndex) => {
+            const table = {}
+            merge(table, this.golbalConfig.xform.form.tabs.table, tab)
+            this.$set(c.item[i].tabs, tableIndex, table)
+          })
         }
       }
       if (this.config.operate) {
