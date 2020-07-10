@@ -4,7 +4,8 @@
   "description": "A simplified crud component based on element-ui & Vue",
   "main": "package/index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config build/webpack.dev.js",
+    "dev": "node pre-docs.js&&cross-env NODE_ENV=dev vuepress dev docs",
+    "dev2": "webpack-dev-server --config build/webpack.dev.js",
     "build": "webpack --config build/webpack.pro.js",
     "lint": "eslint --ext .js,.vue src package --fix",
     "docs:dev": "node pre-docs.js&&cross-env NODE_ENV=dev vuepress dev docs",

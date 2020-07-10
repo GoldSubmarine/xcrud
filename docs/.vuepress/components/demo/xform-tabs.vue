@@ -96,6 +96,22 @@ export default {
                       {
                         label: '合并体重',
                         name: 'weight',
+                        renderHeader: (h, { column, $index }) => {
+                          return h('div',[
+                            h('span', column.label),
+                            h('el-button', {
+                              style: "display: inline-block; margin-left: 10px;",
+                              on: {
+                                click: () => window.alert("自定义头部，具体见vue的jsx语法")
+                              },
+                              props: {
+                                icon: "el-icon-delete",
+                                circle: true,
+                                size: 'mini'
+                              }
+                            }),
+                          ])
+                        },
                       },
                       {
                         label: '年龄',

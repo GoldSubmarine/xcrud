@@ -9,6 +9,7 @@
     :show-overflow-tooltip="columnConfig.showOverflowTooltip"
     :align="columnConfig.align"
     :class-name="columnConfig.className"
+    :render-header="columnConfig.renderHeader"
   >
     <template v-if="columnConfig.children">
       <xColumn v-for="(configItem, configItemIndex) in columnConfig.children" :tabConfig="tabConfig" :key="configItemIndex" :config="configItem">
