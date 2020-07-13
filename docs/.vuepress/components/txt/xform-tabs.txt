@@ -74,6 +74,30 @@ export default {
                   })
                   console.log("add")
                 },
+                remove:(arr)=>{   // 自定义移除方法
+                  console.log("remove")
+                },
+                addConfig: {  // 覆盖默认配置
+                  show: true,
+                  text: '新增1',
+                },
+                operate: {  // 本配置会覆盖全局配置，所以不写也可以，默认采用全局配置
+                  show: true,
+                  label: '操作',
+                  width: '60px',
+                  headerAlign: 'center',
+                  align: 'center',
+                  btn: [
+                    {
+                      type: 'danger',
+                      icon: 'el-icon-close',
+                      size: 'mini',
+                      circle: true,
+                      style: '',
+                      className: ''
+                    }
+                  ]
+                },
                 spanMethod: ({ row, column, rowIndex, columnIndex }) => {
                   if (columnIndex === 0) {
                     if (rowIndex % 2 === 0) {

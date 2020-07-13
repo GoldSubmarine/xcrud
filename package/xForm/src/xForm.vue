@@ -49,7 +49,20 @@
             :lazy="computeBoolen(tabConfig.lazy, false)"
             :label="tabConfig.label"
           >
-            <el-button type="primary" size="mini" style="margin-bottom:14px;" @click="addDynamic(tabConfig.add, formData[tabConfig.name])">新增</el-button>
+            <el-button
+              v-if="computeBoolen(tabConfig.addConfig.show, true)"
+              :style="tabConfig.addConfig.style"
+              :class="tabConfig.addConfig.className"
+              :type="tabConfig.addConfig.type"
+              :icon="tabConfig.addConfig.icon"
+              :size="tabConfig.addConfig.size"
+              :plain="computeBoolen(tabConfig.addConfig.plain, false)"
+              :round="computeBoolen(tabConfig.addConfig.round, false)"
+              :circle="computeBoolen(tabConfig.addConfig.circle, false)"
+              @click="tabConfig.addConfig.click(tabConfig.add, formData[tabConfig.name])"
+            >
+              <span v-if="tabConfig.addConfig.text">{{ tabConfig.addConfig.text }}</span>
+            </el-button>
             <el-table
               :data="formData[tabConfig.name]"
               :height="tabConfig.height"
@@ -112,16 +125,16 @@
                 </xColumn>
               </template>
               <el-table-column
-                v-if="computedConfig.tabs.table.operate.show"
-                :label="computedConfig.tabs.table.operate.label"
-                :width="computedConfig.tabs.table.operate.width"
-                :header-align="computedConfig.tabs.table.operate.headerAlign"
-                :align="computedConfig.tabs.table.operate.align"
+                v-if="tabConfig.operate.show"
+                :label="tabConfig.operate.label"
+                :width="tabConfig.operate.width"
+                :header-align="tabConfig.operate.headerAlign"
+                :align="tabConfig.operate.align"
               >
                 <template v-slot="scope">
                   <el-form-item label-width="0px">
                     <el-button
-                      v-for="(btn, btnIndex) in computedConfig.tabs.table.operate.btn"
+                      v-for="(btn, btnIndex) in tabConfig.operate.btn"
                       :key="btnIndex"
                       :style="btn.style"
                       :class="btn.className"

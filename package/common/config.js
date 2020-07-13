@@ -425,6 +425,23 @@ const golbalConfig = {
             // input的宽度100%
             style: 'width: 100%'
           },
+          addConfig: {
+            show: true,
+            type: 'primary',
+            icon: '',
+            text: '新增',
+            size: 'mini',
+            circle: false,
+            style: 'margin-bottom:14px;',
+            className: '',
+            click: (fun, arr) => {
+              if (fun) {
+                fun(arr)
+                return
+              }
+              arr.splice(arr.length, 0, {})
+            }
+          },
           operate: {
             show: true,
             label: '操作',
@@ -435,6 +452,7 @@ const golbalConfig = {
               {
                 type: 'danger',
                 icon: 'el-icon-close',
+                text: '',
                 size: 'mini',
                 circle: true,
                 style: '',
