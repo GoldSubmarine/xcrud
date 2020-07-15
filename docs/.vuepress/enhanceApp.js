@@ -33,4 +33,14 @@ export default ({
   Vue.use(Element)
   Vue.use(xcrud, config)
   Vue.component('chart', VueECharts)
+
+  // Select docs version based on url path
+  // Example: "/2.6/guides/installation.html" will use "2.6"
+  router.afterEach((to, from) => {
+    const version = to.path.split('/')[1]
+
+    if (siteData.themeConfig.versions.all.includes(version)) {
+        siteData.themeConfig.versions.selected = version
+    }
+  })
 }

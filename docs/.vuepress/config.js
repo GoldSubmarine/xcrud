@@ -1,3 +1,5 @@
+const versioning = require('./lib/versioning.js')
+
 module.exports = {
   title: 'xcrud', // 设置网站标题
   base: '/xcrud/',
@@ -19,8 +21,17 @@ module.exports = {
           .loader('raw-loader');
   },
   themeConfig: { //主题配置
+    smoothScroll: true,
+    versions: {
+      latest: versioning.versions.latest,
+      selected: versioning.versions.latest,
+      all: versioning.versions.all
+    },
     // 添加导航栏
     nav: [
+      {
+        text: '文档', items: versioning.linksFor('/')
+      },
       { text: '主页', link: '/' }, // 导航条
       { text: '组件文档', link: '/guide/' },
       {
@@ -33,28 +44,7 @@ module.exports = {
       { text: 'Github', link: 'https://github.com/GoldSubmarine/xcrud' }
     ],
     // 为以下路由添加侧边栏
-    sidebar:{
-      '/guide/': [
-        {
-          title: '指南',
-          collapsable: false,
-          children: [
-            '',
-            'globalConfig',
-          ]
-        },
-        {
-          title: '组件',
-          collapsable: false,
-          children: [
-            'form',
-            'table',
-            'button',
-            'select',
-          ]
-        },
-      ]
-    }
+    sidebar: versioning.sidebars,
   },
   markdown: {
     // markdown-it-anchor 的选项

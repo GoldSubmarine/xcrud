@@ -2,7 +2,7 @@
 home: true
 heroImage: /home.svg
 actionText: 前往 →
-actionLink: /guide/
+actionLink: /dev/
 features:
 - title: 无侵入
   details: 在任何 element-ui 前端项目中均可使用，完全无侵入，是对 element-ui 表单和表格的封装
