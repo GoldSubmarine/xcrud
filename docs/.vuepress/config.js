@@ -30,10 +30,10 @@ module.exports = {
     // 添加导航栏
     nav: [
       {
-        text: '文档', items: versioning.linksFor('/')
+        text: '文档', items: versioning.linksFor('index.html')
       },
       { text: '主页', link: '/' }, // 导航条
-      { text: '组件文档', link: '/guide/' },
+      { text: '组件文档', link: '/dev/index.html' },
       {
         text: '知识库',
         items: [
