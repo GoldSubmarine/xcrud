@@ -1,6 +1,10 @@
 <template>
   <div class="app-container" :v-loading="loading">
-    <x-form ref="xForm" v-model="formData" :config="formConfig" />
+    <x-form ref="xForm" v-model="formData" :config="formConfig">
+      <template #slotTag="scope">
+        <el-tag>{{ scope.row.username }}</el-tag>
+      </template>
+    </x-form>
   </div>
 </template>
 
@@ -160,6 +164,12 @@ export default {
                     name: 'birthday',
                     label: '生日',
                     rules: [{ required: true, message: '请输入', trigger: ['blur', 'change'] }]
+                  },
+                  {
+                    xType: 'slot',
+                    label: '插槽插入（多级表头无法自定义插槽）',
+                    slot: true,
+                    name: 'slotTag',
                   },
                 ]
               },

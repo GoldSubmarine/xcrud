@@ -32,7 +32,7 @@
         :rules="columnConfig.rules"
         :prop="tabConfig.name + '.' + scope.$index + '.' + columnConfig.name"
       >
-        <slot v-if="getComponentType(columnConfig) === 'slot'" :name="columnConfig.name" />
+        <slot v-if="columnConfig.slot" :name="columnConfig.name" v-bind="scope" />
         <component
           :is="getComponentType(columnConfig)"
           v-else-if="columnConfig.xType"
@@ -40,7 +40,7 @@
           :style="columnConfig.style"
           :config="columnConfig"
         />
-        <span v-else>{{ scope.row[columnConfig.name] }}</span>
+        <span v-else>{{ filterTableData(scope.row[columnConfig.name]) }}</span>
       </el-form-item>
     </template>
   </el-table-column>
@@ -112,9 +112,8 @@ export default {
   },
   methods: {
     // filter表格数据
-    filterTableData(row, column, cellValue, index, config) {
-      if (!row) return
-      if (config.dic) return filterDic(config.dic, cellValue)
+    filterTableData(cellValue) {
+      if (this.config.dic) return filterDic(this.config.dic, cellValue)
       return cellValue
     },
     getComponentType: getComponentType
