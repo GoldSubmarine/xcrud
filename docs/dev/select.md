@@ -6,12 +6,18 @@
 
 <common-code title="基本用法" description="选择器的选项通过 dic 关键字设置，选项的默认 label 字段为 'label' ， value 字段为 'value' ，也可以自定义 label 和 value 字段" codePath="select-common">
   <demo-select-common></demo-select-common>
+  <highlight-code slot="codeText" lang="vue">
+<<< @/docs/.vuepress/components/demo/select-common.vue
+  </highlight-code>
 </common-code>
 
 ## 树形选择器
 
 <common-code title="树形选择器" description="此功能为本插件自行封装的功能，通过设置 type=tree ，选项变成了树形" codePath="select-tree">
   <demo-select-tree></demo-select-tree>
+  <highlight-code slot="codeText" lang="vue">
+<<< @/docs/.vuepress/components/demo/select-tree.vue
+  </highlight-code>
 </common-code>
 
 ## Attributes

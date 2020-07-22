@@ -4,10 +4,10 @@
   "description": "A simplified crud component based on element-ui & Vue",
   "main": "package/index.js",
   "scripts": {
-    "dev": "node pre-docs.js&&cross-env NODE_ENV=dev vuepress dev docs",
+    "dev": "cross-env NODE_ENV=dev vuepress dev docs",
     "lint": "eslint --ext .js,.vue src package --fix",
-    "docs:dev": "node pre-docs.js&&cross-env NODE_ENV=dev vuepress dev docs",
-    "docs:build": "node pre-docs.js&&cross-env NODE_ENV=production vuepress build docs&&echo 1 > ./docs/.vuepress/dist/.nojekyll",
+    "docs:dev": "cross-env NODE_ENV=dev vuepress dev docs",
+    "docs:build": "cross-env NODE_ENV=production vuepress build docs&&echo 1 > ./docs/.vuepress/dist/.nojekyll",
     "bump-version": "cd ./docs && node -e 'require(\"./.vuepress/lib/versioning.js\").generate()'"
   },
   "publishConfig": {
@@ -38,13 +38,12 @@
     "element-ui": "^2.7.2",
     "highlight.js": "^9.12.0",
     "lodash-es": "^4.17.15",
-    "raw-loader": "^3.1.0",
     "sass": "^1.26.9",
     "sass-loader": "^8.0.2",
     "vue": "^2.6.10",
     "vue-echarts": "^3.0.7",
     "vue-highlight.js": "^2.2.0",
-    "vuepress": "^1.2.0"
+    "vuepress": "^1.5.0"
   },
   "dependencies": {
     "@riophae/vue-treeselect": "^0.0.38",

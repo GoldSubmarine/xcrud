@@ -12,14 +12,14 @@ module.exports = {
   define: {
     env: process.env.NODE_ENV,
   },
-  chainWebpack: (config, isServer) => {
+  // chainWebpack: (config, isServer) => {
     // config 是 ChainableConfig 的一个实例
-    config.module
-      .rule('compile')
-        .test(/\.txt$/i)
-        .use('raw')
-          .loader('raw-loader');
-  },
+    // config.module
+    //   .rule('compile')
+    //     .test(/\.txt$/i)
+    //     .use('raw')
+    //       .loader('raw-loader');
+  // },
   themeConfig: { //主题配置
     smoothScroll: true,
     versions: {

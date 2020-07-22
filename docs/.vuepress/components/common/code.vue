@@ -14,10 +14,10 @@
     </div>
     <el-collapse-transition>
       <div v-show="isShow" class="code--segment">
-        <highlight-code lang="vue">
+        <!-- <highlight-code lang="vue">
           {{ codeTxt }}
-        </highlight-code>
-        <!-- <slot name="codeText"></slot> -->
+        </highlight-code> -->
+        <slot name="codeText"></slot>
       </div>
     </el-collapse-transition>
     <div class="code--button" @click="isShow = !isShow">
@@ -45,7 +45,7 @@ export default {
   },
   created() {
     // if(env !== 'dev') {
-      this.codeTxt = require(`../txt/${this.codePath}.txt`).default
+      // this.codeTxt = require(`../txt/${this.codePath}.txt`).default
     // }
   }
 }
