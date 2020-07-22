@@ -1,6 +1,6 @@
 {
   "name": "xcrud",
-  "version": "0.3.17",
+  "version": "0.3.18",
   "description": "A simplified crud component based on element-ui & Vue",
   "main": "package/index.js",
   "scripts": {
