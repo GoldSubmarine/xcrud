@@ -9,7 +9,6 @@
 
 export default {
   data() {
-    const _this = this
     return {
       loading: false,
       dialogTableVisible: false,

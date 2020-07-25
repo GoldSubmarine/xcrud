@@ -58,7 +58,7 @@
     >
       <!-- 生成动态列 -->
       <template v-for="(configItem, configIndex) in computedConfig.column">
-        <xColumn :config="configItem" :key="configIndex">
+        <xColumn :key="configIndex" :config="configItem">
           <!-- slot 传递 -->
           <template v-if="configItem.slot" #[configItem.name]="scope">
             <slot :name="configItem.name" v-bind="scope" />
@@ -111,9 +111,10 @@
               :show-timeout="operateConfig.dropdown.config.showTimeout"
               :hide-timeout="operateConfig.dropdown.config.hideTimeout"
               :tabindex="operateConfig.dropdown.config.tabindex"
-              @command="index => handleDropdownCommand(index, scope.row)">
+              @command="index => handleDropdownCommand(index, scope.row)"
+            >
               <span class="el-dropdown-link">
-                {{ operateConfig.dropdown.config.text }}<i class="el-icon-arrow-down el-icon--right"></i>
+                {{ operateConfig.dropdown.config.text }}<i class="el-icon-arrow-down el-icon--right" />
               </span>
               <el-dropdown-menu slot="dropdown">
                 <template v-for="(dropdownBtnItem, dropdownBtnItemIndex) in operateConfig.dropdown.btn">
@@ -124,7 +125,7 @@
                     :disabled="dropdownBtnItem.disabled"
                     :icon="dropdownBtnItem.icon"
                     :command="dropdownBtnItemIndex"
-                    >
+                  >
 
                     {{ dropdownBtnItem.text }}
 
@@ -229,8 +230,8 @@ export default {
       }
       if (this.config.operate) {
         for (let i = 0; i < this.config.operate.length; i++) {
-          let b = merge({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
-          if(b.dropdown === true) {
+          const b = merge({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
+          if (b.dropdown === true) {
             c.dropdown.btn.push(b)
           } else {
             c.btn.push(b)

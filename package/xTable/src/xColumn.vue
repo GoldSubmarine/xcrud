@@ -49,7 +49,7 @@ import { merge } from 'lodash-es'
 import { filterDic } from '../../common/filterDic'
 
 export default {
-  name: 'xColumn',
+  name: 'XColumn',
   mixins: [mixinComponent()],
   props: {
     config: {
@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     computedConfig() {
-      let c = {}
+      const c = {}
       merge(c, this.golbalConfig.xtable.column, this.config)
       return c
     }

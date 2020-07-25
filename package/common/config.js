@@ -350,15 +350,15 @@ const golbalConfig = {
         nativeType: 'button'
       },
       dropdown: {
-        className: 'asdf',  // 自定义class
-        text: '更多',  //自定义显示文字
+        className: '',
+        text: '更多',
         placement: 'bottom-end',
         trigger: 'hover',
         hideOnClick: true,
         showTimeout: 250,
         hideTimeout: 150,
         tabindex: 0,
-        divided: false,
+        divided: false
       }
     }
   },

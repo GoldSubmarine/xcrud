@@ -12,21 +12,21 @@
     :render-header="columnConfig.renderHeader"
   >
     <template v-if="columnConfig.children">
-      <xColumn v-for="(configItem, configItemIndex) in columnConfig.children" :tabConfig="tabConfig" :key="configItemIndex" :config="configItem">
+      <xColumn v-for="(configItem, configItemIndex) in columnConfig.children" :key="configItemIndex" :tab-config="tabConfig" :config="configItem">
         <!-- slot 传递 -->
         <template v-if="configItem.slot" #[configItem.name]="scope">
           <slot :name="configItem.name" v-bind="scope" />
         </template>
       </xColumn>
     </template>
-    <template slot="header" v-if="!columnConfig.children">
+    <template v-if="!columnConfig.children" slot="header">
       {{ columnConfig.label }}
       <el-tooltip v-if="columnConfig.tooltip" :effect="tooltipConfig.effect" :placement="tooltipConfig.placement">
         <div slot="content"><span v-html="columnConfig.tooltip" /></div>
         <i :class="tooltipConfig.iconName" :style="tooltipConfig.iconStyle" />
       </el-tooltip>
     </template>
-    <template v-slot="scope" v-if="!columnConfig.children">
+    <template v-if="!columnConfig.children" v-slot="scope">
       <el-form-item
         label-width="0px"
         :rules="columnConfig.rules"
@@ -70,19 +70,8 @@ import xTransfer from '../src/xTransfer'
 import xTree from '../src/xTree'
 
 export default {
-  name: 'xColumn',
-  mixins: [mixinComponent()],
-  props: {
-    config: {
-      type: Object,
-      default: () => {}
-    },
-    tabConfig: {
-      type: Object,
-      default: () => {}
-    }
-  },
-  components: { 
+  name: 'XColumn',
+  components: {
     xCascader,
     xCheckbox,
     xColorPicker,
@@ -98,11 +87,22 @@ export default {
     xTimePicker,
     xTimeSelect,
     xTransfer,
-    xTree,
+    xTree
+  },
+  mixins: [mixinComponent()],
+  props: {
+    config: {
+      type: Object,
+      default: () => {}
+    },
+    tabConfig: {
+      type: Object,
+      default: () => {}
+    }
   },
   computed: {
     columnConfig() {
-      let c = {}
+      const c = {}
       merge(c, this.golbalConfig.xform.form.tabs.table.column, this.config)
       return c
     },
