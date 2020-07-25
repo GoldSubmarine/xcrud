@@ -305,10 +305,6 @@ export default {
               this.formData[tab.name] = []
             }
           })
-        } else {
-          if (this.formData[item.name] === undefined) {
-            this.formData[item.name] = ''
-          }
         }
       })
       this.formData = JSON.parse(JSON.stringify(this.formData))
