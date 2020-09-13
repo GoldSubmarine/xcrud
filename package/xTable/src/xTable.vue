@@ -157,7 +157,8 @@
 <script>
 import xForm from '../../xForm/src/xForm.vue'
 import xColumn from './xColumn'
-import { merge, cloneDeep } from 'lodash-es'
+import merge from 'lodash.merge'
+import cloneDeep from 'lodash.cloneDeep'
 import mixinComponent from '../../common/xMixin'
 export default {
   name: 'XTable',

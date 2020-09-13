@@ -45,7 +45,7 @@
 
 <script>
 import mixinComponent from '../../common/xMixin'
-import { merge } from 'lodash-es'
+import merge from 'lodash.merge'
 import { filterDic } from '../../common/filterDic'
 
 export default {

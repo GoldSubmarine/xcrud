@@ -211,7 +211,7 @@
 <script>
 import mixinComponent from '../../common/xMixin'
 import { getComponentType } from '../../common/util'
-import { merge } from 'lodash-es'
+import merge from 'lodash.merge'
 
 import xCascader from './xCascader'
 import xCheckbox from './xCheckbox'

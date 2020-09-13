@@ -49,7 +49,7 @@
 <script>
 import mixinComponent from '../../common/xMixin'
 import { getComponentType } from '../../common/util'
-import { merge } from 'lodash-es'
+import merge from 'lodash.merge'
 import { filterDic } from '../../common/filterDic'
 
 import xCascader from '../src/xCascader'

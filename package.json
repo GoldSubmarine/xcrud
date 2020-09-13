@@ -5,8 +5,9 @@
   "main": "package/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev vuepress dev docs",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "docs:dev": "cross-env NODE_ENV=dev vuepress dev docs",
     "docs:build": "cross-env NODE_ENV=production vuepress build docs&&echo 1 > ./docs/.vuepress/dist/.nojekyll",
     "bump-version": "cd ./docs && node -e 'require(\"./.vuepress/lib/versioning.js\").generate()'"
   },
@@ -31,37 +32,45 @@
     "url": "https://github.com/GoldSubmarine/xcrud/issues"
   },
   "homepage": "https://github.com/GoldSubmarine/xcrud#readme",
+  "dependencies": {
+    "element-ui": "^2.13.2",
+    "vue": "^2.6.11"
+  },
   "devDependencies": {
-    "@riophae/vue-treeselect": "^0.0.38",
-    "@vue/cli-plugin-babel": "^4.4.6",
-    "@vue/cli-plugin-eslint": "^4.4.6",
-    "@vue/cli-service": "^4.4.6",
+    "@vue/cli-plugin-babel": "^4.5.0",
+    "@vue/cli-plugin-eslint": "^4.5.0",
+    "@vue/cli-service": "^4.5.0",
     "babel-eslint": "^10.1.0",
     "core-js": "2.6.11",
-    "cross-env": "^6.0.3",
-    "element-ui": "^2.7.2",
-    "eslint": "^7.5.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "highlight.js": "^9.12.0",
-    "lodash-es": "^4.17.15",
-    "sass": "^1.26.9",
-    "sass-loader": "^8.0.2",
-    "vue": "^2.6.10",
-    "vue-echarts": "^3.0.7",
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.merge": "^4.6.2",
+    "sass": "^1.26.10",
+    "sass-loader": "^10.0.2",
     "vue-highlight.js": "^2.2.0",
-    "vuepress": "^1.5.0"
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.5.4"
   },
-  "dependencies": {
-    "@riophae/vue-treeselect": "^0.0.38",
-    "lodash-es": "^4.17.15"
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
   },
-  "peerDependencies": {
-    "element-ui": "^2.7.2",
-    "vue": "^2.6.10"
-  },
-  "files": [
-    "package",
-    "README.md",
-    "LICENSE"
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
   ]
 }

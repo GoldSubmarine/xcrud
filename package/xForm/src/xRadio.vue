@@ -19,7 +19,7 @@
 
 <script>
 import mixinComponent from '../../common/xMixin'
-import { merge } from 'lodash-es'
+import merge from 'lodash.merge'
 export default {
   mixins: [mixinComponent()],
   data() {

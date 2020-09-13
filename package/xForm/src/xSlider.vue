@@ -26,7 +26,7 @@
 <script>
 // type: year/month/date/dates/week/datetime/datetimerange/daterange
 import mixinComponent from '../../common/xMixin'
-import { merge } from 'lodash-es'
+import merge from 'lodash.merge'
 export default {
   mixins: [mixinComponent()],
   data() {

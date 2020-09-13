@@ -5,7 +5,6 @@ import VueHighlightJS from 'vue-highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import VueECharts from 'vue-echarts' //注册图表
 
 import '../.vuepress/public/css/index.css'
 
@@ -32,7 +31,6 @@ export default ({
   Vue.use(VueHighlightJS)
   Vue.use(Element)
   Vue.use(xcrud, config)
-  Vue.component('chart', VueECharts)
 
   // Select docs version based on url path
   // Example: "/2.6/guides/installation.html" will use "2.6"

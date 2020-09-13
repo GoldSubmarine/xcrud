@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { merge } from 'lodash-es'
+import merge from 'lodash.merge'
 import mixinComponent from '../../common/xMixin'
 export default {
   mixins: [mixinComponent()],
