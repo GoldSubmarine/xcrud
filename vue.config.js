@@ -22,34 +22,34 @@ module.exports = {
     config.resolve.alias
       .set('views', resolve('src/views'))
 
-    config
-      .when(process.env.NODE_ENV !== 'development',
-        config => {
-          config
-            .optimization.splitChunks({
-              chunks: 'all',
-              cacheGroups: {
-                libs: {
-                  name: 'chunk-libs',
-                  test: /[\\/]node_modules[\\/]/,
-                  priority: 10,
-                  chunks: 'initial' // only package third parties that are initially dependent
-                },
-                elementUI: {
-                  name: 'chunk-elementUI', // split elementUI into a single package
-                  priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
-                  test: /[\\/]node_modules[\\/]_?element-ui(.*)/ // in order to adapt to cnpm
-                },
-                vue: {
-                  name: 'chunk-vue', // split elementUI into a single package
-                  priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
-                  test: /[\\/]node_modules[\\/]_?vue(.*)/ // in order to adapt to cnpm
-                }
-              }
-            })
-          config.optimization.runtimeChunk('single')
-        }
-      )
+    // config
+    //   .when(process.env.NODE_ENV !== 'development',
+    //     config => {
+    //       config
+    //         .optimization.splitChunks({
+    //           chunks: 'all',
+    //           cacheGroups: {
+    //             libs: {
+    //               name: 'chunk-libs',
+    //               test: /[\\/]node_modules[\\/]/,
+    //               priority: 10,
+    //               chunks: 'initial' // only package third parties that are initially dependent
+    //             },
+    //             elementUI: {
+    //               name: 'chunk-elementUI', // split elementUI into a single package
+    //               priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
+    //               test: /[\\/]node_modules[\\/]_?element-ui(.*)/ // in order to adapt to cnpm
+    //             },
+    //             vue: {
+    //               name: 'chunk-vue', // split elementUI into a single package
+    //               priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
+    //               test: /[\\/]node_modules[\\/]_?vue(.*)/ // in order to adapt to cnpm
+    //             }
+    //           }
+    //         })
+    //       config.optimization.runtimeChunk('single')
+    //     }
+    //   )
   },
   // 设为false打包时不生成.map文件
   productionSourceMap: false,

@@ -2,11 +2,11 @@
   "name": "xcrud",
   "version": "0.3.19",
   "description": "A simplified crud component based on element-ui & Vue",
-  "main": "package/index.js",
+  "main": "dist/xcrud.umd.min.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev vuepress dev docs",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --inline-vue --entry package/index.js",
     "lint": "vue-cli-service lint",
     "docs:build": "cross-env NODE_ENV=production vuepress build docs&&echo 1 > ./docs/.vuepress/dist/.nojekyll",
     "bump-version": "cd ./docs && node -e 'require(\"./.vuepress/lib/versioning.js\").generate()'"
@@ -41,7 +41,7 @@
     "@vue/cli-plugin-eslint": "^4.5.0",
     "@vue/cli-service": "^4.5.0",
     "babel-eslint": "^10.1.0",
-    "core-js": "2.6.11",
+    "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
@@ -54,23 +54,16 @@
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.5.4"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "dist",
+    "package",
+    "README.md",
+    "LICENSE"
   ]
 }
