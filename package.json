@@ -41,6 +41,7 @@
     "@vue/cli-plugin-eslint": "^4.5.0",
     "@vue/cli-service": "^4.5.0",
     "babel-eslint": "^10.1.0",
+    "async-validator": "1.11.5",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
     "eslint": "^6.7.2",
