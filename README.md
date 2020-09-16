@@ -28,6 +28,7 @@ import router from "./router";
 import Element from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import Xcrud from "xcrud";
+// import Xcrud from "xcrud/package/index.js"; // 源码版，需要配置babel编译Xcrud
 
 Vue.use(Element);
 Vue.use(Xcrud, {
