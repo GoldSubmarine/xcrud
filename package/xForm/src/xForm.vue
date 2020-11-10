@@ -116,8 +116,8 @@
               @header-dragend="(a, b, c, d) => computeFunction(tabConfig.headerDragend, a, b, c, d) "
               @expand-change="(a, b) => computeFunction(tabConfig.expandChange, a, b) "
             >
-              <template v-for="(columnConfig, columnIndex) in tabConfig.column">
-                <xColumn :key="columnIndex" :config="columnConfig" :tab-config="tabConfig">
+              <template v-for="columnConfig in tabConfig.column">
+                <xColumn :key="columnConfig.name" :config="columnConfig" :tab-config="tabConfig">
                   <!-- slot 传递 -->
                   <template v-if="columnConfig.slot" #[columnConfig.name]="scope">
                     <slot :name="columnConfig.name" v-bind="scope" />
