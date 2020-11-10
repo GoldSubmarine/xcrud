@@ -18,7 +18,7 @@ export default function() {
     },
     data() {
       return {
-        formData: this.propData,
+        formData: '',
         golbalConfig: golbalConfig.get()
       }
     },
@@ -107,7 +107,8 @@ export default function() {
         handler(val) {
           this.formData = val
         },
-        deep: true
+        deep: true,
+        immediate: true
       }
     }
   }
