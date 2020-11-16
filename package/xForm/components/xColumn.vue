@@ -12,7 +12,7 @@
     :render-header="columnConfig.renderHeader"
   >
     <template v-if="columnConfig.children">
-      <xColumn v-for="(configItem, configItemIndex) in columnConfig.children" :key="configItemIndex" :tab-config="tabConfig" :config="configItem">
+      <xColumn v-for="(configItem, configItemIndex) in columnConfig.children" :key="configItem.name || configItemIndex" :tab-config="tabConfig" :config="configItem">
         <!-- slot 传递 -->
         <template v-if="configItem.slot" #[configItem.name]="scope">
           <slot :name="configItem.name" v-bind="scope" />

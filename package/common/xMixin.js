@@ -13,12 +13,12 @@ export default function() {
         required: true
       },
       propData: {
-        default: undefined
+        default: ''
       }
     },
     data() {
       return {
-        formData: '',
+        formData: this.propData,
         golbalConfig: golbalConfig.get()
       }
     },
@@ -107,8 +107,7 @@ export default function() {
         handler(val) {
           this.formData = val
         },
-        deep: true,
-        immediate: true
+        deep: true
       }
     }
   }
