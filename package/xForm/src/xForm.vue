@@ -160,16 +160,16 @@
         v-else-if="computeBoolen(configItem.show, true)"
         :key="configItemIndex"
         :prop="configItem.name"
-        :label="configItem.label + '：'"
+        :label="configItem.label"
         :rules="configItem.rules"
       >
-        <span slot="label">
+        <span v-if="configItem.tooltip" slot="label">
           {{ configItem.label }}
-          <el-tooltip v-if="configItem.tooltip" :effect="computedConfig.tooltip.effect" :placement="computedConfig.tooltip.placement">
+          <el-tooltip :effect="computedConfig.tooltip.effect" :placement="computedConfig.tooltip.placement">
             <div slot="content"><span v-html="configItem.tooltip" /></div>
             <i :class="computedConfig.tooltip.iconName" :style="computedConfig.tooltip.iconStyle" />
           </el-tooltip>
-          ：
+          {{ computedConfig.labelSuffix }}
         </span>
         <slot v-if="getComponentType(configItem) === 'slot'" :name="configItem.name" />
         <component

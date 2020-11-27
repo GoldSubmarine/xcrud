@@ -36,6 +36,7 @@ export default {
       const _this = this
       return {
         inline: false,
+        labelSuffix: ':',
         item: [
           {
             xType: 'input',
