@@ -103,11 +103,11 @@ export default {
   computed: {
     columnConfig() {
       const c = {}
-      merge(c, this.golbalConfig.xform.form.tabs.table.column, this.config)
+      merge(c, this.globalConfig.xform.form.tabs.table.column, this.config)
       return c
     },
     tooltipConfig() {
-      return this.golbalConfig.xform.form.tooltip
+      return this.globalConfig.xform.form.tooltip
     }
   },
   methods: {

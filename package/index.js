@@ -1,13 +1,13 @@
 import xForm from './xForm/'
 import xTable from './xTable/'
-import golbalConfig from './common/config'
+import globalConfig from './common/config'
 const components = [
   xForm,
   xTable
 ]
 
 function install(Vue, opts = {}) {
-  golbalConfig.set(opts)
+  globalConfig.set(opts)
   components.map(component => {
     Vue.component(component.name, component)
   })

@@ -37,7 +37,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      merge(c, this.golbalConfig.slider, this.config)
+      merge(c, this.globalConfig.slider, this.config)
       return c
     }
   }

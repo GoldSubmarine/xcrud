@@ -34,7 +34,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      merge(c, this.golbalConfig.inputNumber, this.config)
+      merge(c, this.globalConfig.inputNumber, this.config)
       return c
     }
   }

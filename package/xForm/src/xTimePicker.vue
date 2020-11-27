@@ -43,7 +43,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      merge(c, this.golbalConfig.timePicker, this.config)
+      merge(c, this.globalConfig.timePicker, this.config)
       return c
     }
   }

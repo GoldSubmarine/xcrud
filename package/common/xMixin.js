@@ -1,4 +1,4 @@
-import golbalConfig from './config'
+import globalConfig from './config'
 
 export default function() {
   return {
@@ -19,7 +19,7 @@ export default function() {
     data() {
       return {
         formData: this.propData,
-        golbalConfig: golbalConfig.get()
+        globalConfig: globalConfig.get()
       }
     },
     methods: {

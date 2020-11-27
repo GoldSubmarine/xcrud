@@ -46,7 +46,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      merge(c, this.golbalConfig.timeSelect, this.config)
+      merge(c, this.globalConfig.timeSelect, this.config)
       return c
     }
   }

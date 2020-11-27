@@ -13,7 +13,7 @@ Vue.use(Xcrud, {
 首先把插件在全局进行注册，同时可以在此处对插件进行全局主题配置。例如当前项目使用 mini 大小的按钮，按钮颜色，表格是否需要条纹，border 等，以下是组件的默认配置，你的配置将会覆盖默认的配置。
 
 ```js
-const golbalConfig = {
+const globalConfig = {
   input: {
     disabled: false,
     type: 'text',

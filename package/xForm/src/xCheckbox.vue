@@ -47,7 +47,7 @@ export default {
     },
     computedConfig() {
       const c = {}
-      merge(c, this.golbalConfig.checkbox, this.config)
+      merge(c, this.globalConfig.checkbox, this.config)
       return c
     }
   }

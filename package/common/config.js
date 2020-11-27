@@ -1,5 +1,5 @@
 import merge from 'lodash.merge'
-const golbalConfig = {
+const globalConfig = {
   input: {
     disabled: false,
     type: 'text',
@@ -488,8 +488,8 @@ const golbalConfig = {
 }
 
 export default {
-  get: () => golbalConfig,
+  get: () => globalConfig,
   set: item => {
-    merge(golbalConfig, item)
+    merge(globalConfig, item)
   }
 }

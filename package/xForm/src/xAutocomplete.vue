@@ -60,7 +60,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      merge(c, this.golbalConfig.input, this.config)
+      merge(c, this.globalConfig.input, this.config)
       return c
     }
   },

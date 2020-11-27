@@ -60,7 +60,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      merge(c, this.golbalConfig.xtable.column, this.config)
+      merge(c, this.globalConfig.xtable.column, this.config)
       return c
     }
   },

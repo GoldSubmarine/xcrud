@@ -66,7 +66,7 @@ export default {
     },
     computedConfig() {
       const c = {}
-      merge(c, this.golbalConfig.select, this.config)
+      merge(c, this.globalConfig.select, this.config)
       return c
     }
   }

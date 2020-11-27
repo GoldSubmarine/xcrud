@@ -31,7 +31,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      merge(c, this.golbalConfig.switch, this.config)
+      merge(c, this.globalConfig.switch, this.config)
       return c
     }
   }

@@ -30,7 +30,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      merge(c, this.golbalConfig.radio, this.config)
+      merge(c, this.globalConfig.radio, this.config)
       return c
     }
   }

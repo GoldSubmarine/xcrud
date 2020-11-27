@@ -263,14 +263,14 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      merge(c, this.golbalConfig.xform.form, this.config)
+      merge(c, this.globalConfig.xform.form, this.config)
       for (let i = 0; i < this.config.item.length; i++) {
         const item = this.config.item[i]
-        c.item[i] = merge({}, this.golbalConfig[item.xType], item)
+        c.item[i] = merge({}, this.globalConfig[item.xType], item)
         if (item.xType === 'tabs') {
           c.item[i].tabs.forEach((tab, tableIndex) => {
             const table = {}
-            merge(table, this.golbalConfig.xform.form.tabs.table, tab)
+            merge(table, this.globalConfig.xform.form.tabs.table, tab)
             this.$set(c.item[i].tabs, tableIndex, table)
           })
         }
@@ -278,7 +278,7 @@ export default {
       if (this.config.operate) {
         for (let i = 0; i < this.config.operate.length; i++) {
           const operate = this.config.operate[i]
-          c.operate[i] = merge({}, this.golbalConfig.xform.operate.btn, operate)
+          c.operate[i] = merge({}, this.globalConfig.xform.operate.btn, operate)
         }
       }
       return c

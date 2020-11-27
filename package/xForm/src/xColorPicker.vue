@@ -26,7 +26,7 @@ export default {
   computed: {
     computedConfig() {
       const c = {}
-      merge(c, this.golbalConfig.colorPicker, this.config)
+      merge(c, this.globalConfig.colorPicker, this.config)
       return c
     }
   }

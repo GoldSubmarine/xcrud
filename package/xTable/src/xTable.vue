@@ -190,7 +190,7 @@ export default {
         item: [],
         operate: []
       }
-      const searchConfig = merge({}, this.golbalConfig.xtable.search, this.config.search)
+      const searchConfig = merge({}, this.globalConfig.xtable.search, this.config.search)
       merge(formConfigTemp, searchConfig.form)
       if (this.config.searchBtn !== false) {
         const searchBtn = merge({}, searchConfig.btn, searchConfig.btn.searchBtn, { click: _this.search })
@@ -217,21 +217,21 @@ export default {
     },
     computedConfig() {
       const c = {}
-      merge(c, this.golbalConfig.xtable.table, this.config)
+      merge(c, this.globalConfig.xtable.table, this.config)
       return c
     },
     operateConfig() {
       if (!this.config.operate || !this.config.operate.length) return null
       const c = {}
-      merge(c, this.golbalConfig.xtable.column, this.golbalConfig.xtable.operate.column)
+      merge(c, this.globalConfig.xtable.column, this.globalConfig.xtable.operate.column)
       c.btn = []
       c.dropdown = {
-        config: this.golbalConfig.xtable.operate.dropdown,
+        config: this.globalConfig.xtable.operate.dropdown,
         btn: []
       }
       if (this.config.operate) {
         for (let i = 0; i < this.config.operate.length; i++) {
-          const b = merge({}, this.golbalConfig.xtable.operate.btn, this.config.operate[i])
+          const b = merge({}, this.globalConfig.xtable.operate.btn, this.config.operate[i])
           if (b.dropdown === true) {
             c.dropdown.btn.push(b)
           } else {
@@ -258,7 +258,7 @@ export default {
       } else if (typeof operateItem.show === 'function') {
         return operateItem.show(row)
       } else {
-        return this.golbalConfig.xtable.table.operate.btn.show
+        return this.globalConfig.xtable.table.operate.btn.show
       }
     },
     // 下拉菜单的点击事件
