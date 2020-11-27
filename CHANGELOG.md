@@ -67,3 +67,8 @@
 ## [v0.4.3] 2020.11.16
 
 - 解决修改表单重置失效bug而出现的性能问题
+
+## [v0.4.4] 2020.11.27
+
+- 全部修改golbalConfig为globalConfig
+- 解决form的label-suffix写死为:的问题

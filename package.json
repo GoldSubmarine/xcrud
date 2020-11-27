@@ -1,6 +1,6 @@
 {
   "name": "xcrud",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "A simplified crud component based on element-ui & Vue",
   "main": "dist/xcrud.umd.min.js",
   "scripts": {
