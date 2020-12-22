@@ -72,3 +72,7 @@
 
 - 全部修改golbalConfig为globalConfig
 - 解决form的label-suffix写死为:的问题
+- 
+## [v0.4.5] 2020.12.22
+
+- xFrom中的tabs的table操作按钮增加控制显隐功能
