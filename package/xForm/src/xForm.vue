@@ -133,21 +133,23 @@
               >
                 <template v-slot="scope">
                   <el-form-item label-width="0px">
-                    <el-button
-                      v-for="(btn, btnIndex) in tabConfig.operate.btn"
-                      :key="btnIndex"
-                      :style="btn.style"
-                      :class="btn.className"
-                      :type="btn.type"
-                      :icon="btn.icon"
-                      :size="btn.size"
-                      :plain="computeBoolen(btn.plain, false)"
-                      :round="computeBoolen(btn.round, false)"
-                      :circle="computeBoolen(btn.circle, false)"
-                      @click="btn.click(formData[tabConfig.name], scope.$index, tabConfig.remove)"
-                    >
-                      <span v-if="btn.text">{{ btn.text }}</span>
-                    </el-button>
+                    <template v-for="(btn, btnIndex) in tabConfig.operate.btn">
+                      <el-button
+                        v-if="operateShow(btn, scope.row)"
+                        :key="btnIndex"
+                        :style="btn.style"
+                        :class="btn.className"
+                        :type="btn.type"
+                        :icon="btn.icon"
+                        :size="btn.size"
+                        :plain="computeBoolen(btn.plain, false)"
+                        :round="computeBoolen(btn.round, false)"
+                        :circle="computeBoolen(btn.circle, false)"
+                        @click="btn.click(formData[tabConfig.name], scope.$index, tabConfig.remove)"
+                      >
+                        <span v-if="btn.text">{{ btn.text }}</span>
+                      </el-button>
+                    </template>
                   </el-form-item>
                 </template>
               </el-table-column>
@@ -353,6 +355,16 @@ export default {
         return
       }
       arr.splice(arr.length, 0, {})
+    },
+    // 表格的操作按钮显隐
+    operateShow(operateItem, row) {
+      if (typeof operateItem.show === 'boolean') {
+        return operateItem.show
+      } else if (typeof operateItem.show === 'function') {
+        return operateItem.show(row)
+      } else {
+        return true
+      }
     }
   }
 }
