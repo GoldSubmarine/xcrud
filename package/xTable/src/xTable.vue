@@ -95,7 +95,7 @@
               :icon="operateItem.icon"
               :autofocus="operateItem.autofocus"
               :native-type="operateItem.nativeType"
-              @click="operateItem.click(scope.row)"
+              @click="operateItem.click(scope.row, scope.$index)"
             >
 
               {{ operateItem.text }}
