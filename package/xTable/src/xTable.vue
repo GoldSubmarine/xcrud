@@ -3,22 +3,24 @@
     <x-form v-if="formConfig" ref="xForm" v-model="formData" :config="formConfig" />
     <slot name="middle" />
     <el-row v-if="tableBtn" style="margin: 5px;">
-      <template v-for="(tableBtnConfig, index) in tableBtn">
+      <template v-for="(tableBtnItem, tableBtnIndex) in tableBtn">
         <el-button
-          v-if="computeBoolen(tableBtnConfig.show, true)"
-          :key="index"
-          style="margin: 5px;"
-          :style="tableBtnConfig.style"
-          :class="tableBtnConfig.className"
-          :type="tableBtnConfig.type"
-          :icon="tableBtnConfig.icon"
-          :size="tableBtnConfig.size"
-          :plain="computeBoolen(tableBtnConfig.plain, false)"
-          :round="computeBoolen(tableBtnConfig.round, false)"
-          :circle="computeBoolen(tableBtnConfig.circle, false)"
-          @click="tableBtnConfig.click(tabConfig.add, formData[tabConfig.name])"
+          v-if="computeBoolen(tableBtnItem.show, true)"
+          :key="tableBtnIndex"
+          :size="tableBtnItem.size"
+          :type="tableBtnItem.type"
+          :plain="tableBtnItem.plain"
+          :round="tableBtnItem.round"
+          :circle="tableBtnItem.circle"
+          :loading="tableBtnItem.loading"
+          :disabled="tableBtnItem.disabled"
+          :icon="tableBtnItem.icon"
+          :autofocus="tableBtnItem.autofocus"
+          :native-type="tableBtnItem.nativeType"
+
+          @click="tableBtnItem.click()"
         >
-          <span v-if="tableBtnConfig.text">{{ tableBtnConfig.text }}</span>
+          {{ tableBtnItem.text }}
         </el-button>
       </template>
     </el-row>
