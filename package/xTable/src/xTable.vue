@@ -2,6 +2,26 @@
   <div>
     <x-form v-if="formConfig" ref="xForm" v-model="formData" :config="formConfig" />
     <slot name="middle" />
+    <el-row v-if="tableBtn" style="margin: 5px;">
+      <template v-for="(tableBtnConfig, index) in tableBtn">
+        <el-button
+          v-if="computeBoolen(tableBtnConfig.show, true)"
+          :key="index"
+          style="margin: 5px;"
+          :style="tableBtnConfig.style"
+          :class="tableBtnConfig.className"
+          :type="tableBtnConfig.type"
+          :icon="tableBtnConfig.icon"
+          :size="tableBtnConfig.size"
+          :plain="computeBoolen(tableBtnConfig.plain, false)"
+          :round="computeBoolen(tableBtnConfig.round, false)"
+          :circle="computeBoolen(tableBtnConfig.circle, false)"
+          @click="tableBtnConfig.click(tabConfig.add, formData[tabConfig.name])"
+        >
+          <span v-if="tableBtnConfig.text">{{ tableBtnConfig.text }}</span>
+        </el-button>
+      </template>
+    </el-row>
     <el-table
       ref="table"
       :data="data"
@@ -214,6 +234,15 @@ export default {
         }
       })
       return formConfigTemp.item.length ? formConfigTemp : false
+    },
+    tableBtn() {
+      if (this.config.tableBtn && this.config.tableBtn.length > 0) {
+        return this.config.tableBtn.map(btn => {
+          return merge({}, this.globalConfig.xtable.btn, btn)
+        })
+      } else {
+        return false
+      }
     },
     computedConfig() {
       const c = {}

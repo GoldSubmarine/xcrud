@@ -235,6 +235,18 @@ const globalConfig = {
     props: null
   },
   xtable: {
+    btn: {
+      size: 'medium',
+      type: 'primary',
+      plain: false,
+      round: false,
+      circle: false,
+      loading: false,
+      disabled: false,
+      icon: null,
+      autofocus: false,
+      nativeType: 'button'
+    },
     table: {
       height: null,
       maxHeight: null,
