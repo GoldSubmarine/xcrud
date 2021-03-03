@@ -63,7 +63,9 @@
             >
               <span v-if="tabConfig.addConfig.text">{{ tabConfig.addConfig.text }}</span>
             </el-button>
+            <slot v-if="tabConfig.type === 'slot' " :name="tabConfig.name" />
             <el-table
+              v-else
               :data="formData[tabConfig.name]"
               :height="tabConfig.height"
               :max-height="tabConfig.maxHeight"
