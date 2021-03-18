@@ -50,7 +50,7 @@
             :label="tabConfig.label"
           >
             <el-button
-              v-if="computeBoolen(tabConfig.addConfig.show, true)"
+              v-if="computeBoolen(tabConfig.addConfig.show, true) && tabConfig.type !== 'form'"
               :style="tabConfig.addConfig.style"
               :class="tabConfig.addConfig.className"
               :type="tabConfig.addConfig.type"
@@ -63,7 +63,7 @@
             >
               <span v-if="tabConfig.addConfig.text">{{ tabConfig.addConfig.text }}</span>
             </el-button>
-            <slot v-if="tabConfig.type === 'slot' " :name="tabConfig.name" />
+            <xForm v-else-if="tabConfig.type === 'form'" v-model="formData[tabConfig.name]" :config="tabConfig.formConfig" />
             <el-table
               v-else
               :data="formData[tabConfig.name]"
@@ -306,7 +306,11 @@ export default {
           item.tabs.forEach((tab, tabIndex) => {
             if (tabIndex === 0) this.activeTab = tab.name
             if (!this.formData[tab.name]) {
-              this.formData[tab.name] = []
+              if (tab.type === 'form') {
+                this.formData[tab.name] = {}
+              } else {
+                this.formData[tab.name] = []
+              }
             }
           })
         } else {
