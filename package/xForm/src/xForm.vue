@@ -49,118 +49,117 @@
             :lazy="computeBoolen(tabConfig.lazy, false)"
             :label="tabConfig.label"
           >
+            <el-button
+              v-if="computeBoolen(tabConfig.addConfig.show, true)"
+              :style="tabConfig.addConfig.style"
+              :class="tabConfig.addConfig.className"
+              :type="tabConfig.addConfig.type"
+              :icon="tabConfig.addConfig.icon"
+              :size="tabConfig.addConfig.size"
+              :plain="computeBoolen(tabConfig.addConfig.plain, false)"
+              :round="computeBoolen(tabConfig.addConfig.round, false)"
+              :circle="computeBoolen(tabConfig.addConfig.circle, false)"
+              @click="tabConfig.addConfig.click(tabConfig.add, formData[tabConfig.name])"
+            >
+              <span v-if="tabConfig.addConfig.text">{{ tabConfig.addConfig.text }}</span>
+            </el-button>
             <xForm v-if="tabConfig.type === 'form'" v-model="formData[tabConfig.name]" :config="tabConfig.formConfig">
               <template v-for="tabFormItem in tabConfig.formConfig.item">
                 <slot v-if="getComponentType(tabFormItem) === 'slot'" :slot="tabFormItem.name" :name="tabFormItem.name" />
               </template>
             </xForm>
-            <template v-else>
-              <el-button
-                v-if="computeBoolen(tabConfig.addConfig.show, true)"
-                :style="tabConfig.addConfig.style"
-                :class="tabConfig.addConfig.className"
-                :type="tabConfig.addConfig.type"
-                :icon="tabConfig.addConfig.icon"
-                :size="tabConfig.addConfig.size"
-                :plain="computeBoolen(tabConfig.addConfig.plain, false)"
-                :round="computeBoolen(tabConfig.addConfig.round, false)"
-                :circle="computeBoolen(tabConfig.addConfig.circle, false)"
-                @click="tabConfig.addConfig.click(tabConfig.add, formData[tabConfig.name])"
-              >
-                <span v-if="tabConfig.addConfig.text">{{ tabConfig.addConfig.text }}</span>
-              </el-button>
-              <el-table
-                :data="formData[tabConfig.name]"
-                :height="tabConfig.height"
-                :max-height="tabConfig.maxHeight"
-                :stripe="tabConfig.stripe"
-                :border="tabConfig.border"
-                :size="tabConfig.size"
-                :fit="tabConfig.fit"
-                :show-header="tabConfig.showHeader"
-                :highlight-current-row="tabConfig.highlightCurrentRow"
-                :current-row-key="tabConfig.currentRowKey"
-                :row-class-name="tabConfig.rowClassName"
-                :row-style="tabConfig.rowStyle"
-                :cell-class-name="tabConfig.cellClassName"
-                :cell-style="tabConfig.cellStyle"
-                :header-row-class-name="tabConfig.headerRowClassName"
-                :header-row-style="tabConfig.headerRowStyle"
-                :header-cell-class-name="tabConfig.headerCellClassName"
-                :header-cell-style="tabConfig.headerCellStyle"
-                :row-key="tabConfig.rowKey"
-                :empty-text="tabConfig.emptyText"
-                :default-expand-all="tabConfig.defaultExpandAll"
-                :expand-row-keys="tabConfig.expandRowKeys"
-                :default-sort="tabConfig.defaultSort"
-                :tooltip-effect="tabConfig.tooltipEffect"
-                :show-summary="tabConfig.showSummary"
-                :sum-text="tabConfig.sumText"
-                :summary-method="tabConfig.summaryMethod"
-                :span-method="tabConfig.spanMethod"
-                :select-on-indeterminate="tabConfig.selectOnIndeterminate"
-                :indent="tabConfig.indent"
-                :lazy="tabConfig.lazy"
-                :load="tabConfig.load"
-                :tree-props="tabConfig.treeProps"
+            <el-table
+              v-else
+              :data="formData[tabConfig.name]"
+              :height="tabConfig.height"
+              :max-height="tabConfig.maxHeight"
+              :stripe="tabConfig.stripe"
+              :border="tabConfig.border"
+              :size="tabConfig.size"
+              :fit="tabConfig.fit"
+              :show-header="tabConfig.showHeader"
+              :highlight-current-row="tabConfig.highlightCurrentRow"
+              :current-row-key="tabConfig.currentRowKey"
+              :row-class-name="tabConfig.rowClassName"
+              :row-style="tabConfig.rowStyle"
+              :cell-class-name="tabConfig.cellClassName"
+              :cell-style="tabConfig.cellStyle"
+              :header-row-class-name="tabConfig.headerRowClassName"
+              :header-row-style="tabConfig.headerRowStyle"
+              :header-cell-class-name="tabConfig.headerCellClassName"
+              :header-cell-style="tabConfig.headerCellStyle"
+              :row-key="tabConfig.rowKey"
+              :empty-text="tabConfig.emptyText"
+              :default-expand-all="tabConfig.defaultExpandAll"
+              :expand-row-keys="tabConfig.expandRowKeys"
+              :default-sort="tabConfig.defaultSort"
+              :tooltip-effect="tabConfig.tooltipEffect"
+              :show-summary="tabConfig.showSummary"
+              :sum-text="tabConfig.sumText"
+              :summary-method="tabConfig.summaryMethod"
+              :span-method="tabConfig.spanMethod"
+              :select-on-indeterminate="tabConfig.selectOnIndeterminate"
+              :indent="tabConfig.indent"
+              :lazy="tabConfig.lazy"
+              :load="tabConfig.load"
+              :tree-props="tabConfig.treeProps"
 
-                @select="(a, b) => computeFunction(tabConfig.select, a, b) "
-                @select-all="(a) => computeFunction(tabConfig.selectAll, a) "
-                @selection-change="(a) => computeFunction(tabConfig.selectionChange, a)"
-                @cell-mouse-enter="(a, b, c, d) => computeFunction(tabConfig.cellMouseEnter, a, b, c, d) "
-                @cell-mouse-leave="(a, b, c, d) => computeFunction(tabConfig.cellMouseLeave, a, b, c, d) "
-                @cell-click="(a, b, c, d) => computeFunction(tabConfig.cellClick, a, b, c, d) "
-                @cell-dblclick="(a, b, c, d) => computeFunction(tabConfig.cellDblclick, a, b, c, d) "
-                @row-click="(a, b, c) => computeFunction(tabConfig.rowClick, a, b, c) "
-                @row-contextmenu="(a, b, c) => computeFunction(tabConfig.rowContextmenu, a, b, c) "
-                @row-dblclick="(a, b, c) => computeFunction(tabConfig.rowDblclick, a, b, c) "
-                @header-click="(a, b) => computeFunction(tabConfig.headerClick, a, b) "
-                @header-contextmenu="(a, b) => computeFunction(tabConfig.headerContextmenu, a, b) "
-                @sort-change="(a) => computeFunction(tabConfig.sortChange, a) "
-                @filter-change="(a) => computeFunction(tabConfig.filterChange, a) "
-                @current-change="(a, b) => computeFunction(tabConfig.currentChange, a, b) "
-                @header-dragend="(a, b, c, d) => computeFunction(tabConfig.headerDragend, a, b, c, d) "
-                @expand-change="(a, b) => computeFunction(tabConfig.expandChange, a, b) "
-              >
-                <template v-for="columnConfig in tabConfig.column">
-                  <xColumn :key="columnConfig.name" :config="columnConfig" :tab-config="tabConfig">
-                    <!-- slot 传递 -->
-                    <template v-if="columnConfig.slot" #[columnConfig.name]="scope">
-                      <slot :name="columnConfig.name" v-bind="scope" />
-                    </template>
-                  </xColumn>
-                </template>
-                <el-table-column
-                  v-if="tabConfig.operate.show"
-                  :label="tabConfig.operate.label"
-                  :width="tabConfig.operate.width"
-                  :header-align="tabConfig.operate.headerAlign"
-                  :align="tabConfig.operate.align"
-                >
-                  <template v-slot="scope">
-                    <el-form-item label-width="0px">
-                      <template v-for="(btn, btnIndex) in tabConfig.operate.btn">
-                        <el-button
-                          v-if="operateShow(btn, scope.row)"
-                          :key="btnIndex"
-                          :style="btn.style"
-                          :class="btn.className"
-                          :type="btn.type"
-                          :icon="btn.icon"
-                          :size="btn.size"
-                          :plain="computeBoolen(btn.plain, false)"
-                          :round="computeBoolen(btn.round, false)"
-                          :circle="computeBoolen(btn.circle, false)"
-                          @click="btn.click(formData[tabConfig.name], scope.$index, tabConfig.remove)"
-                        >
-                          <span v-if="btn.text">{{ btn.text }}</span>
-                        </el-button>
-                      </template>
-                    </el-form-item>
+              @select="(a, b) => computeFunction(tabConfig.select, a, b) "
+              @select-all="(a) => computeFunction(tabConfig.selectAll, a) "
+              @selection-change="(a) => computeFunction(tabConfig.selectionChange, a)"
+              @cell-mouse-enter="(a, b, c, d) => computeFunction(tabConfig.cellMouseEnter, a, b, c, d) "
+              @cell-mouse-leave="(a, b, c, d) => computeFunction(tabConfig.cellMouseLeave, a, b, c, d) "
+              @cell-click="(a, b, c, d) => computeFunction(tabConfig.cellClick, a, b, c, d) "
+              @cell-dblclick="(a, b, c, d) => computeFunction(tabConfig.cellDblclick, a, b, c, d) "
+              @row-click="(a, b, c) => computeFunction(tabConfig.rowClick, a, b, c) "
+              @row-contextmenu="(a, b, c) => computeFunction(tabConfig.rowContextmenu, a, b, c) "
+              @row-dblclick="(a, b, c) => computeFunction(tabConfig.rowDblclick, a, b, c) "
+              @header-click="(a, b) => computeFunction(tabConfig.headerClick, a, b) "
+              @header-contextmenu="(a, b) => computeFunction(tabConfig.headerContextmenu, a, b) "
+              @sort-change="(a) => computeFunction(tabConfig.sortChange, a) "
+              @filter-change="(a) => computeFunction(tabConfig.filterChange, a) "
+              @current-change="(a, b) => computeFunction(tabConfig.currentChange, a, b) "
+              @header-dragend="(a, b, c, d) => computeFunction(tabConfig.headerDragend, a, b, c, d) "
+              @expand-change="(a, b) => computeFunction(tabConfig.expandChange, a, b) "
+            >
+              <template v-for="columnConfig in tabConfig.column">
+                <xColumn :key="columnConfig.name" :config="columnConfig" :tab-config="tabConfig">
+                  <!-- slot 传递 -->
+                  <template v-if="columnConfig.slot" #[columnConfig.name]="scope">
+                    <slot :name="columnConfig.name" v-bind="scope" />
                   </template>
-                </el-table-column>
-              </el-table>
-            </template>
+                </xColumn>
+              </template>
+              <el-table-column
+                v-if="tabConfig.operate.show"
+                :label="tabConfig.operate.label"
+                :width="tabConfig.operate.width"
+                :header-align="tabConfig.operate.headerAlign"
+                :align="tabConfig.operate.align"
+              >
+                <template v-slot="scope">
+                  <el-form-item label-width="0px">
+                    <template v-for="(btn, btnIndex) in tabConfig.operate.btn">
+                      <el-button
+                        v-if="operateShow(btn, scope.row)"
+                        :key="btnIndex"
+                        :style="btn.style"
+                        :class="btn.className"
+                        :type="btn.type"
+                        :icon="btn.icon"
+                        :size="btn.size"
+                        :plain="computeBoolen(btn.plain, false)"
+                        :round="computeBoolen(btn.round, false)"
+                        :circle="computeBoolen(btn.circle, false)"
+                        @click="btn.click(formData[tabConfig.name], scope.$index, tabConfig.remove)"
+                      >
+                        <span v-if="btn.text">{{ btn.text }}</span>
+                      </el-button>
+                    </template>
+                  </el-form-item>
+                </template>
+              </el-table-column>
+            </el-table>
           </el-tab-pane>
         </template>
       </el-tabs>
@@ -209,7 +208,7 @@
           :autofocus="operateItem.autofocus"
           :native-type="operateItem.nativeType"
 
-          @click="operateItem.click()"
+          @click="operateItem.click(formData)"
         >
           {{ operateItem.text }}
         </el-button>
