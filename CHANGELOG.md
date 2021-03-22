@@ -104,3 +104,7 @@
 ## [v0.4.12] 2021.3.22
 
 - xForm中tabs下表单插槽功能修复，并分为inForm和outForm的slot
+
+## [v0.4.13] 2021.3.22
+
+- xForm中tabs头部按钮不限于表格，xForm按钮事件添加参数formData
