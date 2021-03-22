@@ -49,7 +49,11 @@
             :lazy="computeBoolen(tabConfig.lazy, false)"
             :label="tabConfig.label"
           >
-            <xForm v-if="tabConfig.type === 'form'" v-model="formData[tabConfig.name]" :config="tabConfig.formConfig" />
+            <xForm v-if="tabConfig.type === 'form'" v-model="formData[tabConfig.name]" :config="tabConfig.formConfig">
+              <template v-for="tabFormItem in tabConfig.formConfig.item">
+                <slot v-if="getComponentType(tabFormItem) === 'slot'" :slot="tabFormItem.name" :name="tabFormItem.name" />
+              </template>
+            </xForm>
             <template v-else>
               <el-button
                 v-if="computeBoolen(tabConfig.addConfig.show, true)"
@@ -161,6 +165,7 @@
         </template>
       </el-tabs>
       <!-- 动态加载组件 -->
+      <slot v-else-if="getComponentType(configItem) === 'slot' && configItem.type === 'outForm' " :name="configItem.name" />
       <el-form-item
         v-else-if="computeBoolen(configItem.show, true)"
         :key="configItemIndex"
@@ -176,7 +181,7 @@
           </el-tooltip>
           {{ computedConfig.labelSuffix }}
         </span>
-        <slot v-if="getComponentType(configItem) === 'slot'" :name="configItem.name" />
+        <slot v-if="getComponentType(configItem) === 'slot' && configItem.type === 'inForm'" :name="configItem.name" />
         <component
           :is="getComponentType(configItem)"
           v-else
@@ -314,6 +319,10 @@ export default {
               }
             }
           })
+        } else if (item.xType === 'slot') {
+          if (item.type === 'inForm' && this.formData[item.name] === undefined) {
+            this.$set(this.formData, item.name, '')
+          }
         } else {
           if (this.formData[item.name] === undefined) {
             this.$set(this.formData, item.name, '')
