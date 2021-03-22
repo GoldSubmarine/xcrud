@@ -108,3 +108,7 @@
 ## [v0.4.13] 2021.3.22
 
 - xForm中tabs头部按钮不限于表格，xForm按钮事件添加参数formData
+  
+## [v0.4.14] 2021.3.22
+
+- xForm添加的outForm、inForm为重复功能删除相关代码
