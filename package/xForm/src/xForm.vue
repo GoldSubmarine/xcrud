@@ -319,7 +319,7 @@ export default {
             }
           })
         } else {
-          if (this.formData[item.name] === undefined) {
+          if (item.name && this.formData[item.name] === undefined) {
             this.$set(this.formData, item.name, '')
           }
         }
