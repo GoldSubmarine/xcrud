@@ -99,6 +99,15 @@ export default {
                       circle: true,
                       style: '',
                       className: ''
+                    },
+                    {
+                      type: 'primary',
+                      icon: 'el-icon-open',
+                      size: 'mini',
+                      circle: true,
+                      style: '',
+                      className: '',
+                      show: false
                     }
                   ]
                 },
@@ -200,7 +209,27 @@ export default {
                   },
                 ]
               },
-
+              {
+                type: 'form',
+                label: '表单',
+                name: 'formTab',
+                addConfig: {show: false},
+                formConfig: { // 同XForm配置
+                  item: [
+                    {
+                      xType: 'input',
+                      label: '身高',
+                      name: 'height'
+                    },
+                    {
+                      xType: 'select',
+                      label: '性别',
+                      name: 'sex',
+                      dic: [{label: '男', value: 'male'}, {label: '女', value: 'female'}]
+                    }
+                  ]
+                }
+              }
             ]
           }
         ],

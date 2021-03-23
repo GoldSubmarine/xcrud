@@ -1,12 +1,12 @@
 module.exports = [
   {
-    title: "指南",
+    title: '指南',
     collapsable: false,
-    children: ["", "globalConfig"],
+    children: ['', 'globalConfig']
   },
   {
-    title: "组件",
+    title: '组件',
     collapsable: false,
-    children: ["form", "table", "button", "select"],
-  },
-];
+    children: ['form', 'table', 'button', 'select']
+  }
+]

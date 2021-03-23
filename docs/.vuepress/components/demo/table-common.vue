@@ -31,6 +31,12 @@ export default {
       configTable: {
         stripe: true,
         labelWidth: 'auto',
+        btn: [ // 适合控制表单的按钮
+          { text: '其他', click: () => {console.log('其他')}, icon: 'el-icon-more' }
+        ],
+        tableBtn: [ // 适合控制table的按钮
+          { text: '新增', click: () => {console.log('新增')}, icon: 'el-icon-circle-plus' }
+        ],
         column: [
           {
             type: 'index'
@@ -66,7 +72,7 @@ export default {
         ],
         operate: [
           { text: '编辑', type: 'text', show: true, click: () => console.log('编辑') },
-          { text: '详情', type: 'text', show: true, click: () => console.log('详情') },
+          { text: '详情', type: 'text', show: true, click: (row, index) => console.log(row, index) }, // row当前行数据 index 当前行索引
           { text: '更多1', dropdown: true, type: 'text', show: true, click: () => console.log('更多1') },
           { text: '更多2', dropdown: true, type: 'text', show: true, click: row => console.log(row) },
           { text: '更多3', dropdown: true, type: 'text', show: true, click: () => console.log('更多3') },
