@@ -63,7 +63,7 @@
             >
               <span v-if="tabConfig.addConfig.text">{{ tabConfig.addConfig.text }}</span>
             </el-button>
-            <xForm v-if="tabConfig.type === 'form'" v-model="formData[tabConfig.name]" :config="tabConfig.formConfig">
+            <xForm v-if="tabConfig.type === 'form'" v-model="formData[tabConfig.name]" :config="childFormConfig(tabConfig.formConfig)">
               <template v-for="tabFormItem in tabConfig.formConfig.item">
                 <slot v-if="getComponentType(tabFormItem) === 'slot'" :slot="tabFormItem.name" :name="tabFormItem.name" />
                 <slot :slot="tabFormItem.slot" v-ele-if="typeof tabFormItem.slot === 'string' && computeBoolen(tabFormItem.show, true)" :name="tabFormItem.slot" />
@@ -376,6 +376,12 @@ export default {
       } else {
         return true
       }
+    },
+    // 合并tab页中表单和主表单的部分项，子表单不配置的情况下跟随主表单配置
+    childFormConfig(config) {
+      return merge({
+        disabled: this.computedConfig.disabled
+      }, config)
     }
   }
 }
