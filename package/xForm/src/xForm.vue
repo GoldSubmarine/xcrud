@@ -63,7 +63,7 @@
             >
               <span v-if="tabConfig.addConfig.text">{{ tabConfig.addConfig.text }}</span>
             </el-button>
-            <xForm v-if="tabConfig.type === 'form'" v-model="formData[tabConfig.name]" :config="childFormConfig(tabConfig.formConfig)">
+            <xForm v-if="tabConfig.type === 'form'" :ref="`${tabConfig.name}_XForm`" v-model="formData[tabConfig.name]" :config="childFormConfig(tabConfig.formConfig)">
               <template v-for="tabFormItem in tabConfig.formConfig.item">
                 <slot v-if="getComponentType(tabFormItem) === 'slot'" :slot="tabFormItem.name" :name="tabFormItem.name" />
                 <slot :slot="tabFormItem.slot" v-ele-if="typeof tabFormItem.slot === 'string' && computeBoolen(tabFormItem.show, true)" :name="tabFormItem.slot" />
@@ -341,6 +341,19 @@ export default {
       const validPromise = new Promise((resolve, reject) => {
         this.$refs['refForm'].validate((valid, obj) => {
           if (valid) {
+            const refsKey = Object.keys(this.$refs).filter(k => {
+              return /_XForm$/.test(k)
+            })
+            for (let i = 0; i < refsKey.length; i++) {
+              this.$refs[refsKey[i]][0].validate(vald => {
+                if (vald) {
+                  resolve()
+                } else {
+                  this.activeTab = refsKey[i].replace(/_XForm$/, '')
+                  reject()
+                }
+              })
+            }
             resolve()
           } else {
             for (const key in obj) {
