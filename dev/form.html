@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>xForm 组件 | xcrud</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    <link rel="icon" href="/xcrud/home.svg">
+    <meta name="description" content="基于 element-ui & Vue 实现的用于快速增删改查的组件，是开发后台应用的利器">
+    <link rel="preload" href="/xcrud/assets/css/0.styles.68028399.css" as="style"><link rel="preload" href="/xcrud/assets/js/app.0e324b04.js" as="script"><link rel="preload" href="/xcrud/assets/js/2.ab4daaeb.js" as="script"><link rel="preload" href="/xcrud/assets/js/22.7e8cedb9.js" as="script"><link rel="preload" href="/xcrud/assets/js/4.9d40188c.js" as="script"><link rel="preload" href="/xcrud/assets/js/17.61a6adfd.js" as="script"><link rel="preload" href="/xcrud/assets/js/15.6205ae90.js" as="script"><link rel="preload" href="/xcrud/assets/js/14.8d781e0d.js" as="script"><link rel="preload" href="/xcrud/assets/js/16.7478f942.js" as="script"><link rel="preload" href="/xcrud/assets/js/3.28df1977.js" as="script"><link rel="prefetch" href="/xcrud/assets/js/10.d2a56891.js"><link rel="prefetch" href="/xcrud/assets/js/11.bbc4a33f.js"><link rel="prefetch" href="/xcrud/assets/js/12.3f7e7cd7.js"><link rel="prefetch" href="/xcrud/assets/js/13.e05911da.js"><link rel="prefetch" href="/xcrud/assets/js/18.82a02598.js"><link rel="prefetch" href="/xcrud/assets/js/19.4714dab0.js"><link rel="prefetch" href="/xcrud/assets/js/20.21fab94e.js"><link rel="prefetch" href="/xcrud/assets/js/21.0a2ad7c0.js"><link rel="prefetch" href="/xcrud/assets/js/23.6a0ecb06.js"><link rel="prefetch" href="/xcrud/assets/js/24.353a2ce4.js"><link rel="prefetch" href="/xcrud/assets/js/25.40a79ba1.js"><link rel="prefetch" href="/xcrud/assets/js/5.931860d1.js"><link rel="prefetch" href="/xcrud/assets/js/6.2ddc8bc6.js"><link rel="prefetch" href="/xcrud/assets/js/7.41a65c94.js"><link rel="prefetch" href="/xcrud/assets/js/8.5eea11a0.js"><link rel="prefetch" href="/xcrud/assets/js/9.30c7d4dd.js">
+    <link rel="stylesheet" href="/xcrud/assets/css/0.styles.68028399.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/xcrud/" class="home-link router-link-active"><!----> <span class="site-name">xcrud</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文档" class="dropdown-title"><span class="title">文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="文档" class="mobile-dropdown-title"><span class="title">文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/xcrud/dev/index.html" class="nav-link">
+  dev
+</a></li></ul></div></div><div class="nav-item"><a href="/xcrud/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/xcrud/dev/index.html" class="nav-link">
+  组件文档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="知识库" class="dropdown-title"><span class="title">知识库</span> <span class="arrow down"></span></button> <button type="button" aria-label="知识库" class="mobile-dropdown-title"><span class="title">知识库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://cn.vuejs.org/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://element.eleme.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  element-ui
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><a href="https://github.com/GoldSubmarine/xcrud" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文档" class="dropdown-title"><span class="title">文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="文档" class="mobile-dropdown-title"><span class="title">文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/xcrud/dev/index.html" class="nav-link">
+  dev
+</a></li></ul></div></div><div class="nav-item"><a href="/xcrud/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/xcrud/dev/index.html" class="nav-link">
+  组件文档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="知识库" class="dropdown-title"><span class="title">知识库</span> <span class="arrow down"></span></button> <button type="button" aria-label="知识库" class="mobile-dropdown-title"><span class="title">知识库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://cn.vuejs.org/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://element.eleme.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  element-ui
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><a href="https://github.com/GoldSubmarine/xcrud" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/xcrud/dev/" aria-current="page" class="sidebar-link">快速开始</a></li><li><a href="/xcrud/dev/globalConfig.html" class="sidebar-link">全局配置</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>组件</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/xcrud/dev/form.html" aria-current="page" class="active sidebar-link">xForm 组件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/xcrud/dev/form.html#综合示例" class="sidebar-link">综合示例</a></li><li class="sidebar-sub-header"><a href="/xcrud/dev/form.html#slot-插入" class="sidebar-link">slot 插入</a></li><li class="sidebar-sub-header"><a href="/xcrud/dev/form.html#远程搜索" class="sidebar-link">远程搜索</a></li><li class="sidebar-sub-header"><a href="/xcrud/dev/form.html#子表单" class="sidebar-link">子表单</a></li><li class="sidebar-sub-header"><a href="/xcrud/dev/form.html#attributes" class="sidebar-link">Attributes</a></li><li class="sidebar-sub-header"><a href="/xcrud/dev/form.html#config" class="sidebar-link">Config</a></li><li class="sidebar-sub-header"><a href="/xcrud/dev/form.html#item" class="sidebar-link">Item</a></li></ul></li><li><a href="/xcrud/dev/table.html" class="sidebar-link">xTable 组件</a></li><li><a href="/xcrud/dev/button.html" class="sidebar-link">Button 按钮</a></li><li><a href="/xcrud/dev/select.html" class="sidebar-link">Select 选择器</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="xform-组件"><a href="#xform-组件" class="header-anchor">#</a> xForm 组件</h1> <hr> <h2 id="综合示例"><a href="#综合示例" class="header-anchor">#</a> 综合示例</h2> <div title="综合示例" class="code"><div class="code--title"><small>配置 json，生成 form 表单，本示例展示了 xForm 的各种用法：设置初始值、树形选择器、表单校验 等</small></div> <div class="code--demo"><div class="code-content"><div v-loading="0" class="app-container"><form class="el-form el-form--label-right"><div class="el-form-item is-required el-form-item--medium"><label for="username" class="el-form-item__label" style="width:120px;"><span>
+        登录名
+        <i class="el-tooltip el-icon-info" style="color:#409EFF;"></i>
+        
+      </span></label><div class="el-form-item__content" style="margin-left:120px;"> <div class="el-input el-input--medium" style="max-width:300px;width:100%;"><!----><input type="text" autocomplete="off" aria-label="登录名" rows="3" name="username" class="el-input__inner"><!----><!----><!----><!----></div><!----></div></div><div class="el-form-item is-required el-form-item--medium"><label for="birthday" class="el-form-item__label" style="width:120px;">生日</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-date-editor el-input el-input--medium el-input--prefix el-input--suffix el-date-editor--date" style="max-width:300px;width:100%;"><!----><input type="text" autocomplete="off" name="birthday" placeholder="请选择日期" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-date"></i><!----></span><span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-input__icon"></i><!----><!----><!----><!----></span><!----></span><!----><!----></div><!----></div></div><div class="el-form-item is-required el-form-item--medium"><label for="deptId" class="el-form-item__label" style="width:120px;">部门</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-select el-select--medium" style="max-width:300px;width:100%;"><!----><div class="el-input el-input--medium el-input--suffix"><!----><input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner"><!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----><!----><!----><!----><!----></span><!----></span><!----><!----></div><div class="el-select-dropdown el-popper" style="min-width:;display:none;"><div class="el-scrollbar" style="display:none;"><div class="el-select-dropdown__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-select-dropdown__list"><!----><li class="el-select-dropdown__item selected" style="display:none;"><span></span></li>  <div role="tree" class="el-tree select-tree el-tree--highlight-current"><div role="treeitem" tabindex="-1" aria-disabled="" draggable="false" class="el-tree-node is-focusable"><div class="el-tree-node__content" style="padding-left:0px;"><span class="el-tree-node__expand-icon el-icon-caret-right"></span><!----><!----><span style="margin-left:10px;font-size:14px;">xx公司</span></div><!----></div><!----><div class="el-tree__drop-indicator" style="display:none;"></div></div></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div><p class="el-select-dropdown__empty">
+          无数据
+        </p></div></div><!----></div></div><div class="el-form-item is-required el-form-item--medium"><label for="deptId2" class="el-form-item__label" style="width:120px;">部门多选</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-select el-select--medium" style="max-width:300px;width:100%;"><div class="el-select__tags" style="max-width:-32px;width:100%;"><!----><span></span><input type="text" autocomplete="off" value="" class="el-select__input is-medium" style="flex-grow:1;width:-0.625%;max-width:-42px;"></div><div class="el-input el-input--medium el-input--suffix"><!----><input tabindex="-1" type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner"><!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----><!----><!----><!----><!----></span><!----></span><!----><!----></div><div class="el-select-dropdown el-popper is-multiple" style="min-width:;display:none;"><div class="el-scrollbar" style="display:none;"><div class="el-select-dropdown__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-select-dropdown__list"><!----><li class="el-select-dropdown__item" style="display:none;"><span></span></li>  <div role="tree" class="el-tree select-tree el-tree--highlight-current"><div role="treeitem" tabindex="-1" aria-disabled="" draggable="false" class="el-tree-node is-focusable"><div class="el-tree-node__content" style="padding-left:0px;"><span class="el-tree-node__expand-icon el-icon-caret-right"></span><label class="el-checkbox"><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" class="el-checkbox__original"></span><!----></label><!----><span style="margin-left:10px;font-size:14px;">xx公司</span></div><!----></div><!----><div class="el-tree__drop-indicator" style="display:none;"></div></div></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div><p class="el-select-dropdown__empty">
+          无数据
+        </p></div></div><!----></div></div><div class="el-form-item is-required el-form-item--medium"><label for="phone" class="el-form-item__label" style="width:120px;">手机号</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-input el-input--medium" style="max-width:300px;width:100%;"><!----><input type="text" autocomplete="off" aria-label="手机号" rows="3" name="phone" class="el-input__inner"><!----><!----><!----><!----></div><!----></div></div><div class="el-form-item el-form-item--medium"><label for="email" class="el-form-item__label" style="width:120px;">邮箱</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-input el-input--medium" style="max-width:300px;width:100%;"><!----><input type="text" autocomplete="off" aria-label="邮箱" rows="3" name="email" class="el-input__inner"><!----><!----><!----><!----></div><!----></div></div><div class="el-form-item el-form-item--medium"><label for="sex" class="el-form-item__label" style="width:120px;">性别</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-select el-select--medium" style="max-width:300px;width:100%;"><!----><div class="el-input el-input--medium el-input--suffix"><!----><input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" name="sex" class="el-input__inner"><!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----><!----><!----><!----><!----></span><!----></span><!----><!----></div><div class="el-select-dropdown el-popper" style="min-width:;display:none;"><div class="el-scrollbar" style="display:none;"><div class="el-select-dropdown__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-select-dropdown__list"><!----><li class="el-select-dropdown__item"><span>男</span></li><li class="el-select-dropdown__item"><span>女</span></li></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div><p class="el-select-dropdown__empty">
+          无数据
+        </p></div></div><!----></div></div><div class="el-form-item el-form-item--medium"><label for="sex2" class="el-form-item__label" style="width:120px;">自定义下拉</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-select el-select--medium" style="max-width:300px;width:100%;"><!----><div class="el-input el-input--medium el-input--suffix"><!----><input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" name="sex2" class="el-input__inner"><!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----><!----><!----><!----><!----></span><!----></span><!----><!----></div><div class="el-select-dropdown el-popper" style="min-width:;display:none;"><div class="el-scrollbar" style="display:none;"><div class="el-select-dropdown__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-select-dropdown__list"><!----><li class="el-select-dropdown__item"><span>男男</span></li></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div><p class="el-select-dropdown__empty">
+          无数据
+        </p></div></div><!----></div></div><div class="el-form-item el-form-item--medium"><label for="status" class="el-form-item__label" style="width:120px;">状态</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div role="radiogroup" class="el-radio-group" style="max-width:300px;width:100%;"><label role="radio" aria-checked="true" tabindex="0" class="el-radio is-checked"><span class="el-radio__input is-checked"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" value="enable" checked="checked" class="el-radio__original"></span><span class="el-radio__label">激活<!----></span></label><label role="radio" tabindex="-1" class="el-radio"><span class="el-radio__input"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" value="disable" class="el-radio__original"></span><span class="el-radio__label">锁定<!----></span></label></div><!----></div></div><div class="el-form-item el-form-item--medium"><label for="hobby" class="el-form-item__label" style="width:120px;">爱好</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div role="group" aria-label="checkbox-group" class="el-checkbox-group" style="max-width:300px;width:100%;"><label class="el-checkbox"><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" value="basketball" class="el-checkbox__original"></span><span class="el-checkbox__label">篮球<!----></span></label><label class="el-checkbox"><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" value="football" class="el-checkbox__original"></span><span class="el-checkbox__label">足球<!----></span></label></div><!----></div></div><div class="el-form-item el-form-item--medium"><label for="password" class="el-form-item__label" style="width:120px;">密码</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-input el-input--medium" style="max-width:300px;width:100%;"><!----><input type="password" autocomplete="off" aria-label="密码" rows="3" name="password" class="el-input__inner"><!----><!----><!----><!----></div><!----></div></div><div class="el-form-item el-form-item--medium"><label for="remark" class="el-form-item__label" style="width:120px;">备注</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-textarea el-input--medium" style="max-width:300px;width:100%;"><textarea autocomplete="off" aria-label="备注" rows="3" name="remark" class="el-textarea__inner" style="resize:none;"></textarea><!----></div><!----></div></div> <div class="el-form-item el-form-item--medium"><!----><div class="el-form-item__content" style="margin-left:120px;"><button type="button" class="el-button el-button--primary el-button--medium"><!----><!----><span>
+        保存
+      </span></button><button type="button" class="el-button el-button--primary el-button--medium"><!----><!----><span>
+        取消
+      </span></button><!----></div></div></form></div> </div></div> <div class="code--segment" style="display:none;"><pre><code class="hljs vue"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"app-container"</span> <span class="hljs-attr">:v-loading</span>=<span class="hljs-string">"loading"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">x-form</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"xForm"</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"formData"</span> <span class="hljs-attr">:config</span>=<span class="hljs-string">"formConfig"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  data() {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">loading</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">formData</span>: {
+        <span class="hljs-attr">status</span>: <span class="hljs-string">'enable'</span>  <span class="hljs-comment">// 默认数据</span>
+      },
+      <span class="hljs-attr">treeData</span>: [{
+        <span class="hljs-attr">id</span>: <span class="hljs-string">"1"</span>,
+        <span class="hljs-attr">name</span>: <span class="hljs-string">"xx公司"</span>,
+        <span class="hljs-attr">children</span>: [
+          {
+            <span class="hljs-attr">id</span>: <span class="hljs-string">"2"</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">"技术部"</span>,
+            <span class="hljs-attr">children</span>: [
+              { <span class="hljs-attr">id</span>: <span class="hljs-string">"4"</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Java 组"</span> },
+              { <span class="hljs-attr">id</span>: <span class="hljs-string">"5"</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Web 组"</span> },
+              { <span class="hljs-attr">id</span>: <span class="hljs-string">"6"</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"PHP 组"</span> },
+              { <span class="hljs-attr">id</span>: <span class="hljs-string">"7"</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Python 组"</span> }
+            ]
+          },
+          { <span class="hljs-attr">id</span>: <span class="hljs-string">"3"</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"售后部"</span> }
+        ]
+      }]
+    }
+  },
+  <span class="hljs-attr">computed</span>: {
+    formConfig() {
+      <span class="hljs-keyword">const</span> _this = <span class="hljs-keyword">this</span>
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">inline</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">item</span>: [
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'input'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'username'</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'登录名'</span>,
+            <span class="hljs-attr">tooltip</span>: <span class="hljs-string">'登录名的&lt;br /&gt;提示信息'</span>,
+            <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入'</span>, <span class="hljs-attr">trigger</span>: [<span class="hljs-string">'blur'</span>, <span class="hljs-string">'change'</span>] }]
+          },
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'datePicker'</span>,
+            <span class="hljs-attr">type</span>: <span class="hljs-string">'date'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'birthday'</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'生日'</span>,
+            <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入'</span>, <span class="hljs-attr">trigger</span>: [<span class="hljs-string">'blur'</span>, <span class="hljs-string">'change'</span>] }] },
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'select'</span>,
+            <span class="hljs-attr">type</span>: <span class="hljs-string">'tree'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'deptId'</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'部门'</span>, <span class="hljs-attr">dic</span>: { <span class="hljs-attr">data</span>: _this.treeData, <span class="hljs-attr">label</span>: <span class="hljs-string">'name'</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">'id'</span>},
+            <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入'</span>, <span class="hljs-attr">trigger</span>: [<span class="hljs-string">'blur'</span>, <span class="hljs-string">'change'</span>] } ]
+          },
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'select'</span>,
+            <span class="hljs-attr">type</span>: <span class="hljs-string">'tree'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'deptId2'</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'部门多选'</span>,
+            <span class="hljs-attr">multiple</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">dic</span>: { <span class="hljs-attr">data</span>: _this.treeData, <span class="hljs-attr">label</span>: <span class="hljs-string">'name'</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">'id'</span>},
+            <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入'</span>, <span class="hljs-attr">trigger</span>: [<span class="hljs-string">'blur'</span>, <span class="hljs-string">'change'</span>] } ]
+          },
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'input'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'phone'</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'手机号'</span>,
+            <span class="hljs-attr">rules</span>: [ { <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">pattern</span>: <span class="hljs-regexp">/^1[3-9][0-9]{9}$/</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入正确的手机号'</span>, <span class="hljs-attr">trigger</span>: [<span class="hljs-string">'blur'</span>, <span class="hljs-string">'change'</span>] }]
+          },
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'input'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'email'</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'邮箱'</span>,
+            <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">type</span>: <span class="hljs-string">'email'</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入正确的邮箱地址'</span>, <span class="hljs-attr">trigger</span>: [<span class="hljs-string">'blur'</span>, <span class="hljs-string">'change'</span>] }]
+          },
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'select'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'sex'</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'性别'</span>,
+            <span class="hljs-attr">dic</span>: [{ <span class="hljs-attr">label</span>: <span class="hljs-string">'男'</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">'male'</span> }, { <span class="hljs-attr">label</span>: <span class="hljs-string">'女'</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">'female'</span> }]
+          },
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'select'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'sex2'</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'自定义下拉'</span>,
+            <span class="hljs-attr">dic</span>: {<span class="hljs-attr">data</span>: [{<span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"男男"</span>}], <span class="hljs-attr">label</span>: <span class="hljs-string">'name'</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">'id'</span>}
+          },
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'radio'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'status'</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'状态'</span>,
+            <span class="hljs-attr">dic</span>: [ { <span class="hljs-attr">label</span>: <span class="hljs-string">'激活'</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">'enable'</span> }, { <span class="hljs-attr">label</span>: <span class="hljs-string">'锁定'</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">'disable'</span> }]
+          },
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'checkbox'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'hobby'</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'爱好'</span>,
+            <span class="hljs-attr">dic</span>: [ { <span class="hljs-attr">label</span>: <span class="hljs-string">'篮球'</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">'basketball'</span> }, { <span class="hljs-attr">label</span>: <span class="hljs-string">'足球'</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">'football'</span> }]
+          },
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">"input"</span>,
+            <span class="hljs-attr">type</span>: <span class="hljs-string">'password'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">"password"</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'密码'</span>
+          },
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'input'</span>,
+            <span class="hljs-attr">type</span>: <span class="hljs-string">'textarea'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'remark'</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'备注'</span>
+          }
+        ],
+        <span class="hljs-attr">operate</span>: [
+          { <span class="hljs-attr">text</span>: <span class="hljs-string">'保存'</span>, <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">click</span>: _this.save },
+          { <span class="hljs-attr">text</span>: <span class="hljs-string">'取消'</span>, <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">click</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'cancel'</span>) }
+        ]
+      }
+    }
+  },
+  <span class="hljs-attr">methods</span>: {
+    save() {
+      <span class="hljs-keyword">this</span>.loading++;
+      <span class="hljs-keyword">this</span>.$refs[<span class="hljs-string">'xForm'</span>].validate().then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.formData)
+      }).catch(<span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(e)).finally(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">this</span>.loading--)
+    }
+  }
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div> <div class="code--button"><span class="show-btn"><i class="el-icon-caret-bottom"></i> <span class="show-btn-word">
+        显示代码
+      </span> <span></span></span></div></div> <h2 id="slot-插入"><a href="#slot-插入" class="header-anchor">#</a> slot 插入</h2> <div title="综合示例" class="code"><div class="code--title"><small>在 form 表单之间插入任意信息，满足自定义需求，支持两种不同的插入方式，设置 xType=slot 时，表示保留 form 原有的 itemLabel，插入 label 后的内容；当设置 slot='slotName' 时表示插入一段和 form 完全无关的代码</small></div> <div class="code--demo"><div class="code-content"><div v-loading="0" class="app-container"><form class="el-form el-form--label-right"><div class="el-form-item is-required el-form-item--medium"><label for="username" class="el-form-item__label" style="width:120px;">登录名</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-input el-input--medium" style="max-width:300px;width:100%;"><!----><input type="text" autocomplete="off" aria-label="登录名" rows="3" name="username" class="el-input__inner"><!----><!----><!----><!----></div><!----></div></div><div class="el-form-item el-form-item--medium"><label for="password" class="el-form-item__label" style="width:120px;">密码</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-input el-input--medium" style="max-width:300px;width:100%;"><!----><input type="password" autocomplete="off" aria-label="密码" rows="3" name="password" class="el-input__inner"><!----><!----><!----><!----></div><!----></div></div><p style="color:red;">这是插入的一段文字</p><div class="el-form-item el-form-item--medium"><label for="age" class="el-form-item__label" style="width:120px;">年龄</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <input type="text"><!----></div></div><div class="el-form-item el-form-item--medium"><label for="address" class="el-form-item__label" style="width:120px;">地址</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div style="margin-bottom:10px;"><div class="el-input el-input--medium" style="width:300px;"><!----><input type="text" autocomplete="off" class="el-input__inner"><!----><!----><!----><!----></div> <button type="button" class="el-button el-button--primary el-button--medium is-circle"><!----><i class="el-icon-plus"></i><!----></button> <button type="button" class="el-button el-button--primary el-button--medium is-circle"><!----><i class="el-icon-minus"></i><!----></button></div><!----></div></div> <div class="el-form-item el-form-item--medium"><!----><div class="el-form-item__content" style="margin-left:120px;"><button type="button" class="el-button el-button--primary el-button--medium"><!----><!----><span>
+        保存
+      </span></button><button type="button" class="el-button el-button--primary el-button--medium"><!----><!----><span>
+        取消
+      </span></button><!----></div></div></form></div> </div></div> <div class="code--segment" style="display:none;"><pre><code class="hljs vue"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"app-container"</span> <span class="hljs-attr">:v-loading</span>=<span class="hljs-string">"loading"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">x-form</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"xForm"</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"formData"</span> <span class="hljs-attr">:config</span>=<span class="hljs-string">"formConfig"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">titleSlot</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"color: red;"</span>&gt;</span>这是插入的一段文字<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">age</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">address</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(item, index) in formData.address"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"margin-bottom: 10px"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">el-input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"item.value"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 300px"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">el-input</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"el-icon-plus"</span> <span class="hljs-attr">circle</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"addAddress"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"el-icon-minus"</span> <span class="hljs-attr">circle</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"removeAddress(index)"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">x-form</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  data() {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">loading</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">formData</span>: {
+        <span class="hljs-attr">status</span>: <span class="hljs-string">'enable'</span>,  <span class="hljs-comment">// 默认数据</span>
+        <span class="hljs-attr">address</span>: [
+          { <span class="hljs-attr">value</span>: <span class="hljs-string">''</span> }
+        ]
+      },
+      <span class="hljs-attr">treeData</span>: [{
+        <span class="hljs-attr">id</span>: <span class="hljs-string">"1"</span>,
+        <span class="hljs-attr">name</span>: <span class="hljs-string">"xx公司"</span>,
+        <span class="hljs-attr">children</span>: [
+          {
+            <span class="hljs-attr">id</span>: <span class="hljs-string">"2"</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">"技术部"</span>,
+            <span class="hljs-attr">children</span>: [
+              { <span class="hljs-attr">id</span>: <span class="hljs-string">"4"</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Java 组"</span> },
+              { <span class="hljs-attr">id</span>: <span class="hljs-string">"5"</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Web 组"</span> },
+              { <span class="hljs-attr">id</span>: <span class="hljs-string">"6"</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"PHP 组"</span> },
+              { <span class="hljs-attr">id</span>: <span class="hljs-string">"7"</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Python 组"</span> }
+            ]
+          },
+          { <span class="hljs-attr">id</span>: <span class="hljs-string">"3"</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"售后部"</span> }
+        ]
+      }]
+    }
+  },
+  <span class="hljs-attr">computed</span>: {
+    formConfig() {
+      <span class="hljs-keyword">const</span> _this = <span class="hljs-keyword">this</span>
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">inline</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">item</span>: [
+          { <span class="hljs-attr">xType</span>: <span class="hljs-string">'input'</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">'username'</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">'登录名'</span>, <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入'</span>, <span class="hljs-attr">trigger</span>: [<span class="hljs-string">'blur'</span>, <span class="hljs-string">'change'</span>] }] },
+          { <span class="hljs-attr">xType</span>: <span class="hljs-string">"input"</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'password'</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"password"</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">'密码'</span>, },
+          { <span class="hljs-attr">slot</span>: <span class="hljs-string">"titleSlot"</span> },
+          { <span class="hljs-attr">xType</span>: <span class="hljs-string">"slot"</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"age"</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">"年龄"</span> },
+          { <span class="hljs-attr">xType</span>: <span class="hljs-string">"slot"</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"address"</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">'地址'</span> },
+        ],
+        <span class="hljs-attr">operate</span>: [
+          { <span class="hljs-attr">text</span>: <span class="hljs-string">'保存'</span>, <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">click</span>: _this.save },
+          { <span class="hljs-attr">text</span>: <span class="hljs-string">'取消'</span>, <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">click</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'cancel'</span>) }
+        ]
+      }
+    }
+  },
+  <span class="hljs-attr">methods</span>: {
+    addAddress() {
+      <span class="hljs-keyword">this</span>.formData.address.push({ <span class="hljs-attr">value</span>: <span class="hljs-string">''</span> })
+    },
+    removeAddress(index) {
+      <span class="hljs-keyword">this</span>.formData.address.splice(index, <span class="hljs-number">1</span>)
+    },
+    save() {
+      <span class="hljs-keyword">this</span>.loading++;
+      <span class="hljs-keyword">this</span>.$refs[<span class="hljs-string">'xForm'</span>].validate().then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.formData)
+      }).catch(<span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(e)).finally(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">this</span>.loading--)
+    }
+  }
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div> <div class="code--button"><span class="show-btn"><i class="el-icon-caret-bottom"></i> <span class="show-btn-word">
+        显示代码
+      </span> <span></span></span></div></div> <h2 id="远程搜索"><a href="#远程搜索" class="header-anchor">#</a> 远程搜索</h2> <div title="远程搜索" class="code"><div class="code--title"><small>在 form 表单之间插入任意信息，满足自定义需求</small></div> <div class="code--demo"><div class="code-content"><div v-loading="0" class="app-container"><form class="el-form el-form--label-right"><div class="el-form-item is-required el-form-item--medium"><label for="username" class="el-form-item__label" style="width:120px;">登录名</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-9045" class="el-autocomplete" style="max-width:300px;width:100%;"><div class="el-input el-input--medium"><!----><input type="text" autocomplete="off" aria-label="登录名" valueKey="value" name="username" fetchSuggestions="function () { [native code] }" triggerOnFocus="true" debounce="300" placement="bottom-start" popperAppendToBody="true" rows="3" class="el-input__inner"><!----><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div><!----></div></div> <div class="el-form-item el-form-item--medium"><!----><div class="el-form-item__content" style="margin-left:120px;"><button type="button" class="el-button el-button--primary el-button--medium"><!----><!----><span>
+        保存
+      </span></button><button type="button" class="el-button el-button--primary el-button--medium"><!----><!----><span>
+        取消
+      </span></button><!----></div></div></form></div> </div></div> <div class="code--segment" style="display:none;"><pre><code class="hljs vue"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"app-container"</span> <span class="hljs-attr">:v-loading</span>=<span class="hljs-string">"loading"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">x-form</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"xForm"</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"formData"</span> <span class="hljs-attr">:config</span>=<span class="hljs-string">"formConfig"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  data() {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">loading</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">restaurants</span>: [],
+      <span class="hljs-attr">formData</span>: {},
+    }
+  },
+  mounted() {
+    <span class="hljs-keyword">this</span>.restaurants = <span class="hljs-keyword">this</span>.loadAll();
+  },
+  <span class="hljs-attr">computed</span>: {
+    formConfig() {
+      <span class="hljs-keyword">const</span> _this = <span class="hljs-keyword">this</span>
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">inline</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">item</span>: [
+          { <span class="hljs-attr">xType</span>: <span class="hljs-string">'autocomplete'</span>, <span class="hljs-attr">fetchSuggestions</span>: _this.querySearch, <span class="hljs-attr">name</span>: <span class="hljs-string">'username'</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">'登录名'</span>, <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入'</span>, <span class="hljs-attr">trigger</span>: [<span class="hljs-string">'blur'</span>, <span class="hljs-string">'change'</span>] }] },
+        ],
+        <span class="hljs-attr">operate</span>: [
+          { <span class="hljs-attr">text</span>: <span class="hljs-string">'保存'</span>, <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">click</span>: _this.save },
+          { <span class="hljs-attr">text</span>: <span class="hljs-string">'取消'</span>, <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">click</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'cancel'</span>) }
+        ]
+      }
+    }
+  },
+  <span class="hljs-attr">methods</span>: {
+    save() {
+      <span class="hljs-keyword">this</span>.loading++;
+      <span class="hljs-keyword">this</span>.$refs[<span class="hljs-string">'xForm'</span>].validate().then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.formData)
+      }).catch(<span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(e)).finally(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">this</span>.loading--)
+    },
+    querySearch(queryString, cb) {
+      <span class="hljs-keyword">let</span> restaurants = <span class="hljs-keyword">this</span>.restaurants;
+      <span class="hljs-keyword">let</span> results = queryString ? restaurants.filter(<span class="hljs-keyword">this</span>.createFilter(queryString)) : restaurants;
+      <span class="hljs-comment">// 调用 callback 返回建议列表的数据</span>
+      cb(results);
+    },
+    createFilter(queryString) {
+      <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">restaurant</span>) =&gt;</span> {
+        <span class="hljs-keyword">return</span> (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === <span class="hljs-number">0</span>);
+      };
+    },
+    loadAll() {
+      <span class="hljs-keyword">return</span> [
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"三全鲜食（北新泾店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"长宁区新渔路144号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"Hot honey 首尔炸鸡（仙霞路）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区淞虹路661号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"新旺角茶餐厅"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市普陀区真北路988号创邑金沙谷6号楼113"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"泷千家(天山西路店)"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"天山西路438号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"胖仙女纸杯蛋糕（上海凌空店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区金钟路968号1幢18号楼一层商铺18-101"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"贡茶"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区金钟路633号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"豪大大香鸡排超级奶爸"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市嘉定区曹安公路曹安路1685号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"茶芝兰（奶茶，手抓饼）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市普陀区同普路1435号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"十二泷町"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市北翟路1444弄81号B幢-107"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"星移浓缩咖啡"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市嘉定区新郁路817号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"阿姨奶茶/豪大大"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"嘉定区曹安路1611号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"新麦甜四季甜品炸鸡"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"嘉定区曹安公路2383弄55号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"Monica摩托主题咖啡店"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"嘉定区江桥镇曹安公路2409号1F，2383弄62号1F"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"浮生若茶（凌空soho店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海长宁区金钟路968号9号楼地下一层"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"NONO JUICE  鲜榨果汁"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区天山西路119号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"CoCo都可(北新泾店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区仙霞西路"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"快乐柠檬（神州智慧店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区天山西路567号1层R117号店铺"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"Merci Paul cafe"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市普陀区光复西路丹巴路28弄6号楼819"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"猫山王（西郊百联店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区仙霞西路88号第一层G05-F01-1-306"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"枪会山"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市普陀区棕榈路"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"纵食"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"元丰天山花园(东门) 双流路267号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"钱记"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区天山西路"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"壹杯加"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区通协路"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"唦哇嘀咖"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区新泾镇金钟路999号2幢（B幢）第01层第1-02A单元"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"爱茜茜里(西郊百联)"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"长宁区仙霞西路88号1305室"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"爱茜茜里(近铁广场)"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市普陀区真北路818号近铁城市广场北区地下二楼N-B2-O2-C商铺"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"鲜果榨汁（金沙江路和美广店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"普陀区金沙江路2239号金沙和美广场B1-10-6"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"开心丽果（缤谷店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区威宁路天山路341号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"超级鸡车（丰庄路店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市嘉定区丰庄路240号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"妙生活果园（北新泾店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"长宁区新渔路144号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"香宜度麻辣香锅"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"长宁区淞虹路148号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"凡仔汉堡（老真北路店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市普陀区老真北路160号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"港式小铺"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区金钟路968号15楼15-105室"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"蜀香源麻辣香锅（剑河路店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"剑河路443-1"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"北京饺子馆"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"长宁区北新泾街道天山西路490-1号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"饭典*新简餐（凌空SOHO店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区金钟路968号9号楼地下一层9-83室"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"焦耳·川式快餐（金钟路店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市金钟路633号地下一层甲部"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"动力鸡车"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"长宁区仙霞西路299弄3号101B"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"浏阳蒸菜"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"天山西路430号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"四海游龙（天山西路店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区天山西路"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"樱花食堂（凌空店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区金钟路968号15楼15-105室"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"壹分米客家传统调制米粉(天山店)"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"天山西路428号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"福荣祥烧腊（平溪路店）"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区协和路福泉路255弄57-73号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"速记黄焖鸡米饭"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区北新泾街道金钟路180号1层01号摊位"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"红辣椒麻辣烫"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"上海市长宁区天山西路492号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"(小杨生煎)西郊百联餐厅"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"长宁区仙霞西路88号百联2楼"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"阳阳麻辣烫"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"天山西路389号"</span> },
+        { <span class="hljs-string">"value"</span>: <span class="hljs-string">"南拳妈妈龙虾盖浇饭"</span>, <span class="hljs-string">"address"</span>: <span class="hljs-string">"普陀区金沙江路1699号鑫乐惠美食广场A13"</span> }
+      ];
+    }
+  }
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div> <div class="code--button"><span class="show-btn"><i class="el-icon-caret-bottom"></i> <span class="show-btn-word">
+        显示代码
+      </span> <span></span></span></div></div> <h2 id="子表单"><a href="#子表单" class="header-anchor">#</a> 子表单</h2> <div title="子表单" class="code"><div class="code--title"><small>适用于一对多的场景</small></div> <div class="code--demo"><div class="code-content"><div v-loading="0" class="app-container"><form class="el-form el-form--label-right"><div class="el-form-item is-required el-form-item--medium"><label for="username" class="el-form-item__label" style="width:120px;"><span>
+        登录名
+        <i class="el-tooltip el-icon-info" style="color:#409EFF;"></i>
+        
+      </span></label><div class="el-form-item__content" style="margin-left:120px;"> <div class="el-input el-input--medium" style="max-width:300px;width:100%;"><!----><input type="text" autocomplete="off" aria-label="登录名" rows="3" name="username" class="el-input__inner"><!----><!----><!----><!----></div><!----></div></div><div class="el-form-item is-required el-form-item--medium"><label for="birthday" class="el-form-item__label" style="width:120px;">生日</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-date-editor el-input el-input--medium el-input--prefix el-input--suffix el-date-editor--date" style="max-width:300px;width:100%;"><!----><input type="text" autocomplete="off" name="birthday" placeholder="请选择日期" class="el-input__inner"><span class="el-input__prefix"><i class="el-input__icon el-icon-date"></i><!----></span><span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-input__icon"></i><!----><!----><!----><!----></span><!----></span><!----><!----></div><!----></div></div><div class="tab-table el-tabs el-tabs--top el-tabs--border-card"><div class="el-tabs__header is-top"><div class="el-tabs__nav-wrap is-top"><div class="el-tabs__nav-scroll"><div role="tablist" class="el-tabs__nav is-top" style="transform:translateX(-0px);"></div></div></div></div><div class="el-tabs__content"><div role="tabpanel" id="pane-userList" aria-labelledby="tab-userList" class="el-tab-pane"><button type="button" class="el-button el-button--primary el-button--mini" style="margin-bottom:14px;"><!----><!----><span><span>新增1</span></span></button> <div class="el-table el-table--fit el-table--border el-table--enable-row-hover el-table--enable-row-transition el-table--medium"><div class="hidden-columns"><div><div></div><div></div><div></div> <!----></div><div></div><div></div> <div></div></div><div class="el-table__header-wrapper"><table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width:;"><colgroup></colgroup><thead><tr></tr></thead></table></div><div class="el-table__body-wrapper is-scrolling-none"><table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width:;"><colgroup></colgroup><tbody><tr class="el-table__row"></tr><tr class="el-table__row"></tr><tr class="el-table__row"></tr><tr class="el-table__row"></tr><!----></tbody></table><!----><!----></div><!----><!----><!----><!----><div class="el-table__column-resize-proxy" style="display:none;"></div></div></div><div role="tabpanel" aria-hidden="true" id="pane-userList2" aria-labelledby="tab-userList2" class="el-tab-pane" style="display:none;"><button type="button" class="el-button el-button--primary el-button--mini" style="margin-bottom:14px;"><!----><!----><span><span>新增</span></span></button> <div class="el-table el-table--fit el-table--border el-table--enable-row-hover el-table--medium"><div class="hidden-columns"><div></div><div></div> <div></div></div><div class="el-table__header-wrapper"><table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width:;"><colgroup></colgroup><thead><tr></tr></thead></table></div><div class="el-table__body-wrapper is-scrolling-none"><table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width:;"><colgroup></colgroup><tbody><!----></tbody></table><div class="el-table__empty-block" style="width:;height:100%;"><span class="el-table__empty-text">暂无数据</span></div><!----></div><!----><!----><!----><!----><div class="el-table__column-resize-proxy" style="display:none;"></div></div></div><div role="tabpanel" aria-hidden="true" id="pane-formTab" aria-labelledby="tab-formTab" class="el-tab-pane" style="display:none;"><!----> <form class="el-form el-form--label-right"><div class="el-form-item el-form-item--medium"><label for="height" class="el-form-item__label" style="width:120px;">身高</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-input el-input--medium" style="max-width:300px;width:100%;"><!----><input type="text" autocomplete="off" aria-label="身高" rows="3" name="height" class="el-input__inner"><!----><!----><!----><!----></div><!----></div></div><div class="el-form-item el-form-item--medium"><label for="sex" class="el-form-item__label" style="width:120px;">性别</label><div class="el-form-item__content" style="margin-left:120px;"><!----> <div class="el-select el-select--medium" style="max-width:300px;width:100%;"><!----><div class="el-input el-input--medium el-input--suffix"><!----><input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" name="sex" class="el-input__inner"><!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----><!----><!----><!----><!----></span><!----></span><!----><!----></div><div class="el-select-dropdown el-popper" style="min-width:;display:none;"><div class="el-scrollbar" style="display:none;"><div class="el-select-dropdown__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-select-dropdown__list"><!----><li class="el-select-dropdown__item"><span>男</span></li><li class="el-select-dropdown__item"><span>女</span></li></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div><p class="el-select-dropdown__empty">
+          无数据
+        </p></div></div><!----></div></div> <!----></form></div></div></div> <div class="el-form-item el-form-item--medium"><!----><div class="el-form-item__content" style="margin-left:120px;"><button type="button" class="el-button el-button--primary el-button--medium"><!----><!----><span>
+        保存
+      </span></button><button type="button" class="el-button el-button--primary el-button--medium"><!----><!----><span>
+        取消
+      </span></button><!----></div></div></form></div> </div></div> <div class="code--segment" style="display:none;"><pre><code class="hljs vue"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"app-container"</span> <span class="hljs-attr">:v-loading</span>=<span class="hljs-string">"loading"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">x-form</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"xForm"</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"formData"</span> <span class="hljs-attr">:config</span>=<span class="hljs-string">"formConfig"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">slotTag</span>=<span class="hljs-string">"scope"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">el-tag</span>&gt;</span>{{ scope.row.username }}<span class="hljs-tag">&lt;/<span class="hljs-name">el-tag</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">x-form</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  data() {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">loading</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">formData</span>: {
+        <span class="hljs-attr">userList</span>: [
+          {
+            <span class="hljs-attr">username</span>: <span class="hljs-string">'张三'</span>,
+            <span class="hljs-attr">birthday</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),
+            <span class="hljs-attr">age</span>: <span class="hljs-string">"18"</span>,
+            <span class="hljs-attr">weight</span>: <span class="hljs-string">'50kg'</span>,
+          },
+          {
+            <span class="hljs-attr">username</span>: <span class="hljs-string">'张三'</span>,
+            <span class="hljs-attr">birthday</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),
+            <span class="hljs-attr">age</span>: <span class="hljs-string">"18"</span>,
+            <span class="hljs-attr">weight</span>: <span class="hljs-string">'50kg'</span>,
+          },
+          {
+            <span class="hljs-attr">username</span>: <span class="hljs-string">'张三'</span>,
+            <span class="hljs-attr">birthday</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),
+            <span class="hljs-attr">age</span>: <span class="hljs-string">"18"</span>,
+            <span class="hljs-attr">weight</span>: <span class="hljs-string">'50kg'</span>,
+          },
+          {
+            <span class="hljs-attr">username</span>: <span class="hljs-string">'张三'</span>,
+            <span class="hljs-attr">birthday</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),
+            <span class="hljs-attr">age</span>: <span class="hljs-string">"18"</span>,
+            <span class="hljs-attr">weight</span>: <span class="hljs-string">'50kg'</span>,
+          },
+        ]
+      }
+    }
+  },
+  <span class="hljs-attr">computed</span>: {
+    formConfig() {
+      <span class="hljs-keyword">const</span> _this = <span class="hljs-keyword">this</span>
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">inline</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">item</span>: [
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'input'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'username'</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'登录名'</span>,
+            <span class="hljs-attr">tooltip</span>: <span class="hljs-string">"登录名的提示"</span>,
+            <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入'</span>, <span class="hljs-attr">trigger</span>: [<span class="hljs-string">'blur'</span>, <span class="hljs-string">'change'</span>] }]
+          },
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'datePicker'</span>,
+            <span class="hljs-attr">type</span>: <span class="hljs-string">'date'</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'birthday'</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">'生日'</span>,
+            <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入'</span>, <span class="hljs-attr">trigger</span>: [<span class="hljs-string">'blur'</span>, <span class="hljs-string">'change'</span>] }]
+          },
+          {
+            <span class="hljs-attr">xType</span>: <span class="hljs-string">'tabs'</span>,
+            <span class="hljs-attr">tabs</span>: [
+              {
+                <span class="hljs-attr">label</span>: <span class="hljs-string">'人员列表'</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">'userList'</span>,
+                <span class="hljs-attr">add</span>:<span class="hljs-function">(<span class="hljs-params">arr</span>)=&gt;</span>{   <span class="hljs-comment">// 自定义插入方法</span>
+                  arr.splice(arr.length, <span class="hljs-number">0</span>, {
+                    <span class="hljs-attr">username</span>: <span class="hljs-string">'张三'</span>,
+                    <span class="hljs-attr">birthday</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),
+                    <span class="hljs-attr">age</span>: <span class="hljs-string">"18"</span>,
+                    <span class="hljs-attr">weight</span>: <span class="hljs-string">'50kg'</span>,
+                  })
+                  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"add"</span>)
+                },
+                <span class="hljs-attr">remove</span>:<span class="hljs-function">(<span class="hljs-params">arr</span>)=&gt;</span>{   <span class="hljs-comment">// 自定义移除方法</span>
+                  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"remove"</span>)
+                },
+                <span class="hljs-attr">addConfig</span>: {  <span class="hljs-comment">// 覆盖默认配置</span>
+                  <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>,
+                  <span class="hljs-attr">text</span>: <span class="hljs-string">'新增1'</span>,
+                },
+                <span class="hljs-attr">operate</span>: {  <span class="hljs-comment">// 本配置会覆盖全局配置，所以不写也可以，默认采用全局配置</span>
+                  <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>,
+                  <span class="hljs-attr">label</span>: <span class="hljs-string">'操作'</span>,
+                  <span class="hljs-attr">width</span>: <span class="hljs-string">'60px'</span>,
+                  <span class="hljs-attr">headerAlign</span>: <span class="hljs-string">'center'</span>,
+                  <span class="hljs-attr">align</span>: <span class="hljs-string">'center'</span>,
+                  <span class="hljs-attr">btn</span>: [
+                    {
+                      <span class="hljs-attr">type</span>: <span class="hljs-string">'danger'</span>,
+                      <span class="hljs-attr">icon</span>: <span class="hljs-string">'el-icon-close'</span>,
+                      <span class="hljs-attr">size</span>: <span class="hljs-string">'mini'</span>,
+                      <span class="hljs-attr">circle</span>: <span class="hljs-literal">true</span>,
+                      <span class="hljs-attr">style</span>: <span class="hljs-string">''</span>,
+                      <span class="hljs-attr">className</span>: <span class="hljs-string">''</span>
+                    },
+                    {
+                      <span class="hljs-attr">type</span>: <span class="hljs-string">'primary'</span>,
+                      <span class="hljs-attr">icon</span>: <span class="hljs-string">'el-icon-open'</span>,
+                      <span class="hljs-attr">size</span>: <span class="hljs-string">'mini'</span>,
+                      <span class="hljs-attr">circle</span>: <span class="hljs-literal">true</span>,
+                      <span class="hljs-attr">style</span>: <span class="hljs-string">''</span>,
+                      <span class="hljs-attr">className</span>: <span class="hljs-string">''</span>,
+                      <span class="hljs-attr">show</span>: <span class="hljs-literal">false</span>
+                    }
+                  ]
+                },
+                <span class="hljs-attr">spanMethod</span>: <span class="hljs-function">(<span class="hljs-params">{ row, column, rowIndex, columnIndex }</span>) =&gt;</span> {
+                  <span class="hljs-keyword">if</span> (columnIndex === <span class="hljs-number">0</span>) {
+                    <span class="hljs-keyword">if</span> (rowIndex % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>) {
+                      <span class="hljs-keyword">return</span> {
+                        <span class="hljs-attr">rowspan</span>: <span class="hljs-number">2</span>,
+                        <span class="hljs-attr">colspan</span>: <span class="hljs-number">1</span>
+                      }
+                    } <span class="hljs-keyword">else</span> {
+                      <span class="hljs-keyword">return</span> {
+                        <span class="hljs-attr">rowspan</span>: <span class="hljs-number">0</span>,
+                        <span class="hljs-attr">colspan</span>: <span class="hljs-number">0</span>
+                      }
+                    }
+                  }
+                },
+                <span class="hljs-attr">column</span>: [
+                  {
+                    <span class="hljs-attr">label</span>: <span class="hljs-string">'信息'</span>,
+                    <span class="hljs-attr">children</span>: [
+                      {
+                        <span class="hljs-attr">label</span>: <span class="hljs-string">'合并体重'</span>,
+                        <span class="hljs-attr">name</span>: <span class="hljs-string">'weight'</span>,
+                        <span class="hljs-attr">renderHeader</span>: <span class="hljs-function">(<span class="hljs-params">h, { column, $index }</span>) =&gt;</span> {
+                          <span class="hljs-keyword">return</span> h(<span class="hljs-string">'div'</span>,[
+                            h(<span class="hljs-string">'span'</span>, column.label),
+                            h(<span class="hljs-string">'el-button'</span>, {
+                              <span class="hljs-attr">style</span>: <span class="hljs-string">"display: inline-block; margin-left: 10px;"</span>,
+                              <span class="hljs-attr">on</span>: {
+                                <span class="hljs-attr">click</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">window</span>.alert(<span class="hljs-string">"自定义头部，具体见vue的jsx语法"</span>)
+                              },
+                              <span class="hljs-attr">props</span>: {
+                                <span class="hljs-attr">icon</span>: <span class="hljs-string">"el-icon-delete"</span>,
+                                <span class="hljs-attr">circle</span>: <span class="hljs-literal">true</span>,
+                                <span class="hljs-attr">size</span>: <span class="hljs-string">'mini'</span>
+                              }
+                            }),
+                          ])
+                        },
+                      },
+                      {
+                        <span class="hljs-attr">label</span>: <span class="hljs-string">'年龄'</span>,
+                        <span class="hljs-attr">name</span>: <span class="hljs-string">'age'</span>,
+                        <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">xType</span>: <span class="hljs-string">'input'</span>,
+                      },
+                      {
+                        <span class="hljs-attr">label</span>: <span class="hljs-string">'登录名'</span>,
+                        <span class="hljs-attr">name</span>: <span class="hljs-string">'username'</span>,
+                        <span class="hljs-attr">xType</span>: <span class="hljs-string">'input'</span>,
+                        <span class="hljs-attr">headerAlign</span>: <span class="hljs-string">'left'</span>,
+                        <span class="hljs-attr">tooltip</span>: <span class="hljs-string">"表格的提示"</span>,
+                        <span class="hljs-attr">style</span>: <span class="hljs-string">'width: 100px'</span>,
+                        <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入'</span>, <span class="hljs-attr">trigger</span>: [<span class="hljs-string">'blur'</span>, <span class="hljs-string">'change'</span>] }]
+                      }
+                    ]
+                  },
+                  {
+                    <span class="hljs-attr">xType</span>: <span class="hljs-string">'datePicker'</span>,
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">'date'</span>,
+                    <span class="hljs-attr">name</span>: <span class="hljs-string">'birthday'</span>,
+                    <span class="hljs-attr">label</span>: <span class="hljs-string">'生日'</span>,
+                    <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入'</span>, <span class="hljs-attr">trigger</span>: [<span class="hljs-string">'blur'</span>, <span class="hljs-string">'change'</span>] }]
+                  },
+                  {
+                    <span class="hljs-attr">xType</span>: <span class="hljs-string">'slot'</span>,
+                    <span class="hljs-attr">label</span>: <span class="hljs-string">'插槽插入（多级表头无法自定义插槽）'</span>,
+                    <span class="hljs-attr">slot</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">name</span>: <span class="hljs-string">'slotTag'</span>,
+                  },
+                ]
+              },
+              {
+                <span class="hljs-attr">label</span>: <span class="hljs-string">'人员列表2'</span>,
+                <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">'userList2'</span>,
+                <span class="hljs-attr">add</span>:<span class="hljs-function">(<span class="hljs-params">arr</span>)=&gt;</span>{   <span class="hljs-comment">// 自定义插入方法</span>
+                  arr.splice(arr.length, <span class="hljs-number">0</span>, {})
+                  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"add"</span>)
+                },
+                <span class="hljs-attr">remove</span>: <span class="hljs-function">(<span class="hljs-params">arr, index</span>) =&gt;</span> {
+                  arr.splice(index, <span class="hljs-number">1</span>)
+                  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"remove"</span>)
+                },
+                <span class="hljs-attr">column</span>: [
+                  {
+                    <span class="hljs-attr">xType</span>: <span class="hljs-string">'input'</span>,
+                    <span class="hljs-attr">name</span>: <span class="hljs-string">'username'</span>,
+                    <span class="hljs-attr">label</span>: <span class="hljs-string">'登录名2'</span>,
+                  },
+                  {
+                    <span class="hljs-attr">xType</span>: <span class="hljs-string">'datePicker'</span>,
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">'date'</span>,
+                    <span class="hljs-attr">name</span>: <span class="hljs-string">'birthday'</span>,
+                    <span class="hljs-attr">label</span>: <span class="hljs-string">'生日2'</span>,
+                    <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">'请输入'</span>, <span class="hljs-attr">trigger</span>: [<span class="hljs-string">'blur'</span>, <span class="hljs-string">'change'</span>] }]
+                  },
+                ]
+              },
+              {
+                <span class="hljs-attr">type</span>: <span class="hljs-string">'form'</span>,
+                <span class="hljs-attr">label</span>: <span class="hljs-string">'表单'</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">'formTab'</span>,
+                <span class="hljs-attr">addConfig</span>: {<span class="hljs-attr">show</span>: <span class="hljs-literal">false</span>},
+                <span class="hljs-attr">formConfig</span>: { <span class="hljs-comment">// 同XForm配置</span>
+                  <span class="hljs-attr">item</span>: [
+                    {
+                      <span class="hljs-attr">xType</span>: <span class="hljs-string">'input'</span>,
+                      <span class="hljs-attr">label</span>: <span class="hljs-string">'身高'</span>,
+                      <span class="hljs-attr">name</span>: <span class="hljs-string">'height'</span>
+                    },
+                    {
+                      <span class="hljs-attr">xType</span>: <span class="hljs-string">'select'</span>,
+                      <span class="hljs-attr">label</span>: <span class="hljs-string">'性别'</span>,
+                      <span class="hljs-attr">name</span>: <span class="hljs-string">'sex'</span>,
+                      <span class="hljs-attr">dic</span>: [{<span class="hljs-attr">label</span>: <span class="hljs-string">'男'</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">'male'</span>}, {<span class="hljs-attr">label</span>: <span class="hljs-string">'女'</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">'female'</span>}]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        <span class="hljs-attr">operate</span>: [
+          { <span class="hljs-attr">text</span>: <span class="hljs-string">'保存'</span>, <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">click</span>: _this.save },
+          { <span class="hljs-attr">text</span>: <span class="hljs-string">'取消'</span>, <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">click</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'cancel'</span>) }
+        ]
+      }
+    }
+  },
+  <span class="hljs-attr">methods</span>: {
+    save() {
+      <span class="hljs-keyword">this</span>.loading++;
+      <span class="hljs-keyword">this</span>.$refs[<span class="hljs-string">'xForm'</span>].validate().then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.formData)
+      }).catch(<span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(e)).finally(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">this</span>.loading--)
+    }
+  }
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div> <div class="code--button"><span class="show-btn"><i class="el-icon-caret-bottom"></i> <span class="show-btn-word">
+        显示代码
+      </span> <span></span></span></div></div> <h2 id="attributes"><a href="#attributes" class="header-anchor">#</a> Attributes</h2> <div title="Attributes" class="api-wrap"><div class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition" style="width:100%;"><div class="hidden-columns"><div></div> <div></div> <div></div> <div></div> <div></div></div><div class="el-table__header-wrapper"><table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width:;"><colgroup></colgroup><thead><tr></tr></thead></table></div><div class="el-table__body-wrapper is-scrolling-none"><table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width:;"><colgroup></colgroup><tbody><tr class="el-table__row"></tr><tr class="el-table__row"></tr><!----></tbody></table><!----><!----></div><!----><!----><!----><!----><div class="el-table__column-resize-proxy" style="display:none;"></div></div></div> <h2 id="config"><a href="#config" class="header-anchor">#</a> Config</h2> <div title="Config" class="api-wrap"><div class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition" style="width:100%;"><div class="hidden-columns"><div></div> <div></div> <div></div> <div></div> <div></div></div><div class="el-table__header-wrapper"><table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width:;"><colgroup></colgroup><thead><tr></tr></thead></table></div><div class="el-table__body-wrapper is-scrolling-none"><table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width:;"><colgroup></colgroup><tbody><tr class="el-table__row"></tr><tr class="el-table__row"></tr><tr class="el-table__row"></tr><tr class="el-table__row"></tr><!----></tbody></table><!----><!----></div><!----><!----><!----><!----><div class="el-table__column-resize-proxy" style="display:none;"></div></div></div> <h2 id="item"><a href="#item" class="header-anchor">#</a> Item</h2> <div title="Item" class="api-wrap"><div class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition" style="width:100%;"><div class="hidden-columns"><div></div> <div></div> <div></div> <div></div> <div></div></div><div class="el-table__header-wrapper"><table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width:;"><colgroup></colgroup><thead><tr></tr></thead></table></div><div class="el-table__body-wrapper is-scrolling-none"><table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width:;"><colgroup></colgroup><tbody><tr class="el-table__row"></tr><tr class="el-table__row"></tr><tr class="el-table__row"></tr><tr class="el-table__row"></tr><tr class="el-table__row"></tr><!----></tbody></table><!----><!----></div><!----><!----><!----><!----><div class="el-table__column-resize-proxy" style="display:none;"></div></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/xcrud/dev/globalConfig.html" class="prev">
+        全局配置
+      </a></span> <span class="next"><a href="/xcrud/dev/table.html">
+        xTable 组件
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/xcrud/assets/js/app.0e324b04.js" defer></script><script src="/xcrud/assets/js/2.ab4daaeb.js" defer></script><script src="/xcrud/assets/js/22.7e8cedb9.js" defer></script><script src="/xcrud/assets/js/4.9d40188c.js" defer></script><script src="/xcrud/assets/js/17.61a6adfd.js" defer></script><script src="/xcrud/assets/js/15.6205ae90.js" defer></script><script src="/xcrud/assets/js/14.8d781e0d.js" defer></script><script src="/xcrud/assets/js/16.7478f942.js" defer></script><script src="/xcrud/assets/js/3.28df1977.js" defer></script>
+  </body>
+</html>

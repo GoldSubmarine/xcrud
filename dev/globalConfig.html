@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>全局配置 | xcrud</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    <link rel="icon" href="/xcrud/home.svg">
+    <meta name="description" content="基于 element-ui & Vue 实现的用于快速增删改查的组件，是开发后台应用的利器">
+    <link rel="preload" href="/xcrud/assets/css/0.styles.68028399.css" as="style"><link rel="preload" href="/xcrud/assets/js/app.0e324b04.js" as="script"><link rel="preload" href="/xcrud/assets/js/2.ab4daaeb.js" as="script"><link rel="preload" href="/xcrud/assets/js/23.6a0ecb06.js" as="script"><link rel="prefetch" href="/xcrud/assets/js/10.d2a56891.js"><link rel="prefetch" href="/xcrud/assets/js/11.bbc4a33f.js"><link rel="prefetch" href="/xcrud/assets/js/12.3f7e7cd7.js"><link rel="prefetch" href="/xcrud/assets/js/13.e05911da.js"><link rel="prefetch" href="/xcrud/assets/js/14.8d781e0d.js"><link rel="prefetch" href="/xcrud/assets/js/15.6205ae90.js"><link rel="prefetch" href="/xcrud/assets/js/16.7478f942.js"><link rel="prefetch" href="/xcrud/assets/js/17.61a6adfd.js"><link rel="prefetch" href="/xcrud/assets/js/18.82a02598.js"><link rel="prefetch" href="/xcrud/assets/js/19.4714dab0.js"><link rel="prefetch" href="/xcrud/assets/js/20.21fab94e.js"><link rel="prefetch" href="/xcrud/assets/js/21.0a2ad7c0.js"><link rel="prefetch" href="/xcrud/assets/js/22.7e8cedb9.js"><link rel="prefetch" href="/xcrud/assets/js/24.353a2ce4.js"><link rel="prefetch" href="/xcrud/assets/js/25.40a79ba1.js"><link rel="prefetch" href="/xcrud/assets/js/3.28df1977.js"><link rel="prefetch" href="/xcrud/assets/js/4.9d40188c.js"><link rel="prefetch" href="/xcrud/assets/js/5.931860d1.js"><link rel="prefetch" href="/xcrud/assets/js/6.2ddc8bc6.js"><link rel="prefetch" href="/xcrud/assets/js/7.41a65c94.js"><link rel="prefetch" href="/xcrud/assets/js/8.5eea11a0.js"><link rel="prefetch" href="/xcrud/assets/js/9.30c7d4dd.js">
+    <link rel="stylesheet" href="/xcrud/assets/css/0.styles.68028399.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/xcrud/" class="home-link router-link-active"><!----> <span class="site-name">xcrud</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文档" class="dropdown-title"><span class="title">文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="文档" class="mobile-dropdown-title"><span class="title">文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/xcrud/dev/index.html" class="nav-link">
+  dev
+</a></li></ul></div></div><div class="nav-item"><a href="/xcrud/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/xcrud/dev/index.html" class="nav-link">
+  组件文档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="知识库" class="dropdown-title"><span class="title">知识库</span> <span class="arrow down"></span></button> <button type="button" aria-label="知识库" class="mobile-dropdown-title"><span class="title">知识库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://cn.vuejs.org/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://element.eleme.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  element-ui
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><a href="https://github.com/GoldSubmarine/xcrud" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文档" class="dropdown-title"><span class="title">文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="文档" class="mobile-dropdown-title"><span class="title">文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/xcrud/dev/index.html" class="nav-link">
+  dev
+</a></li></ul></div></div><div class="nav-item"><a href="/xcrud/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/xcrud/dev/index.html" class="nav-link">
+  组件文档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="知识库" class="dropdown-title"><span class="title">知识库</span> <span class="arrow down"></span></button> <button type="button" aria-label="知识库" class="mobile-dropdown-title"><span class="title">知识库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://cn.vuejs.org/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://element.eleme.cn" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  element-ui
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><a href="https://github.com/GoldSubmarine/xcrud" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/xcrud/dev/" aria-current="page" class="sidebar-link">快速开始</a></li><li><a href="/xcrud/dev/globalConfig.html" aria-current="page" class="active sidebar-link">全局配置</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>组件</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/xcrud/dev/form.html" class="sidebar-link">xForm 组件</a></li><li><a href="/xcrud/dev/table.html" class="sidebar-link">xTable 组件</a></li><li><a href="/xcrud/dev/button.html" class="sidebar-link">Button 按钮</a></li><li><a href="/xcrud/dev/select.html" class="sidebar-link">Select 选择器</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="全局配置"><a href="#全局配置" class="header-anchor">#</a> 全局配置</h1> <hr> <p>xcrud 内置了一个全局配置，用户还可在注册 xcrud 组件时自定义全局配置，用户自定义配置会覆盖全局配置，使用如下：</p> <div class="language-js extra-class"><pre class="language-js"><code>Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Xcrud<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token comment">// your global theme config</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>首先把插件在全局进行注册，同时可以在此处对插件进行全局主题配置。例如当前项目使用 mini 大小的按钮，按钮颜色，表格是否需要条纹，border 等，以下是组件的默认配置，你的配置将会覆盖默认的配置。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> globalConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+  input<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    type<span class="token operator">:</span> <span class="token string">'text'</span><span class="token punctuation">,</span>
+    valueKey<span class="token operator">:</span> <span class="token string">'value'</span><span class="token punctuation">,</span>
+    debounce<span class="token operator">:</span> <span class="token number">300</span><span class="token punctuation">,</span>
+    placement<span class="token operator">:</span> <span class="token string">'bottom-start'</span><span class="token punctuation">,</span>
+    triggerOnFocus<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    selectWhenUnmatched<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    maxlength<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    minlength<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    showWordLimit<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    placeholder<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    clearable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+    rows<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    autosize<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    autocomplete<span class="token operator">:</span> <span class="token string">'off'</span><span class="token punctuation">,</span>
+    resize<span class="token operator">:</span> <span class="token string">'none'</span><span class="token punctuation">,</span>
+    validateEvent<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    hideLoading<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    popperAppendToBody<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    highlightFirstItem<span class="token operator">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  autocomplete<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    placeholder<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    valueKey<span class="token operator">:</span> <span class="token string">'value'</span><span class="token punctuation">,</span>
+    debounce<span class="token operator">:</span> <span class="token number">300</span><span class="token punctuation">,</span>
+    placement<span class="token operator">:</span> <span class="token string">'bottom-start'</span><span class="token punctuation">,</span>
+    fetchSuggestions<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    popperClass<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    triggerOnFocus<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    name<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    selectWhenUnmatched<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    label<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    prefixIcon<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    suffixIcon<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    hideLoading<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    popperAppendToBody<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    highlightFirstItem<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    maxlength<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    minlength<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    clearable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+    rows<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    autosize<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    autocomplete<span class="token operator">:</span> <span class="token string">'off'</span><span class="token punctuation">,</span>
+    resize<span class="token operator">:</span> <span class="token string">'none'</span><span class="token punctuation">,</span>
+    validateEvent<span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  select<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    multiple<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    valueKey<span class="token operator">:</span> <span class="token string">'value'</span><span class="token punctuation">,</span>
+    size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+    clearable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    collapseTags<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    multipleLimit<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    autocomplete<span class="token operator">:</span> <span class="token string">'off'</span><span class="token punctuation">,</span>
+    placeholder<span class="token operator">:</span> <span class="token string">'请选择'</span><span class="token punctuation">,</span>
+    filterable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    allowCreate<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    remote<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    loading<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    loadingText<span class="token operator">:</span> <span class="token string">'加载中'</span><span class="token punctuation">,</span>
+    noMatchText<span class="token operator">:</span> <span class="token string">'无匹配数据'</span><span class="token punctuation">,</span>
+    noDataText<span class="token operator">:</span> <span class="token string">'无数据'</span><span class="token punctuation">,</span>
+    reserveKeyword<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    defaultFirstOption<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    popperAppendToBody<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    automaticDropdown<span class="token operator">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  datePicker<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    readonly<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    editable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    clearable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    size<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    placeholder<span class="token operator">:</span> <span class="token string">'请选择日期'</span><span class="token punctuation">,</span>
+    startPlaceholder<span class="token operator">:</span> <span class="token string">'开始时间'</span><span class="token punctuation">,</span>
+    endPlaceholder<span class="token operator">:</span> <span class="token string">'结束时间'</span><span class="token punctuation">,</span>
+    type<span class="token operator">:</span> <span class="token string">'date'</span><span class="token punctuation">,</span>
+    format<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    align<span class="token operator">:</span> <span class="token string">'left'</span><span class="token punctuation">,</span>
+    pickerOptions<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    rangeSeparator<span class="token operator">:</span> <span class="token string">':'</span><span class="token punctuation">,</span>
+    valueFormat<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    unlinkPanels<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    prefixIcon<span class="token operator">:</span> <span class="token string">'el-icon-date'</span><span class="token punctuation">,</span>
+    clearIcon<span class="token operator">:</span> <span class="token string">'el-icon-circle-close'</span><span class="token punctuation">,</span>
+    validateEvent<span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  checkbox<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+    min<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+    max<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+    textColor<span class="token operator">:</span> <span class="token string">'#ffffff'</span><span class="token punctuation">,</span>
+    fill<span class="token operator">:</span> <span class="token string">'#409EFF'</span><span class="token punctuation">,</span>
+    border<span class="token operator">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  radio<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    border<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+    textColor<span class="token operator">:</span> <span class="token string">'#ffffff'</span><span class="token punctuation">,</span>
+    fill<span class="token operator">:</span> <span class="token string">'#409EFF'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  cascader<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+    placeholder<span class="token operator">:</span> <span class="token string">'请选择'</span><span class="token punctuation">,</span>
+    clearable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    showAllLevels<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    collapseTags<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    separator<span class="token operator">:</span> <span class="token string">' / '</span><span class="token punctuation">,</span>
+    debounce<span class="token operator">:</span> <span class="token number">300</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">switch</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    width<span class="token operator">:</span> <span class="token number">40</span><span class="token punctuation">,</span>
+    activeValue<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    inactiveValue<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    activeColor<span class="token operator">:</span> <span class="token string">'#409EFF'</span><span class="token punctuation">,</span>
+    inactiveColor<span class="token operator">:</span> <span class="token string">'#C0CCDA'</span><span class="token punctuation">,</span>
+    validateEvent<span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  inputNumber<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    min<span class="token operator">:</span> <span class="token string">'-Infinity'</span><span class="token punctuation">,</span>
+    max<span class="token operator">:</span> <span class="token string">'Infinity'</span><span class="token punctuation">,</span>
+    step<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    stepStrictly<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    precision<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+    controls<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    controlsPosition<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    placeholder<span class="token operator">:</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  slider<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    min<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    max<span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+    step<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    showInput<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    showInputControls<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    inputSize<span class="token operator">:</span> <span class="token string">'small'</span><span class="token punctuation">,</span>
+    showStops<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    showTooltip<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    range<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    vertical<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    height<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    label<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    debounce<span class="token operator">:</span> <span class="token number">300</span><span class="token punctuation">,</span>
+    marks<span class="token operator">:</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  timePicker<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    editable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    clearable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+    placeholder<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    align<span class="token operator">:</span> <span class="token string">'left'</span><span class="token punctuation">,</span>
+    startPlaceholder<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    endPlaceholder<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    isRange<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    arrowControl<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    pickerOptions<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    rangeSeparator<span class="token operator">:</span> <span class="token string">':'</span><span class="token punctuation">,</span>
+    valueFormat<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    prefixIcon<span class="token operator">:</span> <span class="token string">'el-icon-time'</span><span class="token punctuation">,</span>
+    clearIcon<span class="token operator">:</span> <span class="token string">'el-icon-circle-close'</span><span class="token punctuation">,</span>
+
+    selectableRange<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    format<span class="token operator">:</span> <span class="token string">'HH:mm:ss'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  timeSelect<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    editable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    clearable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+    placeholder<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    align<span class="token operator">:</span> <span class="token string">'left'</span><span class="token punctuation">,</span>
+    startPlaceholder<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    endPlaceholder<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    isRange<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    arrowControl<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    pickerOptions<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    rangeSeparator<span class="token operator">:</span> <span class="token string">':'</span><span class="token punctuation">,</span>
+    valueFormat<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    prefixIcon<span class="token operator">:</span> <span class="token string">'el-icon-time'</span><span class="token punctuation">,</span>
+    clearIcon<span class="token operator">:</span> <span class="token string">'el-icon-circle-close'</span><span class="token punctuation">,</span>
+
+    start<span class="token operator">:</span> <span class="token string">'09:00'</span><span class="token punctuation">,</span>
+    end<span class="token operator">:</span> <span class="token string">'18:00'</span><span class="token punctuation">,</span>
+    step<span class="token operator">:</span> <span class="token string">'00:30'</span><span class="token punctuation">,</span>
+    minTime<span class="token operator">:</span> <span class="token string">'00:00'</span><span class="token punctuation">,</span>
+    maxTime<span class="token operator">:</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  rate<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    max<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    texts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'极差'</span><span class="token punctuation">,</span> <span class="token string">'失望'</span><span class="token punctuation">,</span> <span class="token string">'一般'</span><span class="token punctuation">,</span> <span class="token string">'满意'</span><span class="token punctuation">,</span> <span class="token string">'惊喜'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    colors<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'#F7BA2A'</span><span class="token punctuation">,</span> <span class="token string">'#F7BA2A'</span><span class="token punctuation">,</span> <span class="token string">'#F7BA2A'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    allowHalf<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    lowThreshold<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    highThreshold<span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    voidColor<span class="token operator">:</span> <span class="token string">'#C6D1DE'</span><span class="token punctuation">,</span>
+    iconClasses<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'el-icon-star-on'</span><span class="token punctuation">,</span> <span class="token string">'el-icon-star-on'</span><span class="token punctuation">,</span> <span class="token string">'el-icon-star-on'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    showText<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    showScore<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    textColor<span class="token operator">:</span> <span class="token string">'#1F2D3D'</span><span class="token punctuation">,</span>
+    scoreTemplate<span class="token operator">:</span> <span class="token string">'{value}'</span><span class="token punctuation">,</span>
+    disabledVoidColor<span class="token operator">:</span> <span class="token string">'#EFF2F7'</span><span class="token punctuation">,</span>
+    voidIconClass<span class="token operator">:</span> <span class="token string">'el-icon-star-off'</span><span class="token punctuation">,</span>
+    disabledVoidIconClass<span class="token operator">:</span> <span class="token string">'el-icon-star-on'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  colorPicker<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+    predefine<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    showAlpha<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    colorFormat<span class="token operator">:</span> <span class="token string">'hex'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  transfer<span class="token operator">:</span> <span class="token punctuation">{</span>
+    disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    filterable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    filterPlaceholder<span class="token operator">:</span> <span class="token string">'请输入搜索内容'</span><span class="token punctuation">,</span>
+    targetOrder<span class="token operator">:</span> <span class="token string">'original'</span><span class="token punctuation">,</span>
+    titles<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'列表 1'</span><span class="token punctuation">,</span> <span class="token string">'列表 2'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    buttonTexts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    format<span class="token operator">:</span> <span class="token punctuation">{</span> noChecked<span class="token operator">:</span> <span class="token string">'${checked}/${total}'</span><span class="token punctuation">,</span> hasChecked<span class="token operator">:</span> <span class="token string">'${checked}/${total}'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    props<span class="token operator">:</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  xtable<span class="token operator">:</span> <span class="token punctuation">{</span>
+    table<span class="token operator">:</span> <span class="token punctuation">{</span>
+      height<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      maxHeight<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      stripe<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      border<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+      fit<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      showHeader<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      highlightCurrentRow<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      rowClassName<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      rowStyle<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      cellClassName<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      cellStyle<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      headerRowClassName<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      headerRowStyle<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      headerCellClassName<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      headerCellStyle<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      emptyText<span class="token operator">:</span> <span class="token string">'暂无数据'</span><span class="token punctuation">,</span>
+      defaultExpandAll<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      defaultSort<span class="token operator">:</span> <span class="token punctuation">{</span> order<span class="token operator">:</span> <span class="token string">'ascending'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      tooltipEffect<span class="token operator">:</span> <span class="token string">'dark'</span><span class="token punctuation">,</span>
+      showSummary<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      sumText<span class="token operator">:</span> <span class="token string">'合计'</span><span class="token punctuation">,</span>
+      selectOnIndeterminate<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      indent<span class="token operator">:</span> <span class="token number">16</span><span class="token punctuation">,</span>
+      treeProps<span class="token operator">:</span> <span class="token punctuation">{</span> hasChildren<span class="token operator">:</span> <span class="token string">'hasChildren'</span><span class="token punctuation">,</span> children<span class="token operator">:</span> <span class="token string">'children'</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    column<span class="token operator">:</span> <span class="token punctuation">{</span>
+      width<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      minWidth<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      fixed<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      sortable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      sortOrders<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'ascending'</span><span class="token punctuation">,</span> <span class="token string">'descending'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      resizable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      showOverflowTooltip<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">,</span>
+      headerAlign<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">,</span>
+      className<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      labelClassName<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      reserveSelection<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      filterPlacement<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      filterMultiple<span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    search<span class="token operator">:</span> <span class="token punctuation">{</span>
+      form<span class="token operator">:</span> <span class="token punctuation">{</span>
+        inline<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        labelPosition<span class="token operator">:</span> <span class="token string">'right'</span><span class="token punctuation">,</span>
+        labelWidth<span class="token operator">:</span> <span class="token string">'auto'</span><span class="token punctuation">,</span>
+        labelSuffix<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+        hideRequiredAsterisk<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        showMessage<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        inlineMessage<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        statusIcon<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        validateOnRuleChange<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+        disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        itemStyle<span class="token operator">:</span> <span class="token string">'width: 200px;'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      btn<span class="token operator">:</span> <span class="token punctuation">{</span>
+        size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+        type<span class="token operator">:</span> <span class="token string">'primary'</span><span class="token punctuation">,</span>
+        plain<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        round<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        circle<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        loading<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        icon<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+        autofocus<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        nativeType<span class="token operator">:</span> <span class="token string">'button'</span><span class="token punctuation">,</span>
+        searchBtn<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">// circle: false,</span>
+          <span class="token comment">// round: false,</span>
+          <span class="token comment">// plain: false,</span>
+          <span class="token comment">// type: 'primary',</span>
+          show<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+          text<span class="token operator">:</span> <span class="token string">'搜索'</span><span class="token punctuation">,</span>
+          icon<span class="token operator">:</span> <span class="token string">'el-icon-search'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        resetBtn<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">// circle: false,</span>
+          <span class="token comment">// round: false,</span>
+          <span class="token comment">// plain: false,</span>
+          <span class="token comment">// type: 'primary',</span>
+          show<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+          text<span class="token operator">:</span> <span class="token string">'重置'</span><span class="token punctuation">,</span>
+          icon<span class="token operator">:</span> <span class="token string">'el-icon-refresh-right'</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    operate<span class="token operator">:</span> <span class="token punctuation">{</span>
+      column<span class="token operator">:</span> <span class="token punctuation">{</span>
+        label<span class="token operator">:</span> <span class="token string">'操作'</span>
+        <span class="token comment">// width: null,</span>
+        <span class="token comment">// minWidth: null,</span>
+        <span class="token comment">// fixed: false</span>
+        <span class="token comment">// renderHeader: null,</span>
+        <span class="token comment">// resizable: null,</span>
+        <span class="token comment">// align: null,</span>
+        <span class="token comment">// headerAlign: null,</span>
+        <span class="token comment">// className: null,</span>
+        <span class="token comment">// labelClassName: null</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      btn<span class="token operator">:</span> <span class="token punctuation">{</span>
+        size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+        type<span class="token operator">:</span> <span class="token string">'primary'</span><span class="token punctuation">,</span>
+        plain<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        round<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        circle<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        loading<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        icon<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+        autofocus<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        nativeType<span class="token operator">:</span> <span class="token string">'button'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      dropdown<span class="token operator">:</span> <span class="token punctuation">{</span>
+        className<span class="token operator">:</span> <span class="token string">'asdf'</span><span class="token punctuation">,</span>  <span class="token comment">// 自定义class</span>
+        text<span class="token operator">:</span> <span class="token string">'更多'</span><span class="token punctuation">,</span>  <span class="token comment">//自定义显示文字</span>
+        placement<span class="token operator">:</span> <span class="token string">'bottom-end'</span><span class="token punctuation">,</span>
+        trigger<span class="token operator">:</span> <span class="token string">'hover'</span><span class="token punctuation">,</span>
+        hideOnClick<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        showTimeout<span class="token operator">:</span> <span class="token number">250</span><span class="token punctuation">,</span>
+        hideTimeout<span class="token operator">:</span> <span class="token number">150</span><span class="token punctuation">,</span>
+        tabindex<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        divided<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  xform<span class="token operator">:</span> <span class="token punctuation">{</span>
+    form<span class="token operator">:</span> <span class="token punctuation">{</span>
+      inline<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      labelPosition<span class="token operator">:</span> <span class="token string">'right'</span><span class="token punctuation">,</span>
+      labelWidth<span class="token operator">:</span> <span class="token string">'120px'</span><span class="token punctuation">,</span>
+      labelSuffix<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+      hideRequiredAsterisk<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      showMessage<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      inlineMessage<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      statusIcon<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      validateOnRuleChange<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+      disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      itemStyle<span class="token operator">:</span> <span class="token string">'max-width: 300px; width: 100%;'</span><span class="token punctuation">,</span>
+      tooltip<span class="token operator">:</span> <span class="token punctuation">{</span>
+        effect<span class="token operator">:</span> <span class="token string">'dark'</span><span class="token punctuation">,</span>
+        placement<span class="token operator">:</span> <span class="token string">'top-start'</span><span class="token punctuation">,</span>
+        iconName<span class="token operator">:</span> <span class="token string">'el-icon-info'</span><span class="token punctuation">,</span>
+        iconStyle<span class="token operator">:</span> <span class="token string">'color: #409EFF'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      tabs<span class="token operator">:</span> <span class="token punctuation">{</span>
+        type<span class="token operator">:</span> <span class="token string">'border-card'</span><span class="token punctuation">,</span>
+        closable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        addable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        editable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        tabPosition<span class="token operator">:</span> <span class="token string">'top'</span><span class="token punctuation">,</span>
+        stretch<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        table<span class="token operator">:</span> <span class="token punctuation">{</span>
+          height<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+          maxHeight<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+          stripe<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+          border<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+          size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+          fit<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+          showHeader<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+          highlightCurrentRow<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+          rowClassName<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+          rowStyle<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+          cellClassName<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+          cellStyle<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+          headerRowClassName<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+          headerRowStyle<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+          headerCellClassName<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+          headerCellStyle<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+          emptyText<span class="token operator">:</span> <span class="token string">'暂无数据'</span><span class="token punctuation">,</span>
+          defaultExpandAll<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+          defaultSort<span class="token operator">:</span> <span class="token punctuation">{</span> order<span class="token operator">:</span> <span class="token string">'ascending'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          tooltipEffect<span class="token operator">:</span> <span class="token string">'dark'</span><span class="token punctuation">,</span>
+          showSummary<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+          sumText<span class="token operator">:</span> <span class="token string">'合计'</span><span class="token punctuation">,</span>
+          selectOnIndeterminate<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+          indent<span class="token operator">:</span> <span class="token number">16</span><span class="token punctuation">,</span>
+          treeProps<span class="token operator">:</span> <span class="token punctuation">{</span> hasChildren<span class="token operator">:</span> <span class="token string">'hasChildren'</span><span class="token punctuation">,</span> children<span class="token operator">:</span> <span class="token string">'children'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          column<span class="token operator">:</span> <span class="token punctuation">{</span>
+            width<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+            minWidth<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+            showOverflowTooltip<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">,</span>
+            headerAlign<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">,</span>
+            className<span class="token operator">:</span> <span class="token keyword">null</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          operate<span class="token operator">:</span> <span class="token punctuation">{</span>
+            show<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            label<span class="token operator">:</span> <span class="token string">'操作'</span><span class="token punctuation">,</span>
+            width<span class="token operator">:</span> <span class="token string">'60px'</span><span class="token punctuation">,</span>
+            headerAlign<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">,</span>
+            align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">,</span>
+            btn<span class="token operator">:</span> <span class="token punctuation">[</span>
+              <span class="token punctuation">{</span>
+                type<span class="token operator">:</span> <span class="token string">'danger'</span><span class="token punctuation">,</span>
+                icon<span class="token operator">:</span> <span class="token string">'el-icon-close'</span><span class="token punctuation">,</span>
+                size<span class="token operator">:</span> <span class="token string">'mini'</span><span class="token punctuation">,</span>
+                circle<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                style<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+                className<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+                <span class="token function-variable function">click</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">arr<span class="token punctuation">,</span> index<span class="token punctuation">,</span> fun</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token keyword">if</span> <span class="token punctuation">(</span>fun<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">fun</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> index<span class="token punctuation">)</span>
+                    <span class="token keyword">return</span>
+                  <span class="token punctuation">}</span>
+                  arr<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+              <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    operate<span class="token operator">:</span> <span class="token punctuation">{</span>
+      btn<span class="token operator">:</span> <span class="token punctuation">{</span>
+        size<span class="token operator">:</span> <span class="token string">'medium'</span><span class="token punctuation">,</span>
+        type<span class="token operator">:</span> <span class="token string">'primary'</span><span class="token punctuation">,</span>
+        plain<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        round<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        circle<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        loading<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        disabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        icon<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+        autofocus<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        nativeType<span class="token operator">:</span> <span class="token string">'button'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/xcrud/dev/" class="prev router-link-active">
+        快速开始
+      </a></span> <span class="next"><a href="/xcrud/dev/form.html">
+        xForm 组件
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/xcrud/assets/js/app.0e324b04.js" defer></script><script src="/xcrud/assets/js/2.ab4daaeb.js" defer></script><script src="/xcrud/assets/js/23.6a0ecb06.js" defer></script>
+  </body>
+</html>
