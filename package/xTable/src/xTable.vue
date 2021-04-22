@@ -264,7 +264,7 @@ export default {
         for (let i = 0; i < this.config.operate.length; i++) {
           const b = merge({}, this.globalConfig.xtable.operate.btn, this.config.operate[i])
           if (b.dropdown === true) {
-            c.dropdown.btn.push(b)
+            if (b.show) c.dropdown.btn.push(b)
           } else {
             c.btn.push(b)
           }
