@@ -124,7 +124,7 @@
 
             </el-button>
           </template>
-          <template v-if="operateConfig.dropdown.btn.length">
+          <template v-if="operateDropdownShow(scope.row)">
             <el-dropdown
               :class="operateConfig.dropdown.config.className"
               :placement="operateConfig.dropdown.config.placement"
@@ -261,10 +261,10 @@ export default {
         btn: []
       }
       if (this.config.operate) {
-        for (let i = 0; i < this.config.operate.length; i++) {
-          const b = merge({}, this.globalConfig.xtable.operate.btn, this.config.operate[i])
+        for (const operateItem of this.config.operate) {
+          const b = merge({}, this.globalConfig.xtable.operate.btn, operateItem)
           if (b.dropdown === true) {
-            if (b.show) c.dropdown.btn.push(b)
+            c.dropdown.btn.push(b)
           } else {
             c.btn.push(b)
           }
@@ -289,8 +289,20 @@ export default {
       } else if (typeof operateItem.show === 'function') {
         return operateItem.show(row)
       } else {
-        return this.globalConfig.xtable.table.operate.btn.show
+        return this.globalConfig.xtable.operate.btn.show
       }
+    },
+    operateDropdownShow(row) {
+      const trueDrop = this.operateConfig.dropdown.btn.filter(e => {
+        if (typeof e.show === 'boolean') {
+          return e.show
+        } else if (typeof e.show === 'function') {
+          return e.show(row)
+        } else {
+          return this.globalConfig.xtable.operate.dropdown.show
+        }
+      })
+      return trueDrop.length > 0
     },
     // 下拉菜单的点击事件
     handleDropdownCommand(index, row) {

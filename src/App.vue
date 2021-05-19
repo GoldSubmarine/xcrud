@@ -1,7 +1,7 @@
 <template>
   <div class="app-container" :v-loading="loading">
     <x-form ref="xForm" v-model="formData" :config="formConfig" />
-  </div>
+    <x-table :config="tableConifg" :data="tableData" /></div>
 </template>
 
 <script>
@@ -28,7 +28,14 @@ export default {
           },
           { id: '3', name: '售后部' }
         ]
-      }]
+      }],
+      tableData: [
+        { name: '1', age: '100' },
+        { name: '1', age: '100' },
+        { name: '1', age: '100' },
+        { name: '1', age: '100' }
+      ],
+      buttonShow: true
     }
   },
   computed: {
@@ -119,6 +126,46 @@ export default {
         operate: [
           { text: '保存', show: true, click: _this.save },
           { text: '取消', show: true, click: () => console.log('cancel') }
+        ]
+      }
+    },
+    tableConifg() {
+      return {
+        column: [
+          {
+            name: 'name',
+            label: '姓名'
+          },
+          {
+            name: 'age',
+            label: '年龄'
+          }
+        ],
+        operate: [
+          {
+            text: '1',
+            show: true
+          },
+          {
+            text: '2',
+            show: this.buttonShow,
+            dropdown: true
+          },
+          {
+            text: '3',
+            show: this.buttonShow,
+            dropdown: true
+          },
+          {
+            text: '4',
+            show: data => !data.name,
+            dropdown: true
+          },
+          {
+            text: '5',
+            show: this.buttonShow,
+            dropdown: true
+          }
         ]
       }
     }
